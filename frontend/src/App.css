@@ -1,0 +1,16 @@
+/* .App {
+  margin: 2%;
+} */
+.logo-panel {
+  background-color: #cee8e5;
+  height: 100vh;
+}
+h2 {
+  margin-left: -5%;
+  color: #2e72d2;
+  margin-top: 5% !important;
+}
+.buttons-panel {
+  font-size: 36px;
+  margin-left: 10%;
+}
