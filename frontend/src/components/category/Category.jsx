@@ -1,51 +1,93 @@
 import React from "react";
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
-import Dropdown from "react-bootstrap/Dropdown";
-import DropdownButton from "react-bootstrap/DropdownButton";
+import "./category.css";
+import { Link } from "react-router-dom";
 
 function Category() {
   return (
     <div>
-      <Navbar bg="light" expand="lg">
-        <Container>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <NavDropdown title="Categories" id="navbarScrollingDropdown">
-                <NavDropdown.Item>
-                  <DropdownButton
-                    key={"end"}
-                    drop={"end"}
-                    variant="Primary"
-                    title="Parent Category"
-                  >
-                    <Dropdown.Menu>
-                      <Dropdown.Item href="#/action-1">
-                        Child Category1
-                      </Dropdown.Item>
-                      <Dropdown.Item href="#/action-2">
-                        Child Category2
-                      </Dropdown.Item>
-                      <Dropdown.Item href="#/action-3">
-                        Child Category3
-                      </Dropdown.Item>
-                    </Dropdown.Menu>
-                  </DropdownButton>
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action4">
-                  Parent Category2
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action5">
-                  Parent Category3
-                </NavDropdown.Item>
-              </NavDropdown>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+      <div class="myDIV">Categories</div>
+      <div class="hide">
+        <div className="parentCategory">
+          <ul title="Parent Category" name="Parent Category">
+            <div className="categories_listItems">
+              <li className="Parent">
+                <Link to="/category1">Category1</Link>
+                <ul>
+                  <li>Child Category1</li>
+                  <li>Child Category1</li>
+                </ul>
+              </li>
+              <li className="Parent">
+                <Link to="/category2"> Category2</Link>
+                <ul>
+                  <li>Child Category1</li>
+                  <li>Child Category2</li>
+                </ul>
+              </li>
+              <li className="Parent">
+                <Link to="/category3"> Category3</Link>
+                <ul>
+                  <li>Child Category1</li>
+                  <li>Child Category1</li>
+                </ul>
+              </li>
+              <li className="Parent">
+                Category2
+                <ul>
+                  <li>Child Category1</li>
+                  <li>Child Category2</li>
+                </ul>
+              </li>
+              <li className="Parent">
+                Category3
+                <ul>
+                  <li>Child Category1</li>
+                  <li>Child Category1</li>
+                </ul>
+              </li>
+              <li className="Parent">
+                Category4
+                <ul>
+                  <li>Child Category1</li>
+                  <li>Child Category2</li>
+                </ul>
+              </li>
+            </div>
+            <div className="categories_listItems2">
+              <li className="Parent">
+                Category1
+                <ul>
+                  <li>Child Category1</li>
+                  <li>Child Category1</li>
+                </ul>
+              </li>
+              <li className="Parent">
+                Category2
+                <ul>
+                  <li>Child Category1</li>
+                  <li>Child Category2</li>
+                </ul>
+              </li>
+              <li className="Parent">
+                Category3
+                <ul>
+                  <li>Child Category1</li>
+                  <li>Child Category1</li>
+                </ul>
+              </li>
+              <li className="Parent">
+                Category4
+                <ul>
+                  <li>Child Category1</li>
+                  <li>Child Category2</li>
+                </ul>
+              </li>
+            </div>
+          </ul>
+        </div>
+        <div className="parentCategory"></div>
+        <div className="parentCategory"></div>
+      </div>
     </div>
   );
 }
