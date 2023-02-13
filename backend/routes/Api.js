@@ -14,7 +14,8 @@ app.use(
 app.use(bodyParser.json());
 apirouter.post("/", (req, res) => {
   console.log("bsdkk");
-  res.json("api router called");
+  let data = { foo: "backend called" };
+  res.json(data);
 });
 
 apirouter.post("/productdescription", async (req, res) => {

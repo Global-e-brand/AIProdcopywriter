@@ -15,8 +15,10 @@ function Dummy(props) {
         data: "Pink Slippers",
       }),
     });
-    await console.log(res);
-    let data1 = res.body;
+    // await console.log(res.json());
+
+    let data1 = res.json();
+    data1.then((data) => console.log(data.foo));
     // await setData(data1);
   }
   return (
