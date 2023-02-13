@@ -1,9 +1,11 @@
-/* .App {
-  margin: 2%;
-} */
+.App {
+  font-family: "Manrope";
+}
 .logo-panel {
-  background-color: #cee8e5;
+  /* background-color: #cee8e5; */
   height: 100vh;
+  border-right: 1px solid #e0e4ec;
+  /* margin: -5px; */
 }
 h2 {
   margin-left: -5%;

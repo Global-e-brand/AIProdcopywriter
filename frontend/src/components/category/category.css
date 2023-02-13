@@ -31,6 +31,7 @@
   color: #2e72d2;
   font-size: 18px;
   font-weight: 600;
+  padding-bottom: 2%;
 }
 .myDIV:hover {
   text-decoration: underline;
@@ -40,17 +41,20 @@
   display: flex;
   list-style: none;
   color: #2e72d2;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
+}
+.categories_listItems a {
+  text-decoration: none;
 }
 li {
   list-style: none;
   margin-left: -30px;
-  font-size: 16px;
+  font-size: 14px;
   opacity: 0.6;
 }
 .Parent {
-  font-size: 18px !important;
+  font-size: 16px !important;
   opacity: 1;
   margin: 15px;
 }
@@ -59,6 +63,6 @@ li {
   display: flex;
   list-style: none;
   color: #2e72d2;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
 }

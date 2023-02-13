@@ -6,8 +6,10 @@ body {
 .categoris_main {
   position: absolute;
   width: 75%;
-  top: 0px;
+  top: 25px;
   background: #ffffff;
+  border-top: 0.3px solid #dcdcdc;
+  border-bottom: 0.3px solid #dcdcdc;
 }
 
 .categori-mainmenu {

@@ -11,31 +11,102 @@ function Category() {
           <ul title="Parent Category" name="Parent Category">
             <div className="categories_listItems">
               <li className="Parent">
-                <Link to="/category1">Category1</Link>
+                <Link to="/productdescription">Product Description</Link>
                 <ul>
-                  <li>Child Category1</li>
-                  <li>Child Category1</li>
+                  <li>
+                    <Link to="/productdescription">Product Description</Link>
+                  </li>
                 </ul>
               </li>
               <li className="Parent">
-                <Link to="/category2"> Category2</Link>
+                Digital Ad Copy
                 <ul>
-                  <li>Child Category1</li>
-                  <li>Child Category2</li>
+                  <li>
+                    <Link to="/adcopyvarients"> Ad Copy Varients</Link>
+                  </li>
+                  <li>
+                    <Link to="/facebookheadlines"> Facebook Headlines</Link>
+                  </li>
+                  <li>
+                    <Link to="/facebooklinkdescription">
+                      Facebook Link Description
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/facebooklisticle"> Facebook Listicle</Link>
+                  </li>
+                  <li>
+                    <Link to="/facebookprimarytext">Facebook Primary Text</Link>
+                  </li>
+                  <li>
+                    <Link to="/generaladcopy"> General Ad Copy</Link>
+                  </li>
+                  <li>
+                    <Link to="/googledescriptions"> Google Descriptions</Link>
+                  </li>
+                  <li>
+                    <Link to="/googleheadlines"> Google Headlines</Link>
+                  </li>
+                  <li>
+                    <Link to="/linkedinadcopy">LinkedIn Ad Copy</Link>
+                  </li>
                 </ul>
               </li>
               <li className="Parent">
-                <Link to="/category3"> Category3</Link>
+                Startup Tools
                 <ul>
-                  <li>Child Category1</li>
-                  <li>Child Category1</li>
+                  <li>
+                    <Link to="/audiencerefiner">Audience Refiner</Link>
+                  </li>
+                  <li>
+                    <Link to="/brandmission">Brand Mission</Link>
+                  </li>
+                  <li>
+                    <Link to="/brandvoice">Brand Voice</Link>
+                  </li>
+                  <li>
+                    <Link to="/mottogenerator">Motto Generator</Link>
+                  </li>
+                  <li>
+                    <Link to="/valueproposition">Value Proposition</Link>
+                  </li>
                 </ul>
               </li>
               <li className="Parent">
-                Category2
+                Website Copy
                 <ul>
-                  <li>Child Category1</li>
-                  <li>Child Category2</li>
+                  <li>
+                    <Link to="/calltoaction">Call To Action</Link>
+                  </li>
+                  <li>
+                    <Link to="/eventcopy">Event Copy</Link>
+                  </li>
+                  <li>
+                    <Link to="/landingpageherotext">
+                      Landing Page Hero Text
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/calltoaction">Listicle</Link>
+                  </li>
+                  <li>
+                    <Link to="/listicle">Meta Descriptions</Link>
+                  </li>
+                  <li>
+                    <Link to="/microcopy">Microcopy</Link>
+                  </li>
+                  <li>
+                    <Link to="/questiongenerator">Question Generator</Link>
+                  </li>
+                  <li>
+                    <Link to="/socialprooftext">Social Proof Text</Link>
+                  </li>
+                  <li>
+                    <Link to="/subheader">Subheader</Link>
+                  </li>
+                  <li>
+                    <Link to="/testimonialrewriter">Testimonial Rewriter</Link>
+                  </li>
                 </ul>
               </li>
               <li className="Parent">
