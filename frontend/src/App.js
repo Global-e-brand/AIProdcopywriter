@@ -19,7 +19,7 @@ function App() {
               <ButtonMain />
             </div>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={8}>
             {/* <hr></hr> */}
             <div className="catgory_menu">
               <br></br>
@@ -225,7 +225,6 @@ function App() {
               </Routes>
             </div>
           </Grid>
-          <Grid item xs></Grid>
         </Grid>
       </div>
     </>

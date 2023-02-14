@@ -51,3 +51,6 @@
   align-items: center;
   justify-content: center;
 }
+.main-division {
+  display: flex;
+}
