@@ -22,7 +22,7 @@ function Category() {
                 Digital Ad Copy
                 <ul>
                   <li>
-                    <Link to="/adcopyvarients"> Ad Copy Varients</Link>
+                    <Link to="/adcopyvariants"> Ad Copy Variants</Link>
                   </li>
                   <li>
                     <Link to="/facebookheadlines"> Facebook Headlines</Link>
@@ -110,47 +110,210 @@ function Category() {
                 </ul>
               </li>
               <li className="Parent">
-                Category3
+                Blog Tools
                 <ul>
-                  <li>Child Category1</li>
-                  <li>Child Category1</li>
+                  <li>
+                    <Link to="/blogconclusion">Blog Conclusion</Link>
+                  </li>
+                  <li>
+                    <Link to="/blogideas">Blog Ideas</Link>
+                  </li>
+                  <li>
+                    <Link to="/blogintro">
+                      Blog Intro
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/blogoutline">Blog Outline</Link>
+                  </li>
+                  <li>
+                    <Link to="/blogtitle">Blog Title</Link>
+                  </li>
+                  <li>
+                    <Link to="/blogtitlelisticle">Blog Title Listicle</Link>
+                  </li>
+                  <li>
+                    <Link to="/bulletpointtoblogsection">Bullet Point To Blog Section</Link>
+                  </li>
+                  <li>
+                    <Link to="/keywordgenerator">Keyword Generator</Link>
+                  </li>
                 </ul>
               </li>
               <li className="Parent">
-                Category4
+                Emails & Letters
                 <ul>
-                  <li>Child Category1</li>
-                  <li>Child Category2</li>
+                  <li>
+                    <Link to="/cancellationemail">Cancellation Email</Link>
+                  </li>
+                  <li>
+                    <Link to="/emailsubjectlines">Email Subject Lines</Link>
+                  </li>
+                  <li>
+                    <Link to="/confirmationemails">
+                      Confirmation Emails
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/followupemail">Follow Up Mail</Link>
+                  </li>
+                  <li>
+                    <Link to="/thankyounote">Thank You Note</Link>
+                  </li>
+                  <li>
+                    <Link to="/welcomeemail">Welcome Email</Link>
+                  </li>
                 </ul>
               </li>
             </div>
             <div className="categories_listItems2">
-              <li className="Parent">
-                Category1
+            <li className="Parent">
+                Social Media Tools
                 <ul>
-                  <li>Child Category1</li>
-                  <li>Child Category1</li>
+                  <li>
+                    <Link to="/addemojitolist">Add Emoji To List</Link>
+                  </li>
+                  <li>
+                    <Link to="/bulletpoints">Bullet Points</Link>
+                  </li>
+                  <li>
+                    <Link to="/carouselpost">Carousel Post</Link>
+                  </li>
+                  <li>
+                    <Link to="/youtubeideas">YouTube Ideas</Link>
+                  </li>
+                  <li>
+                    <Link to="/hashtaggenerator">Hashtag Generator</Link>
+                  </li>
+                  <li>
+                    <Link to="/hookgenerator">Hook Generator</Link>
+                  </li>
+                  <li>
+                    <Link to="/instagramcaption">Instagram Caption</Link>
+                  </li>
+                  <li>
+                    <Link to="/instagramproductshowcase">Instagram Product Showcase</Link>
+                  </li>
+                  <li>
+                    <Link to="/launchyourproduct">Launch Your Product</Link>
+                  </li>
+                  <li>
+                    <Link to="/relatableexperiences">Relatable Experiences</Link>
+                  </li>
+                  <li>
+                    <Link to="/shorttexthook">Short Text Hook</Link>
+                  </li>
+                  <li>
+                    <Link to="/tiktokbrainstormtopics">TikTok Brainstorm Topics</Link>
+                  </li>
+                  <li>
+                    <Link to="/videocalltoaction">Video Call To Action</Link>
+                  </li>
+                  <li>
+                    <Link to="/youtubedescriptionintro">YouTube Description Intro</Link>
+                  </li>
+                  <li>
+                    <Link to="/youtubevideotitle">YouTube Video Title</Link>
+                  </li>
                 </ul>
               </li>
               <li className="Parent">
-                Category2
+                Writing Tools
                 <ul>
-                  <li>Child Category1</li>
-                  <li>Child Category2</li>
+                  <li>
+                    <Link to="/adjectiveaccelerator">Adjective Accelerator</Link>
+                  </li>
+                  <li>
+                    <Link to="/analogygenerator">Analogy Generator</Link>
+                  </li>
+                  <li>
+                    <Link to="/bulletpointtoblogsection">Bullet Point To Blog Section</Link>
+                  </li>
+                  <li>
+                    <Link to="/bulletpointtoparagraph">Bullet Point To Paragraph</Link>
+                  </li>
+                  <li>
+                    <Link to="/cliffhanger">Cliffhanger</Link>
+                  </li>
+                  <li>
+                    <Link to="/essayintro">Essay Intro</Link>
+                  </li>
+                  <li>
+                    <Link to="/essayoutline">Essay Outline</Link>
+                  </li>
+                  <li>
+                    <Link to="/herostoryintro">Hero Story Intro</Link>
+                  </li>
+                  <li>
+                    <Link to="/herostoryvillain">Hero Story Villain</Link>
+                  </li>
+                  <li>
+                    <Link to="/passivetoactivevoice">Passive To Active Voice</Link>
+                  </li>
+                  <li>
+                    <Link to="/pressreleaseintros">Press Release Intros</Link>
+                  </li>
+                  <li>
+                    <Link to="/rewritewithkeywords">Rewrite With Keywords</Link>
+                  </li>
+                  <li>
+                    <Link to="/sentencerewriter">Sentence Rewriter</Link>
+                  </li>
+                  <li>
+                    <Link to="/simplifysentences">Simplify Sentences</Link>
+                  </li>
+                  <li>
+                    <Link to="/tonechanger">Tone Changer</Link>
+                  </li>
+                  <li>
+                    <Link to="/twosentencestories">Two Sentence Stories</Link>
+                  </li>
+                  <li>
+                    <Link to="/verbbooster">Verb Booster</Link>
+                  </li>
                 </ul>
               </li>
               <li className="Parent">
-                Category3
+                Brainstorming Tools
                 <ul>
-                  <li>Child Category1</li>
-                  <li>Child Category1</li>
+                  <li>
+                    <Link to="/growthideas">Growth Ideas</Link>
+                  </li>
+                  <li>
+                    <Link to="/namegenerator">Name Generator</Link>
+                  </li>
+                  <li>
+                    <Link to="/nextproduct">Next Product</Link>
+                  </li>
+                  <li>
+                    <Link to="/startupideas">Start Up Ideas</Link>
+                  </li>
+                  <li>
+                    <Link to="/viralideas">Viral Ideas</Link>
+                  </li>
                 </ul>
               </li>
               <li className="Parent">
-                Category4
+                Personal Tools
                 <ul>
-                  <li>Child Category1</li>
-                  <li>Child Category2</li>
+                  <li>
+                    <Link to="/birthdaycard">Birthday Card</Link>
+                  </li>
+                  <li>
+                    <Link to="/clubhousebio">Clubhouse Bio</Link>
+                  </li>
+                  <li>
+                    <Link to="/coverletter">Cover Letter</Link>
+                  </li>
+                  <li>
+                    <Link to="/loveletter">Love Letter</Link>
+                  </li>
+                  <li>
+                    <Link to="/resumebulletpoints">Resume Bullet Points</Link>
+                  </li>
+                  <li>
+                    <Link to="/showerthoughts">Shower Thoughts</Link>
+                  </li>
                 </ul>
               </li>
             </div>
