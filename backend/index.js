@@ -9,6 +9,7 @@ dotenv.config();
 
 mongoose.connect(
   process.env.MONGO_URL,
+  { dbName: "TrainingData" },
   { useNewUrlParser: true, useUnifiedTopology: true },
   () => {
     console.log("Connected to MongoDB");
