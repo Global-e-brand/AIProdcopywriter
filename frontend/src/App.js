@@ -780,7 +780,7 @@ function App() {
                       inputOne={true}
                       inputOneTitle={"What is your video about?"}
                       inputTwo={false}
-                      inputTwoTitle={"Describe your products"}
+                      inputTwoTitle={""}
                       inputThree={true}
                     />
                   }
@@ -794,7 +794,7 @@ function App() {
                       inputOne={true}
                       inputOneTitle={"Describe your adjective"}
                       inputTwo={false}
-                      inputTwoTitle={"Describe your products"}
+                      inputTwoTitle={""}
                       inputThree={true}
                     />
                   }
@@ -806,9 +806,9 @@ function App() {
                       path={"/analogygenerator"}
                       category={"Analogy Generator"}
                       inputOne={true}
-                      inputOneTitle={"List your topics"}
+                      inputOneTitle={"What would you like the analogy to be about?"}
                       inputTwo={false}
-                      inputTwoTitle={"Describe your products"}
+                      inputTwoTitle={""}
                       inputThree={true}
                     />
                   }
@@ -834,11 +834,9 @@ function App() {
                       path={"/bulletpointtoparagraph"}
                       category={"Bullet Point To Paragraph"}
                       inputOne={true}
-                      inputOneTitle={"Blog Topic"}
-                      inputTwo={true}
-                      inputTwoTitle={
-                        "Describe your paragraph with bullet points"
-                      }
+                      inputOneTitle={"Describe your paragraph with bullet points"}
+                      inputTwo={false}
+                      inputTwoTitle={""}
                       inputThree={true}
                     />
                   }
@@ -850,9 +848,9 @@ function App() {
                       path={"/cliffhanger"}
                       category={"Cliffhanger"}
                       inputOne={true}
-                      inputOneTitle={"What is your topic?"}
+                      inputOneTitle={"What text comes before the cliffhanger?"}
                       inputTwo={false}
-                      inputTwoTitle={"Describe your products"}
+                      inputTwoTitle={""}
                       inputThree={true}
                     />
                   }
@@ -864,9 +862,9 @@ function App() {
                       path={"/essayintro"}
                       category={"Essay Intro"}
                       inputOne={true}
-                      inputOneTitle={"What is your essay title?"}
-                      inputTwo={true}
-                      inputTwoTitle={"What is your essay about?"}
+                      inputOneTitle={"What is your essay about?"}
+                      inputTwo={false}
+                      inputTwoTitle={""}
                       inputThree={true}
                     />
                   }
@@ -878,9 +876,9 @@ function App() {
                       path={"/essayoutline"}
                       category={"Essay Outline"}
                       inputOne={true}
-                      inputOneTitle={"What is your essay title?"}
+                      inputOneTitle={"What is your essay topic?"}
                       inputTwo={true}
-                      inputTwoTitle={"What is your essay about?"}
+                      inputTwoTitle={"What should the essay cover?"}
                       inputThree={true}
                     />
                   }
@@ -894,7 +892,7 @@ function App() {
                       inputOne={true}
                       inputOneTitle={"A short background of the hero"}
                       inputTwo={false}
-                      inputTwoTitle={"Describe your products"}
+                      inputTwoTitle={""}
                       inputThree={true}
                     />
                   }
@@ -906,9 +904,9 @@ function App() {
                       path={"/herostoryvillain"}
                       category={"Hero Story Villain"}
                       inputOne={true}
-                      inputOneTitle={"Hero Name"}
-                      inputTwo={true}
-                      inputTwoTitle={"Hero Story Background"}
+                      inputOneTitle={"A short background of the hero"}
+                      inputTwo={false}
+                      inputTwoTitle={""}
                       inputThree={true}
                     />
                   }
@@ -922,7 +920,7 @@ function App() {
                       inputOne={true}
                       inputOneTitle={"What would you like to rewrite?"}
                       inputTwo={false}
-                      inputTwoTitle={"Describe your products"}
+                      inputTwoTitle={""}
                       inputThree={true}
                     />
                   }
@@ -934,9 +932,9 @@ function App() {
                       path={"/pressreleaseintros"}
                       category={"Press Release Intros"}
                       inputOne={true}
-                      inputOneTitle={"What is your business name?"}
+                      inputOneTitle={"What is the press release about?"}
                       inputTwo={true}
-                      inputTwoTitle={"What is the press release about?"}
+                      inputTwoTitle={"Who is the information source?"}
                       inputThree={true}
                     />
                   }
@@ -964,7 +962,7 @@ function App() {
                       inputOne={true}
                       inputOneTitle={"What sentence would you like to rewrite?"}
                       inputTwo={false}
-                      inputTwoTitle={"Describe your products"}
+                      inputTwoTitle={""}
                       inputThree={true}
                     />
                   }
@@ -976,9 +974,9 @@ function App() {
                       path={"/simplifysentences"}
                       category={"Simplify Sentences"}
                       inputOne={true}
-                      inputOneTitle={"What would like you like to rewrite?"}
+                      inputOneTitle={"What sentence would you like to simplify?"}
                       inputTwo={false}
-                      inputTwoTitle={"Describe your products"}
+                      inputTwoTitle={""}
                       inputThree={true}
                     />
                   }
@@ -990,9 +988,9 @@ function App() {
                       path={"/tonechanger"}
                       category={"Tone Changer"}
                       inputOne={true}
-                      inputOneTitle={"What is your business name?"}
-                      inputTwo={true}
-                      inputTwoTitle={"What would you like to rewrite?"}
+                      inputOneTitle={"What sentence would you like to rewrite?"}
+                      inputTwo={false}
+                      inputTwoTitle={""}
                       inputThree={true}
                     />
                   }
@@ -1004,9 +1002,9 @@ function App() {
                       path={"/twosentencestories"}
                       category={"Two Sentence Stories"}
                       inputOne={true}
-                      inputOneTitle={"What is your topic?"}
+                      inputOneTitle={"Describe your topic?"}
                       inputTwo={false}
-                      inputTwoTitle={"Describe your products"}
+                      inputTwoTitle={""}
                       inputThree={true}
                     />
                   }
@@ -1020,7 +1018,7 @@ function App() {
                       inputOne={true}
                       inputOneTitle={"Describe your verb"}
                       inputTwo={false}
-                      inputTwoTitle={"Describe your products"}
+                      inputTwoTitle={""}
                       inputThree={true}
                     />
                   }
@@ -1032,9 +1030,9 @@ function App() {
                       path={"/growthideas"}
                       category={"Growth Ideas"}
                       inputOne={true}
-                      inputOneTitle={"What is your business name?"}
-                      inputTwo={true}
-                      inputTwoTitle={"Describe your products"}
+                      inputOneTitle={"What would you like to grow?"}
+                      inputTwo={false}
+                      inputTwoTitle={""}
                       inputThree={true}
                     />
                   }
@@ -1046,9 +1044,9 @@ function App() {
                       path={"/namegenerator"}
                       category={"Name Generator"}
                       inputOne={true}
-                      inputOneTitle={"Describe your product"}
+                      inputOneTitle={"What is the name for?"}
                       inputTwo={false}
-                      inputTwoTitle={"Describe your products"}
+                      inputTwoTitle={""}
                       inputThree={true}
                     />
                   }
@@ -1060,9 +1058,9 @@ function App() {
                       path={"/nextproduct"}
                       category={"Next Product"}
                       inputOne={true}
-                      inputOneTitle={"What is your business name?"}
+                      inputOneTitle={"Describe your current product"}
                       inputTwo={true}
-                      inputTwoTitle={"Describe your products"}
+                      inputTwoTitle={"What is the brand/product"}
                       inputThree={true}
                     />
                   }
@@ -1076,7 +1074,7 @@ function App() {
                       inputOne={true}
                       inputOneTitle={"What interests you?"}
                       inputTwo={false}
-                      inputTwoTitle={"Describe your products"}
+                      inputTwoTitle={""}
                       inputThree={true}
                     />
                   }
@@ -1088,9 +1086,9 @@ function App() {
                       path={"/viralideas"}
                       category={"Viral Ideas"}
                       inputOne={true}
-                      inputOneTitle={"What is your business name?"}
+                      inputOneTitle={"Describe your topic?"}
                       inputTwo={true}
-                      inputTwoTitle={"Describe your products"}
+                      inputTwoTitle={"Who is the idea for?"}
                       inputThree={true}
                     />
                   }
@@ -1104,7 +1102,7 @@ function App() {
                       inputOne={true}
                       inputOneTitle={"Who is the message for?"}
                       inputTwo={true}
-                      inputTwoTitle={"What are you grateful for?"}
+                      inputTwoTitle={"What is the card for?"}
                       inputThree={true}
                     />
                   }
@@ -1118,7 +1116,7 @@ function App() {
                       inputOne={true}
                       inputOneTitle={"Tell us about yourself"}
                       inputTwo={false}
-                      inputTwoTitle={"Describe your products"}
+                      inputTwoTitle={""}
                       inputThree={true}
                     />
                   }
@@ -1158,9 +1156,9 @@ function App() {
                       path={"/resumebulletpoints"}
                       category={"Resume Bullet Points"}
                       inputOne={true}
-                      inputOneTitle={"What's the role?"}
+                      inputOneTitle={"What did you do?"}
                       inputTwo={true}
-                      inputTwoTitle={"What did you do?"}
+                      inputTwoTitle={"What is the role?"}
                       inputThree={true}
                     />
                   }
@@ -1172,9 +1170,9 @@ function App() {
                       path={"/showerthoughts"}
                       category={"Shower Thoughts"}
                       inputOne={true}
-                      inputOneTitle={"What is your target niche?"}
+                      inputOneTitle={"What is the topic?"}
                       inputTwo={false}
-                      inputTwoTitle={"Describe your products"}
+                      inputTwoTitle={""}
                       inputThree={true}
                     />
                   }
