@@ -27,4 +27,5 @@ const trainingDataStructure = mongoose.Schema({
   },
 });
 
-const trainingData = mongoose.model("training_data", trainingDataStructure);
+const trainingData = mongoose.model("prompts", trainingDataStructure);
+export default trainingData;
