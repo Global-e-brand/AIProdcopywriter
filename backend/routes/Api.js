@@ -13,7 +13,6 @@ app.use(
 // parse application/json
 app.use(bodyParser.json());
 apirouter.post("/", (req, res) => {
-  console.log("bsdkk");
   let data = { foo: "backend called" };
   res.json(data);
 });
@@ -49,7 +48,7 @@ apirouter.post("/productdescription", async (req, res) => {
     );
     let respond = await data_value.json();
     console.log(respond.choices[0].text);
-    return res.send(respond);
+    return res.send(respond.choices);
   });
   //   res.send("");
 });
