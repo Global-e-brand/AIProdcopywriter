@@ -8,32 +8,21 @@ function Dummy(props) {
   const [data, setData] = useState();
   const [path,setPath]=useState(props.path);
 
-<<<<<<< HEAD
+
   async function handleSubmit(path) {
-
-    console.log("data submitted",path, tone, inputOne, inputTwo); // api call to fetch data
-    //mongo call
     let res = await fetch("/api"+ path+"", {
-=======
-  async function handleSubmit(e) {
-    console.log("data submitted", tone, inputOne, inputTwo); // api call to fetch data
-
-    // GPT call
-    let res = await fetch("/api" + props.path, {
->>>>>>> feature/jason
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-<<<<<<< HEAD
-        data: `write for ${inputOne}`,
-=======
         category: props.category,
         inputOne: inputOne,
         inputTwo: inputTwo,
         tone: tone,
->>>>>>> feature/jason
+        data: `${inputOne}`,
+        category: props.category,
+        tone: `${tone}`,
       }),
     });
     // await console.log(res.json());
