@@ -814,20 +814,6 @@ function App() {
                   }
                 />
                 <Route
-                  path="/bulletpointtoblogsection"
-                  element={
-                    <Dummy
-                      path={"/bulletpointtoblogsection"}
-                      category={"Bullet Point To Blog Section"}
-                      inputOne={true}
-                      inputOneTitle={"Blog Topic"}
-                      inputTwo={true}
-                      inputTwoTitle={"What is the main point of the paragraph?"}
-                      inputThree={true}
-                    />
-                  }
-                />
-                <Route
                   path="/bulletpointtoparagraph"
                   element={
                     <Dummy
