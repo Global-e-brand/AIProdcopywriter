@@ -6,14 +6,16 @@ function Dummy(props) {
   const [inputOne, setInputOne] = useState();
   const [inputTwo, setInputTwo] = useState();
   const [data, setData] = useState();
+  const [path,setPath]=useState(props.path);
 
-  async function handleSubmit(e) {
-    console.log("data submitted", tone, inputOne, inputTwo); // api call to fetch data
+  async function handleSubmit(path) {
+
+    console.log("data submitted",path, tone, inputOne, inputTwo); // api call to fetch data
     //mongo call
-    let res = await fetch("/api/productdescription", {
+    let res = await fetch("/api"+ path+"", {
       method: "POST",
       body: JSON.stringify({
-        data: `write for ${inputOne}` + ` with tone ${tone}`,
+        data: `write for ${inputOne}`,
       }),
     });
     // await console.log(res.json());
@@ -72,7 +74,7 @@ function Dummy(props) {
               <></>
             )}
             <div className="submitButton">
-              <label onClick={() => handleSubmit()} variant="contained">
+              <label onClick={() => handleSubmit(path)} variant="contained">
                 Create Content
               </label>
             </div>

@@ -1093,6 +1093,31 @@ function App() {
                     />
                   }
                 />
+                <Route
+                  path="/add-emoji"
+                  element={
+                    <Dummy
+                      category={"Add Emoji To List"}
+                      inputOne={true}
+                      inputOneTitle={"Write your list below"}
+                      path={"/add-emoji"}
+                     
+                    />
+                  }
+                />
+                <Route
+                  path="/bullet-points"
+                  element={
+                    <Dummy
+                      category={"Bullet Points"}
+                      inputOne={true}
+                      inputOneTitle={"Describe your product"}
+                      inputThree={true}
+                      path={"/bullet-points"}
+                     
+                    />
+                  }
+                />
               </Routes>
             </div>
           </Grid>

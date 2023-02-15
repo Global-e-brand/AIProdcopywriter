@@ -110,10 +110,23 @@ function Category() {
                 </ul>
               </li>
               <li className="Parent">
-                Category3
+              Social Media Tools
                 <ul>
-                  <li>Child Category1</li>
-                  <li>Child Category1</li>
+                <li><Link to="/add-emoji">Add Emoji To List</Link></li>
+                <li><Link to="/bullet-points">Bullet Points</Link></li>
+                <li><Link to="/carousel-post">Carousel Post</Link></li>
+                <li><Link to="/youtube-ideas">YouTube Ideas</Link></li>
+                <li><Link to="/hashtag-generator">Hashtag Generator</Link></li>
+                <li><Link to="/hook-generator">Hook Generator</Link></li>
+                <li><Link to="/instagram-caption">Instagram Caption</Link></li>
+                <li><Link to="/instagram-products">Instagram Product Showcase</Link></li>
+                <li><Link to="/launchyourproduct">Launch Your Product</Link></li>
+                <li><Link to="/relatable-experiences">Relatable Experiences</Link></li>
+                <li><Link to="/short-texthook">Short Text Hook</Link></li>
+                <li><Link to="/tiktok-brainstorm-topics">TikTok Brainstorm Topics</Link></li>
+                <li><Link to="/videocalltoaction">Video Call To Action</Link></li>
+                <li><Link to="/youtubedescriptionintro">YouTube Description Intro</Link></li>
+                <li><Link to="/youtubevideotitle">YouTube Video Title</Link></li>
                 </ul>
               </li>
               <li className="Parent">
