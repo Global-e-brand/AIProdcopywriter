@@ -9,11 +9,18 @@ function Dummy(props) {
 
   async function handleSubmit(e) {
     console.log("data submitted", tone, inputOne, inputTwo); // api call to fetch data
-    //mongo call
-    let res = await fetch("/api/productdescription", {
+
+    // GPT call
+    let res = await fetch("/api" + props.path, {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({
-        data: `write for ${inputOne}` + ` with tone ${tone}`,
+        category: props.category,
+        inputOne: inputOne,
+        inputTwo: inputTwo,
+        tone: tone,
       }),
     });
     // await console.log(res.json());

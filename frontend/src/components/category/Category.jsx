@@ -87,10 +87,10 @@ function Category() {
                     </Link>
                   </li>
                   <li>
-                    <Link to="/calltoaction">Listicle</Link>
+                    <Link to="/listicle">Listicle</Link>
                   </li>
                   <li>
-                    <Link to="/listicle">Meta Descriptions</Link>
+                    <Link to="/metadescription">Meta Descriptions</Link>
                   </li>
                   <li>
                     <Link to="/microcopy">Microcopy</Link>
