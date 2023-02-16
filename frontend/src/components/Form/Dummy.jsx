@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import "./form.css";
 
 function Dummy(props) {
-  const [tone, setTone] = useState();
-  const [inputOne, setInputOne] = useState();
-  const [inputTwo, setInputTwo] = useState();
+  const [tone, setTone] = useState("");
+  const [inputOne, setInputOne] = useState("");
+  const [inputTwo, setInputTwo] = useState("");
   const [data, setData] = useState();
   const [path, setPath] = useState(props.path);
 
@@ -16,6 +16,9 @@ function Dummy(props) {
       },
       body: JSON.stringify({
         category: props.category,
+        inputOneBool: props.inputOne,
+        inputTwoBool: props.inputTwo,
+        inputThreeBool: props.inputThree,
         inputOne: inputOne,
         inputTwo: inputTwo,
         tone: tone,
@@ -94,6 +97,7 @@ function Dummy(props) {
           fontSize: "18px",
           fontWeight: "600",
           width: "400px",
+          whiteSpace: "pre-wrap",
         }}
       >
         <div className="category_name">

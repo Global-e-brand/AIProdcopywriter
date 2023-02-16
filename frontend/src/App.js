@@ -216,9 +216,9 @@ function App() {
                       path={"/mottogenerator"}
                       category={"Motto Generator"}
                       inputOne={true}
-                      inputOneTitle={"Product/Brand Name"}
-                      inputTwo={true}
-                      inputTwoTitle={"Describe your products"}
+                      inputOneTitle={"What is the Motto for?"}
+                      inputTwo={false}
+                      inputTwoTitle={""}
                       inputThree={true}
                     />
                   }
@@ -230,9 +230,9 @@ function App() {
                       path={"/valueproposition"}
                       category={"Value Proposition"}
                       inputOne={true}
-                      inputOneTitle={"What is your business name?"}
-                      inputTwo={true}
-                      inputTwoTitle={"Describe your products"}
+                      inputOneTitle={"Describe your business"}
+                      inputTwo={false}
+                      inputTwoTitle={""}
                       inputThree={true}
                     />
                   }
@@ -286,9 +286,9 @@ function App() {
                       path={"/listicle"}
                       category={"Listicle"}
                       inputOne={true}
-                      inputOneTitle={"What's the topic?"}
-                      inputTwo={true}
-                      inputTwoTitle={"What is the list for?"}
+                      inputOneTitle={"What is the list for?"}
+                      inputTwo={false}
+                      inputTwoTitle={""}
                       inputThree={true}
                     />
                   }
@@ -474,9 +474,11 @@ function App() {
                       path={"/bulletpointtoblogsection"}
                       category={"Bullet Point To Blog Section"}
                       inputOne={true}
-                      inputOneTitle={"Blog Topic"}
-                      inputTwo={true}
-                      inputTwoTitle={"What is the main point of the paragraph?"}
+                      inputOneTitle={
+                        "Explain your with Blog Topic with bullet points"
+                      }
+                      inputTwo={false}
+                      inputTwoTitle={""}
                       inputThree={true}
                     />
                   }
@@ -580,10 +582,10 @@ function App() {
                   }
                 />
                 <Route
-                  path="/addemojitolist"
+                  path="/add-emoji"
                   element={
                     <Dummy
-                      path={"/addemojitolist"}
+                      path={"/add-emoji"}
                       category={"Add Emoji To List"}
                       inputOne={true}
                       inputOneTitle={
@@ -596,10 +598,10 @@ function App() {
                   }
                 />
                 <Route
-                  path="/bulletpoints"
+                  path="/bullet-points"
                   element={
                     <Dummy
-                      path={"/bulletpoints"}
+                      path={"/bullet-points"}
                       category={"Bullet Points"}
                       inputOne={true}
                       inputOneTitle={"What text would you like to summarize?"}
@@ -610,10 +612,10 @@ function App() {
                   }
                 />
                 <Route
-                  path="/carouselpost"
+                  path="/carousel-post"
                   element={
                     <Dummy
-                      path={"/carouselpost"}
+                      path={"/carousel-post"}
                       category={"Carousel Post"}
                       inputOne={true}
                       inputOneTitle={"Describe your topic"}
@@ -624,10 +626,10 @@ function App() {
                   }
                 />
                 <Route
-                  path="/youtubeideas"
+                  path="/youtube-ideas"
                   element={
                     <Dummy
-                      path={"/youtubeideas"}
+                      path={"/youtube-ideas"}
                       category={"YouTube Ideas"}
                       inputOne={true}
                       inputOneTitle={"Describe your topic"}
@@ -638,10 +640,10 @@ function App() {
                   }
                 />
                 <Route
-                  path="/hashtaggenerator"
+                  path="/hashtag-generator"
                   element={
                     <Dummy
-                      path={"/hashtaggenerator"}
+                      path={"/hashtag-generator"}
                       category={"Hashtag Generator"}
                       inputOne={true}
                       inputOneTitle={"Describe your topic"}
@@ -652,10 +654,10 @@ function App() {
                   }
                 />
                 <Route
-                  path="/hookgenerator"
+                  path="/hook-generator"
                   element={
                     <Dummy
-                      path={"/hookgenerator"}
+                      path={"/hook-generator"}
                       category={"Hook Generator"}
                       inputOne={true}
                       inputOneTitle={"Describe the topic"}
@@ -666,10 +668,10 @@ function App() {
                   }
                 />
                 <Route
-                  path="/instagramcaption"
+                  path="/instagram-caption"
                   element={
                     <Dummy
-                      path={"/instagramcaption"}
+                      path={"/instagram-caption"}
                       category={"Instagram Caption"}
                       inputOne={true}
                       inputOneTitle={"Describe the topic?"}
@@ -680,10 +682,10 @@ function App() {
                   }
                 />
                 <Route
-                  path="/instagramproductshowcase"
+                  path="/instagram-products"
                   element={
                     <Dummy
-                      path={"/instagramproductshowcase"}
+                      path={"/instagram-products"}
                       category={"Instagram Product Showcase"}
                       inputOne={true}
                       inputOneTitle={"What is your product?"}
@@ -708,10 +710,10 @@ function App() {
                   }
                 />
                 <Route
-                  path="/relatableexperiences"
+                  path="/relatable-experiences"
                   element={
                     <Dummy
-                      path={"/relatableexperiences"}
+                      path={"/relatable-experiences"}
                       category={"Relatable Experiences"}
                       inputOne={true}
                       inputOneTitle={"What is the experience?"}
@@ -722,10 +724,10 @@ function App() {
                   }
                 />
                 <Route
-                  path="/shorttexthook"
+                  path="/short-texthook"
                   element={
                     <Dummy
-                      path={"/shorttexthook"}
+                      path={"/short-texthook"}
                       category={"Short Text Hook"}
                       inputOne={true}
                       inputOneTitle={"Describe your topic"}
@@ -736,10 +738,10 @@ function App() {
                   }
                 />
                 <Route
-                  path="/tiktokbrainstormtopics"
+                  path="/tiktok-brainstorm-topics"
                   element={
                     <Dummy
-                      path={"/tiktokbrainstormtopics"}
+                      path={"/tiktok-brainstorm-topics"}
                       category={"TikTok Brainstorm Topics"}
                       inputOne={true}
                       inputOneTitle={"What are you interested in?"}
