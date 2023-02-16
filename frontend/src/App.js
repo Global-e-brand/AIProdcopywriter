@@ -34,9 +34,9 @@ function App() {
                       path={"/productdescription"}
                       category={"Product Description"}
                       inputOne={true}
-                      inputOneTitle={"What is your product called?"}
-                      inputTwo={true}
-                      inputTwoTitle={"Describe your product"}
+                      inputOneTitle={"Describe your product"}
+                      inputTwo={false}
+                      inputTwoTitle={""}
                       inputThree={true}
                     />
                   }
@@ -386,7 +386,9 @@ function App() {
                       path={"/blogconclusion"}
                       category={"Blog Conclusion"}
                       inputOne={true}
-                      inputOneTitle={"Provide some information about your blog (sample paragraph, title, etc)"}
+                      inputOneTitle={
+                        "Provide some information about your blog (sample paragraph, title, etc)"
+                      }
                       inputTwo={false}
                       inputTwoTitle={""}
                       inputThree={true}
@@ -414,7 +416,9 @@ function App() {
                       path={"/blogintro"}
                       category={"Blog Intro"}
                       inputOne={true}
-                      inputOneTitle={"What would you like to include in the intro?"}
+                      inputOneTitle={
+                        "What would you like to include in the intro?"
+                      }
                       inputTwo={false}
                       inputTwoTitle={""}
                       inputThree={true}
@@ -582,7 +586,9 @@ function App() {
                       path={"/addemojitolist"}
                       category={"Add Emoji To List"}
                       inputOne={true}
-                      inputOneTitle={"Write your list below (one item per line)"}
+                      inputOneTitle={
+                        "Write your list below (one item per line)"
+                      }
                       inputTwo={false}
                       inputTwoTitle={""}
                       inputThree={true}
@@ -806,7 +812,9 @@ function App() {
                       path={"/analogygenerator"}
                       category={"Analogy Generator"}
                       inputOne={true}
-                      inputOneTitle={"What would you like the analogy to be about?"}
+                      inputOneTitle={
+                        "What would you like the analogy to be about?"
+                      }
                       inputTwo={false}
                       inputTwoTitle={""}
                       inputThree={true}
@@ -820,7 +828,9 @@ function App() {
                       path={"/bulletpointtoparagraph"}
                       category={"Bullet Point To Paragraph"}
                       inputOne={true}
-                      inputOneTitle={"Describe your paragraph with bullet points"}
+                      inputOneTitle={
+                        "Describe your paragraph with bullet points"
+                      }
                       inputTwo={false}
                       inputTwoTitle={""}
                       inputThree={true}
@@ -960,7 +970,9 @@ function App() {
                       path={"/simplifysentences"}
                       category={"Simplify Sentences"}
                       inputOne={true}
-                      inputOneTitle={"What sentence would you like to simplify?"}
+                      inputOneTitle={
+                        "What sentence would you like to simplify?"
+                      }
                       inputTwo={false}
                       inputTwoTitle={""}
                       inputThree={true}
@@ -1171,7 +1183,6 @@ function App() {
                       inputOne={true}
                       inputOneTitle={"Write your list below"}
                       path={"/add-emoji"}
-                     
                     />
                   }
                 />
@@ -1184,7 +1195,6 @@ function App() {
                       inputOneTitle={"Describe your product"}
                       inputThree={true}
                       path={"/bullet-points"}
-                     
                     />
                   }
                 />

@@ -2,12 +2,9 @@ import express, { json } from "express";
 const apirouter = express.Router();
 import bodyParser from "body-parser";
 import fetch from "node-fetch";
-<<<<<<< HEAD
 import sendGPTResponse from "../helpers/send-GPT-response.js";
 import createPrompt from "../helpers/prompt-creator.js";
-=======
 import GptApi from "../controllers/GPTApi.js";
->>>>>>> feature/mohit
 
 var app = express();
 
@@ -23,7 +20,6 @@ app.use(
 //   res.json(data);
 // });
 
-<<<<<<< HEAD
 // for each of the following endpoints, the req object should include
 // inputOne, inputTwo, tone, and category props via "body"
 
@@ -35,16 +31,16 @@ apirouter.post("/calltoaction", bodyParser.json(), async (req, res) => {
   });
   const response = await sendGPTResponse(prompt);
   res.send(response);
-=======
-apirouter.post("/*", async (req, res) => {
-  var body = "";
-  await req.on("data", async function (data) {
-    body += data;
-    let response = await GptApi(body);
-    return res.send(response);
-  });
->>>>>>> feature/mohit
 });
+
+// apirouter.post("/*", async (req, res) => {
+//   var body = "";
+//   req.on("data", async function (data) {
+//     body += data;
+//     let response = await GptApi(body);
+//     return res.send(response);
+//   });
+// });
 
 apirouter.post("/eventcopy", bodyParser.json(), async (req, res) => {
   const prompt = await createPrompt(req, {
@@ -421,4 +417,15 @@ apirouter.post("/valueproposition", bodyParser.json(), async (req, res) => {
   const response = await sendGPTResponse(prompt);
   res.send(response);
 });
+
+apirouter.post("/productdescription", bodyParser.json(), async (req, res) => {
+  const prompt = await createPrompt(req, {
+    inputOne: true,
+    inputTwo: false,
+    inputThree: true,
+  });
+  const response = await sendGPTResponse(prompt);
+  res.send(response);
+});
+
 export default apirouter;

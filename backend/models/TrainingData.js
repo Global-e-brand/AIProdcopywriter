@@ -27,10 +27,5 @@ const trainingDataStructure = mongoose.Schema({
   },
 });
 
-<<<<<<< HEAD:backend/models/TrainingData.js
-const trainingData = mongoose.model("prompt", trainingDataStructure);
-
-=======
 const trainingData = mongoose.model("prompts", trainingDataStructure);
->>>>>>> feature/mohit:backend/models/TraningData.js
 export default trainingData;

@@ -1,6 +1,6 @@
 import fetch from "node-fetch";
 import mongoose from "mongoose";
-import trainingData from "../models/TraningData.js";
+import trainingData from "../models/TrainingData.js";
 export default async function GptApi(body) {
   let category = JSON.parse(body).category;
   let training_data;

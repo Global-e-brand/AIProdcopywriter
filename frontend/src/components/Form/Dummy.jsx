@@ -6,11 +6,10 @@ function Dummy(props) {
   const [inputOne, setInputOne] = useState();
   const [inputTwo, setInputTwo] = useState();
   const [data, setData] = useState();
-  const [path,setPath]=useState(props.path);
-
+  const [path, setPath] = useState(props.path);
 
   async function handleSubmit(path) {
-    let res = await fetch("/api"+ path+"", {
+    let res = await fetch("/api" + path, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -21,8 +20,6 @@ function Dummy(props) {
         inputTwo: inputTwo,
         tone: tone,
         data: `${inputOne}`,
-        category: props.category,
-        tone: `${tone}`,
       }),
     });
     // await console.log(res.json());
