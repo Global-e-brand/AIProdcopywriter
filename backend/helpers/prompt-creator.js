@@ -31,7 +31,8 @@ const createPrompt = async (req, activeComponents) => {
     "\nInput: " +
     inputSection1 +
     inputSection2 +
-    inputSection3
+    inputSection3 +
+    "\nOutput: "
   );
 };
 
