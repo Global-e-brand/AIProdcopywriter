@@ -119,9 +119,7 @@ function Category() {
                     <Link to="/blogideas">Blog Ideas</Link>
                   </li>
                   <li>
-                    <Link to="/blogintro">
-                      Blog Intro
-                    </Link>
+                    <Link to="/blogintro">Blog Intro</Link>
                   </li>
                   <li>
                     <Link to="/blogoutline">Blog Outline</Link>
@@ -133,7 +131,9 @@ function Category() {
                     <Link to="/blogtitlelisticle">Blog Title Listicle</Link>
                   </li>
                   <li>
-                    <Link to="/bulletpointtoblogsection">Bullet Point To Blog Section</Link>
+                    <Link to="/bulletpointtoblogsection">
+                      Bullet Point To Blog Section
+                    </Link>
                   </li>
                   <li>
                     <Link to="/keywordgenerator">Keyword Generator</Link>
@@ -150,9 +150,7 @@ function Category() {
                     <Link to="/emailsubjectlines">Email Subject Lines</Link>
                   </li>
                   <li>
-                    <Link to="/confirmationemails">
-                      Confirmation Emails
-                    </Link>
+                    <Link to="/confirmationemails">Confirmation Emails</Link>
                   </li>
                   <li>
                     <Link to="/followupemail">Follow Up Mail</Link>
@@ -166,21 +164,118 @@ function Category() {
                 </ul>
               </li>
             </div>
+<<<<<<< HEAD
             <div className="categories_listItems2">          
+=======
+            <div className="categories_listItems2">
+              <li className="Parent">
+                Social Media Tools
+                <ul>
+                  <li>
+                    <Link to="/add-emoji">Add Emoji To List</Link>
+                  </li>
+                  <li>
+                    <Link to="/bullet-points">Bullet Points</Link>
+                  </li>
+                  <li>
+                    <Link to="/carousel-post">Carousel Post</Link>
+                  </li>
+                  <li>
+                    <Link to="/youtube-ideas">YouTube Ideas</Link>
+                  </li>
+                  <li>
+                    <Link to="/hashtag-generator">Hashtag Generator</Link>
+                  </li>
+                  <li>
+                    <Link to="/hook-generator">Hook Generator</Link>
+                  </li>
+                  <li>
+                    <Link to="/instagram-caption">Instagram Caption</Link>
+                  </li>
+                  <li>
+                    <Link to="/instagram-products">
+                      Instagram Product Showcase
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/launchyourproduct">Launch Your Product</Link>
+                  </li>
+                  <li>
+                    <Link to="/relatable-experiences">
+                      Relatable Experiences
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/short-texthook">Short Text Hook</Link>
+                  </li>
+                  <li>
+                    <Link to="/tiktok-brainstorm-topics">
+                      TikTok Brainstorm Topics
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/videocalltoaction">Video Call To Action</Link>
+                  </li>
+                  <li>
+                    <Link to="/youtubedescriptionintro">
+                      YouTube Description Intro
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/youtubevideotitle">YouTube Video Title</Link>
+                  </li>
+                </ul>
+              </li>
+>>>>>>> feature/jason
+              <li className="Parent">
+                Sales Tools
+                <ul>
+                  <li>
+                    <Link to="/aida">Attention-Interest-Desire-Action</Link>
+                  </li>
+                  <li>
+                    <Link to="/bab">Before-After-Bridge</Link>
+                  </li>
+                  <li>
+                    <Link to="/features-to-benefits">Features To Benefits</Link>
+                  </li>
+                  <li>
+                    <Link to="/fab">Features Advantages Benefits</Link>
+                  </li>
+                  <li>
+                    <Link to="/marketing-angles">Marketing Angles</Link>
+                  </li>
+                  <li>
+                    <Link to="/pas">Pain-Agitate-Solution</Link>
+                  </li>
+                  <li>
+                    <Link to="/pppp">Problem-Promise-Proof-Proposal</Link>
+                  </li>
+                  <li>
+                    <Link to="/quest-copywriting">QUEST Copywriting</Link>
+                  </li>
+                </ul>
+              </li>
               <li className="Parent">
                 Writing Tools
                 <ul>
                   <li>
-                    <Link to="/adjectiveaccelerator">Adjective Accelerator</Link>
+                    <Link to="/adjectiveaccelerator">
+                      Adjective Accelerator
+                    </Link>
                   </li>
                   <li>
                     <Link to="/analogygenerator">Analogy Generator</Link>
                   </li>
                   <li>
-                    <Link to="/bulletpointtoblogsection">Bullet Point To Blog Section</Link>
+                    <Link to="/bulletpointtoblogsection">
+                      Bullet Point To Blog Section
+                    </Link>
                   </li>
                   <li>
-                    <Link to="/bulletpointtoparagraph">Bullet Point To Paragraph</Link>
+                    <Link to="/bulletpointtoparagraph">
+                      Bullet Point To Paragraph
+                    </Link>
                   </li>
                   <li>
                     <Link to="/cliffhanger">Cliffhanger</Link>
@@ -198,7 +293,9 @@ function Category() {
                     <Link to="/herostoryvillain">Hero Story Villain</Link>
                   </li>
                   <li>
-                    <Link to="/passivetoactivevoice">Passive To Active Voice</Link>
+                    <Link to="/passivetoactivevoice">
+                      Passive To Active Voice
+                    </Link>
                   </li>
                   <li>
                     <Link to="/pressreleaseintros">Press Release Intros</Link>
@@ -266,27 +363,6 @@ function Category() {
                   </li>
                 </ul>
               </li>
-              <li className="Parent">
-
-              Social Media Tools
-                <ul>
-                <li><Link to="/add-emoji">Add Emoji To List</Link></li>
-                <li><Link to="/bullet-points">Bullet Points</Link></li>
-                <li><Link to="/carousel-post">Carousel Post</Link></li>
-                <li><Link to="/youtube-ideas">YouTube Ideas</Link></li>
-                <li><Link to="/hashtag-generator">Hashtag Generator</Link></li>
-                <li><Link to="/hook-generator">Hook Generator</Link></li>
-                <li><Link to="/instagram-caption">Instagram Caption</Link></li>
-                <li><Link to="/instagram-products">Instagram Product Showcase</Link></li>
-                <li><Link to="/launchyourproduct">Launch Your Product</Link></li>
-                <li><Link to="/relatable-experiences">Relatable Experiences</Link></li>
-                <li><Link to="/short-texthook">Short Text Hook</Link></li>
-                <li><Link to="/tiktok-brainstorm-topics">TikTok Brainstorm Topics</Link></li>
-                <li><Link to="/videocalltoaction">Video Call To Action</Link></li>
-                <li><Link to="/youtubedescriptionintro">YouTube Description Intro</Link></li>
-                <li><Link to="/youtubevideotitle">YouTube Video Title</Link></li>
-                </ul>
-                </li>
             </div>
           </ul>
         </div>

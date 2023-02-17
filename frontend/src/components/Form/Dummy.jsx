@@ -2,36 +2,36 @@ import React, { useState } from "react";
 import "./form.css";
 
 function Dummy(props) {
-  const [tone, setTone] = useState();
-  const [inputOne, setInputOne] = useState();
-  const [inputTwo, setInputTwo] = useState();
+  const [tone, setTone] = useState("");
+  const [inputOne, setInputOne] = useState("");
+  const [inputTwo, setInputTwo] = useState("");
   const [data, setData] = useState();
-  const [path,setPath]=useState(props.path);
-
+  const [path, setPath] = useState(props.path);
 
   async function handleSubmit(path) {
-    console.log("path",path)
-    let res = await fetch("/api"+ path+"", {
+    let res = await fetch("/api" + path, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
         category: props.category,
+        inputOneBool: props.inputOne,
+        inputTwoBool: props.inputTwo,
+        inputThreeBool: props.inputThree,
         inputOne: inputOne,
         inputTwo: inputTwo,
         tone: tone,
         data: `${inputOne}`,
-        category: props.category,
-        tone: `${tone}`,
       }),
     });
     // await console.log(res.json());
 
     let data1 = res.json();
     data1.then((data) => {
-      setData(data[0].text);
-      console.log(data[0].text.trim());
+      // console.log(data);
+      setData(data);
+      // console.log(data[0].text.trim());
     });
     //
   }
@@ -98,12 +98,20 @@ function Dummy(props) {
           fontSize: "18px",
           fontWeight: "600",
           width: "400px",
+          whiteSpace: "pre-wrap",
         }}
       >
         <div className="category_name">
           <h3>Result</h3>
         </div>
-        {data}
+        {/* {console.log(data)} */}
+        {data != undefined ? (
+          data.map((item) => {
+            return <h4>{item.text}</h4>;
+          })
+        ) : (
+          <>The data is undefined!</>
+        )}
       </div>
     </div>
   );

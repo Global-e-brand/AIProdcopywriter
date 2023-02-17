@@ -1,9 +1,11 @@
 import fetch from "node-fetch";
-const sendGPTResponse = async (prompt) => {
+const getGPTResponse = async (prompt) => {
   console.log("Prompt: " + prompt);
 
   if (prompt == "") {
-    console.log("Either all fields are empty, or that category has not yet been implemented!");
+    console.log(
+      "Either all fields are empty, or that category has not yet been implemented!"
+    );
     return;
   }
 
@@ -12,6 +14,7 @@ const sendGPTResponse = async (prompt) => {
     prompt: prompt,
     temperature: 0.73,
     max_tokens: 280,
+    n: 5,
     top_p: 1,
     frequency_penalty: 0.91,
     presence_penalty: 0.78,
@@ -32,10 +35,10 @@ const sendGPTResponse = async (prompt) => {
     requestOptions
   );
   let respond = await data_value.json();
-  console.log(respond.choices[0].text);
+  console.log(respond.choices);
 
   return respond.choices;
   //   res.send("");
 };
 
-export default sendGPTResponse;
+export default getGPTResponse;
