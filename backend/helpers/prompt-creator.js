@@ -13,6 +13,7 @@ const createPrompt = async (req, activeComponents) => {
         categoryData[0].promptQuestionOne + ` [${req.body.inputOne}] `
       }`;
     }
+
     if (activeComponents.inputTwo) {
       inputSection2 = `${
         categoryData[0].promptQuestionTwo + `[${req.body.inputTwo}]`
@@ -28,7 +29,7 @@ const createPrompt = async (req, activeComponents) => {
 
   return (
     categoryData[0].trainingPrompt +
-    "\nInput: " +
+    "\n\nInput: " +
     inputSection1 +
     inputSection2 +
     inputSection3 +

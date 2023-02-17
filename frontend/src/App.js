@@ -76,7 +76,7 @@ function App() {
                       path={"/facebooklinkdescription"}
                       category={"Facebook Link Descriptions"}
                       inputOne={true}
-                      inputOneTitle={"Describe the topic"}
+                      inputOneTitle={"Describe the ad topic"}
                       inputTwo={false}
                       inputTwoTitle={""}
                       inputThree={false}
@@ -188,7 +188,7 @@ function App() {
                       path={"/brandmission"}
                       category={"Brand Mission"}
                       inputOne={true}
-                      inputOneTitle={"Describe your brand/product"}
+                      inputOneTitle={"Describe your brand"}
                       inputTwo={false}
                       inputTwoTitle={""}
                       inputThree={true}
@@ -202,10 +202,10 @@ function App() {
                       path={"/brandvoice"}
                       category={"Brand Voice"}
                       inputOne={true}
-                      inputOneTitle={"Product/Brand Name"}
+                      inputOneTitle={"Brand Name"}
                       inputTwo={true}
-                      inputTwoTitle={"Describe your product/brand"}
-                      inputThree={true}
+                      inputTwoTitle={"Describe your brand"}
+                      inputThree={false}
                     />
                   }
                 />
@@ -574,7 +574,7 @@ function App() {
                       inputOne={true}
                       inputOneTitle={"Who is the email for?"}
                       inputTwo={true}
-                      inputTwoTitle={"What is the the email for"}
+                      inputTwoTitle={"What is the email for"}
                       inputThree={true}
                     />
                   }

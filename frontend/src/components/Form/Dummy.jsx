@@ -29,8 +29,9 @@ function Dummy(props) {
 
     let data1 = res.json();
     data1.then((data) => {
-      setData(data[0].text);
-      console.log(data[0].text.trim());
+      // console.log(data);
+      setData(data);
+      // console.log(data[0].text.trim());
     });
     //
   }
@@ -103,7 +104,14 @@ function Dummy(props) {
         <div className="category_name">
           <h3>Result</h3>
         </div>
-        {data}
+        {/* {console.log(data)} */}
+        {data != undefined ? (
+          data.map((item) => {
+            return <h4>{item.text}</h4>;
+          })
+        ) : (
+          <>The data is undefined!</>
+        )}
       </div>
     </div>
   );

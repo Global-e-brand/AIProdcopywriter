@@ -13,6 +13,7 @@ const getGPTResponse = async (prompt) => {
     prompt: prompt,
     temperature: 0.73,
     max_tokens: 280,
+    n: 5,
     top_p: 1,
     frequency_penalty: 0.91,
     presence_penalty: 0.78,
@@ -33,7 +34,7 @@ const getGPTResponse = async (prompt) => {
     requestOptions
   );
   let respond = await data_value.json();
-  console.log(respond.choices[0].text);
+  console.log(respond.choices);
 
   return respond.choices;
   //   res.send("");
