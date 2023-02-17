@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./form.css";
 
 function Dummy(props) {
-  const [tone, setTone] = useState("");
+  const [tone, setTone] = useState("Friendly");
   const [inputOne, setInputOne] = useState("");
   const [inputTwo, setInputTwo] = useState("");
   const [data, setData] = useState();
