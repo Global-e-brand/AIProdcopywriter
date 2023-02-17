@@ -90,9 +90,9 @@ function App() {
                       path={"/facebooklisticle"}
                       category={"Facebook Listicle"}
                       inputOne={true}
-                      inputOneTitle={"Product/Brand Name"}
-                      inputTwo={true}
-                      inputTwoTitle={"Describe your products"}
+                      inputOneTitle={"What is your topic?"}
+                      inputTwo={false}
+                      inputTwoTitle={""}
                       inputThree={true}
                     />
                   }
@@ -132,9 +132,9 @@ function App() {
                       path={"/googledescriptions"}
                       category={"Google Descriptions"}
                       inputOne={true}
-                      inputOneTitle={"Product/Brand Name"}
-                      inputTwo={true}
-                      inputTwoTitle={"Describe your products"}
+                      inputOneTitle={"Describe your product/brand"}
+                      inputTwo={false}
+                      inputTwoTitle={""}
                       inputThree={true}
                     />
                   }
@@ -146,9 +146,9 @@ function App() {
                       path={"/googleheadlines"}
                       category={"Google Headlines"}
                       inputOne={true}
-                      inputOneTitle={"Product/Brand Name"}
-                      inputTwo={true}
-                      inputTwoTitle={"Describe your products"}
+                      inputOneTitle={"Describe your product/brand"}
+                      inputTwo={false}
+                      inputTwoTitle={""}
                       inputThree={true}
                     />
                   }
@@ -174,10 +174,10 @@ function App() {
                       path={"/audiencerefiner"}
                       category={"Audience Refiner"}
                       inputOne={true}
-                      inputOneTitle={"Describe your audience"}
+                      inputOneTitle={"Describe your ideal audience"}
                       inputTwo={false}
-                      inputTwoTitle={"Describe your products"}
-                      inputThree={true}
+                      inputTwoTitle={""}
+                      inputThree={false}
                     />
                   }
                 />
@@ -204,7 +204,7 @@ function App() {
                       inputOne={true}
                       inputOneTitle={"Product/Brand Name"}
                       inputTwo={true}
-                      inputTwoTitle={"Describe your product"}
+                      inputTwoTitle={"Describe your product/brand"}
                       inputThree={true}
                     />
                   }
@@ -216,7 +216,7 @@ function App() {
                       path={"/mottogenerator"}
                       category={"Motto Generator"}
                       inputOne={true}
-                      inputOneTitle={"What is the Motto for?"}
+                      inputOneTitle={"Describe your product/brand"}
                       inputTwo={false}
                       inputTwoTitle={""}
                       inputThree={true}
@@ -272,7 +272,7 @@ function App() {
                       path={"/landingpageherotext"}
                       category={"Landing Page Hero Text"}
                       inputOne={true}
-                      inputOneTitle={"What is your landing page for?"}
+                      inputOneTitle={"Describe your product/brand"}
                       inputTwo={false}
                       inputTwoTitle={""}
                       inputThree={true}
@@ -300,9 +300,9 @@ function App() {
                       path={"/metadescription"}
                       category={"Meta Descriptions"}
                       inputOne={true}
-                      inputOneTitle={"What is your business name?"}
-                      inputTwo={true}
-                      inputTwoTitle={"Describe your products"}
+                      inputOneTitle={"Describe your product/brand"}
+                      inputTwo={false}
+                      inputTwoTitle={""}
                       inputThree={true}
                     />
                   }
@@ -474,9 +474,7 @@ function App() {
                       path={"/bulletpointtoblogsection"}
                       category={"Bullet Point To Blog Section"}
                       inputOne={true}
-                      inputOneTitle={
-                        "Explain your with Blog Topic with bullet points"
-                      }
+                      inputOneTitle={"List your blog topics"}
                       inputTwo={false}
                       inputTwoTitle={""}
                       inputThree={true}
@@ -1178,25 +1176,114 @@ function App() {
                   }
                 />
                 <Route
-                  path="/add-emoji"
+                  path="/aida"
                   element={
                     <Dummy
-                      category={"Add Emoji To List"}
+                      category={"AIDA"}
                       inputOne={true}
-                      inputOneTitle={"Write your list below"}
-                      path={"/add-emoji"}
+                      inputOneTitle={"Describe your product/brand"}
+                      inputTwo={false}
+                      inputTwoTitle={""}
+                      inputThree={true}
+                      path={"/aida"}
                     />
                   }
                 />
                 <Route
-                  path="/bullet-points"
+                  path="/bab"
                   element={
                     <Dummy
-                      category={"Bullet Points"}
+                      category={"BAB"}
                       inputOne={true}
-                      inputOneTitle={"Describe your product"}
+                      inputOneTitle={"Describe your product/brand"}
+                      inputTwo={false}
+                      inputTwoTitle={""}
                       inputThree={true}
-                      path={"/bullet-points"}
+                      path={"/bab"}
+                    />
+                  }
+                />
+                <Route
+                  path="/features-to-benefits"
+                  element={
+                    <Dummy
+                      category={"Features To Benefits"}
+                      inputOne={true}
+                      inputOneTitle={"What is the product/brand?"}
+                      inputTwo={true}
+                      inputTwoTitle={"List your features"}
+                      inputThree={true}
+                      path={"/features-to-benefits"}
+                    />
+                  }
+                />
+                <Route
+                  path="/fab"
+                  element={
+                    <Dummy
+                      category={"FAB"}
+                      inputOne={true}
+                      inputOneTitle={"Describe your product/brand"}
+                      inputTwo={false}
+                      inputTwoTitle={""}
+                      inputThree={true}
+                      path={"/fab"}
+                    />
+                  }
+                />
+                <Route
+                  path="/marketing-angles"
+                  element={
+                    <Dummy
+                      category={"Marketing Angles"}
+                      inputOne={true}
+                      inputOneTitle={"Describe your product/brand"}
+                      inputTwo={true}
+                      inputTwoTitle={"What is your product/brand name?"}
+                      inputThree={true}
+                      path={"/marketing-angles"}
+                    />
+                  }
+                />
+                <Route
+                  path="/pas"
+                  element={
+                    <Dummy
+                      category={"PAS"}
+                      inputOne={true}
+                      inputOneTitle={"Describe your product/brand"}
+                      inputTwo={false}
+                      inputTwoTitle={""}
+                      inputThree={true}
+                      path={"/pas"}
+                    />
+                  }
+                />
+                <Route
+                  path="/pppp"
+                  element={
+                    <Dummy
+                      category={"PPPP"}
+                      inputOne={true}
+                      inputOneTitle={"Describe your product/brand"}
+                      inputTwo={false}
+                      inputTwoTitle={""}
+                      inputThree={true}
+                      path={"/pppp"}
+                    />
+                  }
+                />
+                <Route
+                  path="/quest-copywriting"
+                  element={
+                    <Dummy
+                      category={"QUEST Copywriting"}
+                      inputOne={true}
+                      inputOneTitle={"Describe your product/brand"}
+                      inputTwo={false}
+                      inputTwoTitle={""}
+                      inputThree={true}
+                      path={"/quest-copywriting"}
                     />
                   }
                 />

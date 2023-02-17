@@ -224,6 +224,35 @@ function Category() {
                 </ul>
               </li>
               <li className="Parent">
+                Sales Tools
+                <ul>
+                  <li>
+                    <Link to="/aida">Attention-Interest-Desire-Action</Link>
+                  </li>
+                  <li>
+                    <Link to="/bab">Before-After-Bridge</Link>
+                  </li>
+                  <li>
+                    <Link to="/features-to-benefits">Features To Benefits</Link>
+                  </li>
+                  <li>
+                    <Link to="/fab">Features Advantages Benefits</Link>
+                  </li>
+                  <li>
+                    <Link to="/marketing-angles">Marketing Angles</Link>
+                  </li>
+                  <li>
+                    <Link to="/pas">Pain-Agitate-Solution</Link>
+                  </li>
+                  <li>
+                    <Link to="/pppp">Problem-Promise-Proof-Proposal</Link>
+                  </li>
+                  <li>
+                    <Link to="/quest-copywriting">QUEST Copywriting</Link>
+                  </li>
+                </ul>
+              </li>
+              <li className="Parent">
                 Writing Tools
                 <ul>
                   <li>
