@@ -1,3 +1,4 @@
+import fetch from "node-fetch";
 const sendGPTResponse = async (prompt) => {
   console.log("Prompt: " + prompt);
 

@@ -166,57 +166,7 @@ function Category() {
                 </ul>
               </li>
             </div>
-            <div className="categories_listItems2">
-            <li className="Parent">
-                Social Media Tools
-                <ul>
-                  <li>
-                    <Link to="/addemojitolist">Add Emoji To List</Link>
-                  </li>
-                  <li>
-                    <Link to="/bulletpoints">Bullet Points</Link>
-                  </li>
-                  <li>
-                    <Link to="/carouselpost">Carousel Post</Link>
-                  </li>
-                  <li>
-                    <Link to="/youtubeideas">YouTube Ideas</Link>
-                  </li>
-                  <li>
-                    <Link to="/hashtaggenerator">Hashtag Generator</Link>
-                  </li>
-                  <li>
-                    <Link to="/hookgenerator">Hook Generator</Link>
-                  </li>
-                  <li>
-                    <Link to="/instagramcaption">Instagram Caption</Link>
-                  </li>
-                  <li>
-                    <Link to="/instagramproductshowcase">Instagram Product Showcase</Link>
-                  </li>
-                  <li>
-                    <Link to="/launchyourproduct">Launch Your Product</Link>
-                  </li>
-                  <li>
-                    <Link to="/relatableexperiences">Relatable Experiences</Link>
-                  </li>
-                  <li>
-                    <Link to="/shorttexthook">Short Text Hook</Link>
-                  </li>
-                  <li>
-                    <Link to="/tiktokbrainstormtopics">TikTok Brainstorm Topics</Link>
-                  </li>
-                  <li>
-                    <Link to="/videocalltoaction">Video Call To Action</Link>
-                  </li>
-                  <li>
-                    <Link to="/youtubedescriptionintro">YouTube Description Intro</Link>
-                  </li>
-                  <li>
-                    <Link to="/youtubevideotitle">YouTube Video Title</Link>
-                  </li>
-                </ul>
-              </li>
+            <div className="categories_listItems2">          
               <li className="Parent">
                 Writing Tools
                 <ul>

@@ -10,6 +10,7 @@ function Dummy(props) {
 
 
   async function handleSubmit(path) {
+    console.log("path",path)
     let res = await fetch("/api"+ path+"", {
       method: "POST",
       headers: {
