@@ -1,8 +1,10 @@
-const sendGPTResponse = async (prompt) => {
+const getGPTResponse = async (prompt) => {
   console.log("Prompt: " + prompt);
 
   if (prompt == "") {
-    console.log("Either all fields are empty, or that category has not yet been implemented!");
+    console.log(
+      "Either all fields are empty, or that category has not yet been implemented!"
+    );
     return;
   }
 
@@ -37,4 +39,4 @@ const sendGPTResponse = async (prompt) => {
   //   res.send("");
 };
 
-export default sendGPTResponse;
+export default getGPTResponse;
