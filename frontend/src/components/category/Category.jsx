@@ -164,9 +164,6 @@ function Category() {
                 </ul>
               </li>
             </div>
-<<<<<<< HEAD
-            <div className="categories_listItems2">          
-=======
             <div className="categories_listItems2">
               <li className="Parent">
                 Social Media Tools
@@ -226,7 +223,6 @@ function Category() {
                   </li>
                 </ul>
               </li>
->>>>>>> feature/jason
               <li className="Parent">
                 Sales Tools
                 <ul>
