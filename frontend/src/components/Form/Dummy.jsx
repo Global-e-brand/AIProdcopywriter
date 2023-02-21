@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./form.css";
+import Loader from "../loader/loader";
 
 function Dummy(props) {
   const [tone, setTone] = useState("");
@@ -15,6 +16,7 @@ function Dummy(props) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
+        path: props.path,
         category: props.category,
         inputOneBool: props.inputOne,
         inputTwoBool: props.inputTwo,
@@ -104,10 +106,11 @@ function Dummy(props) {
         <div className="category_name">
           <h3>Result</h3>
         </div>
+        <Loader />
         {/* {console.log(data)} */}
-        {data != undefined ? (
+        {data !== undefined ? (
           data.map((item) => {
-            return <h4>{item.text}</h4>;
+            return <h4>{item.text.trim()}</h4>;
           })
         ) : (
           <>The data is undefined!</>
