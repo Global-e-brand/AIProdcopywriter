@@ -6,8 +6,12 @@ const createPrompt = async (req, activeComponents) => {
   let inputSection1 = "";
   let inputSection2 = "";
   let inputSection3 = "";
+  let trainingData = "";
+  let prompt = "";
 
-  if (categoryData.length != 0) {
+  if (categoryData.length != undefined && categoryData.length != 0) {
+    trainingData = categoryData[0].trainingPrompt;
+
     if (activeComponents.inputOne) {
       inputSection1 = `${
         categoryData[0].promptQuestionOne + ` [${req.body.inputOne}] `
@@ -25,16 +29,17 @@ const createPrompt = async (req, activeComponents) => {
         categoryData[0].promptQuestionThree + `[${req.body.tone}]`
       }`;
     }
+
+    prompt =
+      trainingData +
+      "\n\nInput: " +
+      inputSection1 +
+      inputSection2 +
+      inputSection3 +
+      "\nOutput: ";
   }
 
-  return (
-    categoryData[0].trainingPrompt +
-    "\n\nInput: " +
-    inputSection1 +
-    inputSection2 +
-    inputSection3 +
-    "\nOutput: "
-  );
+  return prompt;
 };
 
 export default createPrompt;
