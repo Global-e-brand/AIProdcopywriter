@@ -105,9 +105,13 @@ function Dummy(props) {
           <h3>Result</h3>
         </div>
         {/* {console.log(data)} */}
-        {data != undefined ? (
-          data.map((item)=>{
-            return <h4><div className="output-layout">{item.text}</div></h4>;
+        {data !== undefined ? (
+          data.map((item) => {
+            return (
+              <h4>
+                <div className="output-layout">{item.text}</div>
+              </h4>
+            );
           })
         ) : (
           <>Oops Try Again !</>

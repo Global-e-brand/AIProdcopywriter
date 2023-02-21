@@ -1045,7 +1045,7 @@ function App() {
                       inputOneTitle={"What is the name for?"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      inputThree={false}
                     />
                   }
                 />
