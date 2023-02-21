@@ -3,7 +3,7 @@ import "./form.css";
 import Loader from "../loader/loader";
 
 function Dummy(props) {
-  const [tone, setTone] = useState("");
+  const [tone, setTone] = useState("Friendly");
   const [inputOne, setInputOne] = useState("");
   const [inputTwo, setInputTwo] = useState("");
   const [data, setData] = useState();
@@ -108,12 +108,16 @@ function Dummy(props) {
         </div>
         <Loader />
         {/* {console.log(data)} */}
-        {data !== undefined ? (
+        {data != undefined ? (
           data.map((item) => {
-            return <h4>{item.text.trim()}</h4>;
+            return (
+              <h4>
+                <div className="output-layout">{item.text}</div>
+              </h4>
+            );
           })
         ) : (
-          <>The data is undefined!</>
+          <>Oops Try Again !</>
         )}
       </div>
     </div>

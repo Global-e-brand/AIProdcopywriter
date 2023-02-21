@@ -54,3 +54,10 @@
 .main-division {
   display: flex;
 }
+.output-layout {
+  border: 2px solid #269178;
+  border-radius: 8px;
+  padding: 10px;
+  background: black;
+  color: white;
+}
