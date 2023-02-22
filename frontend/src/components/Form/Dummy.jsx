@@ -8,8 +8,11 @@ function Dummy(props) {
   const [inputTwo, setInputTwo] = useState("");
   const [data, setData] = useState();
   const [path, setPath] = useState(props.path);
+  const [isResLoading, setResLoading] = useState(false);
 
   async function handleSubmit(path) {
+    setResLoading(true);
+
     let res = await fetch("/api" + path, {
       method: "POST",
       headers: {
@@ -35,7 +38,8 @@ function Dummy(props) {
       setData(data);
       // console.log(data[0].text.trim());
     });
-    //
+
+    setResLoading(false);
   }
   return (
     <div className="main-division">
@@ -74,6 +78,7 @@ function Dummy(props) {
                   id="tone"
                   onChange={(e) => setTone(e.target.value)}
                 >
+                  <option value="Neutral">Neutral</option>
                   <option value="Friendly">Friendly</option>
                   <option value="Professional">Professional</option>
                   <option value="Empathetic">Empathetic</option>
@@ -106,18 +111,21 @@ function Dummy(props) {
         <div className="category_name">
           <h3>Result</h3>
         </div>
-        <Loader />
         {/* {console.log(data)} */}
-        {data != undefined ? (
-          data.map((item) => {
-            return (
-              <h4>
-                <div className="output-layout">{item.text}</div>
-              </h4>
-            );
-          })
+        {!isResLoading ? (
+          data != undefined ? (
+            data.map((item) => {
+              return (
+                <h4>
+                  <div className="output-layout">{item.text.trim()}</div>
+                </h4>
+              );
+            })
+          ) : (
+            <>Oops Try Again!</>
+          )
         ) : (
-          <>Oops Try Again !</>
+          <Loader />
         )}
       </div>
     </div>
