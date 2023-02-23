@@ -4,7 +4,7 @@ const getGPTResponse = async (prompt) => {
 
   if (prompt == "") {
     console.log(
-      "Either all fields are empty, or that category has not yet been implemented!"
+      "One or more fields are empty, or that category has not yet been implemented!"
     );
     return;
   }
@@ -23,9 +23,7 @@ const getGPTResponse = async (prompt) => {
   var requestOptions = {
     method: "POST",
     headers: {
-      Authorization:
-        // "Bearer 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",
-        "Bearer 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",
+      Authorization: "Bearer ",
       "Content-Type": "application/json",
     },
     body: raw,

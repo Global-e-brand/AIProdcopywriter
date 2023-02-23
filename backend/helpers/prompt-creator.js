@@ -9,6 +9,15 @@ const createPrompt = async (req, activeComponents) => {
   let trainingData = "";
   let prompt = "";
 
+  // ensuring all active fields are filled
+  if (
+    (activeComponents.inputOne && req.body.inputOne === "") ||
+    (activeComponents.inputTwo && req.body.inputTwo === "") ||
+    (activeComponents.inputThree && req.body.tone === "")
+  ) {
+    return "";
+  }
+
   if (categoryData.length != undefined && categoryData.length != 0) {
     trainingData = categoryData[0].trainingPrompt;
 
