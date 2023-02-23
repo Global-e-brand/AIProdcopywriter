@@ -4,7 +4,7 @@ const getGPTResponse = async (prompt) => {
 
   if (prompt == "") {
     console.log(
-      "Either all fields are empty, or that category has not yet been implemented!"
+      "One or more fields are empty, or that category has not yet been implemented!"
     );
     return;
   }

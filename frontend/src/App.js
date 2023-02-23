@@ -447,7 +447,11 @@ function App() {
                       inputOneTitle={"Describe your blog topic"}
                       inputTwo={false}
                       inputTwoTitle={""}
+<<<<<<< HEAD
                       toneInput={true}
+=======
+                      inputThree={false}
+>>>>>>> feature/jason
                     />
                   }
                 />
@@ -489,7 +493,11 @@ function App() {
                       inputOneTitle={"What topics are you posting about?"}
                       inputTwo={false}
                       inputTwoTitle={""}
+<<<<<<< HEAD
                       toneInput={true}
+=======
+                      inputThree={false}
+>>>>>>> feature/jason
                     />
                   }
                 />
@@ -645,7 +653,11 @@ function App() {
                       inputOneTitle={"Describe your topic"}
                       inputTwo={false}
                       inputTwoTitle={""}
+<<<<<<< HEAD
                       toneInput={true}
+=======
+                      inputThree={false}
+>>>>>>> feature/jason
                     />
                   }
                 />
@@ -785,7 +797,11 @@ function App() {
                       inputOneTitle={"What is your video about?"}
                       inputTwo={false}
                       inputTwoTitle={""}
+<<<<<<< HEAD
                       toneInput={true}
+=======
+                      inputThree={false}
+>>>>>>> feature/jason
                     />
                   }
                 />
