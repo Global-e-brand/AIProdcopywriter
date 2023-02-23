@@ -2,10 +2,10 @@
   font-family: "Manrope";
 }
 .logo-panel {
-  /* background-color: #cee8e5; */
+  background-image: url("../src/assets/images/Sidebar-bg.png");  
   height: 100vh;
   border-right: 1px solid #e0e4ec;
-  /* margin: -5px; */
+  box-shadow: 3px 5px 14px 0px;
 }
 h2 {
   margin-left: -5%;
@@ -15,4 +15,52 @@ h2 {
 .buttons-panel {
   font-size: 36px;
   margin-left: 10%;
+}
+
+.category-title {
+  display: flex;
+  margin-bottom: 15px;
+  color: #2e72d2;
+  align-items: center;
+  /* align-content: center; */
+  flex-direction: column;
+}
+
+.side-Bar {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.btn-secondary{
+  background-color: #B5D3FF !important;
+  color: black !important;
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  margin: 5px;
+}
+
+.btn-secondary:hover{
+  background-color: #154B89  !important;
+  color: white !important;
+}
+
+.dropdown-menu-dark {
+  color: black !important;
+  background-color: #B5D3FF !important;
+  
+}
+
+a.dropdown-item {
+  font-size: 18px;
+  font-weight: 600;
+  box-shadow: 0px 4px 10px rgb(0 0 0 / 50%);
+  margin: 10px;
+  padding: 3px;
+  color: black;
+  
+}
+a.dropdown-item:hover{
+  background-color: #154B89 ;
+  color: white !important;
 }

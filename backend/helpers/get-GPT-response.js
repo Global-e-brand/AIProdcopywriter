@@ -35,7 +35,7 @@ const getGPTResponse = async (prompt) => {
     requestOptions
   );
   let respond = await data_value.json();
-  console.log(respond.choices);
+  console.log(respond);
 
   return respond.choices;
   //   res.send("");

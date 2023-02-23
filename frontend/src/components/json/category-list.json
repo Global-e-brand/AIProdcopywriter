@@ -1,0 +1,415 @@
+[
+    {
+        "parentcategory": "Product Description",
+        "childcategory": [
+            {
+                "name": "Product Description",
+                "url": "/productdescription"
+            }
+        ]
+    },
+    {
+        "parentcategory": "Digital Ad Copy",
+        "childcategory": [
+            {
+                "name": "Ad Copy Variants",
+                "url": "/adcopyvariants"
+            },
+            {
+                "name": "Facebook Headlines",
+                "url": "/facebookheadlines"
+            },
+            {
+                "name": "Facebook Link Description",
+                "url": "/facebooklinkdescription"
+            },
+            {
+                "name": "Facebook Listicle",
+                "url": "/facebooklisticle"
+            },
+            {
+                "name": "Facebook Primary Text",
+                "url": "/facebookprimarytext"
+            },
+            {
+                "name": "General Ad Copy",
+                "url": "/generaladcopy"
+            },
+            {
+                "name": "Google Descriptions",
+                "url": "/googledescriptions"
+            },
+            {
+                "name": "Google Headlines",
+                "url": "/googleheadlines"
+            },
+            {
+                "name": "LinkedIn Ad Copy",
+                "url": "/linkedinadcopy"
+            }
+        ]
+    },
+    {
+        "parentcategory": "Startup Tools",
+        "childcategory": [
+            {
+                "name": "Audience Refiner",
+                "url": "/audiencerefiner"
+            },
+            {
+                "name": "Brand Mission",
+                "url": "/brandmission"
+            },
+            {
+                "name": "Brand Voice",
+                "url": "/brandvoice"
+            },
+            {
+                "name": "Motto Generator",
+                "url": "/mottogenerator"
+            },
+            {
+                "name": "Value Proposition",
+                "url": "/valueproposition"
+            }
+        ]
+    },
+    {
+        "parentcategory": "Website Copy",
+        "childcategory": [
+            {
+                "name": "Call To Action",
+                "url": "/calltoaction"
+            },
+            {
+                "name": "Event Copy",
+                "url": "/eventcopy"
+            },
+            {
+                "name": "Landing Page Hero Text",
+                "url": "/landingpageherotext"
+            },
+            {
+                "name": "Listicle",
+                "url": "/listicle"
+            },
+            {
+                "name": "Meta Descriptions",
+                "url": "/metadescription"
+            },
+            {
+                "name": "Microcopy",
+                "url": "/microcopy"
+            },
+            {
+                "name": "Question Generator",
+                "url": "/questiongenerator"
+            },
+            {
+                "name": "Social Proof Text",
+                "url": "/socialprooftext"
+            },
+            {
+                "name": "Subheader",
+                "url": "/subheader"
+            },
+            {
+                "name": "Testimonial Rewriter",
+                "url": "/testimonialrewriter"
+            }
+        ]
+    },
+    {
+        "parentcategory": "Blog Tools",
+        "childcategory": [
+            {
+                "name": "Blog Conclusion",
+                "url": "/blogconclusion"
+            },
+            {
+                "name": "Blog Ideas",
+                "url": "/blogideas"
+            },
+            {
+                "name": "Blog Intro",
+                "url": "/blogintro"
+            },
+            {
+                "name": "Blog Outline",
+                "url": "/blogoutline"
+            },
+            {
+                "name": "Blog Title",
+                "url": "/blogtitle"
+            },
+            {
+                "name": "Blog Title Listicle",
+                "url": "/blogtitlelisticle"
+            },
+            {
+                "name": "Bullet Point To Blog Section",
+                "url": "/bulletpointtoblogsection"
+            },
+            {
+                "name": "Keyword Generator",
+                "url": "/keywordgenerator"
+            }
+        ]
+    },
+    {
+        "parentcategory": "Emails and Letters",
+        "childcategory": [
+            {
+                "name": "Cancellation Email",
+                "url": "/cancellationemail"
+            },
+            {
+                "name": "Email Subject Lines",
+                "url": "/emailsubjectlines"
+            },
+            {
+                "name": "Follow Up Email",
+                "url": "/followupemail"
+            },
+            {
+                "name": "Thank You Note",
+                "url": "/thankyounote"
+            },
+            {
+                "name": "Welcome Email",
+                "url": "/welcomeemail"
+            }
+        ]
+    },
+    {
+        "parentcategory": "Social Media Tools",
+        "childcategory": [
+            {
+                "name": "Add Emoji To List",
+                "url": "/add-emoji"
+            },
+            {
+                "name": "Bullet Points",
+                "url": "/bullet-points"
+            },
+            {
+                "name": "Carousel Post",
+                "url": "/carousel-post"
+            },
+            {
+                "name": "YouTube Ideas",
+                "url": "/youtube-ideas"
+            },
+            {
+                "name": "Hashtag Generator",
+                "url": "/hashtag-generator"
+            },
+            {
+                "name": "Hook Generator",
+                "url": "/hook-generator"
+            },
+            {
+                "name": "Instagram Caption",
+                "url": "/instagram-caption"
+            },
+            {
+                "name": "Instagram Product Showcase",
+                "url": "/youtube-ideas"
+            },
+            {
+                "name": "Launch Your Product",
+                "url": "/launchyourproduct"
+            },
+            {
+                "name": "Relatable Experiences",
+                "url": "/relatable-experiences"
+            },
+            {
+                "name": "Short Text Hook",
+                "url": "/short-texthook"
+            },
+            {
+                "name": "TikTok Brainstorm Topics",
+                "url": "/tiktok-brainstorm-topics"
+            },
+            {
+                "name": "Video Call To Action",
+                "url": "/videocalltoaction"
+            },
+            {
+                "name": "YouTube Description Intro",
+                "url": "/youtubedescriptionintro"
+            },
+            {
+                "name": "YouTube Video Title",
+                "url": "/youtubevideotitle"
+            }
+        ]
+    },
+    {
+        "parentcategory": "Sales Copy",
+        "childcategory": [
+            {
+                "name": "AIDA",
+                "url": "/aida"
+            },
+            {
+                "name": "BAB",
+                "url": "/bab"
+            },
+            {
+                "name": "Features To Benefits",
+                "url": "/features-to-benefits"
+            },
+            {
+                "name": "FAB",
+                "url": "/fab"
+            },
+            {
+                "name": "Marketing Angles",
+                "url": "/marketing-angles"
+            },
+            {
+                "name": "PAS",
+                "url": "/pas"
+            },
+            {
+                "name": "PPPP",
+                "url": "/pppp"
+            },
+            {
+                "name": "QUEST Copywriting",
+                "url": "/quest-copywriting"
+            }
+        ]
+    },
+    {
+        "parentcategory": "Writing Tools",
+        "childcategory": [
+            {
+                "name": "Adjective Accelerator",
+                "url": "/adjectiveaccelerator"
+            },
+            {
+                "name": "Analogy Generator",
+                "url": "/analogygenerator"
+            },
+            {
+                "name": "Bullet Point To Blog Section",
+                "url": "/bulletpointtoblogsection"
+            },
+            {
+                "name": "Bullet Point To Paragraph",
+                "url": "/bulletpointtoparagraph"
+            },
+            {
+                "name": "Cliffhanger",
+                "url": "/cliffhanger"
+            },
+            {
+                "name": "Essay Intro",
+                "url": "/essayintro"
+            },
+            {
+                "name": "Essay Outline",
+                "url": "/essayoutline"
+            },
+            {
+                "name": "Hero Story Intro",
+                "url": "/herostoryintro"
+            },
+            {
+                "name": "Hero Story Villain",
+                "url": "/herostoryvillain"
+            },
+            {
+                "name": "Passive To Active Voice",
+                "url": "/passivetoactivevoice"
+            },
+            {
+                "name": "Press Release Intros",
+                "url": "/pressreleaseintros"
+            },
+            {
+                "name": "Rewrite With Keywords",
+                "url": "/rewritewithkeywords"
+            },
+            {
+                "name": "Sentence Rewriter",
+                "url": "/sentencerewriter"
+            },
+            {
+                "name": "Simplify Sentences",
+                "url": "/simplifysentences"
+            },
+            {
+                "name": "Tone Changer",
+                "url": "/tonechanger"
+            },
+            {
+                "name": "Two Sentence Stories",
+                "url": "/twosentencestories"
+            },
+            {
+                "name": "Verb Booster",
+                "url": "/verbbooster"
+            }
+        ]
+    },
+    {
+        "parentcategory": "Brainstorming Tools",
+        "childcategory": [ 
+            {	
+                "name": "Growth Ideas",
+                "url": "/growthideas"
+            },
+            {	
+                "name": "Name Generator",
+                "url": "/namegenerator"
+            },
+            {	
+                "name": "Next Product",
+                "url": "/nextproduct"
+            },
+            {	
+                "name": "Startup Ideas",
+                "url": "/startupideas"
+            },
+            {	
+                "name": "Viral Ideas",
+                "url": "/viralideas"
+            }
+           
+        ]
+    },
+    { 	
+        "parentcategory": "Personal Tools",
+        "childcategory": [ 
+            {		
+                "name": "Birthday Card",
+                "url": "/birthdaycard"
+            },
+            {		
+                "name": "Clubhouse Bio",
+                "url": "/clubhousebio"
+            },
+            {		
+                "name": "Cover Letter",
+                "url": "/coverletter"
+            },
+            {		
+                "name": "Love Letter",
+                "url": "/loveletter"
+            },
+            {		
+                "name": "Resume Bullet Points",
+                "url": "/resumebulletpoints"
+            },
+            {		
+                "name": "Shower Thoughts",
+                "url": "/showerthoughts"
+            }
+           
+        ]
+    }   
+]

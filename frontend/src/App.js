@@ -1,372 +1,370 @@
 import "./App.css";
 import Grid from "@mui/material/Grid";
 import HeaderLogo from "./HeaderLogo";
-import ButtonMain from "./ButtonMain";
+// import ButtonMain from "./ButtonMain";
 import { Routes, Route } from "react-router-dom";
 import Categories from "./components/categories/Categories";
-import Dummy from "./components/Form/Dummy";
+import UserPage from "./components/Form/UserPage";
+import SidebarMenu from "./SidebarMenu";
+
+
 function App() {
   return (
     <>
       <div className="App">
-        <Grid container spacing={0.5}>
-          <Grid item xs={3}>
+        <Grid container >
+          <Grid item xs={3} md={3}>
             <div className="logo-panel">
               <br></br>
               <HeaderLogo />
               <br></br>
               <br></br>
-              <ButtonMain />
+              <SidebarMenu />
             </div>
           </Grid>
-          <Grid item xs={8}>
-            {/* <hr></hr> */}
-            <div className="catgory_menu">
-              <br></br>
-              <Categories />
-            </div>
-            <div className="comonents_routes">
+          <Grid item xs={9} md={9}>           
+            
               <Routes>
                 <Route
                   path="/productdescription"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/productdescription"}
                       category={"Product Description"}
                       inputOne={true}
                       inputOneTitle={"Describe your product"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/adcopyvariants"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/adcopyvariants"}
                       category={"Ad Copy Variants"}
                       inputOne={true}
                       inputOneTitle={"Describe your product"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/facebookheadlines"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/facebookheadlines"}
                       category={"Facebook Headlines"}
                       inputOne={true}
                       inputOneTitle={"What is the headline for?"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/facebooklinkdescription"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/facebooklinkdescription"}
                       category={"Facebook Link Descriptions"}
                       inputOne={true}
                       inputOneTitle={"Describe the ad topic"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={false}
+                      toneInput={false}
                     />
                   }
                 />
                 <Route
                   path="/facebooklisticle"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/facebooklisticle"}
                       category={"Facebook Listicle"}
                       inputOne={true}
                       inputOneTitle={"What is your topic?"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/facebookprimarytext"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/facebookprimarytext"}
                       category={"Facebook Primary Text"}
                       inputOne={true}
                       inputOneTitle={"Describe the topic"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/generaladcopy"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/generaladcopy"}
                       category={"General Ad Copy"}
                       inputOne={true}
                       inputOneTitle={"What is the copy for?"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/googledescriptions"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/googledescriptions"}
                       category={"Google Descriptions"}
                       inputOne={true}
                       inputOneTitle={"Describe your product/brand"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/googleheadlines"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/googleheadlines"}
                       category={"Google Headlines"}
                       inputOne={true}
                       inputOneTitle={"Describe your product/brand"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/linkedinadcopy"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/linkedinadcopy"}
                       category={"LinkedIn Ad Copy"}
                       inputOne={true}
                       inputOneTitle={"What is the copy for?"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/audiencerefiner"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/audiencerefiner"}
                       category={"Audience Refiner"}
                       inputOne={true}
                       inputOneTitle={"Describe your ideal audience"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={false}
+                      toneInput={false}
                     />
                   }
                 />
                 <Route
                   path="/brandmission"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/brandmission"}
                       category={"Brand Mission"}
                       inputOne={true}
                       inputOneTitle={"Describe your brand"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/brandvoice"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/brandvoice"}
                       category={"Brand Voice"}
                       inputOne={true}
                       inputOneTitle={"Brand Name"}
                       inputTwo={true}
                       inputTwoTitle={"Describe your brand"}
-                      inputThree={false}
+                      toneInput={false}
                     />
                   }
                 />
                 <Route
                   path="/mottogenerator"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/mottogenerator"}
                       category={"Motto Generator"}
                       inputOne={true}
                       inputOneTitle={"Describe your product/brand"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/valueproposition"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/valueproposition"}
                       category={"Value Proposition"}
                       inputOne={true}
                       inputOneTitle={"Describe your business"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/calltoaction"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/calltoaction"}
                       category={"Call To Action"}
                       inputOne={true}
                       inputOneTitle={"Describe your product"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/eventcopy"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/eventcopy"}
                       category={"Event Copy"}
                       inputOne={true}
                       inputOneTitle={"What is the event?"}
                       inputTwo={true}
                       inputTwoTitle={"Describe your event"}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/landingpageherotext"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/landingpageherotext"}
                       category={"Landing Page Hero Text"}
                       inputOne={true}
                       inputOneTitle={"Describe your product/brand"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/listicle"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/listicle"}
                       category={"Listicle"}
                       inputOne={true}
                       inputOneTitle={"What is the list for?"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/metadescription"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/metadescription"}
                       category={"Meta Descriptions"}
                       inputOne={true}
                       inputOneTitle={"Describe your product/brand"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/microcopy"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/microcopy"}
                       category={"Microcopy"}
                       inputOne={true}
                       inputOneTitle={"What's the microcopy for?"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/questiongenerator"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/questiongenerator"}
                       category={"Question Generator"}
                       inputOne={true}
                       inputOneTitle={"What are you generating questions for?"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/socialprooftext"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/socialprooftext"}
                       category={"Social Proof Text"}
                       inputOne={true}
                       inputOneTitle={"What will the social proof be used for?"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/subheader"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/subheader"}
                       category={"Subheader"}
                       inputOne={true}
                       inputOneTitle={"What is your business?"}
                       inputTwo={true}
                       inputTwoTitle={"What is the header?"}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/testimonialrewriter"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/testimonialrewriter"}
                       category={"Testimonial Rewriter"}
                       inputOne={true}
@@ -375,14 +373,14 @@ function App() {
                       }
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/blogconclusion"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/blogconclusion"}
                       category={"Blog Conclusion"}
                       inputOne={true}
@@ -391,28 +389,28 @@ function App() {
                       }
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/blogideas"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/blogideas"}
                       category={"Blog Ideas"}
                       inputOne={true}
                       inputOneTitle={"What are you interested in?"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/blogintro"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/blogintro"}
                       category={"Blog Intro"}
                       inputOne={true}
@@ -421,168 +419,168 @@ function App() {
                       }
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/blogoutline"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/blogoutline"}
                       category={"Blog Outline"}
                       inputOne={true}
                       inputOneTitle={"What is your blog title?"}
                       inputTwo={true}
                       inputTwoTitle={"What is your blog about?"}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/blogtitle"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/blogtitle"}
                       category={"Blog Title"}
                       inputOne={true}
                       inputOneTitle={"Describe your blog topic"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/blogtitlelisticle"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/blogtitlelisticle"}
                       category={"Blog Title Listicle"}
                       inputOne={true}
                       inputOneTitle={"Describe your blog topic"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/bulletpointtoblogsection"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/bulletpointtoblogsection"}
                       category={"Bullet Point To Blog Section"}
                       inputOne={true}
                       inputOneTitle={"List your blog topics"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/keywordgenerator"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/keywordgenerator"}
                       category={"Keyword Generator"}
                       inputOne={true}
                       inputOneTitle={"What topics are you posting about?"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/cancellationemail"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/cancellationemail"}
                       category={"Cancellation Email"}
                       inputOne={true}
                       inputOneTitle={"What is the email for?"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/emailsubjectlines"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/emailsubjectlines"}
                       category={"Email Subject Lines"}
                       inputOne={true}
                       inputOneTitle={"Describe your brand/product"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/confirmationemails"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/confirmationemails"}
                       category={"Confirmation Emails"}
                       inputOne={true}
                       inputOneTitle={"What is the email for?"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="followupemail"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/followupemail"}
                       category={"Follow Up Email"}
                       inputOne={true}
                       inputOneTitle={"What is the email for?"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/thankyounote"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/thankyounote"}
                       category={"Thank You Note"}
                       inputOne={true}
                       inputOneTitle={"Who is the message for?"}
                       inputTwo={true}
                       inputTwoTitle={"What would you like to thank them for?"}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/welcomeemail"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/welcomeemail"}
                       category={"Welcome Email"}
                       inputOne={true}
                       inputOneTitle={"Who is the email for?"}
                       inputTwo={true}
                       inputTwoTitle={"What is the email for"}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/add-emoji"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/add-emoji"}
                       category={"Add Emoji To List"}
                       inputOne={true}
@@ -591,224 +589,224 @@ function App() {
                       }
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/bullet-points"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/bullet-points"}
                       category={"Bullet Points"}
                       inputOne={true}
                       inputOneTitle={"What text would you like to summarize?"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/carousel-post"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/carousel-post"}
                       category={"Carousel Post"}
                       inputOne={true}
                       inputOneTitle={"Describe your topic"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/youtube-ideas"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/youtube-ideas"}
                       category={"YouTube Ideas"}
                       inputOne={true}
                       inputOneTitle={"Describe your topic"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/hashtag-generator"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/hashtag-generator"}
                       category={"Hashtag Generator"}
                       inputOne={true}
                       inputOneTitle={"Describe your topic"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/hook-generator"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/hook-generator"}
                       category={"Hook Generator"}
                       inputOne={true}
                       inputOneTitle={"Describe the topic"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/instagram-caption"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/instagram-caption"}
                       category={"Instagram Caption"}
                       inputOne={true}
                       inputOneTitle={"Describe the topic?"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/instagram-products"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/instagram-products"}
                       category={"Instagram Product Showcase"}
                       inputOne={true}
                       inputOneTitle={"What is your product?"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/launchyourproduct"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/launchyourproduct"}
                       category={"Launch Your Product"}
                       inputOne={true}
                       inputOneTitle={"Describe your product"}
                       inputTwo={true}
                       inputTwoTitle={"What is your brand/product?"}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/relatable-experiences"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/relatable-experiences"}
                       category={"Relatable Experiences"}
                       inputOne={true}
                       inputOneTitle={"What is the experience?"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/short-texthook"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/short-texthook"}
                       category={"Short Text Hook"}
                       inputOne={true}
                       inputOneTitle={"Describe your topic"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/tiktok-brainstorm-topics"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/tiktok-brainstorm-topics"}
                       category={"TikTok Brainstorm Topics"}
                       inputOne={true}
                       inputOneTitle={"What are you interested in?"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/videocalltoaction"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/videocalltoaction"}
                       category={"Video Call To Action"}
                       inputOne={true}
                       inputOneTitle={"What is your video about?"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/youtubedescriptionintro"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/youtubedescriptionintro"}
                       category={"YouTube Description Intro"}
                       inputOne={true}
                       inputOneTitle={"What is your video title?"}
                       inputTwo={true}
                       inputTwoTitle={"What is your video about?"}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/youtubevideotitle"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/youtubevideotitle"}
                       category={"YouTube Video Title"}
                       inputOne={true}
                       inputOneTitle={"What is your video about?"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/adjectiveaccelerator"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/adjectiveaccelerator"}
                       category={"Adjective Accelerator"}
                       inputOne={true}
                       inputOneTitle={"Describe your adjective"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/analogygenerator"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/analogygenerator"}
                       category={"Analogy Generator"}
                       inputOne={true}
@@ -817,14 +815,14 @@ function App() {
                       }
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/bulletpointtoparagraph"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/bulletpointtoparagraph"}
                       category={"Bullet Point To Paragraph"}
                       inputOne={true}
@@ -833,140 +831,140 @@ function App() {
                       }
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/cliffhanger"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/cliffhanger"}
                       category={"Cliffhanger"}
                       inputOne={true}
                       inputOneTitle={"What text comes before the cliffhanger?"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/essayintro"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/essayintro"}
                       category={"Essay Intro"}
                       inputOne={true}
                       inputOneTitle={"What is your essay about?"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/essayoutline"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/essayoutline"}
                       category={"Essay Outline"}
                       inputOne={true}
                       inputOneTitle={"What is your essay topic?"}
                       inputTwo={true}
                       inputTwoTitle={"What should the essay cover?"}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/herostoryintro"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/herostoryintro"}
                       category={"Hero Story Intro"}
                       inputOne={true}
                       inputOneTitle={"A short background of the hero"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/herostoryvillain"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/herostoryvillain"}
                       category={"Hero Story Villain"}
                       inputOne={true}
                       inputOneTitle={"A short background of the hero"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/passivetoactivevoice"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/passivetoactivevoice"}
                       category={"Passive To Active Voice"}
                       inputOne={true}
                       inputOneTitle={"What would you like to rewrite?"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/pressreleaseintros"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/pressreleaseintros"}
                       category={"Press Release Intros"}
                       inputOne={true}
                       inputOneTitle={"What is the press release about?"}
                       inputTwo={true}
                       inputTwoTitle={"Who is the information source?"}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/rewritewithkeywords"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/rewritewithkeywords"}
                       category={"Rewrite With Keywords"}
                       inputOne={true}
                       inputOneTitle={"Keywords"}
                       inputTwo={true}
                       inputTwoTitle={"Text to rewrite"}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/sentencerewriter"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/sentencerewriter"}
                       category={"Sentence Rewriter"}
                       inputOne={true}
                       inputOneTitle={"What sentence would you like to rewrite?"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/simplifysentences"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/simplifysentences"}
                       category={"Simplify Sentences"}
                       inputOne={true}
@@ -975,216 +973,216 @@ function App() {
                       }
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/tonechanger"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/tonechanger"}
                       category={"Tone Changer"}
                       inputOne={true}
                       inputOneTitle={"What sentence would you like to rewrite?"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/twosentencestories"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/twosentencestories"}
                       category={"Two Sentence Stories"}
                       inputOne={true}
                       inputOneTitle={"Describe your topic?"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/verbbooster"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/verbbooster"}
                       category={"Verb Booster"}
                       inputOne={true}
                       inputOneTitle={"Describe your verb"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/growthideas"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/growthideas"}
                       category={"Growth Ideas"}
                       inputOne={true}
                       inputOneTitle={"What would you like to grow?"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/namegenerator"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/namegenerator"}
                       category={"Name Generator"}
                       inputOne={true}
                       inputOneTitle={"What is the name for?"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/nextproduct"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/nextproduct"}
                       category={"Next Product"}
                       inputOne={true}
                       inputOneTitle={"Describe your current product"}
                       inputTwo={true}
                       inputTwoTitle={"What is the brand/product"}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/startupideas"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/startupideas"}
                       category={"Startup Ideas"}
                       inputOne={true}
                       inputOneTitle={"What interests you?"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/viralideas"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/viralideas"}
                       category={"Viral Ideas"}
                       inputOne={true}
                       inputOneTitle={"Describe your topic?"}
                       inputTwo={true}
                       inputTwoTitle={"Who is the idea for?"}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/birthdaycard"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/birthdaycard"}
                       category={"Birthday Card"}
                       inputOne={true}
                       inputOneTitle={"Who is the message for?"}
                       inputTwo={true}
                       inputTwoTitle={"What is the card for?"}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/clubhousebio"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/clubhousebio"}
                       category={"Clubhouse Bio"}
                       inputOne={true}
                       inputOneTitle={"Tell us about yourself"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/coverletter"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/coverletter"}
                       category={"Cover Letter"}
                       inputOne={true}
                       inputOneTitle={"What's the role?"}
                       inputTwo={true}
                       inputTwoTitle={"List your experience"}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/loveletter"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/loveletter"}
                       category={"Love Letter"}
                       inputOne={true}
                       inputOneTitle={"Who is the message for?"}
                       inputTwo={true}
                       inputTwoTitle={"What is the occasion?"}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/resumebulletpoints"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/resumebulletpoints"}
                       category={"Resume Bullet Points"}
                       inputOne={true}
                       inputOneTitle={"What did you do?"}
                       inputTwo={true}
                       inputTwoTitle={"What is the role?"}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/showerthoughts"
                   element={
-                    <Dummy
+                    <UserPage
                       path={"/showerthoughts"}
                       category={"Shower Thoughts"}
                       inputOne={true}
                       inputOneTitle={"What is the topic?"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                     />
                   }
                 />
                 <Route
                   path="/aida"
                   element={
-                    <Dummy
+                    <UserPage
                       category={"AIDA"}
                       inputOne={true}
                       inputOneTitle={"Describe your product/brand"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                       path={"/aida"}
                     />
                   }
@@ -1192,13 +1190,13 @@ function App() {
                 <Route
                   path="/bab"
                   element={
-                    <Dummy
+                    <UserPage
                       category={"BAB"}
                       inputOne={true}
                       inputOneTitle={"Describe your product/brand"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                       path={"/bab"}
                     />
                   }
@@ -1206,13 +1204,13 @@ function App() {
                 <Route
                   path="/features-to-benefits"
                   element={
-                    <Dummy
+                    <UserPage
                       category={"Features To Benefits"}
                       inputOne={true}
                       inputOneTitle={"What is the product/brand?"}
                       inputTwo={true}
                       inputTwoTitle={"List your features"}
-                      inputThree={true}
+                      toneInput={true}
                       path={"/features-to-benefits"}
                     />
                   }
@@ -1220,13 +1218,13 @@ function App() {
                 <Route
                   path="/fab"
                   element={
-                    <Dummy
+                    <UserPage
                       category={"FAB"}
                       inputOne={true}
                       inputOneTitle={"Describe your product/brand"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                       path={"/fab"}
                     />
                   }
@@ -1234,13 +1232,13 @@ function App() {
                 <Route
                   path="/marketing-angles"
                   element={
-                    <Dummy
+                    <UserPage
                       category={"Marketing Angles"}
                       inputOne={true}
                       inputOneTitle={"Describe your product/brand"}
                       inputTwo={true}
                       inputTwoTitle={"What is your product/brand name?"}
-                      inputThree={true}
+                      toneInput={true}
                       path={"/marketing-angles"}
                     />
                   }
@@ -1248,13 +1246,13 @@ function App() {
                 <Route
                   path="/pas"
                   element={
-                    <Dummy
+                    <UserPage
                       category={"PAS"}
                       inputOne={true}
                       inputOneTitle={"Describe your product/brand"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                       path={"/pas"}
                     />
                   }
@@ -1262,13 +1260,13 @@ function App() {
                 <Route
                   path="/pppp"
                   element={
-                    <Dummy
+                    <UserPage
                       category={"PPPP"}
                       inputOne={true}
                       inputOneTitle={"Describe your product/brand"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                       path={"/pppp"}
                     />
                   }
@@ -1276,19 +1274,19 @@ function App() {
                 <Route
                   path="/quest-copywriting"
                   element={
-                    <Dummy
+                    <UserPage
                       category={"QUEST Copywriting"}
                       inputOne={true}
                       inputOneTitle={"Describe your product/brand"}
                       inputTwo={false}
                       inputTwoTitle={""}
-                      inputThree={true}
+                      toneInput={true}
                       path={"/quest-copywriting"}
                     />
                   }
                 />
               </Routes>
-            </div>
+            
           </Grid>
         </Grid>
       </div>

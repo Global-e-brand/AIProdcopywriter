@@ -14,8 +14,12 @@
 .input_one input {
   width: 488px;
   height: 102px;
-  border: 2px solid #e0e4ec;
+  border: 2px solid #B5D3FF;
   border-radius: 3px;
+}
+
+.input_one input:focus-visible {
+  outline: none;
 }
 .input_one {
   font-family: "Manrope";
@@ -43,7 +47,7 @@
   line-height: 22px;
   text-align: center;
   color: #ffffff;
-  background: #399b96;
+  background: #154B89;
   border-radius: 4px;
   width: 488px;
   height: 35px;
@@ -53,11 +57,88 @@
 }
 .main-division {
   display: flex;
+  cursor: pointer;
 }
+label {
+  cursor: pointer !important;
+}
+
 .output-layout {
-  border: 2px solid #269178;
   border-radius: 8px;
-  padding: 10px;
-  background: black;
+  margin: 14px;
+  background: #B5D3FF;
   color: white;
+  box-shadow: 0px 4px 10px rgb(0 0 0 / 25%);
+}
+.ot-hd {
+  /* position: inherit; */
+  /* width: 100%; */
+  font-size: 22px;
+  background: #B5D3FF;
+  box-shadow: 0px 4px 10px rgb(0 0 0 / 25%);
+  font-weight: 600;
+  color: black;
+  text-align: center;
+}
+
+.ot-bd {
+  font-size: 18px;
+  color: black;
+  font-weight: 600;
+  font-family: Manrope;
+  padding: 10px;
+}
+
+.cpy-btn {
+  box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+  background: #154B89;
+  border-radius: 5px;
+  color: #FFF;
+  width: 58px;
+    height: 34px;
+}
+
+.cpyall-btn {
+  display: block;
+  margin: auto;
+  background: #154B89;
+  border: 7px solid #154B89;
+  border-radius: 7px;
+  color: #fff;
+  font-weight: 600;
+  font-family: serif;
+}
+
+.tone-btn {
+  border: 2px solid #B5D3FF !important;
+  width: 120px !important;
+  text-transform: capitalize !important;
+}
+.tone-btn-selected {
+  background-color: #154B89 !important;
+  color: #fff !important;
+  width: 120px !important;
+  text-transform: capitalize !important;
+}
+
+.tone-btn:hover {
+  border: 2px solid #B5D3FF;
+  background-color: #154B89 !important;
+  color:#fff;
+  width: 120px;
+  text-transform: capitalize;
+}
+
+.err-msg {
+  display: flex;
+  font-size: 26px !important;
+  justify-content: center;
+  border: 2px solid #e15e28;
+  margin: 10px;
+  font-weight: 700;
+  color: #e15e28;
+}
+
+strong{
+  color: black;
 }
