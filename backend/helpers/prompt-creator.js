@@ -11,9 +11,9 @@ const createPrompt = async (req, activeComponents) => {
 
   // ensuring all active fields are filled
   if (
-    (activeComponents.inputOne && req.body.inputOne === "") ||
-    (activeComponents.inputTwo && req.body.inputTwo === "") ||
-    (activeComponents.inputThree && req.body.tone === "")
+    (activeComponents.inputOne && req.body.inputOne.trim() === "") ||
+    (activeComponents.inputTwo && req.body.inputTwo.trim() === "") ||
+    (activeComponents.inputThree && req.body.tone.trim() === "")
   ) {
     return "";
   }
