@@ -39,7 +39,7 @@
 .input_three {
   margin-bottom: 5%;
 }
-.submitButton {
+.submitButton label {
   font-family: "Manrope";
   font-style: normal;
   font-weight: 700;
