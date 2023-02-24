@@ -94,9 +94,9 @@ a.dropdown-item:hover{
 
 
 footer {
-  position: fixed;
+  position: relative;
   background-color: #B5D3FF;
-  bottom: 0;
+  bottom: -40vh;
   left: 0;
   right: 0;
   padding: 7px;

@@ -1,4 +1,4 @@
-.form {
+/* .form {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -6,13 +6,22 @@
   color: #399b96;
   font-size: 20px;
   font-weight: 600;
+} */
+.form {
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  color: #399b96;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 8px 0px 0px 20px;
 }
 .category_name {
   margin-bottom: 10%;
   color: #2e72d2;
 }
 .input_one input {
-  width: 488px;
+  width: 100%;
   height: 102px;
   border: 2px solid #B5D3FF;
   border-radius: 3px;
@@ -29,7 +38,7 @@
 
 .input_two input,
 .input_three input {
-  width: 488px;
+  width: 100%;
   height: 102px;
   border: 2px solid #e0e4ec;
   border-radius: 3px;
@@ -49,7 +58,7 @@
   color: #ffffff;
   background: #154B89;
   border-radius: 4px;
-  width: 488px;
+  width: 100%;
   height: 35px;
   display: flex;
   align-items: center;
@@ -71,8 +80,6 @@ label {
   box-shadow: 0px 4px 10px rgb(0 0 0 / 25%);
 }
 .ot-hd {
-  /* position: inherit; */
-  /* width: 100%; */
   font-size: 22px;
   background: #B5D3FF;
   box-shadow: 0px 4px 10px rgb(0 0 0 / 25%);
@@ -127,6 +134,24 @@ label {
   color:#fff;
   width: 120px;
   text-transform: capitalize;
+}
+
+.home-btn {
+  border-radius: 8px;
+  text-decoration: none;
+  border: 2px solid #B5D3FF;
+  background: #B5D3FF;
+  color: black;
+  font-weight: 600;
+}
+
+.home-btn:hover {
+  border-radius: 8px;
+  text-decoration: none;
+  border: 2px solid #B5D3FF;
+  background: #154B89;
+  color: #fff;
+  font-weight: 600;
 }
 
 .err-msg {

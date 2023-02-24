@@ -14,9 +14,7 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 function SidebarMenu() {
   return (
     <div className="side-Bar">
-      <Button className="home-btn"> Home</Button>
-
-      {console.log("catagoryList", catagoryList)}
+      <a href="/home" className="home-btn"> <Button   className="home-btn"> Home</Button>    </a> 
 
       {catagoryList.map((cat, i) => {
         return (

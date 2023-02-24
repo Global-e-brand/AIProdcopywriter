@@ -4,6 +4,7 @@
   height: 64px;
   width: 64px;
   z-index: -1;
+  margin: auto;
 }
 
 .loader img {
