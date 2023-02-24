@@ -25,9 +25,9 @@
 .category-title {
   display: flex;
   margin-bottom: 15px;
+  background: #B5D3FF;
   color: #2e72d2;
   align-items: center;
-  /* align-content: center; */
   flex-direction: column;
 }
 
@@ -96,7 +96,7 @@ a.dropdown-item:hover{
 footer {
   position: relative;
   background-color: #B5D3FF;
-  bottom: -40vh;
+  bottom: 0;
   left: 0;
   right: 0;
   padding: 7px;
@@ -104,6 +104,7 @@ footer {
   align-items: center;
   font-weight: bold;
   font-family: "Manrope";
+  margin-top: 25px;
 }
 
 

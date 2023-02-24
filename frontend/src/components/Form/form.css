@@ -1,12 +1,4 @@
-/* .form {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  color: #399b96;
-  font-size: 20px;
-  font-weight: 600;
-} */
+
 .form {
   align-items: center;
   justify-content: center;
@@ -14,14 +6,19 @@
   color: #399b96;
   font-size: 20px;
   font-weight: 600;
-  margin: 8px 0px 0px 20px;
+  margin: 8px 0px 0px 50px;
 }
+
+.m-2 {
+  margin-top: 10px;
+}
+
 .category_name {
   margin-bottom: 10%;
   color: #2e72d2;
 }
 .input_one input {
-  width: 100%;
+  width: 91%;
   height: 102px;
   border: 2px solid #B5D3FF;
   border-radius: 3px;
@@ -58,7 +55,7 @@
   color: #ffffff;
   background: #154B89;
   border-radius: 4px;
-  width: 100%;
+  width: 91%;
   height: 35px;
   display: flex;
   align-items: center;
@@ -71,7 +68,10 @@
 label {
   cursor: pointer !important;
 }
-
+.output-container {
+  height: 75vh;
+  overflow-y: scroll;
+}
 .output-layout {
   border-radius: 8px;
   margin: 14px;
