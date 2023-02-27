@@ -18,12 +18,14 @@ function Dummy(props) {
   }
 
   function copyToAllClipboard(data) {
-    let clipboardData = [];
+    let clipboardData = "";
     data.map((item, i) => {
       i = i + 1;
-      clipboardData.push(`Description - ` + i + item.text + `\n\n`);
+      clipboardData += `Result #` + i + ":\n" + item.text.trim() + `\n\n`;
     });
-    navigator.clipboard.writeText(clipboardData);
+
+    // clipboardData.
+    navigator.clipboard.writeText(clipboardData.trim());
   }
 
   async function handleSubmit(path) {
@@ -129,7 +131,7 @@ function Dummy(props) {
                 <input
                   value={inputOne}
                   onChange={(e) => setInputOne(e.target.value)}
-                  placeholder=""
+                  placeholder={props.placeholderOne}
                 />
                 {/* {console.log(inputOne, inputTwo, tone)} */}
               </div>
@@ -141,7 +143,7 @@ function Dummy(props) {
                   <input
                     value={inputTwo}
                     onChange={(e) => setInputTwo(e.target.value)}
-                    placeholder=""
+                    placeholder={props.placeholderTwo}
                   />
                 </div>
               ) : (
@@ -149,9 +151,13 @@ function Dummy(props) {
               )}
 
               <div className="submitButton">
-                <label onClick={() => handleSubmit(path)} variant="contained">
+                <button
+                  onClick={() => handleSubmit(path)}
+                  disabled={loading}
+                  variant="contained"
+                >
                   Submit
-                </label>
+                </button>
               </div>
             </div>
           </form>
@@ -170,39 +176,44 @@ function Dummy(props) {
             <>
               {data != undefined ? (
                 <>
-                 <button className="cpyall-btn" onClick={() => copyToAllClipboard(data)}> Copy All</button>
-                <div className="output-container">
-                 
-                  {data.map((item, i) => {
-                    return (
-                      <>
-                        <div className="output-layout">
-                          <Grid container>
-                            <Grid item xs={10} md={10}>
-                              <div className="ot-hd">
-                                <div>Description {i + 1}</div>
-                              </div>
+                  <button
+                    className="cpyall-btn"
+                    onClick={() => copyToAllClipboard(data)}
+                  >
+                    {" "}
+                    Copy All
+                  </button>
+                  <div className="output-container">
+                    {data.map((item, i) => {
+                      return (
+                        <>
+                          <div className="output-layout">
+                            <Grid container>
+                              <Grid item xs={10} md={10}>
+                                <div className="ot-hd">
+                                  <div>Description {i + 1}</div>
+                                </div>
+                              </Grid>
+                              <Grid item xs={2} md={2}>
+                                <div>
+                                  <button
+                                    className="cpy-btn"
+                                    onClick={() => copyToClipboard(item, i)}
+                                  >
+                                    Copy
+                                  </button>
+                                </div>
+                              </Grid>
                             </Grid>
-                            <Grid item xs={2} md={2}>
-                              <div>
-                                <button
-                                  className="cpy-btn"
-                                  onClick={() => copyToClipboard(item, i)}
-                                >
-                                  Copy
-                                </button>
-                              </div>
-                            </Grid>
-                          </Grid>
 
-                          <div className="ot-bd" ref={textAreaRef}>
-                            {item.text}
+                            <div className="ot-bd" ref={textAreaRef}>
+                              {item.text.trim()}
+                            </div>
                           </div>
-                        </div>
-                      </>
-                    );
-                  })}
-                </div>
+                        </>
+                      );
+                    })}
+                  </div>
                 </>
               ) : (
                 <>
