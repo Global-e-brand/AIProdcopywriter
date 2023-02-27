@@ -35,10 +35,21 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  overflow: auto;
-  overflow-x: hidden;
-  max-height: 70vh;
+  max-height: 70%;
+  overflow-y: scroll;
 }
+
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+/* @supports (scrollbar-gutter: stable) {
+  .side-Bar {
+    overflow-y: auto;
+    scrollbar-gutter: stable;
+  }
+} */
 
 .btn-secondary {
   background-color: #b5d3ff !important;
@@ -56,8 +67,7 @@
 .dropdown-menu-dark {
   color: black !important;
   background-color: #b5d3ff !important;
-  overflow: auto;
-  overflow-x: hidden;
+  overflow-y: auto;
   max-height: 40vh;
 }
 
