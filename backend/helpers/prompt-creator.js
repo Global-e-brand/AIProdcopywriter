@@ -1,7 +1,6 @@
 import { getCategoryData } from "./mongo-db-helpers.js";
 
 const createPrompt = async (req, activeComponents) => {
-  console.log(activeComponents);
   const categoryData = await getCategoryData(req.body.category);
   let inputSection1 = "";
   let inputSection2 = "";

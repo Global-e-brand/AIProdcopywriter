@@ -1,7 +1,5 @@
 import fetch from "node-fetch";
 const getGPTResponse = async (prompt) => {
-  console.log("Prompt: " + prompt);
-
   if (prompt == "") {
     console.log(
       "One or more fields are empty, or that category has not yet been implemented!"
@@ -35,8 +33,6 @@ const getGPTResponse = async (prompt) => {
     requestOptions
   );
   let respond = await data_value.json();
-  console.log(respond);
-
   return respond.choices;
   //   res.send("");
 };

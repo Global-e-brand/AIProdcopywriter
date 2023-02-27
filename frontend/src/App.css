@@ -53,14 +53,17 @@
 .dropdown-menu-dark {
   color: black !important;
   background-color: #b5d3ff !important;
+  overflow: auto;
+  overflow-x: hidden;
+  max-height: 40vh;
 }
 
 a.dropdown-item {
+  margin: 10px;
+  padding: 3px;
   font-size: 18px;
   font-weight: 600;
   box-shadow: 0px 4px 10px rgb(0 0 0 / 50%);
-  margin: 10px;
-  padding: 3px;
   color: black;
 }
 a.dropdown-item:hover {
@@ -68,6 +71,9 @@ a.dropdown-item:hover {
   color: white !important;
 }
 
+#bs-item-override {
+  width: auto;
+}
 .centered {
   display: flex;
   justify-content: center;
@@ -98,6 +104,7 @@ footer {
   align-items: center;
   font-weight: bold;
   font-family: "Manrope";
+  margin-top: 25px;
 }
 
 .infobutton {

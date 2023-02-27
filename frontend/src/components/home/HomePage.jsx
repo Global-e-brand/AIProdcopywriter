@@ -14,7 +14,6 @@ function skip() {
 function HomePage() {
   return (
     <Grid container spacing={2} columns={16}>
-      {console.log("Homepage")}
       <Grid item xs={8}>
         <img
           src={robot}

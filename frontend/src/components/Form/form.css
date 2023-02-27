@@ -18,9 +18,12 @@
 }
 .input_one textarea {
   width: 91%;
-  height: 102px;
+  height: 6.5em;
   border: 2px solid #b5d3ff;
   border-radius: 3px;
+  resize: vertical;
+  min-height: 2em;
+  max-height: 12em;
 }
 
 .input_one textarea:focus-visible {
@@ -44,7 +47,7 @@
 .input_three {
   margin-bottom: 5%;
 }
-.submitButton label {
+.submitButton button {
   font-family: "Manrope";
   font-style: normal;
   font-weight: "Bold";
@@ -79,6 +82,11 @@
   align-items: center;
   justify-content: center;
   text-transform: uppercase;
+  border: none;
+}
+.submitButton button:disabled {
+  filter: opacity(1);
+  filter: grayscale(1);
 }
 
 .main-division {
@@ -114,6 +122,7 @@ label {
   font-weight: 600;
   font-family: Manrope;
   padding: 10px;
+  white-space: pre-wrap;
 }
 
 .cpy-btn {
@@ -130,7 +139,6 @@ label {
 
 .cpy-btn:hover{
   box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
-  background: #154B89;
   border-radius: 5px;
   color: #fff;
   width: 58px;

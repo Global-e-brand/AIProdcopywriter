@@ -37,6 +37,8 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={"E.g. a warm and lightweight fur Winter coat"}
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -51,6 +53,8 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={"E.g. a warm and lightweight fur Winter coat"}
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -65,6 +69,8 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={"E.g. an AI copywriting web app"}
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -79,6 +85,8 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={false}
+                  placeholderOne={"E.g. an AI copywriting web app"}
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -93,6 +101,8 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={"E.g. taking advantage of the Summer weather"}
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -107,6 +117,10 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={
+                    "E.g. taking advantage of the Summer weather by traveling and trying new things"
+                  }
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -121,6 +135,8 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={"E.g. an AI copywriting web app"}
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -135,6 +151,10 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={
+                    "E.g. a new sugar free sports drink that boosts your energy"
+                  }
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -149,6 +169,10 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={
+                    "E.g. a new sugar free sports drink that boosts your energy"
+                  }
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -163,6 +187,8 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={"E.g. an AI copywriting web app"}
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -177,6 +203,10 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={false}
+                  placeholderOne={
+                    "E.g. new homeowners who are on a tight budget"
+                  }
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -191,6 +221,10 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={
+                    "E.g. a high-quality footwear company that creates both durable and performant footwear"
+                  }
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -205,6 +239,10 @@ function App() {
                   inputTwo={true}
                   inputTwoTitle={"Describe your brand"}
                   toneInput={false}
+                  placeholderOne={"E.g. Hype"}
+                  placeholderTwo={
+                    "E.g. a high-quality footwear company that creates both durable and performant footwear"
+                  }
                 />
               }
             />
@@ -219,6 +257,10 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={
+                    "E.g. a new sugar free sports drink that boosts your energy"
+                  }
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -229,10 +271,14 @@ function App() {
                   path={"/valueproposition"}
                   category={"Value Proposition"}
                   inputOne={true}
-                  inputOneTitle={"Describe your business"}
+                  inputOneTitle={"Describe your brand"}
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={
+                    "E.g. a high-quality footwear company that creates both durable and performant footwear"
+                  }
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -243,10 +289,14 @@ function App() {
                   path={"/calltoaction"}
                   category={"Call To Action"}
                   inputOne={true}
-                  inputOneTitle={"Describe your product"}
+                  inputOneTitle={"Describe your product/brand"}
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={
+                    "E.g. we are an online ecommerce store that sells a variety of sports equipment for the lowest prices on the market"
+                  }
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -261,6 +311,10 @@ function App() {
                   inputTwo={true}
                   inputTwoTitle={"Describe your event"}
                   toneInput={true}
+                  placeholderOne={"E.g. a concert"}
+                  placeholderTwo={
+                    "E.g. each year we hold an event called Fusion which brings together top music artists from a variety cultures"
+                  }
                 />
               }
             />
@@ -275,6 +329,10 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={
+                    "E.g. a new sugar free sports drink that boosts your energy"
+                  }
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -285,10 +343,12 @@ function App() {
                   path={"/listicle"}
                   category={"Listicle"}
                   inputOne={true}
-                  inputOneTitle={"What is the list for?"}
+                  inputOneTitle={"What is the list about?"}
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={"E.g. 5 of the best Places to Visit in 2023"}
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -303,6 +363,10 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={
+                    "E.g. a new sugar free sports drink that boosts your energy"
+                  }
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -317,6 +381,10 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={
+                    "E.g. the login section of an ecommerce store"
+                  }
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -331,6 +399,8 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={"E.g. the planets in our solar system"}
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -345,6 +415,10 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={
+                    "E.g. encouraging users to book hotels on my website"
+                  }
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -355,10 +429,14 @@ function App() {
                   path={"/subheader"}
                   category={"Subheader"}
                   inputOne={true}
-                  inputOneTitle={"What is your business?"}
+                  inputOneTitle={"Describe is your business?"}
                   inputTwo={true}
                   inputTwoTitle={"What is the header?"}
                   toneInput={true}
+                  placeholderOne={"E.g. a shoe company called Hype"}
+                  placeholderTwo={
+                    "E.g. It's Finally Here, Hype's Latest Line of Ultra-Performant Sneakers!"
+                  }
                 />
               }
             />
@@ -373,6 +451,10 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={
+                    "E.g. I was blown away by their great service and delicious food!"
+                  }
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -389,6 +471,10 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={
+                    "E.g. We may never find out what the dinosaurs really looked like"
+                  }
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -403,6 +489,8 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={"E.g. the history behind cultural dishes"}
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -417,6 +505,10 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={
+                    "E.g.\nApple IOS versus Android\nThe benefits and drawbacks of each\nWe will compare the two operating systems"
+                  }
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -431,6 +523,12 @@ function App() {
                   inputTwo={true}
                   inputTwoTitle={"What is your blog about?"}
                   toneInput={true}
+                  placeholderOne={
+                    "E.g. An In-depth Look At Each of the Planets of Our Solar System"
+                  }
+                  placeholderTwo={
+                    "E.g. describing interesting facts and properties our each planet in the solar system"
+                  }
                 />
               }
             />
@@ -444,7 +542,11 @@ function App() {
                   inputOneTitle={"Describe your blog topic"}
                   inputTwo={false}
                   inputTwoTitle={""}
-                  toneInput={true}
+                  toneInput={false}
+                  placeholderOne={
+                    "E.g. the interesting facts and properties our each planet in the solar system"
+                  }
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -459,6 +561,10 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={
+                    "E.g. the interesting facts and properties our each planet in the solar system"
+                  }
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -473,6 +579,10 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={
+                    "E.g.\nAutomatically writing content\n50+ content generation features"
+                  }
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -486,7 +596,11 @@ function App() {
                   inputOneTitle={"What topics are you posting about?"}
                   inputTwo={false}
                   inputTwoTitle={""}
-                  toneInput={true}
+                  toneInput={false}
+                  placeholderOne={
+                    "E.g. AI content generation that produces high quality results in seconds"
+                  }
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -501,6 +615,10 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={
+                    "E.g. a customer cancelling their order from our online store"
+                  }
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -515,6 +633,10 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={
+                    "E.g. a new sugar free sports drink that boosts your energy"
+                  }
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -529,6 +651,10 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={
+                    "E.g. a customer creating an account with our web app with their email"
+                  }
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -543,6 +669,10 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={
+                    "E.g. a great interview for the content writer position at Blog Inc."
+                  }
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -557,6 +687,10 @@ function App() {
                   inputTwo={true}
                   inputTwoTitle={"What would you like to thank them for?"}
                   toneInput={true}
+                  placeholderOne={"E.g. Jimmy"}
+                  placeholderTwo={
+                    "E.g. being a great friend for the past 20 years"
+                  }
                 />
               }
             />
@@ -571,6 +705,8 @@ function App() {
                   inputTwo={true}
                   inputTwoTitle={"What is the email for"}
                   toneInput={true}
+                  placeholderOne={"E.g. our customers"}
+                  placeholderTwo={"E.g. signing up for our food newsletter"}
                 />
               }
             />
@@ -585,6 +721,10 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={
+                    "E.g.\ngoing to the beach\nspending time with loved ones\nsurfing the ocean waves"
+                  }
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -599,6 +739,8 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={`E.g. In today's industry, content is key. Not only does it need to be high quality, but it also needs to be created in a timely manner. If you own or manage a business that publishes content, then you know just how important this is. Unfortunately, many businesses struggle with generating content on a consistent basis.`}
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -613,6 +755,10 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={
+                    "E.g. the grand opening of our highly anticipated modern restaurant"
+                  }
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -627,6 +773,10 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={
+                    "E.g. the grand opening of our highly anticipated modern restaurant"
+                  }
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -640,7 +790,11 @@ function App() {
                   inputOneTitle={"Describe your topic"}
                   inputTwo={false}
                   inputTwoTitle={""}
-                  toneInput={true}
+                  toneInput={false}
+                  placeholderOne={
+                    "E.g. the grand opening of our highly anticipated modern restaurant"
+                  }
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -655,6 +809,10 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={
+                    "E.g. the grand opening of our highly anticipated modern restaurant"
+                  }
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -665,10 +823,14 @@ function App() {
                   path={"/instagram-caption"}
                   category={"Instagram Caption"}
                   inputOne={true}
-                  inputOneTitle={"Describe the topic?"}
+                  inputOneTitle={"Describe the topic"}
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={
+                    "E.g. the grand opening of our highly anticipated modern restaurant"
+                  }
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -683,6 +845,10 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={
+                    "E.g. an automatic cleaning robot that is rechargeable and user-friendly"
+                  }
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -697,6 +863,10 @@ function App() {
                   inputTwo={true}
                   inputTwoTitle={"What is your brand/product?"}
                   toneInput={true}
+                  placeholderOne={
+                    "E.g. an automatic cleaning robot that is rechargeable and user-friendly"
+                  }
+                  placeholderTwo={"E.g. CleanBot"}
                 />
               }
             />
@@ -711,6 +881,10 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={
+                    "E.g. starting a small business with no funding"
+                  }
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -725,6 +899,10 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={
+                    "E.g. the grand opening of our highly anticipated modern restaurant"
+                  }
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -739,6 +917,8 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={"E.g. the history behind cultural dishes"}
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -753,6 +933,10 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={
+                    "E.g. an introduction video about our sports equipment ecommerce site and the team behind it all"
+                  }
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -767,6 +951,10 @@ function App() {
                   inputTwo={true}
                   inputTwoTitle={"What is your video about?"}
                   toneInput={true}
+                  placeholderOne={"E.g. Meet the Team Behind Track"}
+                  placeholderTwo={
+                    "E.g. an introduction video about our sports equipment ecommerce site and the team behind it all"
+                  }
                 />
               }
             />
@@ -780,7 +968,11 @@ function App() {
                   inputOneTitle={"What is your video about?"}
                   inputTwo={false}
                   inputTwoTitle={""}
-                  toneInput={true}
+                  toneInput={false}
+                  placeholderOne={
+                    "E.g. an introduction video about our sports equipment ecommerce site and the team behind it all"
+                  }
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -795,6 +987,8 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={"E.g. Funny"}
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -809,6 +1003,8 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={"E.g. oceans and deserts"}
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -823,6 +1019,10 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={
+                    "E.g.\n- Health benefits of healthy eating\n- Fruit like strawberries, blueberries, and kiwi's are healthy\n- Recipes are provided in the blog"
+                  }
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -837,6 +1037,10 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={
+                    "E.g. It was night, and the children huddled closely around the brightly burning campfire--telling horror stories"
+                  }
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -851,6 +1055,10 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={
+                    "E.g. the revolutionary impacts that AI copywriters could have on the marketing industry"
+                  }
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -865,6 +1073,12 @@ function App() {
                   inputTwo={true}
                   inputTwoTitle={"What should the essay cover?"}
                   toneInput={true}
+                  placeholderOne={
+                    "E.g. how AI copywriters could increase productivity"
+                  }
+                  placeholderTwo={
+                    "E.g.\ntime spent generating content and the cost associated with it\nThe amount of struggling that manually creating content requires\nWhat AI copywriters can do"
+                  }
                 />
               }
             />
@@ -879,6 +1093,10 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={
+                    "E.g. Nick was an ordinary boy living an ordinary life until he began unlocking his superhuman abilities"
+                  }
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -893,6 +1111,10 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={
+                    "E.g. Nick was an ordinary boy living an ordinary life until he began unlocking his superhuman abilities"
+                  }
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -907,6 +1129,10 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={
+                    "E.g. My first trip abroad will always be remembered by me"
+                  }
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -921,6 +1147,10 @@ function App() {
                   inputTwo={true}
                   inputTwoTitle={"Who is the information source?"}
                   toneInput={true}
+                  placeholderOne={
+                    "E.g. The grand opening of the first 100% plant-based bakery in town"
+                  }
+                  placeholderTwo={"E.g. Jim's Bakery"}
                 />
               }
             />
@@ -935,6 +1165,10 @@ function App() {
                   inputTwo={true}
                   inputTwoTitle={"Text to rewrite"}
                   toneInput={true}
+                  placeholderOne={"E.g. Fun, cold, with family"}
+                  placeholderTwo={
+                    "E.g. My journey to Canada was filled will delicious food and beautiful scenery"
+                  }
                 />
               }
             />
@@ -949,6 +1183,10 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={
+                    "E.g. My journey to Canada was filled will delicious food and beautiful scenery"
+                  }
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -963,6 +1201,10 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={
+                    "E.g. All the faith he had had had had no effect on the outcome of his life"
+                  }
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -977,6 +1219,10 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={
+                    "E.g. My journey to Canada was filled will delicious food and beautiful scenery"
+                  }
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -991,6 +1237,8 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={"E.g. The arrival of the King in town"}
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -1005,6 +1253,8 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={"E.g. run"}
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -1019,6 +1269,10 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={
+                    "E.g. My pool company's social media presence on Twitter, Instagram, and YouTube."
+                  }
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -1029,10 +1283,12 @@ function App() {
                   path={"/namegenerator"}
                   category={"Name Generator"}
                   inputOne={true}
-                  inputOneTitle={"What is the name for?"}
+                  inputOneTitle={"What product/brand is the name for?"}
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={false}
+                  placeholderOne={"E.g. a sports equipment ecommerce website"}
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -1047,6 +1303,10 @@ function App() {
                   inputTwo={true}
                   inputTwoTitle={"What is the brand/product"}
                   toneInput={true}
+                  placeholderOne={
+                    "E.g. the app allows users to choose from over 50 features, and based on the category, it will generate high-quality content to fit the user's needs"
+                  }
+                  placeholderTwo={"E.g. an AI copywriting web app"}
                 />
               }
             />
@@ -1061,6 +1321,8 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={"E.g. the history behind cultural dishes"}
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -1073,8 +1335,12 @@ function App() {
                   inputOne={true}
                   inputOneTitle={"Describe your topic?"}
                   inputTwo={true}
-                  inputTwoTitle={"Who is the idea for?"}
+                  inputTwoTitle={"What brand/company is the idea for?"}
                   toneInput={true}
+                  placeholderOne={
+                    "E.g. showcasing our new water filtration device that can be easily used anywhere in the world"
+                  }
+                  placeholderTwo={"E.g. Filtry"}
                 />
               }
             />
@@ -1089,6 +1355,8 @@ function App() {
                   inputTwo={true}
                   inputTwoTitle={"What is the card for?"}
                   toneInput={true}
+                  placeholderOne={"E.g. my sister"}
+                  placeholderTwo={"E.g. her 25th birthday"}
                 />
               }
             />
@@ -1103,6 +1371,10 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={
+                    "E.g. I'm an aspiring freelance graphic design artist that specializes in taking normal everyday photos and turning them into something magical. It have socials on Twitter (@JannySprings) and on Instagram (@JannySprings)"
+                  }
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -1117,6 +1389,10 @@ function App() {
                   inputTwo={true}
                   inputTwoTitle={"List your experience"}
                   toneInput={true}
+                  placeholderOne={"E.g. a line cook at The Keg Bar & Grill"}
+                  placeholderTwo={
+                    "E.g.\n- I have 5 years of experience cooking in the restaurant industry\n- I'm great at working under pressure\n- I was deemed employee of the month for a straight year at my last employment"
+                  }
                 />
               }
             />
@@ -1131,6 +1407,8 @@ function App() {
                   inputTwo={true}
                   inputTwoTitle={"What is the occasion?"}
                   toneInput={true}
+                  placeholderOne={"E.g. my husband"}
+                  placeholderTwo={"E.g. staying with me for 5 years"}
                 />
               }
             />
@@ -1145,6 +1423,10 @@ function App() {
                   inputTwo={true}
                   inputTwoTitle={"What is the role?"}
                   toneInput={true}
+                  placeholderOne={
+                    "E.g. developed several fully-functional web applications that brought in a lot of money"
+                  }
+                  placeholderTwo={"E.g. web developer"}
                 />
               }
             />
@@ -1159,6 +1441,8 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={"E.g. Aliens"}
+                  placeholderTwo={"E.g. "}
                 />
               }
             />
@@ -1172,6 +1456,10 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={
+                    "E.g. a new sugar free sports drink that boosts your energy"
+                  }
+                  placeholderTwo={"E.g. "}
                   path={"/aida"}
                 />
               }
@@ -1186,6 +1474,10 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={
+                    "E.g. a new sugar free sports drink that boosts your energy"
+                  }
+                  placeholderTwo={"E.g. "}
                   path={"/bab"}
                 />
               }
@@ -1200,6 +1492,10 @@ function App() {
                   inputTwo={true}
                   inputTwoTitle={"List your features"}
                   toneInput={true}
+                  placeholderOne={"E.g. a sports drink"}
+                  placeholderTwo={
+                    "E.g.\nSugar free\nWill boost your energy levels\nComes in a variety of flavours"
+                  }
                   path={"/features-to-benefits"}
                 />
               }
@@ -1214,6 +1510,10 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={
+                    "E.g. a new sugar free sports drink that boosts your energy"
+                  }
+                  placeholderTwo={"E.g. "}
                   path={"/fab"}
                 />
               }
@@ -1228,6 +1528,10 @@ function App() {
                   inputTwo={true}
                   inputTwoTitle={"What is your product/brand name?"}
                   toneInput={true}
+                  placeholderOne={
+                    "E.g. a new sugar free sports drink that boosts your energy"
+                  }
+                  placeholderTwo={"E.g. Natural Energy"}
                   path={"/marketing-angles"}
                 />
               }
@@ -1242,6 +1546,10 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={
+                    "E.g. a new sugar free sports drink that boosts your energy"
+                  }
+                  placeholderTwo={"E.g. "}
                   path={"/pas"}
                 />
               }
@@ -1256,6 +1564,10 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={
+                    "E.g. a new sugar free sports drink that boosts your energy"
+                  }
+                  placeholderTwo={"E.g. "}
                   path={"/pppp"}
                 />
               }
@@ -1270,6 +1582,10 @@ function App() {
                   inputTwo={false}
                   inputTwoTitle={""}
                   toneInput={true}
+                  placeholderOne={
+                    "E.g. a new sugar free sports drink that boosts your energy"
+                  }
+                  placeholderTwo={"E.g. "}
                   path={"/quest-copywriting"}
                 />
               }

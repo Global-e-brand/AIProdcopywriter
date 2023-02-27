@@ -15,8 +15,7 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 function SidebarMenu() {
   return (
     <div className="side-Bar">
-      <a href="/" className="home-btn"> <Button   className="home-btn"> Home</Button></a> 
-       
+      <a href="/" className="home-btn"> <Button   className="home-btn"> Home</Button></a>       
 
       {catagoryList.map((cat, i) => {
         return (
@@ -36,7 +35,9 @@ function SidebarMenu() {
             <Dropdown.Menu variant="dark">
               {cat.childcategory.map((menu) => {
                 return (
-                  <Dropdown.Item href={menu.url}>{menu.name}</Dropdown.Item>
+                  <Dropdown.Item id={"bs-item-override"} href={menu.url}>
+                    {menu.name}
+                  </Dropdown.Item>
                 );
               })}
             </Dropdown.Menu>

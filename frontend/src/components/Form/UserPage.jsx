@@ -26,12 +26,14 @@ function Dummy(props) {
   }
 
   function copyToAllClipboard(data) {
-    let clipboardData = [];
+    let clipboardData = "";
     data.map((item, i) => {
       i = i + 1;
-      clipboardData.push(`Description - ` + i + item.text + `\n\n`);
+      clipboardData += `Result #` + i + ":\n" + item.text.trim() + `\n\n`;
     });
-    navigator.clipboard.writeText(clipboardData);
+
+    // clipboardData.
+    navigator.clipboard.writeText(clipboardData.trim());
     setAllCopied(true);
     const timer = setTimeout(() => {
       setAllCopied(false);
@@ -146,7 +148,7 @@ function Dummy(props) {
                   <textarea
                     value={inputOne}
                     onChange={(e) => setInputOne(e.target.value)}
-                    placeholder=""
+                  placeholder={props.placeholderOne}
                   />
                   {/* {console.log(inputOne, inputTwo, tone)} */}
                 </div>
@@ -159,7 +161,7 @@ function Dummy(props) {
                     <textarea
                       value={inputTwo}
                       onChange={(e) => setInputTwo(e.target.value)}
-                      placeholder=""
+                    placeholder={props.placeholderTwo}
                     />
                   </div>
                 ) : (
@@ -167,9 +169,13 @@ function Dummy(props) {
                 )}
 
                 <div className="submitButton">
-                  <label onClick={() => handleSubmit(path)} variant="contained">
+                <button
+                  onClick={() => handleSubmit(path)}
+                  disabled={loading}
+                  variant="contained"
+                >
                     Submit
-                  </label>
+                </button>
                 </div>
               </div>
             </form>
@@ -233,7 +239,7 @@ function Dummy(props) {
                               </Grid>
 
                               <div className="ot-bd" ref={textAreaRef}>
-                                {item.text}
+                              {item.text.trim()}
                               </div>
                             </div>
                           </>
