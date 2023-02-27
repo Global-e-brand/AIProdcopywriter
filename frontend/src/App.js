@@ -1032,7 +1032,7 @@ function App() {
                   inputOneTitle={"What is the name for?"}
                   inputTwo={false}
                   inputTwoTitle={""}
-                  toneInput={true}
+                  toneInput={false}
                 />
               }
             />

@@ -4,7 +4,7 @@ import { Grid, Button } from "@mui/material";
 import Loader from "../loader/loader";
 
 function Dummy(props) {
-  const [tone, setTone] = useState("Friendly");
+  const [tone, setTone] = useState("Neutral");
   const [inputOne, setInputOne] = useState("");
   const [inputTwo, setInputTwo] = useState("");
   const [data, setData] = useState();
@@ -17,7 +17,7 @@ function Dummy(props) {
 
   function copyToClipboard(item, i) {
     i = i + 1;
-    navigator.clipboard.writeText(`Description - ` + i + item.text);
+    navigator.clipboard.writeText(item.text);
     setCopied(i);
     const timer = setTimeout(() => {
       setCopied(false);
