@@ -7,6 +7,7 @@ import ClassIcon from "@mui/icons-material/Class";
 import { Routes, Route, Link } from "react-router-dom";
 import "./App.css";
 import catagoryList from "./components/json/category-list.json";
+import { arrow } from "./assets";
 
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
@@ -14,7 +15,10 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 function SidebarMenu() {
   return (
     <div className="side-Bar">
-      <a href="/home" className="home-btn"> <Button   className="home-btn"> Home</Button>    </a> 
+      <a href="/home" className="home-btn">
+        {" "}
+        <Button className="home-btn"> Home</Button>{" "}
+      </a>
 
       {catagoryList.map((cat, i) => {
         return (
@@ -24,14 +28,17 @@ function SidebarMenu() {
               variant="secondary"
             >
               {cat.parentcategory}
+              <img
+                src={arrow}
+                id={`dropdown-button-dark-example-${i}`}
+                className="arrow-img"
+              />
             </Dropdown.Toggle>
 
             <Dropdown.Menu variant="dark">
               {cat.childcategory.map((menu) => {
                 return (
-                  <Dropdown.Item href={menu.url}>
-                    {menu.name}
-                  </Dropdown.Item>
+                  <Dropdown.Item href={menu.url}>{menu.name}</Dropdown.Item>
                 );
               })}
             </Dropdown.Menu>

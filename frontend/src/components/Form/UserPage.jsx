@@ -4,7 +4,7 @@ import { Grid, Button } from "@mui/material";
 import Loader from "../loader/loader";
 
 function Dummy(props) {
-  const [tone, setTone] = useState("Friendly");
+  const [tone, setTone] = useState("Neutral");
   const [inputOne, setInputOne] = useState("");
   const [inputTwo, setInputTwo] = useState("");
   const [data, setData] = useState();
@@ -14,7 +14,7 @@ function Dummy(props) {
 
   function copyToClipboard(item, i) {
     i = i + 1;
-    navigator.clipboard.writeText(`Description - ` + i + item.text);
+    navigator.clipboard.writeText(item.text);
   }
 
   function copyToAllClipboard(data) {
@@ -170,39 +170,44 @@ function Dummy(props) {
             <>
               {data != undefined ? (
                 <>
-                 <button className="cpyall-btn" onClick={() => copyToAllClipboard(data)}> Copy All</button>
-                <div className="output-container">
-                 
-                  {data.map((item, i) => {
-                    return (
-                      <>
-                        <div className="output-layout">
-                          <Grid container>
-                            <Grid item xs={10} md={10}>
-                              <div className="ot-hd">
-                                <div>Description {i + 1}</div>
-                              </div>
+                  <button
+                    className="cpyall-btn"
+                    onClick={() => copyToAllClipboard(data)}
+                  >
+                    {" "}
+                    Copy All
+                  </button>
+                  <div className="output-container">
+                    {data.map((item, i) => {
+                      return (
+                        <>
+                          <div className="output-layout">
+                            <Grid container>
+                              <Grid item xs={10} md={10}>
+                                <div className="ot-hd">
+                                  <div>Description {i + 1}</div>
+                                </div>
+                              </Grid>
+                              <Grid item xs={2} md={2}>
+                                <div>
+                                  <button
+                                    className="cpy-btn"
+                                    onClick={() => copyToClipboard(item, i)}
+                                  >
+                                    Copy
+                                  </button>
+                                </div>
+                              </Grid>
                             </Grid>
-                            <Grid item xs={2} md={2}>
-                              <div>
-                                <button
-                                  className="cpy-btn"
-                                  onClick={() => copyToClipboard(item, i)}
-                                >
-                                  Copy
-                                </button>
-                              </div>
-                            </Grid>
-                          </Grid>
 
-                          <div className="ot-bd" ref={textAreaRef}>
-                            {item.text}
+                            <div className="ot-bd" ref={textAreaRef}>
+                              {item.text}
+                            </div>
                           </div>
-                        </div>
-                      </>
-                    );
-                  })}
-                </div>
+                        </>
+                      );
+                    })}
+                  </div>
                 </>
               ) : (
                 <>

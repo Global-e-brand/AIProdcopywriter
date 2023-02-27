@@ -23,7 +23,7 @@ function App() {
 
         <Grid item xs={9} md={9}>
           <Routes>
-            <Route exact path="/home" element={<HomePage/>} />
+            <Route exact path="/home" element={<HomePage />} />
             <Route
               path="/productdescription"
               element={
@@ -1030,7 +1030,7 @@ function App() {
                   inputOneTitle={"What is the name for?"}
                   inputTwo={false}
                   inputTwoTitle={""}
-                  toneInput={true}
+                  toneInput={false}
                 />
               }
             />
@@ -1276,8 +1276,6 @@ function App() {
           <Footer />
         </Grid>
       </Grid>
-
-     
     </div>
   );
 }

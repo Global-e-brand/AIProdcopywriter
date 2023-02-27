@@ -3,7 +3,7 @@
 }
 
 .logo-panel {
-  background-image: url("../src/assets/images/Sidebar-bg.png");  
+  background-image: url("../src/assets/images/Sidebar-bg.png");
   height: 100vh;
   border-right: 1px solid #e0e4ec;
   box-shadow: 3px 5px 14px 0px;
@@ -25,7 +25,7 @@
 .category-title {
   display: flex;
   margin-bottom: 15px;
-  background: #B5D3FF;
+  background: #b5d3ff;
   color: #2e72d2;
   align-items: center;
   flex-direction: column;
@@ -37,23 +37,22 @@
   flex-direction: column;
 }
 
-.btn-secondary{
-  background-color: #B5D3FF !important;
+.btn-secondary {
+  background-color: #b5d3ff !important;
   color: black !important;
   font-size: 18px !important;
   font-weight: 600 !important;
   margin: 5px;
 }
 
-.btn-secondary:hover{
-  background-color: #154B89  !important;
+.btn-secondary:hover {
+  background-color: #154b89 !important;
   color: white !important;
 }
 
 .dropdown-menu-dark {
   color: black !important;
-  background-color: #B5D3FF !important;
-  
+  background-color: #b5d3ff !important;
 }
 
 a.dropdown-item {
@@ -63,39 +62,34 @@ a.dropdown-item {
   margin: 10px;
   padding: 3px;
   color: black;
-  
 }
-a.dropdown-item:hover{
-  background-color: #154B89 ;
+a.dropdown-item:hover {
+  background-color: #154b89;
   color: white !important;
 }
 
-
-.centered{
+.centered {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-
-.splitScreen{
-  display: 'flex';
-  flex-direction: 'row';
+.splitScreen {
+  display: "flex";
+  flex-direction: "row";
 }
 
-
-.topPane{
-  width: '50%';
+.topPane {
+  width: "50%";
 }
 
 .bottomPane {
-  width: '50%';
+  width: "50%";
 }
 
-
 footer {
-  position: relative;
-  background-color: #B5D3FF;
+  position: absolute;
+  background-color: #b5d3ff;
   bottom: 0;
   left: 0;
   right: 0;
@@ -104,9 +98,7 @@ footer {
   align-items: center;
   font-weight: bold;
   font-family: "Manrope";
-  margin-top: 25px;
 }
-
 
 .infobutton {
   position: absolute;
@@ -115,13 +107,12 @@ footer {
   color: #ffffff;
   font-weight: bold;
   font-size: 24px;
-  background: #2C5D95;
-  border: 7px solid #2C5D95;
+  background: #2c5d95;
+  border: 7px solid #2c5d95;
   border-radius: 7px;
   cursor: pointer;
   margin-left: -1.5%;
 }
-
 
 .infobutton:hover {
   position: absolute;
@@ -130,23 +121,22 @@ footer {
   color: #ffffff;
   font-weight: bold;
   font-size: 24px;
-  background: #154B89;
-  border: 7px solid #154B89;
+  background: #154b89;
+  border: 7px solid #154b89;
   border-radius: 7px;
   cursor: pointer;
   margin-left: -1.5%;
 }
 
-
 .skipbutton {
   position: absolute;
   width: 229px;
   height: 50px;
-  color: #154B89;
+  color: #154b89;
   font-weight: bold;
   font-size: 24px;
   background: #ffffff;
-  border: 7px solid #154B89;
+  border: 7px solid #154b89;
   border-radius: 7px;
   cursor: pointer;
 }
@@ -158,12 +148,11 @@ footer {
   color: #ffffff;
   font-weight: bold;
   font-size: 24px;
-  background: #154B89;
-  border: 7px solid #154B89;
+  background: #154b89;
+  border: 7px solid #154b89;
   border-radius: 7px;
   cursor: pointer;
 }
-
 
 /*
 style={{ position: "absolute", width: "229px", height: "45px", color: "#154B89", fontWeight: "bold", fontSize: "24px", border: "7px solid #154B89"}}
@@ -228,6 +217,3 @@ style={{ position: "absolute", width: "229px", height: "45px", backgroundColor: 
   background-color: rgba(21, 75, 137, 0.9);
   border-radius: 7px;
 }*/
-
-
-
