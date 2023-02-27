@@ -1,5 +1,5 @@
 import { Grid } from "@mui/material";
-import { logo } from "./assets";
+import { footerlogo } from "./assets";
 
 
 const Footer = () => {
@@ -17,17 +17,17 @@ const Footer = () => {
 
                     <Grid item xs={4} >
                         <img
-                            src={logo}
+                            src={footerlogo}
                             alt="AI ProdCopywriter logo"
                         />
                     </Grid>
 
                     <Grid item xs={3}>
-                        {`(*Contact Detail*)`}
+                        {/* {`(*Contact Detail*)`} */}
                     </Grid>
 
                     <Grid item xs={3}>
-                        {`(****Email Address****)`}
+                        {`support@smartecomtech.com`}
                     </Grid>
                 </Grid>
             </footer>;

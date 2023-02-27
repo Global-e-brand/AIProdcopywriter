@@ -2,7 +2,6 @@
 import Grid from "@mui/material/Grid";
 import { fulllogo, sidebckgnd } from "../../assets";
 import { robot } from "../../assets";
-import Footer from "../../Footer";
 
 
 function instructions() {
@@ -82,9 +81,10 @@ function HomePage() {
     </Grid>
 
     <Grid item xs={6}>
-      <button onClick={skip} className="skipbutton">
+    <a href="/productdescription">
+      <button  className="skipbutton" >
         Skip
-      </button>
+      </button></a>
     </Grid>
   </Grid>
 </Grid>

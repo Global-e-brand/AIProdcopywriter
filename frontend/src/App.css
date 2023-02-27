@@ -118,7 +118,7 @@ footer {
   background: #2C5D95;
   border: 7px solid #2C5D95;
   border-radius: 7px;
-  cursor: pointer;
+  /* cursor: pointer; */
   margin-left: -1.5%;
 }
 
@@ -133,7 +133,7 @@ footer {
   background: #154B89;
   border: 7px solid #154B89;
   border-radius: 7px;
-  cursor: pointer;
+  /* cursor: pointer; */
   margin-left: -1.5%;
 }
 
@@ -148,7 +148,7 @@ footer {
   background: #ffffff;
   border: 7px solid #154B89;
   border-radius: 7px;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .skipbutton:hover {
@@ -161,7 +161,7 @@ footer {
   background: #154B89;
   border: 7px solid #154B89;
   border-radius: 7px;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 

@@ -1,11 +1,13 @@
+import { useEffect } from "react";
 import "./App.css";
 import Grid from "@mui/material/Grid";
 import HeaderLogo from "./HeaderLogo";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route,redirect } from "react-router-dom";
 import SidebarMenu from "./SidebarMenu";
-import Footer from "./Footer";
 import UserPage from "./components/Form/UserPage";
 import HomePage from "./components/home/HomePage";
+
+
 
 function App() {
   return (
@@ -22,8 +24,8 @@ function App() {
         </Grid>
 
         <Grid item xs={9} md={9}>
-          <Routes>
-            <Route exact path="/home" element={<HomePage/>} />
+          <Routes>           
+            <Route path="/" element={<HomePage />} />
             <Route
               path="/productdescription"
               element={
@@ -1273,11 +1275,8 @@ function App() {
               }
             />
           </Routes>
-          <Footer />
         </Grid>
       </Grid>
-
-     
     </div>
   );
 }

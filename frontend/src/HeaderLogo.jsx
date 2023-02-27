@@ -8,7 +8,7 @@ import "./HeaderLogo.css";
 
 function HeaderLogo() {
   return (
-      <div
+      <div 
         style={{
           display: "flex",
           justifyContent: "space-evenly",
@@ -18,7 +18,7 @@ function HeaderLogo() {
           src={logo}
           style={{ width: "15%", height: "30%", marginTop: "2%" }}
         />
-        <h2>AI ProdCopywriter</h2>
+        <h2 className="lg-title">AI ProdCopywriter</h2>
       </div>
     
   );

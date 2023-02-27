@@ -424,7 +424,8 @@ apirouter.post("/productdescription", bodyParser.json(), async (req, res) => {
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
-  const response = await getGPTResponse(prompt);
+  
+  const response = await getGPTResponse(prompt,res);
   res.send(response);
 });
 
