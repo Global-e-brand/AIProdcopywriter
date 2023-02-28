@@ -3,8 +3,8 @@
 }
 
 .logo-panel {
+  position: relative;
   background-image: url("../src/assets/images/Sidebar-bg.png");
-  height: 100vh;
   border-right: 1px solid #e0e4ec;
   box-shadow: 3px 5px 14px 0px;
 }
@@ -27,12 +27,6 @@
   margin-bottom: 15px;
   background: #b5d3ff;
   color: #2e72d2;
-  align-items: center;
-  flex-direction: column;
-}
-
-.side-Bar {
-  display: flex;
   align-items: center;
   flex-direction: column;
 }
@@ -94,7 +88,7 @@ a.dropdown-item:hover {
 }
 
 footer {
-  position: absolute;
+  /* position: absolute; */
   background-color: #b5d3ff;
   bottom: 0;
   left: 0;

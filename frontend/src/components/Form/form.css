@@ -218,12 +218,15 @@ margin-top: 16px;
 }
 
 .home-btn {
-  border-radius: 8px;
+  text-align: center;
   text-decoration: none;
-  border: 2px solid #b5d3ff;
+  border: 0.000005rem solid #000;
+  border-radius: 8px;
   background: #b5d3ff;
-  color: black;
-  font-weight: 600;
+  color: #000 !important;
+  font-weight: 600 !important;
+  margin: 5px;
+  padding: 8px;
 }
 
 .home-btn:hover {
@@ -231,7 +234,7 @@ margin-top: 16px;
   text-decoration: none;
   border: 2px solid #b5d3ff;
   background: #154b89;
-  color: #fff;
+  color: #fff !important;
   font-weight: 600;
 }
 
@@ -248,10 +251,16 @@ margin-top: 16px;
 strong {
   color: black;
 }
-
-.btn {
-  width: 330px !important;
+.side-Bar {
+  display: flex;
+  padding: 20px;
+  flex-direction: column;
 }
+
+.side-Bar .dropdown {
+  display: contents;
+}
+
 .dropdown-menu.show {
   display: block;
   width: 100%;

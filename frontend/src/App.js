@@ -15,10 +15,7 @@ function App() {
       <Grid container>
         <Grid item xs={3} md={3}>
           <div className="logo-panel">
-            <br></br>
             <HeaderLogo />
-            <br></br>
-            <br></br>
             <SidebarMenu />
           </div>
         </Grid>
