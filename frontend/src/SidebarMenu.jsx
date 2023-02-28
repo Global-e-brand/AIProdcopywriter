@@ -18,7 +18,7 @@ function SidebarMenu() {
     <div className="side-Bar">
       <a href="/" className="home-btn">
         {" "}
-        <Button className="home-btn"> Home</Button>
+        Home
       </a>
 
       {catagoryList.map((cat, i) => {
