@@ -27,7 +27,7 @@
 .category-title {
   display: flex;
   margin-bottom: 15px;
-  background: #b5d3ff;
+  background: rgba(181, 211, 255, 0.9);
   color: #2e72d2;
   align-items: center;
   flex-direction: column;
@@ -73,6 +73,7 @@ div.card-body {
   border-bottom-right-radius: 5px;
   margin-bottom: 10px;
   animation: background-fade 0.7s ease forwards;
+  margin-top: 0 !important;
 }
 
 button.accordion-button {
@@ -82,6 +83,7 @@ button.accordion-button {
   font-weight: 600 !important;
   height: 2em !important;
   width: 330px !important;
+  margin-bottom: 0 !important;
 }
 
 button.accordion-button:focus {
@@ -96,12 +98,12 @@ button.accordion-button::after {
 }
 
 button.accordion-button:not(.collapsed) {
-  background-color: #98c0fc !important;
+  background-color: rgba(140, 185, 251, 0.9) !important;
 }
 
 button.accordion-button.collapsed {
   margin-top: 10px;
-  background-color: #b5d3ff !important;
+  background-color: rgba(181, 211, 255, 0.9) !important;
   color: black !important;
   font-size: 18px !important;
   font-weight: 600 !important;
@@ -118,7 +120,7 @@ button.accordion-button.collapsed::after {
 
 button.accordion-button:hover {
   color: black !important;
-  /* background-color: #98c0fc !important; */
+  /* background-color: rgba(140, 185, 251, 0.9) !important; */
 }
 
 div.accordion-collapse {
@@ -126,7 +128,7 @@ div.accordion-collapse {
 }
 
 #bs-item-override {
-  background-color: #b5d3ff;
+  background-color: rgba(181, 211, 255, 0.9);
   text-align: center;
   margin: 10px 0 10px 0;
   padding: 3px;
@@ -145,10 +147,10 @@ div.accordion-collapse {
 
 @keyframes background-fade {
   0% {
-    background-color: #b5d3ff;
+    background-color: rgba(181, 211, 255, 0.9);
   }
   100% {
-    background-color: #98c0fc;
+    background-color: rgba(140, 185, 251, 0.9);
   }
 }
 
@@ -181,7 +183,7 @@ div.accordion-collapse {
 }
 
 footer {
-  background-color: #b5d3ff;
+  background-color: rgba(181, 211, 255, 0.9);
   bottom: 0;
   left: 0;
   right: 0;
