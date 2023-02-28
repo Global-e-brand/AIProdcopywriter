@@ -3,16 +3,25 @@ import Grid from "@mui/material/Grid";
 import { fulllogo, sidebckgnd } from "../../assets";
 import { robot } from "../../assets";
 import Footer from "../../Footer";
-
-function instructions() {
-  alert("You clicked Instructions!");
-}
-
-function skip() {
-  alert("You clicked Skip!");
-}
+import InstructionModal from "../instructions/InstructionModal";
+import { useState } from "react";
 
 function HomePage() {
+  const [Zvalue, setZvalue] = useState("1");
+  const [showModel, setShowModel] = useState(false);
+  const closeModal = () => {
+    setZvalue("1");
+    setShowModel(false);
+  };
+
+  function instructions() {
+    setShowModel(true);
+    setZvalue("-1");
+  }
+
+  function skip() {
+    alert("You clicked Skip!");
+  }
   return (
     <Grid container spacing={2} columns={16}>
       {console.log("Homepage")}
@@ -76,13 +85,18 @@ function HomePage() {
 
         <Grid container spacing={4} columns={16}>
           <Grid item xs={6}>
-            <button onClick={instructions} className="infobutton">
+            <button onClick={() => instructions()} className="infobutton">
               Instructions
             </button>
+            {showModel && <InstructionModal closeModal={closeModal} />}
           </Grid>
 
           <Grid item xs={6}>
-            <button onClick={skip} className="skipbutton">
+            <button
+              style={{ position: "relative", zIndex: Zvalue }}
+              onClick={skip}
+              className="skipbutton"
+            >
               Skip
             </button>
           </Grid>
