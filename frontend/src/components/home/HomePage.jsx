@@ -90,13 +90,7 @@ function HomePage() {
           </Grid>
 
           <Grid item xs={6}>
-    <a href="/productdescription">
-      <button  className="skipbutton" >
-              onClick={skip}
-              className="skipbutton"
-            >
-              Skip
-      </button></a>
+    <a href="/productdescription"><button  className="skipbutton" style={{zIndex:Zvalue}}>Skip</button></a>
           </Grid>
         </Grid>
       </Grid>
