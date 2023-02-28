@@ -5,6 +5,8 @@
 .logo-panel {
   position: relative;
   background-image: url("../src/assets/images/Sidebar-bg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
   border-right: 1px solid #e0e4ec;
   box-shadow: 3px 5px 14px 0px;
 }
@@ -35,7 +37,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  max-height: 70%;
+  max-height: 80vh;
   overflow-y: scroll;
 }
 
@@ -51,35 +53,76 @@
   }
 } */
 
-button.accordion-button.collapsed {
-  margin: 10px 0 10px 0;
-  background-color: #b5d3ff !important;
+.menu-separator {
+  margin-top: -10px;
+  border: none;
+  opacity: 1;
+  height: 5px;
+  background-color: black;
+  animation: fade-in 0.7s ease both;
+}
+
+div.accordion-item,
+div.card {
+  background-color: transparent !important;
+  border: none !important;
+}
+
+div.card-body {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  margin-bottom: 10px;
+  animation: background-fade 0.7s ease forwards;
+}
+
+button.accordion-button {
+  margin-top: 10px;
   color: black !important;
   font-size: 18px !important;
   font-weight: 600 !important;
-  border: 1px solid black;
-  height: 2.3em !important;
+  height: 2em !important;
   width: 330px !important;
-  justify-content: center;
 }
 
-button.accordion-button.collapsed::after {
-  filter: invert(50%) sepia(68%) saturate(581%) hue-rotate(176deg)
-    brightness(94%) contrast(103%);
-  margin-left: 10px !important;
+button.accordion-button:focus {
+  box-shadow: none;
+  border-color: rgba(0, 0, 0, 0.125);
+}
+
+button.accordion-button::after {
+  margin-left: auto !important;
   transition: ease 0.7s !important;
   transform: rotate(-180deg) !important;
 }
 
-button.accordion-button:hover {
-  color: white !important;
+button.accordion-button:not(.collapsed) {
   background-color: #98c0fc !important;
 }
 
-div.accordion-body {
-  background-color: #98c0fc;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+button.accordion-button.collapsed {
+  margin-top: 10px;
+  background-color: #b5d3ff !important;
+  color: black !important;
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  border: none;
+  height: 2em !important;
+  width: 330px !important;
+}
+
+button.accordion-button.collapsed::after {
+  margin-left: auto !important;
+  transition: ease 0.7s !important;
+  transform: rotate(0deg) !important;
+}
+
+button.accordion-button:hover {
+  color: black !important;
+  /* background-color: #98c0fc !important; */
+}
+
+div.accordion-collapse {
+  transition: height 0.3s ease;
 }
 
 #bs-item-override {
@@ -92,11 +135,30 @@ div.accordion-body {
   color: black;
   border-radius: 5px;
   width: auto;
+  animation: fade-in 0.7s ease both;
 }
 
 #bs-item-override:hover {
   color: white;
   background-color: #154b89;
+}
+
+@keyframes background-fade {
+  0% {
+    background-color: #b5d3ff;
+  }
+  100% {
+    background-color: #98c0fc;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .centered {
