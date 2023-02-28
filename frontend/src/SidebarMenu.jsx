@@ -11,37 +11,32 @@ import { arrow } from "./assets";
 
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
+import Accordion from "react-bootstrap/Accordion";
 
 function SidebarMenu() {
   return (
     <div className="side-Bar">
-      <a href="/" className="home-btn"> <Button   className="home-btn"> Home</Button></a>       
+      <a href="/" className="home-btn">
+        {" "}
+        Home
+      </a>
 
       {catagoryList.map((cat, i) => {
         return (
-          <Dropdown>
-            <Dropdown.Toggle
-              id={`dropdown-button-dark-example-${i}`}
-              variant="secondary"
-            >
-              {cat.parentcategory}
-              <img
-                src={arrow}
-                id={`dropdown-button-dark-example-${i}`}
-                className="arrow-img"
-              />
-            </Dropdown.Toggle>
-
-            <Dropdown.Menu variant="dark">
-              {cat.childcategory.map((menu) => {
-                return (
-                  <Dropdown.Item id={"bs-item-override"} href={menu.url}>
-                    {menu.name}
-                  </Dropdown.Item>
-                );
-              })}
-            </Dropdown.Menu>
-          </Dropdown>
+          <Accordion>
+            <Accordion.Item eventKey="0">
+              <Accordion.Header>{cat.parentcategory}</Accordion.Header>
+              <Accordion.Body>
+                {cat.childcategory.map((menu) => {
+                  return (
+                    <Dropdown.Item id={"bs-item-override"} href={menu.url}>
+                      {menu.name}
+                    </Dropdown.Item>
+                  );
+                })}
+              </Accordion.Body>
+            </Accordion.Item>
+          </Accordion>
         );
       })}
     </div>

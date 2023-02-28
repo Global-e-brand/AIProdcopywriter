@@ -3,8 +3,8 @@
 }
 
 .logo-panel {
+  position: relative;
   background-image: url("../src/assets/images/Sidebar-bg.png");
-  height: 100vh;
   border-right: 1px solid #e0e4ec;
   box-shadow: 3px 5px 14px 0px;
 }
@@ -51,43 +51,54 @@
   }
 } */
 
-.btn-secondary {
+button.accordion-button.collapsed {
+  margin: 10px 0 10px 0;
   background-color: #b5d3ff !important;
   color: black !important;
   font-size: 18px !important;
   font-weight: 600 !important;
-  margin: 5px;
+  border: 1px solid black;
+  height: 2.3em !important;
+  width: 330px !important;
+  justify-content: center;
 }
 
-.btn-secondary:hover {
-  background-color: #154b89 !important;
+button.accordion-button.collapsed::after {
+  filter: invert(50%) sepia(68%) saturate(581%) hue-rotate(176deg)
+    brightness(94%) contrast(103%);
+  margin-left: 10px !important;
+  transition: ease 0.7s !important;
+  transform: rotate(-180deg) !important;
+}
+
+button.accordion-button:hover {
   color: white !important;
+  background-color: #98c0fc !important;
 }
 
-.dropdown-menu-dark {
-  color: black !important;
-  background-color: #b5d3ff !important;
-  overflow-y: auto;
-  max-height: 40vh;
-}
-
-a.dropdown-item {
-  margin: 10px;
-  padding: 3px;
-  font-size: 18px;
-  font-weight: 600;
-  box-shadow: 0px 4px 10px rgb(0 0 0 / 50%);
-  color: black;
-  border-radius: 5px;
-}
-a.dropdown-item:hover {
-  background-color: #154b89;
-  color: white !important;
+div.accordion-body {
+  background-color: #98c0fc;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 #bs-item-override {
+  background-color: #b5d3ff;
+  text-align: center;
+  margin: 10px 0 10px 0;
+  padding: 3px;
+  font-size: 18px;
+  box-shadow: 0px 4px 10px rgb(0 0 0 / 50%);
+  color: black;
+  border-radius: 5px;
   width: auto;
 }
+
+#bs-item-override:hover {
+  color: white;
+  background-color: #154b89;
+}
+
 .centered {
   display: flex;
   justify-content: center;
@@ -108,7 +119,6 @@ a.dropdown-item:hover {
 }
 
 footer {
-  position: absolute;
   background-color: #b5d3ff;
   bottom: 0;
   left: 0;
@@ -131,7 +141,6 @@ footer {
   background: #2c5d95;
   border: 7px solid #2c5d95;
   border-radius: 7px;
-  /* cursor: pointer; */
   margin-left: -1.5%;
 }
 
@@ -145,7 +154,6 @@ footer {
   background: #154b89;
   border: 7px solid #154b89;
   border-radius: 7px;
-  /* cursor: pointer; */
   margin-left: -1.5%;
 }
 
@@ -159,7 +167,6 @@ footer {
   background: #ffffff;
   border: 7px solid #154b89;
   border-radius: 7px;
-  /* cursor: pointer; */
 }
 
 .skipbutton:hover {

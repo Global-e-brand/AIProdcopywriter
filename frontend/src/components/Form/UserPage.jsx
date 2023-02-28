@@ -4,7 +4,7 @@ import { Grid, Button } from "@mui/material";
 import Loader from "../loader/loader";
 
 function Dummy(props) {
-  const [tone, setTone] = useState("Neutral");
+  const [tone, setTone] = useState("Friendly");
   const [inputOne, setInputOne] = useState("");
   const [inputTwo, setInputTwo] = useState("");
   const [data, setData] = useState();
@@ -16,8 +16,10 @@ function Dummy(props) {
   const textAreaRef = useRef(null);
 
   function copyToClipboard(item, i) {
+    let clipboardData = "";
     i = i + 1;
-    navigator.clipboard.writeText(item.text);
+    clipboardData += `Result #` + i + ":\n" + item.text.trim() + `\n\n`;
+    navigator.clipboard.writeText(clipboardData);
     setCopied(i);
     const timer = setTimeout(() => {
       setCopied(false);
@@ -202,7 +204,7 @@ function Dummy(props) {
                       Copy All
                     </button>
                     {AllCopied ? (
-                      <h1 className="text-cp-al">ALL DESCRIPTIONS COPIED ! </h1>
+                      <h1 className="text-cp-al">ALL RESULTS COPIED ! </h1>
                     ) : (
                       ""
                     )}
@@ -215,7 +217,7 @@ function Dummy(props) {
                               <Grid container>
                                 <Grid item xs={10} md={10}>
                                   <div className="ot-hd">
-                                    <div>Description {i + 1}</div>
+                                    <div>Result {i + 1}</div>
                                   </div>
                                 </Grid>
                                 <Grid item xs={2} md={2}>
@@ -229,7 +231,7 @@ function Dummy(props) {
                                     {/* <h1 className="text-status">Description {i+1} Copied ! </h1> */}
                                     {Copied == i + 1 ? (
                                       <h1 className="text-status">
-                                        Description {i + 1} Copied !{" "}
+                                        Result {i + 1} Copied !{" "}
                                       </h1>
                                     ) : (
                                       ""
