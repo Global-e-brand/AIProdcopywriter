@@ -1,0 +1,42 @@
+.homepage {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  padding: 20px;
+  height: 100%;
+}
+
+.robot-img {
+  width: 75%;
+  height: 95%;
+  object-fit: contain;
+}
+
+.robot-logo {
+  width: 80%;
+  height: 80%;
+  margin-bottom: 1em;
+}
+
+.welcome {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.subheader {
+  font-size: 18px;
+}
+
+.description {
+  font-size: 18px;
+}
+
+/* @media (max-width: 900px) {
+  .robot-img {
+    width: 50%;
+  }
+
+  .robot-logo {
+    margin-top: 0;
+  }
+} */

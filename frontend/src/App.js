@@ -2,26 +2,26 @@ import { useEffect } from "react";
 import "./App.css";
 import Grid from "@mui/material/Grid";
 import HeaderLogo from "./HeaderLogo";
-import { Routes, Route,redirect } from "react-router-dom";
+import { Routes, Route, redirect, Link } from "react-router-dom";
 import SidebarMenu from "./SidebarMenu";
 import UserPage from "./components/Form/UserPage";
 import HomePage from "./components/home/HomePage";
-
-
 
 function App() {
   return (
     <div className="App">
       <Grid container>
-        <Grid item xs={3} md={3}>
-          <div className="logo-panel">
-            <HeaderLogo />
-            <SidebarMenu />
+        <Grid item xs={3} sm={5} md={3}>
+          <div className="logo-panel-wrapper">
+            <div className="logo-panel">
+              <HeaderLogo />
+              <SidebarMenu />
+            </div>
           </div>
         </Grid>
 
-        <Grid item xs={9} md={9}>
-          <Routes>           
+        <Grid item xs={9} sm={7} md={9}>
+          <Routes>
             <Route path="/" element={<HomePage />} />
             <Route
               path="/productdescription"

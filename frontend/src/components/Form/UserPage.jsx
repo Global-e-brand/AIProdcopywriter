@@ -18,7 +18,7 @@ function Dummy(props) {
   function copyToClipboard(item, i) {
     let clipboardData = "";
     i = i + 1;
-    clipboardData += `Result #` + i + ":\n" + item.text.trim() + `\n\n`;
+    clipboardData += item.text.trim();
     navigator.clipboard.writeText(clipboardData);
     setCopied(i);
     const timer = setTimeout(() => {
@@ -75,24 +75,56 @@ function Dummy(props) {
   };
 
   return (
-    <>
+    <div className="category-page">
       <div className="category-title">
         <h2>
           <strong>{props.category}</strong>
         </h2>
       </div>
       <div className="main-division">
-        <Grid container>
-          <Grid item xs={8} md={8}>
+        <Grid container rowSpacing={3}>
+          <Grid item xs={8} sm={12} md={8}>
             <form className="form">
               <div>
+                <div className="input_one">
+                  <h5>
+                    <strong>{props.inputOneTitle}</strong>
+                  </h5>
+                  <textarea
+                    value={inputOne}
+                    onChange={(e) => setInputOne(e.target.value)}
+                    placeholder={props.placeholderOne}
+                  />
+                  {/* {console.log(inputOne, inputTwo, tone)} */}
+                </div>
+                {props.inputTwo ? (
+                  <div className="input_one">
+                    <h5>
+                      <strong>{props.inputTwoTitle}</strong>
+                    </h5>
+
+                    <textarea
+                      value={inputTwo}
+                      onChange={(e) => setInputTwo(e.target.value)}
+                      placeholder={props.placeholderTwo}
+                    />
+                  </div>
+                ) : (
+                  <></>
+                )}
                 {props.toneInput ? (
                   <div className="input_three">
                     <h5>
                       <strong>Select a tone</strong>
                     </h5>
-                    <Grid container>
-                      <Grid item xs={2} md={3}>
+                    <Grid
+                      container
+                      rowSpacing={1}
+                      columnSpacing={{ sm: 2, lg: 8, xl: 12 }}
+                      direction="row"
+                      justify="space-between"
+                    >
+                      <Grid item xs={3} sm={6} md={3}>
                         <Button
                           className={
                             tone == "Friendly"
@@ -104,7 +136,7 @@ function Dummy(props) {
                           Friendly
                         </Button>
                       </Grid>
-                      <Grid item xs={3} md={3}>
+                      <Grid item xs={3} sm={6} md={3}>
                         <Button
                           className={
                             tone == "Professional"
@@ -116,7 +148,7 @@ function Dummy(props) {
                           Professional
                         </Button>
                       </Grid>
-                      <Grid item xs={3} md={3}>
+                      <Grid item xs={3} sm={6} md={3}>
                         <Button
                           className={
                             tone == "Empathetic"
@@ -128,7 +160,7 @@ function Dummy(props) {
                           Empathetic
                         </Button>
                       </Grid>
-                      <Grid item xs={3} md={3}>
+                      <Grid item xs={3} sm={6} md={3}>
                         <Button
                           className={
                             tone == "Bold" ? "tone-btn-selected" : "tone-btn"
@@ -143,51 +175,27 @@ function Dummy(props) {
                 ) : (
                   <></>
                 )}
-                <div className="input_one">
-                  <h5>
-                    <strong>{props.inputOneTitle}</strong>
-                  </h5>
-                  <textarea
-                    value={inputOne}
-                    onChange={(e) => setInputOne(e.target.value)}
-                  placeholder={props.placeholderOne}
-                  />
-                  {/* {console.log(inputOne, inputTwo, tone)} */}
-                </div>
-                {props.inputTwo ? (
-                  <div className="input_one">
-                    <h5>
-                      <strong>{props.inputTwoTitle}</strong>
-                    </h5>
-
-                    <textarea
-                      value={inputTwo}
-                      onChange={(e) => setInputTwo(e.target.value)}
-                    placeholder={props.placeholderTwo}
-                    />
-                  </div>
-                ) : (
-                  <></>
-                )}
 
                 <div className="submitButton">
-                <button
-                  onClick={() => handleSubmit(path)}
-                  disabled={loading}
-                  variant="contained"
-                >
+                  <button
+                    onClick={() => handleSubmit(path)}
+                    disabled={loading}
+                    variant="contained"
+                  >
                     Submit
-                </button>
+                  </button>
                 </div>
               </div>
             </form>
           </Grid>
 
-          <Grid item xs={4} md={4}>
-            <div className="category-title m-2">
-              <h2>
-                <strong>Result</strong>
-              </h2>
+          <Grid item xs={4} sm={12} md={4}>
+            <div className="category-title-wrapper">
+              <div className="category-title m-2">
+                <h2>
+                  <strong>Results</strong>
+                </h2>
+              </div>
             </div>
             {/* {console.log("data",data)} */}
             {loading ? (
@@ -241,7 +249,7 @@ function Dummy(props) {
                               </Grid>
 
                               <div className="ot-bd" ref={textAreaRef}>
-                              {item.text.trim()}
+                                {item.text.trim()}
                               </div>
                             </div>
                           </>
@@ -257,7 +265,7 @@ function Dummy(props) {
           </Grid>
         </Grid>
       </div>
-    </>
+    </div>
   );
 }
 
