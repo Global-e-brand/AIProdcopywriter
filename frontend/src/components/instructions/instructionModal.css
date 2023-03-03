@@ -84,3 +84,9 @@
   font-size: 18px;
   line-height: normal;
 }
+
+@media only screen and (max-width: 600px) {
+  .modal {
+    display: none !important;
+  }
+}

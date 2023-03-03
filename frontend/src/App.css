@@ -209,7 +209,7 @@ footer {
 }
 
 .infobutton:hover {
-  position: absolute;
+  /* position: absolute; */
   transform: scale(1.05);
   transition-duration: 0.5s;
   color: #ffffff;
@@ -218,7 +218,7 @@ footer {
   background: #154b89;
   border: 7px solid #154b89;
   border-radius: 7px;
-  margin-left: -1.5%;
+  /* margin-left: 0.5%; */
 }
 
 .skipbutton {
@@ -234,7 +234,7 @@ footer {
 }
 
 .skipbutton:hover {
-  position: absolute;
+  /* position: absolute; */
   transform: scale(1.05);
   transition-duration: 0.5s;
   color: #ffffff;
@@ -309,3 +309,16 @@ style={{ position: "absolute", width: "229px", height: "45px", backgroundColor: 
   background-color: rgba(21, 75, 137, 0.9);
   border-radius: 7px;
 }*/
+
+/*Media Query*/
+@media only screen and (max-width: 600px) {
+  .side-Bar {
+    display: none !important;
+  }
+  .logo-panel {
+    display: none !important;
+  }
+  footer {
+    display: none !important;
+  }
+}
