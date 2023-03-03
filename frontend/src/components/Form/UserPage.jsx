@@ -2,6 +2,8 @@ import React, { useState, useRef } from "react";
 import "./form.css";
 import { Grid, Button } from "@mui/material";
 import Loader from "../loader/loader";
+import HeaderLogo from "../../HeaderLogo";
+import SidebarMenu from "../../SidebarMenu";
 
 function Dummy(props) {
   const [tone, setTone] = useState("Friendly");
@@ -82,67 +84,16 @@ function Dummy(props) {
         </h2>
       </div>
       <div className="main-division">
-        <Grid container>
-          <Grid item xs={8} md={8}>
+        <Grid container spacing={4}>
+        <Grid item xs={3} sm={3} md={3} lg={3} xl={3}>
+          <div className="logo-panel">
+            <HeaderLogo />
+            <SidebarMenu />
+          </div>
+        </Grid>
+          <Grid item xs={5} sm={5} md={5} lg={5} xl={5}>
             <form className="form">
-              <div>
-                {props.toneInput ? (
-                  <div className="input_three">
-                    <h5>
-                      <strong>Select a tone</strong>
-                    </h5>
-                    <Grid container>
-                      <Grid item xs={2} md={3}>
-                        <Button
-                          className={
-                            tone == "Friendly"
-                              ? "tone-btn-selected"
-                              : "tone-btn"
-                          }
-                          onClick={(e) => handleTone("Friendly")}
-                        >
-                          Friendly
-                        </Button>
-                      </Grid>
-                      <Grid item xs={3} md={3}>
-                        <Button
-                          className={
-                            tone == "Professional"
-                              ? "tone-btn-selected"
-                              : "tone-btn"
-                          }
-                          onClick={(e) => handleTone("Professional")}
-                        >
-                          Professional
-                        </Button>
-                      </Grid>
-                      <Grid item xs={3} md={3}>
-                        <Button
-                          className={
-                            tone == "Empathetic"
-                              ? "tone-btn-selected"
-                              : "tone-btn"
-                          }
-                          onClick={(e) => handleTone("Empathetic")}
-                        >
-                          Empathetic
-                        </Button>
-                      </Grid>
-                      <Grid item xs={3} md={3}>
-                        <Button
-                          className={
-                            tone == "Bold" ? "tone-btn-selected" : "tone-btn"
-                          }
-                          onClick={(e) => handleTone("Bold")}
-                        >
-                          Bold
-                        </Button>
-                      </Grid>
-                    </Grid>
-                  </div>
-                ) : (
-                  <></>
-                )}
+               
                 <div className="input_one">
                   <h5>
                     <strong>{props.inputOneTitle}</strong>
@@ -170,6 +121,57 @@ function Dummy(props) {
                   <></>
                 )}
 
+                {props.toneInput ? (
+                  <div className="input_three">
+                    <h5>
+                      <strong>Select a tone</strong>
+                    </h5>
+                    <Grid container justifyContent="center" spacing={4}>
+                      <Grid item xs={3} sm={3} md={3}>
+                        <Button className={tone == "Friendly"? "tone-btn-selected": "tone-btn"} onClick={(e) => handleTone("Friendly")}>
+                          Friendly
+                        </Button>
+                      </Grid>
+                      <Grid item xs={3} sm={3} md={3}>
+                        <Button
+                          className={
+                            tone == "Professional"
+                              ? "tone-btn-selected"
+                              : "tone-btn"
+                          }
+                          onClick={(e) => handleTone("Professional")}
+                        >
+                          Professional
+                        </Button>
+                      </Grid>
+                      <Grid item xs={3} sm={3} md={3}>
+                        <Button
+                          className={
+                            tone == "Empathetic"
+                              ? "tone-btn-selected"
+                              : "tone-btn"
+                          }
+                          onClick={(e) => handleTone("Empathetic")}
+                        >
+                          Empathetic
+                        </Button>
+                      </Grid>
+                      <Grid item xs={3} sm={3} md={3}>
+                        <Button
+                          className={
+                            tone == "Bold" ? "tone-btn-selected" : "tone-btn"
+                          }
+                          onClick={(e) => handleTone("Bold")}
+                        >
+                          Bold
+                        </Button>
+                      </Grid>
+                    </Grid>
+                  </div>
+                ) : (
+                  <></>
+                )}
+
                 <div className="submitButton">
                 <button
                   onClick={() => handleSubmit(path)}
@@ -179,12 +181,12 @@ function Dummy(props) {
                     Submit
                 </button>
                 </div>
-              </div>
+              
             </form>
           </Grid>
 
           <Grid item xs={4} md={4}>
-            <div className="category-title m-2">
+            <div className="category-title mr-2">
               <h2>
                 <strong>Result</strong>
               </h2>
@@ -229,6 +231,9 @@ function Dummy(props) {
                                       Copy
                                     </button>
                                     {/* <h1 className="text-status">Description {i+1} Copied ! </h1> */}
+                                    <h1 className="text-status">
+                                        Result {i + 1} Copied !{" "}
+                                      </h1>
                                     {Copied == i + 1 ? (
                                       <h1 className="text-status">
                                         Result {i + 1} Copied !{" "}

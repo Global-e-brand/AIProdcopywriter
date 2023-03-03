@@ -7,20 +7,11 @@ import SidebarMenu from "./SidebarMenu";
 import UserPage from "./components/Form/UserPage";
 import HomePage from "./components/home/HomePage";
 
-
-
 function App() {
   return (
     <div className="App">
       <Grid container>
-        <Grid item xs={3} md={3}>
-          <div className="logo-panel">
-            <HeaderLogo />
-            <SidebarMenu />
-          </div>
-        </Grid>
-
-        <Grid item xs={9} md={9}>
+        <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
           <Routes>           
             <Route path="/" element={<HomePage />} />
             <Route

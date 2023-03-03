@@ -3,30 +3,30 @@ import { footerlogo } from "./assets";
 
 
 const Footer = () => {
-    const year = new Date().getFullYear();
+    
 
     return  <footer>
-                <Grid container spacing={0} columns={16} justifyContent={"center"} alignItems={"center"}>
-                    <Grid item xs={3}>
-                        {`© ${year} AI ProdCopywriter`}
+                <Grid container spacing={0} justifyContent={"center"} alignItems={"center"}>
+                    <Grid item xs={2} sm={2} md={2} lg={2} xl={2}>
+                        {`© 2023 AI ProdCopywriter`}
                     </Grid>
 
-                    <Grid item xs={3}>
+                    <Grid item xs={2} sm={2} md={2} lg={2} xl={2}>
                         {`Smart Ecom Tech`}
                     </Grid>
 
-                    <Grid item xs={4} >
+                    <Grid item xs={2} sm={2} md={2} lg={2} xl={2} >
                         <img
                             src={footerlogo}
                             alt="AI ProdCopywriter logo"
                         />
                     </Grid>
 
-                    <Grid item xs={3}>
+                    <Grid item xs={2} sm={2} md={2} lg={2} xl={2}>
                         {/* {`(*Contact Detail*)`} */}
                     </Grid>
 
-                    <Grid item xs={3}>
+                    <Grid item xs={2} sm={2} md={2} lg={2} xl={2}>
                         {`support@smartecomtech.com`}
                     </Grid>
                 </Grid>

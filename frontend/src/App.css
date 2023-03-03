@@ -31,6 +31,7 @@
   color: #2e72d2;
   align-items: center;
   flex-direction: column;
+  border-radius: 4px;
 }
 
 .side-Bar {
@@ -75,14 +76,16 @@ div.card-body {
   animation: background-fade 0.7s ease forwards;
   margin-top: 0 !important;
 }
-
+.side-Bar .accordion{
+  width: 100%;
+}
 button.accordion-button {
   margin-top: 10px;
   color: black !important;
-  font-size: 18px !important;
+  font-size: 1.2vw !important;
   font-weight: 600 !important;
   height: 2em !important;
-  width: 330px !important;
+  width: 100% !important;
   margin-bottom: 0 !important;
 }
 
@@ -105,11 +108,11 @@ button.accordion-button.collapsed {
   margin-top: 10px;
   background-color: rgba(181, 211, 255, 0.9) !important;
   color: black !important;
-  font-size: 18px !important;
+  font-size: 1.2vw !important;
   font-weight: 600 !important;
   border: none;
   height: 2em !important;
-  width: 330px !important;
+  width: 100% !important;
 }
 
 button.accordion-button.collapsed::after {
@@ -128,11 +131,12 @@ div.accordion-collapse {
 }
 
 #bs-item-override {
+  font-size: 1.2vw;
+  font-weight: 600;
   background-color: rgba(181, 211, 255, 0.9);
   text-align: center;
   margin: 10px 0 10px 0;
   padding: 3px;
-  font-size: 18px;
   box-shadow: 0px 4px 10px rgb(0 0 0 / 50%);
   color: black;
   border-radius: 5px;
@@ -196,8 +200,6 @@ footer {
 }
 
 .infobutton {
-  position: absolute;
-  width: 229px;
   height: 50px;
   color: #ffffff;
   font-weight: bold;
@@ -209,7 +211,6 @@ footer {
 }
 
 .infobutton:hover {
-  position: absolute;
   transform: scale(1.05);
   transition-duration: 0.5s;
   color: #ffffff;
