@@ -16,35 +16,38 @@ import Card from "react-bootstrap/Card";
 
 function SidebarMenu() {
   return (
-    <div className="side-Bar">
-      <a href="/" className="home-btn">
-        {" "}
-        Home
-      </a>
-
-      {catagoryList.map((cat, i) => {
-        return (
-          <Accordion>
-            <Card>
-              <Accordion.Item eventKey="0">
-                <Accordion.Header>{cat.parentcategory}</Accordion.Header>
-                <Accordion.Collapse eventKey="0">
-                  <Card.Body>
-                    <hr className="menu-separator" />
-                    {cat.childcategory.map((menu) => {
-                      return (
-                        <Dropdown.Item id={"bs-item-override"} href={menu.url}>
-                          {menu.name}
-                        </Dropdown.Item>
-                      );
-                    })}
-                  </Card.Body>
-                </Accordion.Collapse>
-              </Accordion.Item>
-            </Card>
-          </Accordion>
-        );
-      })}
+    <div className="side-bar-wrapper">
+      <div className="side-Bar">
+        <Link to="/" className="home-btn">
+          {" "}
+          Home
+        </Link>
+        {catagoryList.map((cat, i) => {
+          return (
+            <Accordion>
+              <Card>
+                <Accordion.Item eventKey="0">
+                  <Accordion.Header>{cat.parentcategory}</Accordion.Header>
+                  <Accordion.Collapse eventKey="0">
+                    <Card.Body>
+                      <hr className="menu-separator" />
+                      {cat.childcategory.map((menu) => {
+                        return (
+                          <Dropdown.Item id={"bs-item-override"}>
+                            <Link to={menu.url} className="category-link">
+                              {menu.name}
+                            </Link>
+                          </Dropdown.Item>
+                        );
+                      })}
+                    </Card.Body>
+                  </Accordion.Collapse>
+                </Accordion.Item>
+              </Card>
+            </Accordion>
+          );
+        })}
+      </div>
     </div>
   );
 }

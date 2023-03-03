@@ -2,6 +2,7 @@
   color: #399b96;
   font-size: 20px;
   font-weight: 600;
+  text-align: center;
 }
 
 .m-2 {
@@ -9,6 +10,11 @@
 }
 .mr-2{
   margin-right: 10px;
+}
+
+.category-page {
+  height: 94vh;
+  overflow-y: scroll;
 }
 
 .category_name {
@@ -44,7 +50,10 @@
 .input_one,
 .input_two,
 .input_three {
+  display: inline-block;
+  width: 90%;
   margin-bottom: 5%;
+  text-align: left;
 }
 .submitButton button {
   font-family: "Manrope";
@@ -63,8 +72,9 @@
   align-items: center;
   justify-content: center;
   text-transform: uppercase;
+  margin: 0 auto;
 }
-.submitButton button:hover {
+.submitButton button:hover:enabled {
   font-family: "Manrope";
   font-style: normal;
   font-weight: "Bold";
@@ -98,8 +108,17 @@ label {
 .output-container {
   height: 75vh;
   overflow-y: scroll;
-  margin-top: 10px;
+  margin: 0 auto;
 }
+
+@media (max-width: 900px) {
+  .output-container {
+    overflow-y: visible;
+    height: fit-content;
+    padding-bottom: 10px;
+  }
+}
+
 .output-layout {
   border-radius: 8px;
   margin: 14px;
@@ -156,18 +175,14 @@ label {
   font-weight: 600;
   font-family: serif;
   text-transform: uppercase;
+  margin: 0 auto;
 }
 
 .cpyall-btn:hover {
   display: block;
   margin: auto;
-  border: 2px solid #154b89;
-  border-radius: 7px;
   background: #154b89;
   color: #fff;
-  font-weight: 600;
-  font-family: serif;
-  text-transform: uppercase;
 }
 .hd-cp {
   position: relative;
@@ -221,10 +236,10 @@ h1.text-status {
 }
 
 .tone-btn:hover {
-  border: 2px solid #b5d3ff;
+ 
   background-color: #154b89 !important;
   color: #fff;
-  width: 120px;
+width: 100% !important;
   text-transform: capitalize;
 }
 
@@ -303,4 +318,3 @@ button[aria-expanded="false"] img {
   transition: ease 0.7s;
   transform: rotate(0deg);
 }
-

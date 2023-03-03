@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import "./App.css";
 import Grid from "@mui/material/Grid";
 import HeaderLogo from "./HeaderLogo";
-import { Routes, Route,redirect } from "react-router-dom";
+import { Routes, Route, redirect, Link } from "react-router-dom";
 import SidebarMenu from "./SidebarMenu";
 import UserPage from "./components/Form/UserPage";
 import HomePage from "./components/home/HomePage";
@@ -12,7 +12,9 @@ function App() {
     <div className="App">
       <Grid container>
         <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-          <Routes>           
+          <div className="logo-panel-wrapper">
+          </div>
+          <Routes>
             <Route path="/" element={<HomePage />} />
             <Route
               path="/productdescription"

@@ -20,7 +20,7 @@ function Dummy(props) {
   function copyToClipboard(item, i) {
     let clipboardData = "";
     i = i + 1;
-    clipboardData += `Result #` + i + ":\n" + item.text.trim() + `\n\n`;
+    clipboardData += item.text.trim();
     navigator.clipboard.writeText(clipboardData);
     setCopied(i);
     const timer = setTimeout(() => {
@@ -77,7 +77,7 @@ function Dummy(props) {
   };
 
   return (
-    <>
+    <div className="category-page">
       <div className="category-title">
         <h2>
           <strong>{props.category}</strong>
@@ -129,6 +129,7 @@ function Dummy(props) {
                     <Grid container justifyContent="center" spacing={4}>
                       <Grid item xs={3} sm={3} md={3}>
                         <Button className={tone == "Friendly"? "tone-btn-selected": "tone-btn"} onClick={(e) => handleTone("Friendly")}>
+                     
                           Friendly
                         </Button>
                       </Grid>
@@ -173,19 +174,19 @@ function Dummy(props) {
                 )}
 
                 <div className="submitButton">
-                <button
-                  onClick={() => handleSubmit(path)}
-                  disabled={loading}
-                  variant="contained"
-                >
+                  <button
+                    onClick={() => handleSubmit(path)}
+                    disabled={loading}
+                    variant="contained"
+                  >
                     Submit
-                </button>
+                  </button>
                 </div>
               
             </form>
           </Grid>
 
-          <Grid item xs={4} md={4}>
+          <Grid item xs={4} sm={12} md={4}>
             <div className="category-title mr-2">
               <h2>
                 <strong>Result</strong>
@@ -231,9 +232,6 @@ function Dummy(props) {
                                       Copy
                                     </button>
                                     {/* <h1 className="text-status">Description {i+1} Copied ! </h1> */}
-                                    <h1 className="text-status">
-                                        Result {i + 1} Copied !{" "}
-                                      </h1>
                                     {Copied == i + 1 ? (
                                       <h1 className="text-status">
                                         Result {i + 1} Copied !{" "}
@@ -246,7 +244,7 @@ function Dummy(props) {
                               </Grid>
 
                               <div className="ot-bd" ref={textAreaRef}>
-                              {item.text.trim()}
+                                {item.text.trim()}
                               </div>
                             </div>
                           </>
@@ -262,7 +260,7 @@ function Dummy(props) {
           </Grid>
         </Grid>
       </div>
-    </>
+    </div>
   );
 }
 
