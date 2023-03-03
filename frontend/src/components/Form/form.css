@@ -2,7 +2,6 @@
   color: #399b96;
   font-size: 20px;
   font-weight: 600;
-  text-align: center;
 }
 
 .m-2 {
@@ -51,7 +50,7 @@
 .input_two,
 .input_three {
   display: inline-block;
-  width: 90%;
+  width: 100%;
   margin-bottom: 5%;
   text-align: left;
 }
