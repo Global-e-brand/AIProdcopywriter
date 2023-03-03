@@ -4,6 +4,9 @@ import apirouter from "./routes/Api.js";
 import fetch from "node-fetch";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
+import path from "path";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
 
 dotenv.config();
 
@@ -17,11 +20,18 @@ mongoose.connect(
 );
 
 const app = express();
-var PORT = 3000;
+const __dirname = path.resolve();
+var PORT = process.env.PORT || 3000;
 
 app.use("/posts", router);
 app.use("/api", apirouter);
 
+if (process.env.NODE_ENV == "production") {
+  app.use(express.static(path.join(__dirname + "/public")));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "public", "index.html"));
+  });
+}
 app.listen(PORT, function (err) {
   if (err) console.log("Error in server setup");
   console.log("Server listening on Port", PORT);

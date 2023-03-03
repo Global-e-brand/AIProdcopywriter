@@ -3,7 +3,7 @@ import "../instructions/instructionModal.css";
 
 function InstructionModal({ closeModal }) {
   return (
-    <div>
+    <div className="modal">
       <div className="modal-wrapper" onClick={closeModal}></div>
       <div className="modal-container">
         <div className="modal-header">
