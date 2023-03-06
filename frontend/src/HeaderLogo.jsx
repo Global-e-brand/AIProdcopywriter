@@ -8,11 +8,11 @@ import { Grid } from "@mui/material";
 function HeaderLogo() {
   return (
     <div className="hd-logo">
-      <Grid container>
-        <Grid xs={2} sm={12} md={2}>
+      <Grid container className="img-text-mobileview">
+        <Grid xs={2} sm={12} md={2} className="img-logo">
           <img src={logo} />
         </Grid>
-        <Grid xs={10} sm={12} md={10}>
+        <Grid xs={10} sm={12} md={10} className="text-logo">
           <h2 className="lg-title">AI ProdCopywriter</h2>
         </Grid>
       </Grid>
