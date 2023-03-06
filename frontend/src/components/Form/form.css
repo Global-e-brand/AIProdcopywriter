@@ -7,7 +7,7 @@
 .m-2 {
   margin-top: 10px;
 }
-.mr-2{
+.mr-2 {
   margin-right: 10px;
 }
 
@@ -235,10 +235,9 @@ h1.text-status {
 }
 
 .tone-btn:hover {
- 
   background-color: #154b89 !important;
   color: #fff;
-width: 100% !important;
+  width: 100% !important;
   text-transform: capitalize;
 }
 
@@ -316,4 +315,89 @@ button[aria-expanded="true"] img {
 button[aria-expanded="false"] img {
   transition: ease 0.7s;
   transform: rotate(0deg);
+}
+.category-title {
+  display: flex;
+  margin-bottom: 15px;
+  background: rgba(181, 211, 255, 0.9);
+  color: #2e72d2;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 4px;
+}
+
+/*Media Query For responsive Design*/
+
+@media only screen and (max-width: 600px) {
+  .main-form-desktop-view {
+    display: none;
+  }
+  .category-title-text {
+    display: none !important;
+  }
+  .header-mobile-view {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: rgba(181, 211, 255, 0.9);
+  }
+  .hamburger-menu {
+    width: 40% !important;
+    height: 100% !important;
+    margin-top: 10%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3%;
+  }
+  .main-division {
+    display: none !important;
+  }
+  .mobile-view-product {
+    width: 100%;
+  }
+  .mobile-view-product ul[aria-expanded="true"] {
+    display: block;
+    background-color: #e0eeed;
+    position: absolute;
+    height: 90vh;
+    animation: myfirst 1s;
+    animation-direction: reverse;
+    width: 98%;
+    z-index: 2;
+  }
+  @keyframes myfirst {
+    0% {
+      left: 0;
+    }
+    100% {
+      left: 100%;
+      width: 100%;
+    }
+  }
+  .mobile-view-product ul[aria-expanded="false"] {
+    display: none;
+  }
+  .main-form-mobile {
+    padding: 8px;
+  }
+  .main-form-mobile p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: 800;
+  }
+  .result-mobile-view {
+    padding: 10px;
+  }
+}
+@media only screen and (max-width: 2000px) and (min-width: 600px) {
+  .header-mobile-view {
+    display: none;
+  }
+  .mobile-view-product {
+    display: none;
+  }
 }

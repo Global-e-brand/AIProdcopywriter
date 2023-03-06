@@ -98,7 +98,7 @@ div.card-body {
   animation: background-fade 0.7s ease forwards;
   margin-top: 0 !important;
 }
-.side-Bar .accordion{
+.side-Bar .accordion {
   width: 100%;
 }
 button.accordion-button {
@@ -348,5 +348,8 @@ style={{ position: "absolute", width: "229px", height: "45px", backgroundColor: 
   }
   footer {
     display: none !important;
+  }
+  .hamburger-menu {
+    display: block;
   }
 }
