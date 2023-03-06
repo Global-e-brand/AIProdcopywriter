@@ -1,6 +1,20 @@
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+}
+
+div#root {
+    height: 100%;
+}
+
 .App {
   font-family: "Manrope";
-  /* flex-grow: 1; */
+  height: 100%;
+}
+.App > div{
+  height: 100%; 
 }
 
 .logo-panel-wrapper {
@@ -207,11 +221,10 @@ div.accordion-collapse {
 }
 
 footer {
+  position: absolute;
+  width: 100%;
   display: flex;
   background-color: rgba(181, 211, 255, 0.9);
-  bottom: 0;
-  left: 0;
-  right: 0;
   height: 6vh;
   min-height: fit-content;
   text-align: center;

@@ -1,11 +1,9 @@
-import { useEffect } from "react";
 import "./App.css";
 import Grid from "@mui/material/Grid";
-import HeaderLogo from "./HeaderLogo";
-import { Routes, Route, redirect, Link } from "react-router-dom";
-import SidebarMenu from "./SidebarMenu";
+import { Routes, Route } from "react-router-dom";
 import UserPage from "./components/Form/UserPage";
 import HomePage from "./components/home/HomePage";
+import CreateAccount from "./components/Login/CreateAccount";
 
 function App() {
   return (
@@ -16,6 +14,7 @@ function App() {
           </div>
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/create-account" element={<CreateAccount />} />
             <Route
               path="/productdescription"
               element={

@@ -12,8 +12,8 @@
 }
 
 .category-page {
-  height: 94vh;
-  overflow-y: scroll;
+  height: 100vh;
+  /* overflow-y: scroll; */
 }
 
 .category_name {
