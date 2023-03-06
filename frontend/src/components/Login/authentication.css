@@ -48,10 +48,13 @@
 }
 
 .google-btn {
+  display: block;
   background: #2e72d2;
   border-radius: 10px;
   height: 46px;
   padding: 5px;
+  width: 100%;
+  border: none;
 }
 
 .google-btn:hover {
@@ -60,10 +63,13 @@
 }
 
 .facebook-btn {
+  display: block;
   background: #154b89;
   border-radius: 10px;
   height: 46px;
   padding: 5px;
+  width: 100%;
+  border: none;
 }
 
 .facebook-btn:hover {
@@ -72,10 +78,13 @@
 }
 
 .apple-btn {
+  display: block;
   background: #000000;
   border-radius: 10px;
   height: 46px;
   padding: 5px;
+  width: 100%;
+  border: none;
 }
 
 .apple-btn:hover {

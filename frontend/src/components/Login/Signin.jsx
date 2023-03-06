@@ -46,19 +46,25 @@ function Signin() {
               </p>
             </Grid>
             <Grid item xs={4} sm={4} md={4} lg={4} xl={4}>
-              <div className="google-btn">
+              <a
+                className="google-btn"
+                href="http://localhost:3000/auth/google"
+              >
                 <img src={googleIcon} alt={"Signin with Google."}></img>
-              </div>
+              </a>
             </Grid>
             <Grid item xs={4} sm={4} md={4} lg={4} xl={4}>
-              <div className="facebook-btn">
+              <a
+                className="facebook-btn"
+                href="http://localhost:3000/auth/facebook"
+              >
                 <img src={facebookIcon} alt={"Signin with Facebook."}></img>
-              </div>
+              </a>
             </Grid>
             <Grid item xs={4} sm={4} md={4} lg={4} xl={4}>
-              <div className="apple-btn">
+              <a className="apple-btn" href="http://localhost:3000/auth/apple">
                 <img src={appleIcon} alt={"Signin with Apple."}></img>
-              </div>
+              </a>
             </Grid>
           </Grid>
           <Grid container direction="row" columns={20} alignItems="center">
