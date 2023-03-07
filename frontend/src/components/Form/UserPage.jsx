@@ -22,7 +22,7 @@ function Dummy(props) {
   const [loading, setLoading] = useState(false);
   const [Copied, setCopied] = useState();
   const [AllCopied, setAllCopied] = useState();
-  const [isAuthenticated, setAuthenticated] = useState(undefined);
+  const [isAuthenticated, setAuthenticated] = useState(true);
   const [showMenu, setShowMenu] = useState(false);
   const [index, setIndex] = useState(0);
   const [flip, setFlip] = useState(true);
@@ -30,12 +30,12 @@ function Dummy(props) {
   const location = useLocation();
   const textAreaRef = useRef(null);
 
-  useEffect(() => {
-    setAuthenticated(undefined);
-    authenticate((status) => {
-      setAuthenticated(status === "authenticated" ? true : false);
-    });
-  }, [location.pathname]);
+  // useEffect(() => {
+  //   setAuthenticated(undefined);
+  //   authenticate((status) => {
+  //     setAuthenticated(status === "authenticated" ? true : false);
+  //   });
+  // }, [location.pathname]);
 
   function copyToClipboard(item, i) {
     let clipboardData = "";
@@ -210,9 +210,9 @@ function Dummy(props) {
                     <Grid item xs={3} sm={3} md={3}>
                       <Button
                         className={
-                          tone == "Bold" ? "tone-btn-selected" : "tone-btn"
-                                  ? "tone-btn-selected"
-                                  : "tone-btn"
+                          tone == "Bold"
+                            ? "tone-btn-selected"
+                            : "tone-btn"
                         }
                         onClick={(e) => handleTone("Bold")}
                       >
