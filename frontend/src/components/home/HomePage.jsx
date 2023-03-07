@@ -10,7 +10,7 @@ import MobileInstructions from "../mobile-view/MobileInstructions";
 
 function HomePage() {
   const [Zvalue, setZvalue] = useState("1");
-  const [swap, setSwap] = useState(true);
+  const [swap, setSwap] = useState(false);
   const [showModel, setShowModel] = useState(false);
   const closeModal = () => {
     setShowModel(false);
@@ -20,6 +20,7 @@ function HomePage() {
   function instructions() {
     setSwap(!swap);
     setShowModel(true);
+    console.log("Instruction");
   }
 
   function skip() {
@@ -61,6 +62,7 @@ function HomePage() {
             <p className="description" aria-expanded={!swap}>
               {swap ? description : <MobileInstructions />}
             </p>
+            {/* <p>{description}</p> */}
 
             <Grid container spacing={2} columns={16}>
               <Grid item xs={8} sm={16} md={8}>
