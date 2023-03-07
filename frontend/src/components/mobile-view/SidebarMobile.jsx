@@ -55,18 +55,18 @@ function SidebarMobile() {
       </div>
       <div className="footer">
         <Grid container spacing={0}>
-          <Grid item xs={8} sm={2} md={2} lg={2} xl={2}>
+          <Grid item xs={8} sm={6} md={2} lg={2} xl={2}>
             <img src={footerlogo} alt="AI ProdCopywriter logo" />
           </Grid>
           <Grid item xs={4} sm={6} md={8} lg={2} xl={2}>
             {`© 2023 AI ProdCopywriter`}
           </Grid>
 
-          <Grid item xs={8} sm={2} md={2} lg={2} xl={2}>
+          <Grid item xs={8} sm={6} md={2} lg={2} xl={2}>
             {`support@smartecomtech.com`}
           </Grid>
 
-          <Grid item xs={4} sm={2} md={2} lg={2} xl={2}>
+          <Grid item xs={4} sm={4} md={2} lg={2} xl={2}>
             {`Smart Ecom Tech`}
           </Grid>
 

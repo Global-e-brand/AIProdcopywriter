@@ -6,3 +6,4 @@ export { default as robot } from "../assets/Product AI.png";
 export { default as fulllogo } from "../assets/FullLogo.png";
 export { default as arrow } from "../assets/arrow.png";
 export { default as mobile_background } from "../assets/27.png";
+export { default as leftarrow } from "../assets/leftarrow.png";

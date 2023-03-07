@@ -339,7 +339,7 @@ style={{ position: "absolute", width: "229px", height: "45px", backgroundColor: 
 }*/
 
 /*Media Query*/
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 830px) {
   .side-Bar {
     display: none !important;
   }
