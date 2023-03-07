@@ -22,11 +22,16 @@ function ForgotPassword() {
 
   return (
     <div className="authentication-page">
+      <img
+        className="app-logo outside"
+        src={fulllogo}
+        alt="AI ProdCopywriter logo"
+      ></img>
       <div className="authentication-card">
         <Grid container direction="row" className="authentication-grid">
           <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
             <img
-              className="app-logo"
+              className="app-logo inside"
               src={fulllogo}
               alt="AI ProdCopywriter logo"
             ></img>
@@ -41,7 +46,7 @@ function ForgotPassword() {
             </Grid>
           </Grid>
           <Grid container alignItems={"center"} columnSpacing={1} columns={16}>
-            <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+            <Grid item xs={11} sm={11} md={11} lg={11} xl={11}>
               <input
                 className="email-input"
                 placeholder="Email Address"
@@ -49,7 +54,7 @@ function ForgotPassword() {
                 defaultValue=""
               ></input>
             </Grid>
-            <Grid item xs={4} sm={4} md={4} lg={4} xl={4}>
+            <Grid item xs={5} sm={5} md={5} lg={5} xl={5}>
               <button className="form-btn" disabled={email.length === 0}>
                 Send Code
               </button>

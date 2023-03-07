@@ -7,9 +7,9 @@ import SidebarMenu from "./SidebarMenu";
 import UserPage from "./components/Form/UserPage";
 import HomePage from "./components/home/HomePage";
 import Footer from "./Footer";
-import Signin from "./components/login/Signin";
-import ForgotPassword from "./components/login/ForgotPassword";
-import ResetPassword from "./components/login/ResetPassword";
+import Signin from "./components/Login/Signin";
+import ForgotPassword from "./components/Login/ForgotPassword";
+import ResetPassword from "./components/Login/ResetPassword";
 
 function App() {
   const location = useLocation();
