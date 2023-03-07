@@ -32,14 +32,14 @@ function InstructionModal({ closeModal }) {
             </p>
           </div>
         </div>
-        <div className="end-modalcontent">
+        {/* <div className="end-modalcontent">
           <h3> Welcome to AI ProdCopywriter!</h3>
           <p>
             Create the perfect description for your needs! Let’s begin by
             selecting a category... <br></br>And don’t worry, you can always
             change this later.
           </p>
-        </div>
+        </div> */}
       </div>
     </div>
   );
