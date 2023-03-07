@@ -100,15 +100,15 @@ function Dummy(props) {
       <div className="main-division">
         <Grid container spacing={4}>
           {/* siderbar */}
-          <Grid item xs={3} sm={3} md={3} lg={3} xl={3}>
+          <Grid item xs={12} sm={12} md={3} lg={3} xl={3}>
             <div className="logo-panel">
               <HeaderLogo />
               <SidebarMenu />
             </div>
           </Grid>
           {/* Main Form */}
-          <div className="main-form-desktop-view">
-            <Grid item xs={5} sm={5} md={5} lg={5} xl={5}>
+          {/* <div className="main-form-desktop-view"> */}
+            <Grid item xs={12} sm={12} md={5} lg={5} xl={5}>
               <form className="form">
                 <div className="input_one">
                   <h5>
@@ -206,9 +206,9 @@ function Dummy(props) {
                 </div>
               </form>
             </Grid>
-          </div>
+          {/* </div> */}
           {/* results */}
-          <Grid item xs={4} sm={12} md={4}>
+          <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
             <div className="category-title mr-2">
               <h2>
                 <strong>Result</strong>
