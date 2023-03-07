@@ -65,14 +65,14 @@ function HomePage() {
             {/* <p>{description}</p> */}
 
             <Grid container spacing={2} columns={16}>
-              <Grid item xs={8} sm={16} md={8}>
+              <Grid item xs={9} sm={16} md={8}>
                 <button onClick={() => instructions()} className="infobutton">
                   Instructions
                 </button>
                 {showModel && <InstructionModal closeModal={closeModal} />}
               </Grid>
 
-              <Grid item xs={8} sm={16} md={8}>
+              <Grid item xs={7} sm={16} md={8}>
                 <Link to="/productdescription">
                   <button className="skipbutton">Skip</button>
                 </Link>
