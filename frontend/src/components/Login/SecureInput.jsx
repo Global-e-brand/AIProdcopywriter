@@ -26,7 +26,7 @@ export const SecureInput = (props) => {
         className={"input-field"}
       />
       <button className={"visibility-btn"} onClick={toggleSecure}>
-        {secureType === "secure" ? (
+        {secureType === "password" ? (
           <img src={eyeClosedIcon} alt="hide secure input field value"></img>
         ) : (
           <img src={eyeOpenIcon} alt="shown secure input field value"></img>
