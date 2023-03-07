@@ -5,7 +5,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Footer from "./Footer";
+
 import noFooterURL from "./components/json/nofooter.json"
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

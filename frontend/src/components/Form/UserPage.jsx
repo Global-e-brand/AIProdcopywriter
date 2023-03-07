@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { Navigate } from "react-router-dom";
 import "./form.css";
 import { Grid, Button } from "@mui/material";
 import Loader from "../loader/loader";
@@ -6,6 +7,8 @@ import HeaderLogo from "../../HeaderLogo";
 import SidebarMenu from "../../SidebarMenu";
 import { GiHamburgerMenu } from "react-icons/gi";
 import Footer from "../../Footer";
+import { authenticate } from "../../helpers/authenticationStatus";
+import { useLocation } from "react-router-dom";
 import SidebarMobile from "../mobile-view/SidebarMobile";
 import Carousel from "react-bootstrap/Carousel";
 
@@ -18,10 +21,18 @@ function Dummy(props) {
   const [loading, setLoading] = useState(false);
   const [Copied, setCopied] = useState();
   const [AllCopied, setAllCopied] = useState();
-  const [showMenu, setShowMenu] = useState(false);
+  const [isAuthenticated, setAuthenticated] = useState(undefined);
   console.log(showMenu);
 
+  const location = useLocation();
   const textAreaRef = useRef(null);
+
+  useEffect(() => {
+    setAuthenticated(undefined);
+    authenticate((status) => {
+      setAuthenticated(status === "authenticated" ? true : false);
+    });
+  }, [location.pathname]);
 
   function copyToClipboard(item, i) {
     let clipboardData = "";
@@ -83,11 +94,12 @@ function Dummy(props) {
   };
   let arr = [];
   return (
-    <div className="category-page">
-      <div className="category-title">
+    <>
+      <div className="category-page">
+        <div className="category-title">
         <h2 className="category-title-text">
-          <strong>{props.category}</strong>
-        </h2>
+            <strong>{props.category}</strong>
+          </h2>
         <div className="header-mobile-view">
           <HeaderLogo />
           <div className="hamburger-menu">
@@ -96,9 +108,9 @@ function Dummy(props) {
             </h2>
           </div>
         </div>
-      </div>
-      <div className="main-division">
-        <Grid container spacing={4}>
+        </div>
+        <div className="main-division">
+          <Grid container spacing={4}>
           {/* siderbar */}
           <Grid item xs={12} sm={12} md={3} lg={3} xl={3}>
             <div className="logo-panel">
@@ -106,44 +118,47 @@ function Dummy(props) {
               <SidebarMenu />
             </div>
           </Grid>
+
+            {isAuthenticated ? (
+              <>
           {/* Main Form */}
           {/* <div className="main-form-desktop-view"> */}
             <Grid item xs={12} sm={12} md={5} lg={5} xl={5}>
               <form className="form">
-                <div className="input_one">
-                  <h5>
-                    <strong>{props.inputOneTitle}</strong>
-                  </h5>
-                  <textarea
-                    value={inputOne}
-                    onChange={(e) => setInputOne(e.target.value)}
+                    <div className="input_one">
+                      <h5>
+                        <strong>{props.inputOneTitle}</strong>
+                      </h5>
+                      <textarea
+                        value={inputOne}
+                        onChange={(e) => setInputOne(e.target.value)}
                     placeholder={props.placeholderOne}
-                  />
-                  {/* {console.log(inputOne, inputTwo, tone)} */}
-                </div>
-                {props.inputTwo ? (
-                  <div className="input_one">
-                    <h5>
-                      <strong>{props.inputTwoTitle}</strong>
-                    </h5>
+                      />
+                      {/* {console.log(inputOne, inputTwo, tone)} */}
+                    </div>
+                    {props.inputTwo ? (
+                      <div className="input_one">
+                        <h5>
+                          <strong>{props.inputTwoTitle}</strong>
+                        </h5>
 
-                    <textarea
-                      value={inputTwo}
-                      onChange={(e) => setInputTwo(e.target.value)}
+                        <textarea
+                          value={inputTwo}
+                          onChange={(e) => setInputTwo(e.target.value)}
                       placeholder={props.placeholderTwo}
-                    />
-                  </div>
-                ) : (
-                  <></>
-                )}
+                        />
+                      </div>
+                    ) : (
+                      <></>
+                    )}
 
-                {props.toneInput ? (
-                  <div className="input_three">
-                    <h5>
-                      <strong>Select a tone</strong>
-                    </h5>
-                    <Grid container justifyContent="center" spacing={4}>
-                      <Grid item xs={3} sm={3} md={3}>
+                    {props.toneInput ? (
+                      <div className="input_three">
+                        <h5>
+                          <strong>Select a tone</strong>
+                        </h5>
+                        <Grid container justifyContent="center" spacing={4}>
+                          <Grid item xs={3} sm={3} md={3}>
                         <Button
                           className={
                             tone == "Friendly"
@@ -152,135 +167,149 @@ function Dummy(props) {
                           }
                           onClick={(e) => handleTone("Friendly")}
                         >
-                          Friendly
-                        </Button>
-                      </Grid>
-                      <Grid item xs={3} sm={3} md={3}>
-                        <Button
-                          className={
-                            tone == "Professional"
-                              ? "tone-btn-selected"
-                              : "tone-btn"
-                          }
-                          onClick={(e) => handleTone("Professional")}
-                        >
-                          Professional
-                        </Button>
-                      </Grid>
-                      <Grid item xs={3} sm={3} md={3}>
-                        <Button
-                          className={
-                            tone == "Empathetic"
-                              ? "tone-btn-selected"
-                              : "tone-btn"
-                          }
-                          onClick={(e) => handleTone("Empathetic")}
-                        >
-                          Empathetic
-                        </Button>
-                      </Grid>
-                      <Grid item xs={3} sm={3} md={3}>
-                        <Button
-                          className={
-                            tone == "Bold" ? "tone-btn-selected" : "tone-btn"
-                          }
-                          onClick={(e) => handleTone("Bold")}
-                        >
-                          Bold
-                        </Button>
-                      </Grid>
-                    </Grid>
-                  </div>
-                ) : (
-                  <></>
-                )}
+                              Friendly
+                            </Button>
+                          </Grid>
+                          <Grid item xs={3} sm={3} md={3}>
+                            <Button
+                              className={
+                                tone == "Professional"
+                                  ? "tone-btn-selected"
+                                  : "tone-btn"
+                              }
+                              onClick={(e) => handleTone("Professional")}
+                            >
+                              Professional
+                            </Button>
+                          </Grid>
+                          <Grid item xs={3} sm={3} md={3}>
+                            <Button
+                              className={
+                                tone == "Empathetic"
+                                  ? "tone-btn-selected"
+                                  : "tone-btn"
+                              }
+                              onClick={(e) => handleTone("Empathetic")}
+                            >
+                              Empathetic
+                            </Button>
+                          </Grid>
+                          <Grid item xs={3} sm={3} md={3}>
+                            <Button
+                              className={
+                                tone == "Bold"
+                                  ? "tone-btn-selected"
+                                  : "tone-btn"
+                              }
+                              onClick={(e) => handleTone("Bold")}
+                            >
+                              Bold
+                            </Button>
+                          </Grid>
+                        </Grid>
+                      </div>
+                    ) : (
+                      <></>
+                    )}
 
-                <div className="submitButton">
-                  <button
-                    onClick={() => handleSubmit(path)}
-                    disabled={loading}
-                    variant="contained"
-                  >
-                    Submit
-                  </button>
-                </div>
+                    <div className="submitButton">
+                      <button
+                        onClick={() => handleSubmit(path)}
+                        disabled={loading}
+                        variant="contained"
+                      >
+                        Submit
+                      </button>
+                    </div>
               </form>
             </Grid>
           {/* </div> */}
           {/* results */}
           <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
-            <div className="category-title mr-2">
-              <h2>
-                <strong>Result</strong>
-              </h2>
-            </div>
-            {/* {console.log("data",data)} */}
-            {loading ? (
-              <Loader />
-            ) : (
-              <>
-                {data != undefined ? (
-                  <>
-                    <button
-                      className="cpyall-btn"
-                      onClick={() => copyToAllClipboard(data)}
-                    >
-                      {" "}
-                      Copy All
-                    </button>
-                    {AllCopied ? (
-                      <h1 className="text-cp-al">ALL RESULTS COPIED ! </h1>
-                    ) : (
-                      ""
-                    )}
+                  <div className="category-title mr-2">
+                    <h2>
+                      <strong>Result</strong>
+                    </h2>
+                  </div>
+                  {/* {console.log("data",data)} */}
+                  {loading ? (
+                    <Loader />
+                  ) : (
+                    <>
+                      {data != undefined ? (
+                        <>
+                          <button
+                            className="cpyall-btn"
+                            onClick={() => copyToAllClipboard(data)}
+                          >
+                            {" "}
+                            Copy All
+                          </button>
+                          {AllCopied ? (
+                            <h1 className="text-cp-al">
+                              ALL RESULTS COPIED !{" "}
+                            </h1>
+                          ) : (
+                            ""
+                          )}
 
-                    <div className="output-container">
-                      {data.map((item, i) => {
-                        return (
-                          <>
-                            <div className="output-layout">
-                              <Grid container>
-                                <Grid item xs={10} md={10}>
-                                  <div className="ot-hd">
-                                    <div>Result {i + 1}</div>
-                                  </div>
-                                </Grid>
-                                <Grid item xs={2} md={2}>
-                                  <div className="hd-cp">
-                                    <button
-                                      className="cpy-btn"
-                                      onClick={() => copyToClipboard(item, i)}
-                                    >
-                                      Copy
-                                    </button>
-                                    {/* <h1 className="text-status">Description {i+1} Copied ! </h1> */}
-                                    {Copied == i + 1 ? (
-                                      <h1 className="text-status">
-                                        Result {i + 1} Copied !{" "}
-                                      </h1>
-                                    ) : (
-                                      ""
-                                    )}
-                                  </div>
-                                </Grid>
-                              </Grid>
+                          <div className="output-container">
+                            {data.map((item, i) => {
+                              return (
+                                <>
+                                  <div className="output-layout">
+                                    <Grid container>
+                                      <Grid item xs={10} md={10}>
+                                        <div className="ot-hd">
+                                          <div>Result {i + 1}</div>
+                                        </div>
+                                      </Grid>
+                                      <Grid item xs={2} md={2}>
+                                        <div className="hd-cp">
+                                          <button
+                                            className="cpy-btn"
+                                            onClick={() =>
+                                              copyToClipboard(item, i)
+                                            }
+                                          >
+                                            Copy
+                                          </button>
+                                          {/* <h1 className="text-status">Description {i+1} Copied ! </h1> */}
+                                          {Copied == i + 1 ? (
+                                            <h1 className="text-status">
+                                              Result {i + 1} Copied !{" "}
+                                            </h1>
+                                          ) : (
+                                            ""
+                                          )}
+                                        </div>
+                                      </Grid>
+                                    </Grid>
 
-                              <div className="ot-bd" ref={textAreaRef}>
-                                {item.text.trim()}
-                              </div>
-                            </div>
-                          </>
-                        );
-                      })}
-                    </div>
-                  </>
-                ) : (
-                  <>{/* <div className="err-msg">Oops Try Again !</div> */}</>
-                )}
+                                    <div className="ot-bd" ref={textAreaRef}>
+                                      {item.text.trim()}
+                                    </div>
+                                  </div>
+                                </>
+                              );
+                            })}
+                          </div>
+                        </>
+                      ) : (
+                        <>
+                          {/* <div className="err-msg">Oops Try Again !</div> */}
+                        </>
+                      )}
+                    </>
+                  )}
+                </Grid>
               </>
+            ) : isAuthenticated === undefined ? (
+              ""
+            ) : (
+              <Navigate to="/login" />
             )}
           </Grid>
-        </Grid>
       </div>
       <div className="mobile-view-product">
         <ul aria-expanded={showMenu}>
@@ -467,8 +496,9 @@ function Dummy(props) {
             )}
           </Grid>
         </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
