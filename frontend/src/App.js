@@ -8,6 +8,8 @@ import UserPage from "./components/Form/UserPage";
 import HomePage from "./components/home/HomePage";
 import Footer from "./Footer";
 import Signin from "./components/login/Signin";
+import ForgotPassword from "./components/login/ForgotPassword";
+import ResetPassword from "./components/login/ResetPassword";
 
 function App() {
   const location = useLocation();
@@ -21,6 +23,11 @@ function App() {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/login" element={<Signin />} />
+              <Route
+                path="/login/forgot-password"
+                element={<ForgotPassword />}
+              />
+              <Route path="/login/reset-password" element={<ResetPassword />} />
               <Route
                 path="/productdescription"
                 element={
@@ -1603,7 +1610,7 @@ function App() {
           </Grid>
         </Grid>
       </div>
-      {location.pathname === "/login" ? null : <Footer />}
+      {!location.pathname.startsWith("/login") && <Footer />}
     </>
   );
 }
