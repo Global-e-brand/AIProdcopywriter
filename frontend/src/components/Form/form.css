@@ -328,7 +328,7 @@ button[aria-expanded="false"] img {
 
 /*Media Query For responsive Design*/
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 830px) {
   .main-form-desktop-view {
     display: none;
   }
@@ -359,7 +359,7 @@ button[aria-expanded="false"] img {
   }
   .mobile-view-product ul[aria-expanded="true"] {
     display: block;
-    background-color: #e0eeed;
+    background-color: #f7f7f7;
     position: absolute;
     height: 90vh;
     animation: myfirst 1s;
@@ -392,8 +392,83 @@ button[aria-expanded="false"] img {
   .result-mobile-view {
     padding: 10px;
   }
+  .output-container-mobile-view {
+    position: relative;
+  }
+  .output-layout-mobile-view {
+    position: absolute;
+  }
+  .mobile-view-carousal-card {
+    width: 100%;
+    height: 130%;
+    background-color: #b5d3ff;
+    filter: drop-shadow(5px 5px 20px rgba(0, 0, 0, 0.5));
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 3%;
+    overflow-y: scroll;
+  }
+  .mobile-view-carousal-card h4 {
+    font-weight: 600;
+  }
+  .output-container-mobile-view div[aria-expanded="true"] {
+    transition: ease 1s;
+  }
+  .output-container-mobile-view div[aria-expanded="false"] {
+    transition: ease 1s;
+  }
+  .mobile-carousal-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 15px;
+  }
+  .mobile-carousal-buttons button {
+    border: none;
+    background-color: transparent;
+  }
+  .mobile-carousal-card-title {
+    width: 107%;
+    display: flex;
+    height: 40px;
+    margin-bottom: 2%;
+    justify-content: center;
+    align-items: center;
+    margin-top: -15px;
+    margin-left: -15px;
+    border-radius: 8px 8px 0px 0px;
+    background-color: #a9cbff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  }
+  .mobile-carousal-card-title h3 {
+    font-weight: 800;
+  }
+  .mobile-left-arrow {
+    width: 15px;
+  }
+  .mobile-right-arrow img {
+    transform: rotate(180deg);
+  }
+  .mobile-carousal-card-title button {
+    background-color: #154b89;
+    position: absolute;
+    border-radius: 5px;
+    border: none;
+    color: #ffffff;
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 16px;
+    text-align: center;
+    padding: 5px;
+  }
+  .cpy-btn-mobile-view {
+    right: 0;
+  }
 }
-@media only screen and (max-width: 2000px) and (min-width: 600px) {
+@media only screen and (max-width: 2000px) and (min-width: 830px) {
   .header-mobile-view {
     display: none;
   }
