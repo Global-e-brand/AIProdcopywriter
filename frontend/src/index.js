@@ -14,6 +14,8 @@ let windowURL=window.location.href.substring(window.location.origin.length)
 
 let footerShow=true;
 
+//no footer
+
 export function noFooter(){
   noFooterURL.map((item)=>{
     if(windowURL===item.url){
