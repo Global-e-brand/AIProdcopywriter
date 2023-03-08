@@ -13,12 +13,16 @@ function ForgotPassword() {
   const [email, setEmail] = useState("");
 
   const handleEmail = (e) => {
-    setEmail([...e.target.value]);
+    setEmail(e.target.value);
   };
 
   const handleVerifyEmail = () => {
     navigate("/login/reset-password");
   };
+
+  const sendCode = async () => {
+
+  }
 
   return (
     <div className="authentication-page">
@@ -55,7 +59,7 @@ function ForgotPassword() {
               ></input>
             </Grid>
             <Grid item xs={5} sm={5} md={5} lg={5} xl={5}>
-              <button className="form-btn" disabled={email.length === 0}>
+              <button className="form-btn" onClick={sendCode} disabled={email.length === 0}>
                 Send Code
               </button>
             </Grid>

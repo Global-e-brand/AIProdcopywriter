@@ -11,7 +11,7 @@ function Signin() {
   const [email, setEmail] = useState("");
 
   const handleEmail = (e) => {
-    setEmail([...e.target.value]);
+    setEmail(e.target.value);
   };
 
   return (
