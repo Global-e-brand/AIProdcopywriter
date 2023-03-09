@@ -10,7 +10,7 @@ import MobileInstructions from "../mobile-view/MobileInstructions";
 
 function HomePage() {
   const [Zvalue, setZvalue] = useState("1");
-  const [swap, setSwap] = useState(false);
+  const [swap, setSwap] = useState(true);
   const [showModel, setShowModel] = useState(false);
   const closeModal = () => {
     setShowModel(false);

@@ -50,7 +50,8 @@
     top: 0;
     bottom: 0;
     background-image: url("../../assets/27.png");
-    background-size: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
     z-index: -1;
   }
   .instructionMobile {
