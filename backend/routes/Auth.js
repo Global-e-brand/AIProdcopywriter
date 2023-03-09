@@ -3,8 +3,15 @@ import dotenv from "dotenv";
 import passport from "passport";
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 import { Strategy as FacebookStrategy } from "passport-facebook";
-import { authUser } from "../helpers/auth-user.js";
-import { checkAuthenticated } from "../helpers/check-authenticated.js";
+import { Strategy as LocalStrategy } from "passport-local";
+import { authUser } from "../helpers/auth/auth-user.js";
+import { checkAuthenticated } from "../helpers/auth/check-authenticated.js";
+import { verifyEmail } from "../helpers/auth/verify-email.js";
+import { insertUser, findUser } from "../helpers/misc/mongo-db-helpers.js";
+import {
+  comparePassword,
+  hashPassword,
+} from "../helpers/auth/password-hashing.js";
 
 dotenv.config();
 
@@ -39,6 +46,42 @@ passport.use(
   )
 );
 
+passport.use(
+  new LocalStrategy(
+    {
+      usernameField: "email",
+    },
+    async (email, password, done) => {
+      email = email.toLocaleLowerCase();
+      // await verifyEmail(req.body.email, (data) => {
+      //   console.log(data);
+      // });
+
+      try {
+        const user = await findUser(email);
+
+        if (user === null) {
+          console.log("No user matches the provided email");
+          return done(null, null);
+        }
+
+        const isValid = comparePassword(password, user.hashedPassword);
+
+        if (!isValid) {
+          console.log("Invalid authentication");
+          done(null, null);
+        } else if (isValid) {
+          console.log("Authenticated succesfully!");
+          done(null, user);
+        }
+      } catch (err) {
+        console.log(err);
+        done(err, null);
+      }
+    }
+  )
+);
+
 passport.serializeUser((user, done) => {
   done(null, user);
 });
@@ -47,7 +90,30 @@ passport.deserializeUser((user, done) => {
   done(null, user);
 });
 
+authrouter.post("/register-account", async (req, res) => {
+  const email = req.body.email.toLowerCase();
+  const user = await findUser(email);
+
+  if (user === null) {
+    const hashedPassword = hashPassword(req.body.password);
+
+    await insertUser(email, hashedPassword);
+
+    res.redirect("http://localhost:3001/login");
+  } else {
+    res.status(400).send("Cannot register user. Email already in use.");
+  }
+});
+
 // authentication api calls
+authrouter.post(
+  "/local",
+  passport.authenticate("local", {
+    successRedirect: "/auth/success",
+    failureRedirect: "/auth/fail",
+  })
+);
+
 authrouter.get(
   "/google",
   passport.authenticate("google", { scope: ["email", "profile"] })

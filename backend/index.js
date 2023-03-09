@@ -26,6 +26,8 @@ const app = express();
 const __dirname = path.resolve();
 var PORT = process.env.PORT || 3000;
 
+app.use(express.urlencoded());
+
 app.use(
   session({
     secret: process.env.SESSION_SECRET,

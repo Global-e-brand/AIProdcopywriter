@@ -103,11 +103,26 @@ function Signin() {
                 className="submit-btn"
                 disabled={email.length === 0 || password.length === 0}
               >
-                Sign in
-              </button>
+                {email.length === 0 || password.length === 0 ? 
+                <p className="submit-text">Sign in</p>
+                :
+                <form method="post" action="http://localhost:3000/auth/local">
+                  <input type="hidden" name="email" value={email}></input>
+                  <button className="submit-link" type="submit" name="password" value={password}>
+                    Sign In
+                  </button>
+                </form>
+}
+                </button>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
               <button className="secondary-btn">Create an account</button>
+              <form method="post" action="http://localhost:3000/auth/register-account">
+                <input type="hidden" name="email" value={email}></input>
+                <button type="submit" name="password" value={password}>
+                  Remove this button
+                </button>
+              </form>
             </Grid>
           </Grid>
         </Grid>
