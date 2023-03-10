@@ -78,7 +78,6 @@ passport.use(
           done(null, null);
         } else if (isValid) {
           console.log("Authenticated succesfully!");
-
           done(null, user);
         }
       } catch (err) {
