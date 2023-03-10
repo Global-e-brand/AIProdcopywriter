@@ -2,8 +2,8 @@ import express, { json } from "express";
 const apirouter = express.Router();
 import bodyParser from "body-parser";
 import fetch from "node-fetch";
-import getGPTResponse from "../helpers/get-GPT-response.js";
-import createPrompt from "../helpers/prompt-creator.js";
+import getGPTResponse from "../helpers/api/get-GPT-response.js";
+import createPrompt from "../helpers/api/prompt-creator.js";
 import GptApi from "../controllers/GPTApi.js";
 
 var app = express();
@@ -409,8 +409,8 @@ apirouter.post("/productdescription", bodyParser.json(), async (req, res) => {
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
-  
-  const response = await getGPTResponse(prompt,res);
+
+  const response = await getGPTResponse(prompt, res);
   res.send(response);
 });
 

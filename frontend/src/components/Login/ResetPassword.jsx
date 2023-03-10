@@ -23,11 +23,16 @@ function ResetPassword() {
 
   return (
     <div className="authentication-page">
+      <img
+        className="app-logo outside"
+        src={fulllogo}
+        alt="AI ProdCopywriter logo"
+      ></img>
       <div className="authentication-card">
         <Grid container direction="row" className="authentication-grid">
           <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
             <img
-              className="app-logo"
+              className="app-logo inside"
               src={fulllogo}
               alt="AI ProdCopywriter logo"
             ></img>
@@ -47,6 +52,7 @@ function ResetPassword() {
                 placeholder={"New Password"}
                 value={password}
                 setValue={setPassword}
+                disabled={isPasswordReset}
               />
             </Grid>
             <Grid item xs={16} sm={16} md={16} lg={16} xl={16}>
@@ -54,6 +60,7 @@ function ResetPassword() {
                 placeholder={"Confirm Password"}
                 value={confirmedPassword}
                 setValue={setConfirmedPassword}
+                disabled={isPasswordReset}
               />
             </Grid>
             <Grid item xs={16} sm={16} md={16} lg={16} xl={16}>

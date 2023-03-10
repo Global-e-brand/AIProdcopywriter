@@ -1,4 +1,4 @@
-import { getCategoryData } from "./mongo-db-helpers.js";
+import { getCategoryData } from "../misc/mongo-db-helpers.js";
 
 const createPrompt = async (req, activeComponents) => {
   const categoryData = await getCategoryData(req.body.category);

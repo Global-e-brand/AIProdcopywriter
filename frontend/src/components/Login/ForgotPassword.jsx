@@ -6,27 +6,66 @@ import { Link } from "react-router-dom";
 import { Grid } from "@mui/material";
 import { SecureInput } from "./SecureInput";
 import { useNavigate } from "react-router-dom";
+import { verifyEmail } from "../../helpers/checkEmail";
 
 function ForgotPassword() {
   const navigate = useNavigate();
   const [verificationCode, setVerificationCode] = useState("");
   const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleEmail = (e) => {
-    setEmail([...e.target.value]);
+    const emailInput = document.getElementById("emailInput");
+
+    if (emailInput.classList.contains("incorrect-input")) {
+      emailInput.classList.add("correct-input");
+      emailInput.classList.remove("incorrect-input");
+    }
+
+    setEmail(e.target.value);
   };
 
   const handleVerifyEmail = () => {
     navigate("/login/reset-password");
   };
 
+  const sendCode = async () => {
+    setLoading(true);
+    // const isValid = await verifyEmail(email);
+    const isValid = true;
+
+    if (isValid) {
+      await fetch("http://localhost:3000/auth/send-otp", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+        }),
+      });
+    } else {
+      const emailInput = document.getElementById("emailInput");
+
+      emailInput.classList.add("incorrect-input");
+      emailInput.classList.remove("correct-input");
+    }
+
+    setLoading(false);
+  };
+
   return (
     <div className="authentication-page">
+      <img
+        className="app-logo outside"
+        src={fulllogo}
+        alt="AI ProdCopywriter logo"
+      ></img>
       <div className="authentication-card">
         <Grid container direction="row" className="authentication-grid">
           <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
             <img
-              className="app-logo"
+              className="app-logo inside"
               src={fulllogo}
               alt="AI ProdCopywriter logo"
             ></img>
@@ -41,16 +80,21 @@ function ForgotPassword() {
             </Grid>
           </Grid>
           <Grid container alignItems={"center"} columnSpacing={1} columns={16}>
-            <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+            <Grid item xs={11} sm={11} md={11} lg={11} xl={11}>
               <input
                 className="email-input"
+                id="emailInput"
                 placeholder="Email Address"
                 onChange={handleEmail}
                 defaultValue=""
               ></input>
             </Grid>
-            <Grid item xs={4} sm={4} md={4} lg={4} xl={4}>
-              <button className="form-btn" disabled={email.length === 0}>
+            <Grid item xs={5} sm={5} md={5} lg={5} xl={5}>
+              <button
+                className="form-btn"
+                onClick={sendCode}
+                disabled={email.length === 0 || loading}
+              >
                 Send Code
               </button>
             </Grid>

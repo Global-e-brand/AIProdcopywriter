@@ -64,3 +64,41 @@ input::-ms-clear {
   height: 80%;
   justify-content: center;
 }
+
+@media (max-width: 600px) {
+  .secure-input {
+    border-radius: 5px;
+    height: 28px;
+    margin: 5px 0;
+  }
+
+  .input-field {
+    padding: 5px;
+    font-size: 15px;
+    line-height: 18px;
+  }
+
+  .visibility-btn {
+    height: 100%;
+    padding: 0 3px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .secure-input {
+    border-radius: 10px;
+    height: 43px;
+    margin: 5px 0;
+  }
+
+  .input-field {
+    padding: 5px;
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .visibility-btn {
+    height: 100%;
+    padding: 2px 5px;
+  }
+}

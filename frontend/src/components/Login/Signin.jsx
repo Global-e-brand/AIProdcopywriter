@@ -1,26 +1,61 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./authentication.css";
 import { fulllogo, googleIcon, facebookIcon, appleIcon } from "../../assets";
 import { Link } from "react-router-dom";
 import { Grid } from "@mui/material";
 import { SecureInput } from "./SecureInput";
+import { verifyEmail } from "../../helpers/checkEmail";
 
 function Signin() {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
 
-  const handleEmail = (e) => {
-    setEmail([...e.target.value]);
+  const handleEmailInput = (e) => {
+    const emailInput = document.getElementById("emailInput");
+
+    if (emailInput.classList.contains("incorrect-input")) {
+      emailInput.classList.remove("incorrect-input");
+      emailInput.classList.add("correct-input");
+    }
+
+    setEmail(e.target.value);
+  };
+
+  const handleSubmit = async () => {
+    const isValid = await verifyEmail(email);
+
+    if (isValid) {
+      await fetch("http://localhost:3000/auth/register-account", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+          password: password,
+        }),
+      });
+    } else {
+      const emailInput = document.getElementById("emailInput");
+
+      emailInput.classList.add("incorrect-input");
+      emailInput.classList.remove("correct-input");
+    }
   };
 
   return (
     <div className="authentication-page">
+      <img
+        className="app-logo outside"
+        src={fulllogo}
+        alt="AI ProdCopywriter logo"
+      ></img>
       <div className="authentication-card">
         <Grid container direction="row" className="authentication-grid">
           <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
             <img
-              className="app-logo"
+              className="app-logo inside"
               src={fulllogo}
               alt="AI ProdCopywriter logo"
             ></img>
@@ -69,8 +104,9 @@ function Signin() {
             <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
               <input
                 className="email-input"
+                id="emailInput"
                 placeholder="Email Address"
-                onChange={handleEmail}
+                onChange={handleEmailInput}
                 defaultValue=""
               ></input>
             </Grid>
@@ -98,11 +134,31 @@ function Signin() {
                 className="submit-btn"
                 disabled={email.length === 0 || password.length === 0}
               >
-                Sign in
-              </button></a>
+                {email.length === 0 || password.length === 0 ? (
+                  <p className="submit-text">Sign in</p>
+                ) : (
+                  <form
+                    method="post"
+                    onsubmit="return false"
+                    action="http://localhost:3000/auth/local"
+                  >
+                    <input type="hidden" name="email" value={email}></input>
+                    <button
+                      className="submit-link"
+                      type="submit"
+                      name="password"
+                      value={password}
+                    >
+                      Sign In
+                    </button>
+                  </form>
+                )}
+              </button>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
             <a href="/sign-in"><button className="secondary-btn">Create an account</button></a>
+
+              <button onClick={handleSubmit}>Delete this button</button>
             </Grid>
           </Grid>
         </Grid>

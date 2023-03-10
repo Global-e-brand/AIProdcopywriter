@@ -9,6 +9,8 @@ export { default as mobile_background } from "../assets/27.png";
 export { default as appleIcon } from "../assets/images/apple-icon.png";
 export { default as leftarrow } from "../assets/leftarrow.png";
 export { default as authenticationBackground } from "../assets/images/authentication-background.png";
+export { default as authenticationBackgroundMobile } from "../assets/images/authentication-background-mobile.png";
+export { default as authenticationBackgroundTablet } from "../assets/images/authentication-background-tablet.png";
 export { default as eyeClosedIcon } from "../assets/images/eye-closed-icon.png";
 export { default as eyeOpenIcon } from "../assets/images/eye-open-icon.png";
 export { default as facebookIcon } from "../assets/images/facebook-icon.png";
