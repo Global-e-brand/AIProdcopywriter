@@ -128,7 +128,7 @@ function CreateAccount(props) {
                 <p>
                   <strong className="blue-clr">
                     {" "}
-                    <a href="/sign-in">Login now</a>
+                    <a href="/login">Login now</a>
                   </strong>
                 </p>
               </span>
