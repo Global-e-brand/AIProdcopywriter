@@ -15,6 +15,13 @@ function ForgotPassword() {
   const [loading, setLoading] = useState(false);
 
   const handleEmail = (e) => {
+    const emailInput = document.getElementById("emailInput");
+
+    if (emailInput.classList.contains("incorrect-input")) {
+      emailInput.classList.add("correct-input");
+      emailInput.classList.remove("incorrect-input");
+    }
+
     setEmail(e.target.value);
   };
 
@@ -29,7 +36,10 @@ function ForgotPassword() {
     if (isValid) {
       alert("Your code is 123456");
     } else {
-      alert("Invalid email. Please try a different email.");
+      const emailInput = document.getElementById("emailInput");
+
+      emailInput.classList.add("incorrect-input");
+      emailInput.classList.remove("correct-input");
     }
 
     setLoading(false);
@@ -64,6 +74,7 @@ function ForgotPassword() {
             <Grid item xs={11} sm={11} md={11} lg={11} xl={11}>
               <input
                 className="email-input"
+                id="emailInput"
                 placeholder="Email Address"
                 onChange={handleEmail}
                 defaultValue=""

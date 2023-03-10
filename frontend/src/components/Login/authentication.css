@@ -146,6 +146,14 @@
   color: rgba(0, 0, 0, 0.2);
 }
 
+.correct-input {
+  border-color: #b5d3ff;
+}
+
+.incorrect-input {
+  border-color: red;
+}
+
 .forgot-password-btn {
   display: block;
   font-style: normal;
@@ -248,7 +256,8 @@
   margin: auto 0;
 }
 
-.submit-link:hover, .submit-text:hover {
+.submit-link:hover,
+.submit-text:hover {
   color: inherit;
 }
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./authentication.css";
 import { fulllogo, googleIcon, facebookIcon, appleIcon } from "../../assets";
 import { Link } from "react-router-dom";
@@ -12,6 +12,13 @@ function Signin() {
   const [email, setEmail] = useState("");
 
   const handleEmailInput = (e) => {
+    const emailInput = document.getElementById("emailInput");
+
+    if (emailInput.classList.contains("incorrect-input")) {
+      emailInput.classList.remove("incorrect-input");
+      emailInput.classList.add("correct-input");
+    }
+
     setEmail(e.target.value);
   };
 
@@ -30,7 +37,10 @@ function Signin() {
         }),
       });
     } else {
-      alert("Invalid email. Please try a different email.");
+      const emailInput = document.getElementById("emailInput");
+
+      emailInput.classList.add("incorrect-input");
+      emailInput.classList.remove("correct-input");
     }
   };
 
@@ -94,6 +104,7 @@ function Signin() {
             <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
               <input
                 className="email-input"
+                id="emailInput"
                 placeholder="Email Address"
                 onChange={handleEmailInput}
                 defaultValue=""
