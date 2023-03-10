@@ -76,6 +76,12 @@ passport.use(
           done(null, null);
         } else if (isValid) {
           console.log("Authenticated succesfully!");
+          const userId=user._id;
+
+          userId(userId) 
+
+          console.log("userId",userId)
+          
           done(null, user);
         }
       } catch (err) {
