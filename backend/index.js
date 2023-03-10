@@ -10,6 +10,7 @@ import { fileURLToPath } from "url";
 import { dirname } from "path";
 import passport from "passport";
 import session from "express-session";
+import user from "./controllers/user.controller.js";
 
 dotenv.config();
 
@@ -37,8 +38,14 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use("/posts", router);
+
 app.use("/api", apirouter);
+
 app.use("/auth", authrouter);
+
+app.use("/user", user);
+
+
 
 if (process.env.NODE_ENV == "production") {
   app.use(express.static(path.join(__dirname + "/public")));

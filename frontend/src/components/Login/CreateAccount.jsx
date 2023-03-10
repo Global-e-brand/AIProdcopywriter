@@ -18,6 +18,10 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 function CreateAccount(props) {
   const [showPassword, setShowPassword] = React.useState(false);
   const [showConfirmPassword, setshowConfirmPassword] = React.useState(false);
+  const [textEmail, setTextEmail] = React.useState();
+  const [textPassword, setTextPassword] = React.useState();
+  const [textConfirmPassword, setTextConfirmPassword] = React.useState();
+  // const [user]
 
   const handleShowPassword = (param) => {
     if (param === "password") {
@@ -26,6 +30,30 @@ function CreateAccount(props) {
       setshowConfirmPassword(!showConfirmPassword);
     }
   };
+
+  async function userRegister() {
+    let res = await fetch("/user/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: textEmail,
+        password: textPassword,
+        confirm_password: textConfirmPassword,
+      }),
+    });
+
+    try{
+      let response = res.json();
+      response.then(async (res) => {
+        console.log("response", res.message);
+      });
+    }catch(e){
+
+    }
+    
+  }
 
   return (
     <div className="bg-ac">
@@ -45,7 +73,7 @@ function CreateAccount(props) {
               </span>
             </div>
           </Grid>
-
+{/* 
           <Grid item xs={12} sm={6} md={6} lg={6} xl={6}>
             <Button className="sign-btn">
               <img src={googleIcon} alt="google-icon" className="icons" />
@@ -56,11 +84,11 @@ function CreateAccount(props) {
             <Button className="sign-btn">
               <img src={facebookIcon} alt="facebook-icon" className="icons" />
             </Button>
-          </Grid>
+          </Grid> 
 
           <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
             <h1 className="hr-or">or</h1>
-          </Grid>
+          </Grid>*/}
 
           <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
             <TextField
@@ -68,6 +96,7 @@ function CreateAccount(props) {
               label="Enter Your Email"
               variant="outlined"
               fullWidth={true}
+              onChange={(e) => setTextEmail(e.target.value)}
             />
           </Grid>
           <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
@@ -87,6 +116,7 @@ function CreateAccount(props) {
                     </IconButton>
                   </InputAdornment>
                 }
+                onChange={(e) => setTextPassword(e.target.value)}
                 label="Password"
               />
             </FormControl>
@@ -110,12 +140,13 @@ function CreateAccount(props) {
                     </IconButton>
                   </InputAdornment>
                 }
+                onChange={(e) => setTextConfirmPassword(e.target.value)}
                 label="confirm-Password"
               />
             </FormControl>
           </Grid>
           <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-            <Button variant="contained" fullWidth={true}>
+          <Button variant="contained" fullWidth={true} onClick={()=>userRegister()}>
             Create Account
             </Button>
           </Grid>
@@ -128,7 +159,7 @@ function CreateAccount(props) {
                 <p>
                   <strong className="blue-clr">
                     {" "}
-                    <a href="/sign-in">Login now</a>
+                    <a href="/login">Login now</a>
                   </strong>
                 </p>
               </span>

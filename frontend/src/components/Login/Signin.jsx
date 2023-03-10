@@ -94,15 +94,15 @@ function Signin() {
           </Grid>
           <Grid container direction="row">
             <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-              <button
+            <a href="/sign-in"> <button
                 className="submit-btn"
                 disabled={email.length === 0 || password.length === 0}
               >
                 Sign in
-              </button>
+              </button></a>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-              <button className="secondary-btn">Create an account</button>
+            <a href="/sign-in"><button className="secondary-btn">Create an account</button></a>
             </Grid>
           </Grid>
         </Grid>

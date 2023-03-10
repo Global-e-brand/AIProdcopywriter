@@ -24,12 +24,12 @@ export function noFooter(){
   })
 }
 
-
 noFooter();
+
 root.render(
   <BrowserRouter>
     <App />   
-    {footerShow?<Footer/>:footerShow=true}
+    {footerShow&&<Footer/>}
   </BrowserRouter>
 );
 

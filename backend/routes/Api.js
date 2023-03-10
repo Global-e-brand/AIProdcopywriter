@@ -13,12 +13,6 @@ app.use(
     extended: true,
   })
 );
-// parse application/json
-// app.use(bodyParser.json());
-// apirouter.post("/", (req, res) => {
-//   let data = { foo: "backend called" };
-//   res.json(data);
-// });
 
 // for each of the following endpoints, the req object should include
 // inputOne, inputTwo, tone, and category props via "body"
@@ -32,15 +26,6 @@ apirouter.post("/calltoaction", bodyParser.json(), async (req, res) => {
   const response = await getGPTResponse(prompt);
   res.send(response);
 });
-
-// apirouter.post("/*", async (req, res) => {
-//   var body = "";
-//   req.on("data", async function (data) {
-//     body += data;
-//     let response = await GptApi(body);
-//     return res.send(response);
-//   });
-// });
 
 apirouter.post("/eventcopy", bodyParser.json(), async (req, res) => {
   const prompt = await createPrompt(req, {
