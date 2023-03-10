@@ -146,9 +146,9 @@ function CreateAccount(props) {
             </FormControl>
           </Grid>
           <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-          <Button variant="contained" fullWidth={true} onClick={()=>userRegister()}>
+         <a href="/login"> <Button variant="contained" fullWidth={true} onClick={()=>userRegister()}>
             Create Account
-            </Button>
+            </Button></a>
           </Grid>
           <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
             <div className="text-container">

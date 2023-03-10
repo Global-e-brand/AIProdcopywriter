@@ -9,7 +9,7 @@ const user = express.Router();
 app.use(bodyParser.urlencoded({extended: true,}));
 
 user.post("/register", bodyParser.json(), async (req, res) => {
-    let email =req.body.email;
+    let email = req.body.email ? req.body.email.trim().toLowerCase() : "";
     let password=req.body.password;
     let confirm_password=req.body.confirm_password;   
 

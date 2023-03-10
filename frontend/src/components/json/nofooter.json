@@ -1,11 +1,8 @@
 [
     {
-        "url":"/sign-in"
+        "url":"/create-account"
     },
     {
         "url":"/login"
     }
-   
-
-    
 ]

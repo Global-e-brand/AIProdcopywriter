@@ -1,5 +1,5 @@
 import trainingData from "../../models/TrainingData.js";
-import credentials from "../../models/TestUserCredentials.js";
+import userModel from "../../models/userModel.js";
 
 export const getCategoryData = async (category) => {
   let categoryData;
@@ -19,15 +19,15 @@ export const getCategoryData = async (category) => {
 // This function won't check if the password is hashed, or if the email is
 // correct/valid. Those checks should be done beforehand.
 export const insertUser = async (email, hashedPassword) => {
-  await credentials.create([
+  await userModel.create([
     {
       email: email,
-      hashedPassword: hashedPassword,
+      password: hashedPassword,
     },
   ]);
 };
 
 export const findUser = async (email) => {
-  const user = await credentials.findOne({ email: email });
+  const user = await userModel.findOne({ email: email });
   return user;
 };
