@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import "./authentication.css";
 import { fulllogo, googleIcon, facebookIcon, appleIcon } from "../../assets";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Grid } from "@mui/material";
 import { SecureInput } from "./SecureInput";
 import { verifyEmail } from "../../helpers/checkEmail";
@@ -10,6 +10,8 @@ import { verifyEmail } from "../../helpers/checkEmail";
 function Signin() {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+
+  const navigate = useNavigate();
 
   const handleEmailInput = (e) => {
     const emailInput = document.getElementById("emailInput");
@@ -43,6 +45,10 @@ function Signin() {
       emailInput.classList.remove("correct-input");
     }
   };
+
+  const handleCreateAccount = () => {
+    navigate("/create-account");
+  }
 
   return (
     <div className="authentication-page">
@@ -156,7 +162,9 @@ function Signin() {
               </button>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-              <button className="secondary-btn">Create an account</button>
+              <button className="secondary-btn" onClick={handleCreateAccount}>
+                Create an account
+              </button>
 
               <button onClick={handleSubmit}>Delete this button</button>
             </Grid>
