@@ -31,10 +31,19 @@ function ForgotPassword() {
 
   const sendCode = async () => {
     setLoading(true);
-    const isValid = await verifyEmail(email);
+    // const isValid = await verifyEmail(email);
+    const isValid = true;
 
     if (isValid) {
-      alert("Your code is 123456");
+      await fetch("http://localhost:3000/auth/send-otp", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+        }),
+      });
     } else {
       const emailInput = document.getElementById("emailInput");
 
