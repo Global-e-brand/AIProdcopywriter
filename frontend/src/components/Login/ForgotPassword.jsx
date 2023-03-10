@@ -6,11 +6,13 @@ import { Link } from "react-router-dom";
 import { Grid } from "@mui/material";
 import { SecureInput } from "./SecureInput";
 import { useNavigate } from "react-router-dom";
+import { verifyEmail } from "../../helpers/checkEmail";
 
 function ForgotPassword() {
   const navigate = useNavigate();
   const [verificationCode, setVerificationCode] = useState("");
   const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleEmail = (e) => {
     setEmail(e.target.value);
@@ -21,8 +23,17 @@ function ForgotPassword() {
   };
 
   const sendCode = async () => {
+    setLoading(true);
+    const isValid = await verifyEmail(email);
 
-  }
+    if (isValid) {
+      alert("Your code is 123456");
+    } else {
+      alert("Invalid email. Please try a different email.");
+    }
+
+    setLoading(false);
+  };
 
   return (
     <div className="authentication-page">
@@ -59,7 +70,11 @@ function ForgotPassword() {
               ></input>
             </Grid>
             <Grid item xs={5} sm={5} md={5} lg={5} xl={5}>
-              <button className="form-btn" onClick={sendCode} disabled={email.length === 0}>
+              <button
+                className="form-btn"
+                onClick={sendCode}
+                disabled={email.length === 0 || loading}
+              >
                 Send Code
               </button>
             </Grid>

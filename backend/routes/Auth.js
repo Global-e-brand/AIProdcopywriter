@@ -12,8 +12,11 @@ import {
   comparePassword,
   hashPassword,
 } from "../helpers/auth/password-hashing.js";
+import bodyParser from "body-parser";
 
 dotenv.config();
+
+const jsonParser = bodyParser.json();
 
 const authrouter = express.Router();
 
@@ -52,10 +55,7 @@ passport.use(
       usernameField: "email",
     },
     async (email, password, done) => {
-      email = email.toLocaleLowerCase();
-      // await verifyEmail(req.body.email, (data) => {
-      //   console.log(data);
-      // });
+      email = email ? email.trim().toLowerCase() : "";
 
       try {
         const user = await findUser(email);
@@ -90,8 +90,14 @@ passport.deserializeUser((user, done) => {
   done(null, user);
 });
 
-authrouter.post("/register-account", async (req, res) => {
-  const email = req.body.email.toLowerCase();
+authrouter.get("/verify-email", async (req, res) => {
+  const data = await verifyEmail(req.query.email);
+
+  res.send(data);
+});
+
+authrouter.post("/register-account", jsonParser, async (req, res) => {
+  const email = req.body.email ? req.body.email.trim().toLowerCase() : "";
   const user = await findUser(email);
 
   if (user === null) {
@@ -99,9 +105,11 @@ authrouter.post("/register-account", async (req, res) => {
 
     await insertUser(email, hashedPassword);
 
+    console.log("Registered user!");
     res.redirect("http://localhost:3001/login");
   } else {
-    res.status(400).send("Cannot register user. Email already in use.");
+    console.log("Cannot register user. Email already in use.");
+    res.redirect("http://localhost:3001/login");
   }
 });
 

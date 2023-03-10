@@ -5,13 +5,33 @@ import { fulllogo, googleIcon, facebookIcon, appleIcon } from "../../assets";
 import { Link } from "react-router-dom";
 import { Grid } from "@mui/material";
 import { SecureInput } from "./SecureInput";
+import { verifyEmail } from "../../helpers/checkEmail";
 
 function Signin() {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
 
-  const handleEmail = (e) => {
+  const handleEmailInput = (e) => {
     setEmail(e.target.value);
+  };
+
+  const handleSubmit = async () => {
+    const isValid = await verifyEmail(email);
+
+    if (isValid) {
+      await fetch("http://localhost:3000/auth/register-account", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+          password: password,
+        }),
+      });
+    } else {
+      alert("Invalid email. Please try a different email.");
+    }
   };
 
   return (
@@ -75,7 +95,7 @@ function Signin() {
               <input
                 className="email-input"
                 placeholder="Email Address"
-                onChange={handleEmail}
+                onChange={handleEmailInput}
                 defaultValue=""
               ></input>
             </Grid>
@@ -103,26 +123,31 @@ function Signin() {
                 className="submit-btn"
                 disabled={email.length === 0 || password.length === 0}
               >
-                {email.length === 0 || password.length === 0 ? 
-                <p className="submit-text">Sign in</p>
-                :
-                <form method="post" action="http://localhost:3000/auth/local">
-                  <input type="hidden" name="email" value={email}></input>
-                  <button className="submit-link" type="submit" name="password" value={password}>
-                    Sign In
-                  </button>
-                </form>
-}
-                </button>
+                {email.length === 0 || password.length === 0 ? (
+                  <p className="submit-text">Sign in</p>
+                ) : (
+                  <form
+                    method="post"
+                    onsubmit="return false"
+                    action="http://localhost:3000/auth/local"
+                  >
+                    <input type="hidden" name="email" value={email}></input>
+                    <button
+                      className="submit-link"
+                      type="submit"
+                      name="password"
+                      value={password}
+                    >
+                      Sign In
+                    </button>
+                  </form>
+                )}
+              </button>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
               <button className="secondary-btn">Create an account</button>
-              <form method="post" action="http://localhost:3000/auth/register-account">
-                <input type="hidden" name="email" value={email}></input>
-                <button type="submit" name="password" value={password}>
-                  Remove this button
-                </button>
-              </form>
+
+              <button onClick={handleSubmit}>Delete this button</button>
             </Grid>
           </Grid>
         </Grid>
