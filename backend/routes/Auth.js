@@ -14,6 +14,7 @@ import {
 } from "../helpers/auth/password-hashing.js";
 import bodyParser from "body-parser";
 import nodemailer from "nodemailer";
+import { getUserId } from "../general/common.function.js";
 
 dotenv.config();
 
@@ -27,7 +28,6 @@ const FACEBOOK_CLIENT_ID = process.env.FACEBOOK_CLIENT_ID;
 const FACEBOOK_CLIENT_SECRET = process.env.FACEBOOK_CLIENT_SECRET;
 
 //userImage,firstname,lastname,location
-
 
 passport.use(
   new GoogleStrategy(
@@ -64,18 +64,21 @@ passport.use(
       try {
         const user = await findUser(email);
 
+        console.log(user);
+
         if (user === null) {
           console.log("No user matches the provided email");
           return done(null, null);
         }
 
-        const isValid = comparePassword(password, user.hashedPassword);
+        const isValid = comparePassword(password, user.password);
 
         if (!isValid) {
           console.log("Invalid authentication");
           done(null, null);
         } else if (isValid) {
           console.log("Authenticated succesfully!");
+
           done(null, user);
         }
       } catch (err) {
@@ -94,28 +97,22 @@ passport.deserializeUser((user, done) => {
   done(null, user);
 });
 
-authrouter.get("/verify-email", async (req, res) => {
-  const data = await verifyEmail(req.query.email);
+// authrouter.post("/register-account", jsonParser, async (req, res) => {
+//   const email = req.body.email ? req.body.email.trim().toLowerCase() : "";
+//   const user = await findUser(email);
 
-  res.send(data);
-});
+//   if (user === null) {
+//     const hashedPassword = hashPassword(req.body.password);
 
-authrouter.post("/register-account", jsonParser, async (req, res) => {
-  const email = req.body.email ? req.body.email.trim().toLowerCase() : "";
-  const user = await findUser(email);
+//     await insertUser(email, hashedPassword);
 
-  if (user === null) {
-    const hashedPassword = hashPassword(req.body.password);
-
-    await insertUser(email, hashedPassword);
-
-    console.log("Registered user!");
-    res.redirect("http://localhost:3001/login");
-  } else {
-    console.log("Cannot register user. Email already in use.");
-    res.redirect("http://localhost:3001/login");
-  }
-});
+//     console.log("Registered user!");
+//     res.redirect("http://localhost:3001/login");
+//   } else {
+//     console.log("Cannot register user. Email already in use.");
+//     res.redirect("http://localhost:3001/login");
+//   }
+// });
 
 // authentication api calls
 authrouter.post(
@@ -154,18 +151,6 @@ authrouter.get(
   })
 );
 
-// authrouter.get("/facebook", bodyParser.json(), async (req, res) => {
-//   res.send(response);
-// });
-
-// authrouter.get("/apple", bodyParser.json(), async (req, res) => {
-//   res.send(response);
-// });
-
-// authrouter.get("/local", bodyParser.json(), async (req, res) => {
-//   res.send(response);
-// });
-
 authrouter.get("/fail", (req, res) => {
   console.log("Failed");
   res.redirect("http://localhost:3001/login");
@@ -194,55 +179,6 @@ authrouter.get("/authentication-status", (req, res) => {
   }
 
   res.status(403).send({ status: "not authenticated" });
-});
-
-authrouter.post("/send-otp", jsonParser, async (req, res) => {
-  let status = 200;
-  let err = null;
-
-  // const otp = Math.floor(Math.random());
-
-  var transporter = nodemailer.createTransport({
-    service: "hotmail",
-    auth: {
-      user: "curry09213@hotmail.com",
-      pass: "&*ASD-90=)}SAD)_{}ihi12DUN[",
-    },
-  });
-
-  var mailOptions = {
-    from: "curry09213@hotmail.com",
-    to: req.body.email,
-    subject: "Email verification code for AI ProdCopywriter",
-    text: req.body.code,
-    html: `<body style="text-align: center">
-    <h1>See below for your verification code</h1>
-    <p style="font-weight: 800; text-align: center">
-      Code: ${req.body.code}
-    </p>
-    <br />
-    <a href="http://localhost:3001/login">Click here to login</a>
-    </body>`,
-  };
-
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      console.log(`There was an error: ${error}`);
-      err = error;
-      status = 500;
-    } else {
-      console.log("Email sent: " + info.response);
-    }
-  });
-
-  res.status(status).send({ success: status === 200, error: err });
-});
-
-authrouter.get("/verify-otp", async (req, res) => {
-  let status = 200;
-  let err = null;
-
-  res.status(status).send({ success: status === 200, error: err });
 });
 
 export default authrouter;
