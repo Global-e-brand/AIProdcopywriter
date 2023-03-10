@@ -6,6 +6,7 @@ import InstructionModal from "../instructions/InstructionModal";
 import { useState } from "react";
 import "./homepage.css";
 import { Link } from "react-router-dom";
+import MobileInstructions from "../mobile-view/MobileInstructions";
 
 function HomePage() {
   const [Zvalue, setZvalue] = useState("1");
@@ -19,19 +20,15 @@ function HomePage() {
   function instructions() {
     setSwap(!swap);
     setShowModel(true);
+    console.log("Instruction");
   }
 
   function skip() {
     alert("You clicked Skip!");
   }
-  const hh = () => {
-    return (
-      <p className="instructionMobile">
-        #1 Select the Desire Category<br></br>#2 Answer the following questions
-        and set the Tone<br></br>#3 Hit the Create Content button and Boom!!
-      </p>
-    );
-  };
+  const description =
+    "AIProdCopyWriter is a revolutionary AI app that helps to generate high-quality, automatic text content in just a few clicks. This innovative tool can be used to quickly and easily create product descriptions,Ad copy, blog posts, press releases and more. With its intuitive interface and powerful features, this app will be your go-to for all writing needs!";
+
   return (
     <div className="bg-image-mobile homepage">
       <Grid container spacing={2} columns={16}>
@@ -61,31 +58,27 @@ function HomePage() {
             </p>
           </div>
 
-          <div>
-            <p className="description">
-              AIProdCopyWriter is a revolutionary AI app that helps to generate
-              high-quality, automatic text content in just a few clicks. This
-              innovative tool can be used to quickly and easily create product
-              descriptions,Ad copy, blog posts, press releases and more. With
-              its intuitive interface and powerful features, this app will be
-              your go-to for all writing needs!
+          <div className="content-homepage">
+            <p className="description" aria-expanded={!swap}>
+              {swap ? description : <MobileInstructions />}
             </p>
+            {/* <p>{description}</p> */}
+
+            <Grid container spacing={2} columns={16}>
+              <Grid item xs={8} sm={16} md={8}>
+                <button onClick={() => instructions()} className="infobutton">
+                  Instructions
+                </button>
+                {showModel && <InstructionModal closeModal={closeModal} />}
+              </Grid>
+
+              <Grid item xs={8} sm={16} md={8}>
+                <Link to="/productdescription">
+                  <button className="skipbutton">Skip</button>
+                </Link>
+              </Grid>
+            </Grid>
           </div>
-
-          <Grid container spacing={2} columns={16}>
-            <Grid item xs={8} sm={16} md={8}>
-              <button onClick={() => instructions()} className="infobutton">
-                Instructions
-              </button>
-              {showModel && <InstructionModal closeModal={closeModal} />}
-            </Grid>
-
-            <Grid item xs={6} sm={16} md={8}>
-              <Link to="/productdescription">
-                <button className="skipbutton">Skip</button>
-              </Link>
-            </Grid>
-          </Grid>
         </Grid>
       </Grid>
     </div>

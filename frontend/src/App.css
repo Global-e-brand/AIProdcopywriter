@@ -1,6 +1,20 @@
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+}
+
+div#root {
+    height: 100%;
+}
+
 .App {
   font-family: "Manrope";
-  /* flex-grow: 1; */
+  height: 100%;
+}
+.App > div{
+  height: 100%; 
 }
 
 .logo-panel-wrapper {
@@ -97,7 +111,7 @@ div.card-body {
   animation: background-fade 0.7s ease forwards;
   margin-top: 0 !important;
 }
-.side-Bar .accordion{
+.side-Bar .accordion {
   width: 100%;
 }
 button.accordion-button {
@@ -207,11 +221,10 @@ div.accordion-collapse {
 }
 
 footer {
+  position: absolute;
+  width: 100%;
   display: flex;
   background-color: rgba(181, 211, 255, 0.9);
-  bottom: 0;
-  left: 0;
-  right: 0;
   height: 6vh;
   min-height: fit-content;
   text-align: center;
@@ -338,7 +351,7 @@ style={{ position: "absolute", width: "229px", height: "45px", backgroundColor: 
 }*/
 
 /*Media Query*/
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 830px) {
   .side-Bar {
     display: none !important;
   }
@@ -347,5 +360,8 @@ style={{ position: "absolute", width: "229px", height: "45px", backgroundColor: 
   }
   footer {
     display: none !important;
+  }
+  .hamburger-menu {
+    display: block;
   }
 }

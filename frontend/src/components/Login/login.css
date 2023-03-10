@@ -1,0 +1,83 @@
+.blue-clr {
+    color: #2E72D2;
+}
+
+.bg-ac {
+    background-image: url(../../assets/images/authentication-background.png);
+    height: 100%;
+}
+
+.cr-wrapper {
+    position: absolute;
+    width: 30vw;
+    top: 6vw;
+    left: 37vw;
+    padding: 20px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 50px 3px rgb(0 0 0 / 40%);
+    border-radius: 20px;
+}
+
+.hr-or {
+    display: flex;
+    flex-direction: row;
+    font-size: 18px;
+    color: rgb(0 0 0 / 46%);
+}
+
+.hr-or:before,
+.hr-or:after {
+    content: "";
+    flex: 1 1;
+    border-bottom: 1px solid;
+    margin: auto;
+}
+
+.hr-or:before {
+    margin-right: 10px
+}
+
+.hr-or:after {
+    margin-left: 10px
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.sign-btn {
+    background: #2E72D2 !important;
+    width: 100%;
+}
+
+.bg-ac .logo {
+    width: 100%;
+    height: auto;
+}
+
+.bg-ac .icons {
+    width: 25px;
+    height: auto;
+}
+
+.text-container {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+}
+
+.text-container strong {
+    display: block;
+    text-align: center;
+}
+
+.text-container span strong {
+    display: block;
+    text-align: center;
+    font-size: 1.2vw;
+}
+
+.text-container span {
+    display: block;
+    text-align: center;
+}

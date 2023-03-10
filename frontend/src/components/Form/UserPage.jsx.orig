@@ -22,7 +22,7 @@ function Dummy(props) {
   const [loading, setLoading] = useState(false);
   const [Copied, setCopied] = useState();
   const [AllCopied, setAllCopied] = useState();
-  const [isAuthenticated, setAuthenticated] = useState(true);
+  const [isAuthenticated, setAuthenticated] = useState(undefined);
   const [showMenu, setShowMenu] = useState(false);
   const [index, setIndex] = useState(0);
   const [flip, setFlip] = useState(true);
@@ -30,12 +30,12 @@ function Dummy(props) {
   const location = useLocation();
   const textAreaRef = useRef(null);
 
-  // useEffect(() => {
-  //   setAuthenticated(undefined);
-  //   authenticate((status) => {
-  //     setAuthenticated(status === "authenticated" ? true : false);
-  //   });
-  // }, [location.pathname]);
+  useEffect(() => {
+    setAuthenticated(undefined);
+    authenticate((status) => {
+      setAuthenticated(status === "authenticated" ? true : false);
+    });
+  }, [location.pathname]);
 
   function copyToClipboard(item, i) {
     let clipboardData = "";
@@ -210,9 +210,9 @@ function Dummy(props) {
                     <Grid item xs={3} sm={3} md={3}>
                       <Button
                         className={
-                          tone == "Bold"
-                            ? "tone-btn-selected"
-                            : "tone-btn"
+                          tone == "Bold" ? "tone-btn-selected" : "tone-btn"
+                                  ? "tone-btn-selected"
+                                  : "tone-btn"
                         }
                         onClick={(e) => handleTone("Bold")}
                       >
@@ -487,7 +487,44 @@ function Dummy(props) {
                         </div>
                       </div>
 
-                     
+                      {/* {data.map((item, i) => {
+                        return (
+                          <div className="output-layout-mobile-view">
+                            <Grid container>
+                              <Grid item xs={12}>
+                                <div className="ot-hd-mobile-view">
+                                  <div>Result {i + 1}</div>
+                                </div>
+                              </Grid>
+                              <Grid item xs={12}>
+                                <div className="hd-cp-mobile-view">
+                                  <button
+                                    className="cpy-btn"
+                                    onClick={() => copyToClipboard(item, i)}
+                                  >
+                                    Copy
+                                  </button>
+                                  {Copied == i + 1 ? (
+                                    <h1 className="text-status-mobile-view">
+                                      Result {i + 1} Copied !{" "}
+                                    </h1>
+                                  ) : (
+                                    ""
+                                  )}
+                                </div>
+                              </Grid>
+                            </Grid>
+                            <div
+                              className="ot-bd-mobile-view"
+                              ref={textAreaRef}
+                            >
+                              <h6 className="instruction-desc">
+                                {item.text.trim()}
+                              </h6>
+                            </div>
+                          </div>
+                        );
+                      })} */}
                     </div>
                   </>
                 ) : (

@@ -123,7 +123,7 @@ function Signin() {
               </Link>
             </Grid>
             <Grid item xs={4} sm={4} md={4} lg={4} xl={4}>
-              <Link to="/login/help" className="login-help-btn">
+              <Link to="" className="login-help-btn">
                 Need help logging in?
               </Link>
             </Grid>

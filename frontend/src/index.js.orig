@@ -5,8 +5,9 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import noFooterURL from "./components/json/nofooter.json"
+<<<<<<< HEAD
 import Footer from "./Footer";
+import noFooterURL from "./components/json/nofooter.json"
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -28,6 +29,14 @@ root.render(
   <BrowserRouter>
     <App />   
     {footerShow?<Footer/>:footerShow=true}
+=======
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+root.render(
+  <BrowserRouter>
+    <App />
+>>>>>>> feature/jason
   </BrowserRouter>
 );
 
