@@ -14,6 +14,7 @@ import "./login.css";
 
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import { Link } from "react-router-dom";
 
 function CreateAccount(props) {
   const [showPassword, setShowPassword] = React.useState(false);
@@ -159,7 +160,7 @@ function CreateAccount(props) {
                 <p>
                   <strong className="blue-clr">
                     {" "}
-                    <a href="/login">Login now</a>
+                    <Link to="/login">Login now</Link>
                   </strong>
                 </p>
               </span>
