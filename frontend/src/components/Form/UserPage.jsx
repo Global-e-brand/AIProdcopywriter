@@ -237,6 +237,8 @@ function Dummy(props) {
             </form>
           </Grid>
           {/* </div> */}
+
+
           {/* results */}
           <Grid item xs={4} sm={12} md={4} lg={4} xl={4}>
                   <div className="category-title mr-2">
@@ -324,6 +326,8 @@ function Dummy(props) {
             )}
           </Grid>
       </div>
+
+    {/* Mobile View */}
       <div className="mobile-view-product">
         <ul aria-expanded={showMenu}>
           <li>

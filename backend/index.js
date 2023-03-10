@@ -10,7 +10,8 @@ import { fileURLToPath } from "url";
 import { dirname } from "path";
 import passport from "passport";
 import session from "express-session";
-import user from "./controllers/user.controller.js";
+import userController from "./controllers/user.controller.js";
+import contentController from "./controllers/content.controller.js";
 
 dotenv.config();
 
@@ -43,7 +44,11 @@ app.use("/api", apirouter);
 
 app.use("/auth", authrouter);
 
-app.use("/user", user);
+app.use("/user", userController);
+
+app.use("/content", contentController);
+
+
 
 
 
