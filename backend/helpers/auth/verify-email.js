@@ -1,3 +1,5 @@
+import fetch from "node-fetch";
+
 export const verifyEmail = async (email) => {
   return await fetch(
     `https://api.hunter.io/v2/email-verifier?email=${email}&api_key=49056e12eb363cfdce598e3d4397e4d3f8d06eba`

@@ -4,27 +4,27 @@ import bcrypt from "bcrypt";
 const user_creation = mongoose.Schema({
   email: {
     type: String,
-    require: true,
+    required: true,
   },
   password: {
     type: String,
-    require: true,
+    required: true,
   },
   confirm_password: {
     type: String,
-    require: true,
+    required: true,
   },
   created_date: {
     type: Date,
-    require: true,
+    required: true,
   },
   updated_date: {
     type: Date,
-    require: false,
+    required: false,
   },
   deleted_date: {
     type: Date,
-    require: false,
+    required: false,
   },
 });
 

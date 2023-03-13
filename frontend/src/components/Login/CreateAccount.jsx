@@ -15,6 +15,8 @@ import "./login.css";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { Link } from "react-router-dom";
+import { verifyEmail } from "../../helpers/checkEmail";
+
 
 function CreateAccount(props) {
   const [showPassword, setShowPassword] = React.useState(false);
@@ -33,28 +35,31 @@ function CreateAccount(props) {
   };
 
   async function userRegister() {
-    let res = await fetch("/user/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: textEmail,
-        password: textPassword,
-        confirm_password: textConfirmPassword,
-      }),
-    });
-
-    try{
-      let response = res.json();
-      response.then(async (res) => {
-        console.log("response", res.message);
+      let res = await fetch("/user/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: textEmail,
+          password: textPassword,
+          confirm_password: textConfirmPassword,
+        }),
       });
-    }catch(e){
 
+      try{
+        let response = res.json();
+        response.then(async (res) => {
+          console.log("response", res.message);
+        });
+      }catch(e){
+  
+      }
     }
     
-  }
+    
+    
+  
 
   return (
     <div className="bg-ac">

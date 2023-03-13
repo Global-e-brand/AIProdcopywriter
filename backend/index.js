@@ -70,9 +70,6 @@ app.use("/user", userController);
 app.use("/content", contentController);
 
 
-
-
-
 if (process.env.NODE_ENV == "production") {
   app.use(express.static(path.join(__dirname + "/public")));
   app.get("*", (req, res) => {

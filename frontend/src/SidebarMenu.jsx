@@ -49,6 +49,10 @@ function SidebarMenu() {
               </Accordion>
             );
           })}
+           <Link to="/auth/logout" className="home-btn">
+            {" "}
+            Logout
+          </Link>
         </div>
       </div>
       {/* <div className="hamburger-menu">

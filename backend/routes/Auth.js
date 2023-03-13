@@ -64,13 +64,15 @@ passport.use(
       try {
         const user = await findUser(email);
 
-        console.log(user);
+        console.log("user Detail",user);
 
         if (user === null) {
           console.log("No user matches the provided email");
           return done(null, null);
         }
 
+       
+        
         const isValid = comparePassword(password, user.password);
 
         if (!isValid) {

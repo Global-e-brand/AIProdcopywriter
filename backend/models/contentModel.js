@@ -1,44 +1,49 @@
-import mongoose, { isObjectIdOrHexString } from "mongoose";
+import mongoose, { isObjectIdOrHexString, isValidObjectId } from "mongoose";
 
 const content_creation = mongoose.Schema({
 user_id: {
-    type: isObjectIdOrHexString,
-    require: true,
+    type: String,
+    required : true,
+  },
+  category:{
+    type:String,
+    required :true
   },
   question_one: {
     type: String,
-    require: true,
+    required : true,
   },
   question_two: {
     type: String,
-    require: true,
+    required : false,
   },
   tone: {
     type: String,
-    require: true,
+    required : true,
   },
   results:{
     type:Array,
-    require:true
+    required :true
   },
   q_repeatation:{
-    type:Int16Array,
-    require:false
+    type:Number,
+    required :false
 
   },
   created_date: {
     type: Date,
-    require: true,
+    required : true,
   },
   updated_date: {
     type: Date,
-    require: false,
+    required : false,
   },
   deleted_date: {
     type: Date,
-    require: false,
+    required : false,
   },
 });
 
-const contentModel = mongoose.model("user", content_creation);
+const contentModel = mongoose.model("content", content_creation);
+
 export default contentModel;

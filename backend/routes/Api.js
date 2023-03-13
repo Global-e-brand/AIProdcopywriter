@@ -5,6 +5,7 @@ import fetch from "node-fetch";
 import getGPTResponse from "../helpers/api/get-GPT-response.js";
 import createPrompt from "../helpers/api/prompt-creator.js";
 import GptApi from "../controllers/GPTApi.js";
+import  createContent  from "../controllers/content.controller.js";
 
 var app = express();
 
@@ -34,6 +35,8 @@ apirouter.post("/eventcopy", bodyParser.json(), async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
+
+
   res.send(response);
 });
 
@@ -796,6 +799,9 @@ apirouter.post("/birthdaycard", bodyParser.json(), async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
+
+  await createContent(req,response); 
+
   res.send(response);
 });
 
@@ -826,6 +832,9 @@ apirouter.post("/loveletter", bodyParser.json(), async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
+
+  await createContent(req,response);
+  
   res.send(response);
 });
 
@@ -875,7 +884,8 @@ apirouter.post("/features-to-benefits", bodyParser.json(), async (req, res) => {
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
-  const response = await getGPTResponse(prompt);
+  const response = await getGPTResponse(prompt); 
+
   res.send(response);
 });
 
