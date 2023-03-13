@@ -18,7 +18,6 @@ function Dummy(props) {
   const [inputOne, setInputOne] = useState("");
   const [inputTwo, setInputTwo] = useState("");
   const [data, setData] = useState();
-  const [path, setPath] = useState(props.path);
   const [loading, setLoading] = useState(false);
   const [Copied, setCopied] = useState();
   const [AllCopied, setAllCopied] = useState();
@@ -64,6 +63,9 @@ function Dummy(props) {
     }, 2000);
     return () => clearTimeout(timer);
   }
+
+  let path=window.location.href.substring(window.location.origin.length)
+  console.log("path",path);
 
   async function handleSubmit(path) {
     setLoading(true);
