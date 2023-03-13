@@ -12,6 +12,8 @@ import passport from "passport";
 import session from "express-session";
 import userController from "./controllers/user.controller.js";
 import contentController from "./controllers/content.controller.js";
+import emailController from "./controllers/email.controller.js";
+import bodyParser from "body-parser";
 
 dotenv.config();
 
@@ -29,6 +31,8 @@ const __dirname = path.resolve();
 var PORT = process.env.PORT || 3000;
 
 app.use(express.urlencoded());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -53,7 +57,7 @@ app.use(
   session({
     secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
   })
 );
 app.use(passport.initialize());
@@ -69,9 +73,7 @@ app.use("/user", userController);
 
 app.use("/content", contentController);
 
-
-
-
+app.use("/email", emailController);
 
 if (process.env.NODE_ENV == "production") {
   app.use(express.static(path.join(__dirname + "/public")));

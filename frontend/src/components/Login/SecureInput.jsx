@@ -1,42 +1,46 @@
 import { useState } from "react";
 import { eyeClosedIcon, eyeOpenIcon } from "../../assets";
-import "./SecureInput.css";
+import {
+  FormControl,
+  InputLabel,
+  OutlinedInput,
+  InputAdornment,
+  IconButton,
+} from "@mui/material";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import "./authentication.css";
 
 export const SecureInput = (props) => {
-  const [secureType, setSecureType] = useState("password");
-  const handleSecureChange = (e) => {
-    props.setValue(e.target.value);
-  };
+  const [inputIsVisible, setInputVisibility] = useState(false);
 
-  const toggleSecure = () => {
-    if (secureType === "password") {
-      setSecureType("text");
-      return;
-    }
-    setSecureType("password");
+  const toggleVisibility = () => {
+    setInputVisibility(!inputIsVisible);
   };
 
   return (
-    <div class="secure-input">
-      <input
-        type={secureType}
-        onChange={handleSecureChange}
-        value={props.value}
-        placeholder={props.placeholder || "Password"}
-        className={"input-field"}
-        disabled={props.disabled}
+    <FormControl className="w-100 form-input" disabled={props.disabled}>
+      <InputLabel htmlFor="input" color={props.error ? "error" : "primary"}>
+        {props.title}
+      </InputLabel>
+      <OutlinedInput
+        type={inputIsVisible ? "text" : "password"}
+        error={props.error}
+        endAdornment={
+          <InputAdornment>
+            <IconButton
+              aria-label="toggle input visibility"
+              onClick={toggleVisibility}
+              edge="end"
+              disabled={props.disabled}
+            >
+              {inputIsVisible ? <VisibilityOff /> : <Visibility />}
+            </IconButton>
+          </InputAdornment>
+        }
+        onChange={(e) => props.setValue(e.target.value)}
+        label={props.title}
       />
-      <button
-        className={"visibility-btn"}
-        onClick={toggleSecure}
-        disabled={props.disabled}
-      >
-        {secureType === "password" ? (
-          <img src={eyeClosedIcon} alt="hide secure input field value"></img>
-        ) : (
-          <img src={eyeOpenIcon} alt="shown secure input field value"></img>
-        )}
-      </button>
-    </div>
+    </FormControl>
   );
 };

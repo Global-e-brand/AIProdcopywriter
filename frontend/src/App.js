@@ -20,7 +20,7 @@ function App() {
             <div className="logo-panel-wrapper"></div>
             <Routes>
               <Route path="/" element={<HomePage />} />
-            <Route path="/create-account" element={<CreateAccount />} />
+              <Route path="/create-account" element={<CreateAccount />} />
               <Route path="/login" element={<Signin />} />
               <Route
                 path="/login/forgot-password"

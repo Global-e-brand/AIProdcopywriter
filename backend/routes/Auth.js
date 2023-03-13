@@ -6,19 +6,18 @@ import { Strategy as FacebookStrategy } from "passport-facebook";
 import { Strategy as LocalStrategy } from "passport-local";
 import { authUser } from "../helpers/auth/auth-user.js";
 import { checkAuthenticated } from "../helpers/auth/check-authenticated.js";
-import { verifyEmail } from "../helpers/auth/verify-email.js";
+import { checkNotAuthenticated } from "../helpers/auth/check-not-authenticated.js";
+import { verifyEmail } from "../helpers/email/verify-email.js";
 import { insertUser, findUser } from "../helpers/misc/mongo-db-helpers.js";
 import {
   comparePassword,
   hashPassword,
 } from "../helpers/auth/password-hashing.js";
-import bodyParser from "body-parser";
 import nodemailer from "nodemailer";
 import { getUserId } from "../general/common.function.js";
+import session from "express-session";
 
 dotenv.config();
-
-const jsonParser = bodyParser.json();
 
 const authrouter = express.Router();
 
@@ -57,14 +56,14 @@ passport.use(
   new LocalStrategy(
     {
       usernameField: "email",
+      passwordField: "password",
     },
     async (email, password, done) => {
       email = email ? email.trim().toLowerCase() : "";
+      console.log(`${email} + ${password}`);
 
       try {
         const user = await findUser(email);
-
-        console.log(user);
 
         if (user === null) {
           console.log("No user matches the provided email");
@@ -74,10 +73,10 @@ passport.use(
         const isValid = comparePassword(password, user.password);
 
         if (!isValid) {
-          console.log("Invalid authentication");
+          console.log("Incorrect password");
           done(null, null);
         } else if (isValid) {
-          console.log("Authenticated succesfully!");
+          console.log("Correct password!");
           done(null, user);
         }
       } catch (err) {
@@ -116,6 +115,7 @@ passport.deserializeUser((user, done) => {
 // authentication api calls
 authrouter.post(
   "/local",
+  checkNotAuthenticated,
   passport.authenticate("local", {
     successRedirect: "/auth/success",
     failureRedirect: "/auth/fail",
@@ -124,11 +124,13 @@ authrouter.post(
 
 authrouter.get(
   "/google",
+  checkNotAuthenticated,
   passport.authenticate("google", { scope: ["email", "profile"] })
 );
 
 authrouter.get(
   "/facebook",
+  checkNotAuthenticated,
   passport.authenticate("facebook", {
     scope: ["email", "user_location"],
   })
@@ -152,15 +154,17 @@ authrouter.get(
 
 authrouter.get("/fail", (req, res) => {
   console.log("Failed");
+
   res.redirect("http://localhost:3001/login");
 });
 
 authrouter.get("/success", checkAuthenticated, (req, res) => {
   console.log("Success");
-  res.redirect("http://localhost:3001/productdescription");
+
+  res.redirect("http://localhost:3001/calltoaction");
 });
 
-authrouter.get("/logout", (req, res) => {
+authrouter.get("/logout", checkAuthenticated, (req, res) => {
   console.log("Logging out");
   req.logOut((e) => {
     if (e) {
@@ -177,7 +181,7 @@ authrouter.get("/authentication-status", (req, res) => {
     return res.status(200).send({ status: "authenticated" });
   }
 
-  res.status(403).send({ status: "not authenticated" });
+  res.status(401).send({ status: "not authenticated" });
 });
 
 export default authrouter;

@@ -6,15 +6,22 @@ import { Link } from "react-router-dom";
 import { Grid } from "@mui/material";
 import { SecureInput } from "./SecureInput";
 import { useNavigate } from "react-router-dom";
+import { FormControl, InputLabel, OutlinedInput, Alert } from "@mui/material";
 
 function ResetPassword() {
   const navigate = useNavigate();
   const [isPasswordReset, setIsPasswordReset] = useState(false);
   const [password, setPassword] = useState("");
   const [confirmedPassword, setConfirmedPassword] = useState("");
+  const [alertVisibility, setAlertVisibility] = useState(false);
 
   const handleResetPassword = () => {
-    setIsPasswordReset(true);
+    if (password === confirmedPassword) {
+      setIsPasswordReset(true);
+      setAlertVisibility(false);
+    } else {
+      setAlertVisibility(true);
+    }
   };
 
   const handleLogin = () => {
@@ -39,8 +46,8 @@ function ResetPassword() {
           </Grid>
           <Grid container direction="row" spacing={2}>
             <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-              <p className="header">Reset your password</p>
-              <p className="subheader">
+              <p className="card-header">Reset your password</p>
+              <p className="card-subheader">
                 Enter your email and a verification code will be sent to your
                 inbox
               </p>
@@ -48,19 +55,33 @@ function ResetPassword() {
           </Grid>
           <Grid container columnSpacing={1} columns={16}>
             <Grid item xs={16} sm={16} md={16} lg={16} xl={16}>
+              {alertVisibility && (
+                <Alert
+                  severity="error"
+                  variant="standard"
+                  className="alert"
+                  style={{ margin: "10px 0" }}
+                >
+                  Incorrect email and password
+                </Alert>
+              )}
+            </Grid>
+            <Grid item xs={16} sm={16} md={16} lg={16} xl={16}>
               <SecureInput
-                placeholder={"New Password"}
+                title={"New Password"}
                 value={password}
                 setValue={setPassword}
                 disabled={isPasswordReset}
+                error={alertVisibility}
               />
             </Grid>
             <Grid item xs={16} sm={16} md={16} lg={16} xl={16}>
               <SecureInput
-                placeholder={"Confirm Password"}
+                title={"Confirm Password"}
                 value={confirmedPassword}
                 setValue={setConfirmedPassword}
                 disabled={isPasswordReset}
+                error={alertVisibility}
               />
             </Grid>
             <Grid item xs={16} sm={16} md={16} lg={16} xl={16}>

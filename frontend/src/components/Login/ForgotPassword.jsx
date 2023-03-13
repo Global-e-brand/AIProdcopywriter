@@ -7,6 +7,7 @@ import { Grid } from "@mui/material";
 import { SecureInput } from "./SecureInput";
 import { useNavigate } from "react-router-dom";
 import { verifyEmail } from "../../helpers/checkEmail";
+import { FormControl, InputLabel, OutlinedInput } from "@mui/material";
 
 function ForgotPassword() {
   const navigate = useNavigate();
@@ -18,7 +19,6 @@ function ForgotPassword() {
     const emailInput = document.getElementById("emailInput");
 
     if (emailInput.classList.contains("incorrect-input")) {
-      emailInput.classList.add("correct-input");
       emailInput.classList.remove("incorrect-input");
     }
 
@@ -35,7 +35,7 @@ function ForgotPassword() {
     const isValid = true;
 
     if (isValid) {
-      await fetch("http://localhost:3000/auth/send-otp", {
+      await fetch("http://localhost:3000/email/send-otp", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -48,7 +48,6 @@ function ForgotPassword() {
       const emailInput = document.getElementById("emailInput");
 
       emailInput.classList.add("incorrect-input");
-      emailInput.classList.remove("correct-input");
     }
 
     setLoading(false);
@@ -72,8 +71,8 @@ function ForgotPassword() {
           </Grid>
           <Grid container direction="row" spacing={2}>
             <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-              <p className="header">Reset your password</p>
-              <p className="subheader">
+              <p className="card-header">Reset your password</p>
+              <p className="card-subheader">
                 Enter your email and a verification code will be sent to your
                 inbox
               </p>
@@ -81,13 +80,21 @@ function ForgotPassword() {
           </Grid>
           <Grid container alignItems={"center"} columnSpacing={1} columns={16}>
             <Grid item xs={11} sm={11} md={11} lg={11} xl={11}>
-              <input
+              {/* <input
                 className="email-input"
                 id="emailInput"
                 placeholder="Email Address"
                 onChange={handleEmail}
                 defaultValue=""
-              ></input>
+              ></input> */}
+              <FormControl className="w-100 form-input">
+                <InputLabel htmlFor="email">Email</InputLabel>
+                <OutlinedInput
+                  id="email"
+                  onChange={(e) => setEmail(e.target.value)}
+                  label="email"
+                />
+              </FormControl>
             </Grid>
             <Grid item xs={5} sm={5} md={5} lg={5} xl={5}>
               <button
@@ -100,7 +107,7 @@ function ForgotPassword() {
             </Grid>
             <Grid item xs={16} sm={16} md={16} lg={16} xl={16}>
               <SecureInput
-                placeholder={"Verification Code"}
+                title={"Verification Code"}
                 value={verificationCode}
                 setValue={setVerificationCode}
               />

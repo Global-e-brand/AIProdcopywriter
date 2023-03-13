@@ -11,10 +11,9 @@ import {
 import React from "react";
 import { appleIcon, facebookIcon, fulllogo, googleIcon } from "../../assets";
 import "./login.css";
-
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function CreateAccount(props) {
   const [showPassword, setShowPassword] = React.useState(false);
@@ -22,7 +21,8 @@ function CreateAccount(props) {
   const [textEmail, setTextEmail] = React.useState();
   const [textPassword, setTextPassword] = React.useState();
   const [textConfirmPassword, setTextConfirmPassword] = React.useState();
-  // const [user]
+
+  const navigate = useNavigate();
 
   const handleShowPassword = (param) => {
     if (param === "password") {
@@ -45,15 +45,12 @@ function CreateAccount(props) {
       }),
     });
 
-    try{
+    try {
       let response = res.json();
       response.then(async (res) => {
         console.log("response", res.message);
       });
-    }catch(e){
-
-    }
-    
+    } catch (e) {}
   }
 
   return (
@@ -74,7 +71,7 @@ function CreateAccount(props) {
               </span>
             </div>
           </Grid>
-{/* 
+          {/* 
           <Grid item xs={12} sm={6} md={6} lg={6} xl={6}>
             <Button className="sign-btn">
               <img src={googleIcon} alt="google-icon" className="icons" />
@@ -147,9 +144,16 @@ function CreateAccount(props) {
             </FormControl>
           </Grid>
           <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-         <a href="/login"> <Button variant="contained" fullWidth={true} onClick={()=>userRegister()}>
-            Create Account
-            </Button></a>
+            <Button
+              variant="contained"
+              fullWidth={true}
+              onClick={() => {
+                userRegister();
+                navigate("/login");
+              }}
+            >
+              Create Account
+            </Button>
           </Grid>
           <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
             <div className="text-container">
