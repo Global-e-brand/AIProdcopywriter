@@ -50,6 +50,10 @@ function Signin() {
     document.body.appendChild(form);
 
     form.submit();
+
+    emailInput.remove();
+    passwordInput.remove();
+    form.remove();
   };
 
   const handleCreateAccount = () => {

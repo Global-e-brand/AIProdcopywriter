@@ -1,8 +1,14 @@
 [
-    {
-        "url":"/create-account"
-    },
-    {
-        "url":"/login"
-    }
+  {
+    "url": "/"
+  },
+  {
+    "url": "/login"
+  },
+  {
+    "url": "/login/forgot-password"
+  },
+  {
+    "url": "/create-account"
+  }
 ]

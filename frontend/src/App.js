@@ -4,14 +4,11 @@ import { useLocation, Routes, Route, redirect, Link } from "react-router-dom";
 import UserPage from "./components/Form/UserPage";
 import HomePage from "./components/home/HomePage";
 import CreateAccount from "./components/Login/CreateAccount";
-import Footer from "./Footer";
 import Signin from "./components/Login/Signin";
 import ForgotPassword from "./components/Login/ForgotPassword";
 import ResetPassword from "./components/Login/ResetPassword";
 
 function App() {
-  const location = useLocation();
-
   return (
     <>
       <div className="App">
@@ -1608,7 +1605,6 @@ function App() {
           </Grid>
         </Grid>
       </div>
-      {!location.pathname.startsWith("/login") && <Footer />}
     </>
   );
 }
