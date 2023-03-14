@@ -3,8 +3,8 @@ import dotenv from "dotenv";
 import paypal from "paypal-rest-sdk";
 const paymentRouter = express.Router();
 import bodyParser from "body-parser";
-import getUser from "../controllers/getuserid.js";
 import paymentData from "../models/PaymentsData.js";
+import { getUserId } from "../general/common.function.js";
 var app = express();
 
 app.use(
@@ -23,7 +23,7 @@ paypal.configure({
 
 paymentRouter.post("/order", bodyParser.json(), async (req, res) => {
   // console.log("PayPal Payment Gateway", req.body);
-  let UserId = getUser(req);
+  let UserId = getUserId(req);
   let userExist = await paymentData.findOne({ UserId });
   console.log("USER EXIST", userExist);
   if (userExist == undefined || userExist == null) {

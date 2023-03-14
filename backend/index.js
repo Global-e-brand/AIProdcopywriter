@@ -69,6 +69,7 @@ app.use("/posts", router);
 app.use("/api", apirouter);
 
 app.use("/auth", authrouter);
+
 app.use("/payment", paymentRouter);
 
 app.use("/user", userController);
