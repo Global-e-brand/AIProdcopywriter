@@ -16,7 +16,7 @@ const socialMediaUser = mongoose.Schema({
   },
   created_date: {
     type: Date,
-    required: true,
+    required: false,
   },
   updated_date: {
     type: Date,
