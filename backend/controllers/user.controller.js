@@ -4,6 +4,8 @@ import userModel from "../models/userModel.js";
 import { updateUserPassword } from "../helpers/misc/mongo-db-helpers.js";
 import { getUserId } from "../general/common.function.js";
 import { hashPassword } from "../helpers/auth/hashing.js";
+import { findUser } from "../helpers/misc/mongo-db-helpers.js";
+import { verifyEmail } from "../helpers/email/verify-email.js";
 
 var app = express();
 
@@ -16,8 +18,19 @@ userController.post("/register", bodyParser.json(), async (req, res) => {
   let password = req.body.password;
   let confirm_password = req.body.confirm_password;
 
+  const user = await findUser(email);
+  const emailStatus = await verifyEmail(email);
+
   if (email == null || password == null || confirm_password == null) {
-    return res.status(400).send({ message: "text fields should not be empty" });
+    return res.status(400).send({ error: "text fields should not be empty" });
+  }
+
+  if (emailStatus.errors) {
+    return res.status(400).send({ error: "Invalid email address" });
+  }
+
+  if (user) {
+    return res.status(400).send({ error: "This email has already been used" });
   }
 
   try {
@@ -31,9 +44,9 @@ userController.post("/register", bodyParser.json(), async (req, res) => {
       userModelData.deleted_date = null;
       userModelData.save();
 
-      res.status(201).send({ message: "user registered successfully !" });
+      res.status(201).send({ message: "Account registered successfully!" });
     } else {
-      res.send("passwords do not match");
+      res.status(400).send({ error: "Passwords do not match" });
     }
   } catch (e) {
     res.status(400).send(e);

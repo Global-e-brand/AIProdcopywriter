@@ -2,18 +2,39 @@ import React from "react";
 import { useState, useEffect } from "react";
 import "./authentication.css";
 import { fulllogo, googleIcon, facebookIcon, appleIcon } from "../../assets";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Grid } from "@mui/material";
 import { SecureInput } from "./SecureInput";
-import { FormControl, InputLabel, OutlinedInput, Alert } from "@mui/material";
+import {
+  FormControl,
+  InputLabel,
+  OutlinedInput,
+  Alert,
+  Snackbar,
+} from "@mui/material";
 
 function Signin() {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [alertVisibility, setAlertVisibility] = useState(false);
   const [isLoading, setLoading] = useState(false);
+  const [isOpen, setOpen] = useState(false);
 
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state?.success) {
+      setOpen(true);
+
+      // the following is used to prevent page refreshes from
+      // re-rendering the "successful account registeration"
+      // snackbar
+      navigate("/login", {
+        state: { message: location.state?.message },
+      });
+    }
+  }, [location.state?.success]);
 
   const handleEmail = (e) => {
     setEmail(e.target.value);
@@ -203,6 +224,24 @@ function Signin() {
           </Grid>
         </form>
       </div>
+      <Snackbar
+        open={isOpen}
+        autoHideDuration={2000}
+        onClose={() => {
+          setOpen(false);
+        }}
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+      >
+        <Alert
+          onClose={() => {
+            setOpen(false);
+          }}
+          severity="success"
+          sx={{ width: "100%" }}
+        >
+          {location.state?.message}
+        </Alert>
+      </Snackbar>
     </div>
   );
 }

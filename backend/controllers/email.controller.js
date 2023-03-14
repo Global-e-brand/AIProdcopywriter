@@ -52,24 +52,24 @@ emailController.get("/verify-otp", async (req, res) => {
     let OTPGuess = req.query.OTPGuess;
 
     if (!email || !OTPGuess) {
-      throw Error("Cannot verify OTP: empty OTP or empty email");
+      res.status(400).send({ success: false });
     } else {
       const userOTP = await findOTP(email);
 
       if (!userOTP) {
-        throw new Error("Cannot find an OTP for that email");
+        res.status(400).send({ success: false });
       } else {
         const expiry = userOTP.expiresAt;
         const hashedOTP = userOTP.hashedOTP;
 
         if (expiry < Date.now()) {
           await deleteOTP(email);
-          throw new Error("Code has expired. Please request another one.");
+          res.status(400).send({ success: false });
         } else {
           const isValid = compare(OTPGuess, hashedOTP);
 
           if (!isValid) {
-            throw new Error("Invalid code. Please check your inbox.");
+            res.status(400).send({ success: false });
           } else {
             await deleteOTP(email);
 
@@ -82,7 +82,7 @@ emailController.get("/verify-otp", async (req, res) => {
       }
     }
   } catch (e) {
-    res.status(403).send({ success: false, message: e });
+    res.status(400).send({ success: false, error: e });
   }
 });
 
