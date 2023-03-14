@@ -6,6 +6,14 @@ const user_creation = mongoose.Schema({
     type: String,
     required: true,
   },
+  google_id: {
+    type: String,
+    required: false,
+  },
+  meta_id: {
+    type: String,
+    required: false,
+  },
   password: {
     type: String,
     required: true,
