@@ -3,6 +3,7 @@ import Grid from "@mui/material/Grid";
 import { useLocation, Routes, Route, redirect, Link } from "react-router-dom";
 import UserPage from "./components/Form/UserPage";
 import HomePage from "./components/home/HomePage";
+import HistoryPage from "./components/History/HistoryPage";
 import CreateAccount from "./components/Login/CreateAccount";
 import Footer from "./Footer";
 import Signin from "./components/Login/Signin";
@@ -20,6 +21,7 @@ function App() {
             <div className="logo-panel-wrapper"></div>
             <Routes>
               <Route path="/" element={<HomePage />} />
+              <Route path="/history" element={<HistoryPage />} />
             <Route path="/create-account" element={<CreateAccount />} />
               <Route path="/login" element={<Signin />} />
               <Route

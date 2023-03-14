@@ -24,6 +24,10 @@ function SidebarMenu() {
             {" "}
             Home
           </Link>
+          <Link to="/history" className="home-btn">
+            {" "}
+            History
+          </Link>
           {catagoryList.map((cat, i) => {
             return (
               <Accordion>
