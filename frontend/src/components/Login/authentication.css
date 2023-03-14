@@ -15,10 +15,10 @@
   background-color: white;
   box-shadow: 0px 0px 50px 3px rgba(0, 0, 0, 0.4);
   border-radius: 20px;
-  width: 614px;
+  width: 614px !important;
   padding: 1.5em 3em;
   text-align: center;
-  min-height: 627px;
+  min-height: 627px !important;
 }
 
 .authentication-grid {
@@ -322,8 +322,8 @@ input::-ms-clear {
 
   .authentication-card {
     border-radius: 10px;
-    min-height: 328px;
-    width: 343px;
+    min-height: 328px !important;
+    width: 343px !important;
     max-width: fit-content;
     padding: 0.5em 0.5em;
     box-shadow: 0px 4px 35px 10px rgba(0, 0, 0, 0.25);
@@ -434,12 +434,13 @@ input::-ms-clear {
 @media (max-width: 1000px) {
   .authentication-page {
     background-image: url("../../assets/images/authentication-background-tablet.png");
+    padding: 20px;
   }
 
   .authentication-card {
     border-radius: 10px;
-    min-height: 447px;
-    width: 568px;
+    min-height: 447px !important;
+    width: 568px !important;
     max-width: fit-content;
     padding: 0.5em 2em;
     box-shadow: 0px 4px 35px 10px rgba(0, 0, 0, 0.25);

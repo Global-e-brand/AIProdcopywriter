@@ -5,192 +5,194 @@ import fetch from "node-fetch";
 import getGPTResponse from "../helpers/api/get-GPT-response.js";
 import createPrompt from "../helpers/api/prompt-creator.js";
 import GptApi from "../controllers/GPTApi.js";
-import  createContent  from "../controllers/content.controller.js";
+import createContent from "../controllers/content.controller.js";
+import { checkAuthenticatedNoRedirect } from "../helpers/auth/check-authenticated.js";
 
-var app = express();
-
-app.use(
+apirouter.use(
   bodyParser.urlencoded({
     extended: true,
   })
 );
 
+apirouter.use(checkAuthenticatedNoRedirect);
+apirouter.use(bodyParser.json());
+
 // for each of the following endpoints, the req object should include
 // inputOne, inputTwo, tone, and category props via "body"
 
-apirouter.post("/calltoaction", bodyParser.json(), async (req, res) => {
+apirouter.post("/calltoaction", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/eventcopy", bodyParser.json(), async (req, res) => {
+apirouter.post("/eventcopy", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/landingpageherotext", bodyParser.json(), async (req, res) => {
+apirouter.post("/landingpageherotext", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/listicle", bodyParser.json(), async (req, res) => {
+apirouter.post("/listicle", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/metadescription", bodyParser.json(), async (req, res) => {
+apirouter.post("/metadescription", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/microcopy", bodyParser.json(), async (req, res) => {
+apirouter.post("/microcopy", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/questiongenerator", bodyParser.json(), async (req, res) => {
+apirouter.post("/questiongenerator", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/socialprooftext", bodyParser.json(), async (req, res) => {
+apirouter.post("/socialprooftext", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/subheader", bodyParser.json(), async (req, res) => {
+apirouter.post("/subheader", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/testimonialrewriter", bodyParser.json(), async (req, res) => {
+apirouter.post("/testimonialrewriter", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/blogconclusion", bodyParser.json(), async (req, res) => {
+apirouter.post("/blogconclusion", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/blogideas", bodyParser.json(), async (req, res) => {
+apirouter.post("/blogideas", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/blogintro", bodyParser.json(), async (req, res) => {
+apirouter.post("/blogintro", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/blogoutline", bodyParser.json(), async (req, res) => {
+apirouter.post("/blogoutline", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/blogtitle", bodyParser.json(), async (req, res) => {
+apirouter.post("/blogtitle", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/blogtitlelisticle", bodyParser.json(), async (req, res) => {
+apirouter.post("/blogtitlelisticle", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
@@ -204,107 +206,107 @@ apirouter.post(
       inputThree: req.body.inputThreeBool,
     });
     const response = await getGPTResponse(prompt);
-    await createContent(req,response);
+    await createContent(req, response);
     res.send(response);
   }
 );
 
-apirouter.post("/keywordgenerator", bodyParser.json(), async (req, res) => {
+apirouter.post("/keywordgenerator", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/cancellationemail", bodyParser.json(), async (req, res) => {
+apirouter.post("/cancellationemail", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/emailsubjectlines", bodyParser.json(), async (req, res) => {
+apirouter.post("/emailsubjectlines", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/confirmationemails", bodyParser.json(), async (req, res) => {
+apirouter.post("/confirmationemails", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/followupemail", bodyParser.json(), async (req, res) => {
+apirouter.post("/followupemail", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/thankyounote", bodyParser.json(), async (req, res) => {
+apirouter.post("/thankyounote", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/welcomeemail", bodyParser.json(), async (req, res) => {
+apirouter.post("/welcomeemail", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/adcopyvariants", bodyParser.json(), async (req, res) => {
+apirouter.post("/adcopyvariants", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/facebookheadlines", bodyParser.json(), async (req, res) => {
+apirouter.post("/facebookheadlines", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
@@ -318,238 +320,238 @@ apirouter.post(
       inputThree: req.body.inputThreeBool,
     });
     const response = await getGPTResponse(prompt);
-    await createContent(req,response);
+    await createContent(req, response);
     res.send(response);
   }
 );
 
-apirouter.post("/facebooklisticle", bodyParser.json(), async (req, res) => {
+apirouter.post("/facebooklisticle", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
-apirouter.post("/facebookprimarytext", bodyParser.json(), async (req, res) => {
+apirouter.post("/facebookprimarytext", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
-  res.send(response);
-});
-
-apirouter.post("/generaladcopy", bodyParser.json(), async (req, res) => {
-  const prompt = await createPrompt(req, {
-    inputOne: req.body.inputOneBool,
-    inputTwo: req.body.inputTwoBool,
-    inputThree: req.body.inputThreeBool,
-  });
-  const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/googledescriptions", bodyParser.json(), async (req, res) => {
+apirouter.post("/generaladcopy", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/googleheadlines", bodyParser.json(), async (req, res) => {
+apirouter.post("/googledescriptions", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
-  res.send(response);
-});
-apirouter.post("/linkedinadcopy", bodyParser.json(), async (req, res) => {
-  const prompt = await createPrompt(req, {
-    inputOne: req.body.inputOneBool,
-    inputTwo: req.body.inputTwoBool,
-    inputThree: req.body.inputThreeBool,
-  });
-  const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/audiencerefiner", bodyParser.json(), async (req, res) => {
+apirouter.post("/googleheadlines", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
+  res.send(response);
+});
+apirouter.post("/linkedinadcopy", async (req, res) => {
+  const prompt = await createPrompt(req, {
+    inputOne: req.body.inputOneBool,
+    inputTwo: req.body.inputTwoBool,
+    inputThree: req.body.inputThreeBool,
+  });
+  const response = await getGPTResponse(prompt);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/brandmission", bodyParser.json(), async (req, res) => {
+apirouter.post("/audiencerefiner", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/brandvoice", bodyParser.json(), async (req, res) => {
+apirouter.post("/brandmission", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/mottogenerator", bodyParser.json(), async (req, res) => {
+apirouter.post("/brandvoice", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/valueproposition", bodyParser.json(), async (req, res) => {
+apirouter.post("/mottogenerator", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/productdescription", bodyParser.json(), async (req, res) => {
+apirouter.post("/valueproposition", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
-
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/add-emoji", bodyParser.json(), async (req, res) => {
+apirouter.post("/productdescription", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
+
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/bullet-points", bodyParser.json(), async (req, res) => {
+apirouter.post("/add-emoji", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/carousel-post", bodyParser.json(), async (req, res) => {
+apirouter.post("/bullet-points", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/youtube-ideas", bodyParser.json(), async (req, res) => {
+apirouter.post("/carousel-post", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/hashtag-generator", bodyParser.json(), async (req, res) => {
+apirouter.post("/youtube-ideas", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/hook-generator", bodyParser.json(), async (req, res) => {
+apirouter.post("/hashtag-generator", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/instagram-caption", bodyParser.json(), async (req, res) => {
+apirouter.post("/hook-generator", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/instagram-products", bodyParser.json(), async (req, res) => {
+apirouter.post("/instagram-caption", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/launchyourproduct", bodyParser.json(), async (req, res) => {
+apirouter.post("/instagram-products", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
+  res.send(response);
+});
+
+apirouter.post("/launchyourproduct", async (req, res) => {
+  const prompt = await createPrompt(req, {
+    inputOne: req.body.inputOneBool,
+    inputTwo: req.body.inputTwoBool,
+    inputThree: req.body.inputThreeBool,
+  });
+  const response = await getGPTResponse(prompt);
+  await createContent(req, response);
   res.send(response);
 });
 
@@ -563,19 +565,19 @@ apirouter.post(
       inputThree: req.body.inputThreeBool,
     });
     const response = await getGPTResponse(prompt);
-    await createContent(req,response);
+    await createContent(req, response);
     res.send(response);
   }
 );
 
-apirouter.post("/short-texthook", bodyParser.json(), async (req, res) => {
+apirouter.post("/short-texthook", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
@@ -589,19 +591,19 @@ apirouter.post(
       inputThree: req.body.inputThreeBool,
     });
     const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+    await createContent(req, response);
     res.send(response);
   }
 );
 
-apirouter.post("/videocalltoaction", bodyParser.json(), async (req, res) => {
+apirouter.post("/videocalltoaction", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
@@ -615,41 +617,41 @@ apirouter.post(
       inputThree: req.body.inputThreeBool,
     });
     const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+    await createContent(req, response);
     res.send(response);
   }
 );
 
-apirouter.post("/youtubevideotitle", bodyParser.json(), async (req, res) => {
+apirouter.post("/youtubevideotitle", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/adjectiveaccelerator", bodyParser.json(), async (req, res) => {
+apirouter.post("/adjectiveaccelerator", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/analogygenerator", bodyParser.json(), async (req, res) => {
+apirouter.post("/analogygenerator", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
@@ -663,359 +665,359 @@ apirouter.post(
       inputThree: req.body.inputThreeBool,
     });
     const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+    await createContent(req, response);
     res.send(response);
   }
 );
 
-apirouter.post("/cliffhanger", bodyParser.json(), async (req, res) => {
+apirouter.post("/cliffhanger", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/essayintro", bodyParser.json(), async (req, res) => {
+apirouter.post("/essayintro", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/essayoutline", bodyParser.json(), async (req, res) => {
+apirouter.post("/essayoutline", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/herostoryintro", bodyParser.json(), async (req, res) => {
+apirouter.post("/herostoryintro", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/herostoryvillain", bodyParser.json(), async (req, res) => {
+apirouter.post("/herostoryvillain", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/passivetoactivevoice", bodyParser.json(), async (req, res) => {
+apirouter.post("/passivetoactivevoice", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/pressreleaseintros", bodyParser.json(), async (req, res) => {
+apirouter.post("/pressreleaseintros", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
-apirouter.post("/rewritewithkeywords", bodyParser.json(), async (req, res) => {
+apirouter.post("/rewritewithkeywords", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
-  res.send(response);
-});
-
-apirouter.post("/sentencerewriter", bodyParser.json(), async (req, res) => {
-  const prompt = await createPrompt(req, {
-    inputOne: req.body.inputOneBool,
-    inputTwo: req.body.inputTwoBool,
-    inputThree: req.body.inputThreeBool,
-  });
-  const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/simplifysentences", bodyParser.json(), async (req, res) => {
+apirouter.post("/sentencerewriter", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/tonechanger", bodyParser.json(), async (req, res) => {
+apirouter.post("/simplifysentences", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/twosentencestories", bodyParser.json(), async (req, res) => {
+apirouter.post("/tonechanger", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/verbbooster", bodyParser.json(), async (req, res) => {
+apirouter.post("/twosentencestories", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/growthideas", bodyParser.json(), async (req, res) => {
+apirouter.post("/verbbooster", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/namegenerator", bodyParser.json(), async (req, res) => {
+apirouter.post("/growthideas", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/nextproduct", bodyParser.json(), async (req, res) => {
+apirouter.post("/namegenerator", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/startupideas", bodyParser.json(), async (req, res) => {
+apirouter.post("/nextproduct", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/viralideas", bodyParser.json(), async (req, res) => {
+apirouter.post("/startupideas", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/birthdaycard", bodyParser.json(), async (req, res) => {
+apirouter.post("/viralideas", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/clubhousebio", bodyParser.json(), async (req, res) => {
+apirouter.post("/birthdaycard", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/coverletter", bodyParser.json(), async (req, res) => {
+apirouter.post("/clubhousebio", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/loveletter", bodyParser.json(), async (req, res) => {
+apirouter.post("/coverletter", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/resumebulletpoints", bodyParser.json(), async (req, res) => {
+apirouter.post("/loveletter", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/showerthoughts", bodyParser.json(), async (req, res) => {
+apirouter.post("/resumebulletpoints", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/aida", bodyParser.json(), async (req, res) => {
+apirouter.post("/showerthoughts", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/bab", bodyParser.json(), async (req, res) => {
+apirouter.post("/aida", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/features-to-benefits", bodyParser.json(), async (req, res) => {
+apirouter.post("/bab", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response); 
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/fab", bodyParser.json(), async (req, res) => {
+apirouter.post("/features-to-benefits", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/marketing-angles", bodyParser.json(), async (req, res) => {
+apirouter.post("/fab", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/pas", bodyParser.json(), async (req, res) => {
+apirouter.post("/marketing-angles", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/pppp", bodyParser.json(), async (req, res) => {
+apirouter.post("/pas", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
   res.send(response);
 });
 
-apirouter.post("/quest-copywriting", bodyParser.json(), async (req, res) => {
+apirouter.post("/pppp", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req,response);
+  await createContent(req, response);
+  res.send(response);
+});
+
+apirouter.post("/quest-copywriting", async (req, res) => {
+  const prompt = await createPrompt(req, {
+    inputOne: req.body.inputOneBool,
+    inputTwo: req.body.inputTwoBool,
+    inputThree: req.body.inputThreeBool,
+  });
+  const response = await getGPTResponse(prompt);
+  await createContent(req, response);
   res.send(response);
 });
 

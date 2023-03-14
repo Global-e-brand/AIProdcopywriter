@@ -158,7 +158,7 @@ function Signin() {
                   error={alertVisibility}
                 />
               </Grid>
-              <Grid item xs={3} sm={3} md={3} lg={3} xl={3}>
+              <Grid item xs={5} sm={5} md={5} lg={5} xl={5}>
                 <Link
                   to="/login/forgot-password"
                   className="forgot-password-btn"
@@ -166,7 +166,7 @@ function Signin() {
                   Forgot Password
                 </Link>
               </Grid>
-              <Grid item xs={4} sm={4} md={4} lg={4} xl={4}>
+              <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
                 <Link to="" className="login-help-btn">
                   Need help logging in?
                 </Link>

@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import "./form.css";
 import { Grid, Button } from "@mui/material";
 import Loader from "../loader/loader";
@@ -27,14 +27,15 @@ function Dummy(props) {
   const [flip, setFlip] = useState(true);
 
   const location = useLocation();
+  const navigate = useNavigate();
   const textAreaRef = useRef(null);
 
-  // useEffect(() => {
-  //   setAuthenticated(undefined);
-  //   authenticate((status) => {
-  //     setAuthenticated(status === "authenticated" ? true : false);
-  //   });
-  // }, [location.pathname]);
+  useEffect(() => {
+    setAuthenticated(undefined);
+    authenticate((status) => {
+      setAuthenticated(status === "authenticated" ? true : false);
+    });
+  }, [location.pathname]);
 
   function copyToClipboard(item, i) {
     let clipboardData = "";
@@ -64,8 +65,7 @@ function Dummy(props) {
     return () => clearTimeout(timer);
   }
 
-  let path=window.location.href.substring(window.location.origin.length)
-  console.log("path",path);
+  let path = location.pathname;
 
   async function handleSubmit(path) {
     setLoading(true);
@@ -86,11 +86,13 @@ function Dummy(props) {
       }),
     });
 
-    let response = res.json();
-    console.log("response", response);
-    response.then((data) => {
-      setData(data);
-    });
+    let response = await res.json();
+
+    if (response?.authenticated === false) {
+      navigate("/login");
+    }
+
+    setData(response);
     setLoading(false);
   }
 
@@ -331,182 +333,196 @@ function Dummy(props) {
         </div>
 
         {/* Mobile View */}
-        <div className="mobile-view-product">
-          <ul aria-expanded={showMenu}>
-            <li>
-              <SidebarMobile />
-            </li>
-          </ul>
-          <div className="main-form-mobile">
-            <p>{props.category}</p>
-            <Grid item xs={12}>
-              <form className="form">
-                <div className="input_one">
-                  <h5>
-                    <strong>{props.inputOneTitle}</strong>
-                  </h5>
-                  <textarea
-                    value={inputOne}
-                    onChange={(e) => setInputOne(e.target.value)}
-                    placeholder={props.placeholderOne}
-                  />
-                  {/* {console.log(inputOne, inputTwo, tone)} */}
-                </div>
-                {props.inputTwo ? (
-                  <div className="input_one">
-                    <h5>
-                      <strong>{props.inputTwoTitle}</strong>
-                    </h5>
+        {isAuthenticated ? (
+          <>
+            <div className="mobile-view-product">
+              <ul aria-expanded={showMenu}>
+                <li>
+                  <SidebarMobile />
+                </li>
+              </ul>
+              <div className="main-form-mobile">
+                <p>{props.category}</p>
+                <Grid item xs={12}>
+                  <form className="form">
+                    <div className="input_one">
+                      <h5>
+                        <strong>{props.inputOneTitle}</strong>
+                      </h5>
+                      <textarea
+                        value={inputOne}
+                        onChange={(e) => setInputOne(e.target.value)}
+                        placeholder={props.placeholderOne}
+                      />
+                      {/* {console.log(inputOne, inputTwo, tone)} */}
+                    </div>
+                    {props.inputTwo ? (
+                      <div className="input_one">
+                        <h5>
+                          <strong>{props.inputTwoTitle}</strong>
+                        </h5>
 
-                    <textarea
-                      value={inputTwo}
-                      onChange={(e) => setInputTwo(e.target.value)}
-                      placeholder={props.placeholderTwo}
-                    />
-                  </div>
-                ) : (
-                  <></>
-                )}
-
-                {props.toneInput ? (
-                  <div className="input_three">
-                    <h5>
-                      <strong>Select a tone</strong>
-                    </h5>
-                    <Grid container justifyContent="center" spacing={4}>
-                      <Grid item xs={6}>
-                        <Button
-                          className={
-                            tone == "Friendly"
-                              ? "tone-btn-selected"
-                              : "tone-btn"
-                          }
-                          onClick={(e) => handleTone("Friendly")}
-                        >
-                          Friendly
-                        </Button>
-                      </Grid>
-                      <Grid item xs={6}>
-                        <Button
-                          className={
-                            tone == "Professional"
-                              ? "tone-btn-selected"
-                              : "tone-btn"
-                          }
-                          onClick={(e) => handleTone("Professional")}
-                        >
-                          Professional
-                        </Button>
-                      </Grid>
-                      <Grid item xs={6}>
-                        <Button
-                          className={
-                            tone == "Empathetic"
-                              ? "tone-btn-selected"
-                              : "tone-btn"
-                          }
-                          onClick={(e) => handleTone("Empathetic")}
-                        >
-                          Empathetic
-                        </Button>
-                      </Grid>
-                      <Grid item xs={6}>
-                        <Button
-                          className={
-                            tone == "Bold" ? "tone-btn-selected" : "tone-btn"
-                          }
-                          onClick={(e) => handleTone("Bold")}
-                        >
-                          Bold
-                        </Button>
-                      </Grid>
-                    </Grid>
-                  </div>
-                ) : (
-                  <></>
-                )}
-
-                <div className="submitButton">
-                  <button
-                    onClick={() => handleSubmit(path)}
-                    disabled={loading}
-                    variant="contained"
-                  >
-                    Submit
-                  </button>
-                </div>
-              </form>
-            </Grid>
-          </div>
-          <div className="result-mobile-view">
-            <Grid item xs={12}>
-              <div className="category-title mr-2">
-                <h2>
-                  <strong>Result</strong>
-                </h2>
-              </div>
-              {/* {console.log("data",data)} */}
-              {loading ? (
-                <Loader />
-              ) : (
-                <>
-                  {data != undefined ? (
-                    <>
-                      <button
-                        className="cpyall-btn"
-                        onClick={() => copyToAllClipboard(data)}
-                      >
-                        {" "}
-                        Copy All
-                      </button>
-                      {AllCopied ? (
-                        <h1 className="text-cp-al">ALL RESULTS COPIED ! </h1>
-                      ) : (
-                        ""
-                      )}
-
-                      <div className="output-container-mobile-view">
-                        <div
-                          className="mobile-view-carousal-card"
-                          aria-expanded={flip}
-                        >
-                          <div className="mobile-carousal-card-title">
-                            <h3>{props.category + "-" + index}</h3>
-                            <button
-                              className="cpy-btn-mobile-view"
-                              onClick={() =>
-                                copyToClipboard(data[index], index)
-                              }
-                            >
-                              Copy
-                            </button>
-                          </div>
-                          <h4>{data[index].text}</h4>
-                          <div className="mobile-carousal-buttons">
-                            <button
-                              onClick={() => handlePrev()}
-                              className="mobile-left-arrow"
-                            >
-                              <img src={leftarrow} />{" "}
-                            </button>
-                            <button
-                              onClick={() => handleNext()}
-                              className="mobile-right-arrow"
-                            >
-                              <img src={leftarrow} />{" "}
-                            </button>
-                          </div>
-                        </div>
+                        <textarea
+                          value={inputTwo}
+                          onChange={(e) => setInputTwo(e.target.value)}
+                          placeholder={props.placeholderTwo}
+                        />
                       </div>
-                    </>
+                    ) : (
+                      <></>
+                    )}
+
+                    {props.toneInput ? (
+                      <div className="input_three">
+                        <h5>
+                          <strong>Select a tone</strong>
+                        </h5>
+                        <Grid container justifyContent="center" spacing={4}>
+                          <Grid item xs={6}>
+                            <Button
+                              className={
+                                tone == "Friendly"
+                                  ? "tone-btn-selected"
+                                  : "tone-btn"
+                              }
+                              onClick={(e) => handleTone("Friendly")}
+                            >
+                              Friendly
+                            </Button>
+                          </Grid>
+                          <Grid item xs={6}>
+                            <Button
+                              className={
+                                tone == "Professional"
+                                  ? "tone-btn-selected"
+                                  : "tone-btn"
+                              }
+                              onClick={(e) => handleTone("Professional")}
+                            >
+                              Professional
+                            </Button>
+                          </Grid>
+                          <Grid item xs={6}>
+                            <Button
+                              className={
+                                tone == "Empathetic"
+                                  ? "tone-btn-selected"
+                                  : "tone-btn"
+                              }
+                              onClick={(e) => handleTone("Empathetic")}
+                            >
+                              Empathetic
+                            </Button>
+                          </Grid>
+                          <Grid item xs={6}>
+                            <Button
+                              className={
+                                tone == "Bold"
+                                  ? "tone-btn-selected"
+                                  : "tone-btn"
+                              }
+                              onClick={(e) => handleTone("Bold")}
+                            >
+                              Bold
+                            </Button>
+                          </Grid>
+                        </Grid>
+                      </div>
+                    ) : (
+                      <></>
+                    )}
+
+                    <div className="submitButton">
+                      <button
+                        onClick={() => handleSubmit(path)}
+                        disabled={loading}
+                        variant="contained"
+                      >
+                        Submit
+                      </button>
+                    </div>
+                  </form>
+                </Grid>
+              </div>
+              <div className="result-mobile-view">
+                <Grid item xs={12}>
+                  <div className="category-title mr-2">
+                    <h2>
+                      <strong>Result</strong>
+                    </h2>
+                  </div>
+                  {/* {console.log("data",data)} */}
+                  {loading ? (
+                    <Loader />
                   ) : (
-                    <>{/* <div className="err-msg">Oops Try Again !</div> */}</>
+                    <>
+                      {data != undefined ? (
+                        <>
+                          <button
+                            className="cpyall-btn"
+                            onClick={() => copyToAllClipboard(data)}
+                          >
+                            {" "}
+                            Copy All
+                          </button>
+                          {AllCopied ? (
+                            <h1 className="text-cp-al">
+                              ALL RESULTS COPIED !{" "}
+                            </h1>
+                          ) : (
+                            ""
+                          )}
+
+                          <div className="output-container-mobile-view">
+                            <div
+                              className="mobile-view-carousal-card"
+                              aria-expanded={flip}
+                            >
+                              <div className="mobile-carousal-card-title">
+                                <h3>{props.category + "-" + index}</h3>
+                                <button
+                                  className="cpy-btn-mobile-view"
+                                  onClick={() =>
+                                    copyToClipboard(data[index], index)
+                                  }
+                                >
+                                  Copy
+                                </button>
+                              </div>
+                              <h4>{data[index].text}</h4>
+                              <div className="mobile-carousal-buttons">
+                                <button
+                                  onClick={() => handlePrev()}
+                                  className="mobile-left-arrow"
+                                >
+                                  <img src={leftarrow} />{" "}
+                                </button>
+                                <button
+                                  onClick={() => handleNext()}
+                                  className="mobile-right-arrow"
+                                >
+                                  <img src={leftarrow} />{" "}
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </>
+                      ) : (
+                        <>
+                          {/* <div className="err-msg">Oops Try Again !</div> */}
+                        </>
+                      )}
+                    </>
                   )}
-                </>
-              )}
-            </Grid>
-          </div>
-        </div>
+                </Grid>
+              </div>
+            </div>
+          </>
+        ) : isAuthenticated === undefined ? (
+          ""
+        ) : (
+          <Navigate to="/login" />
+        )}
       </div>
     </>
   );

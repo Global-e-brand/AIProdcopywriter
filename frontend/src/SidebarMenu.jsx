@@ -49,7 +49,7 @@ function SidebarMenu() {
               </Accordion>
             );
           })}
-           <Link to="/auth/logout" className="home-btn">
+          <Link to="http://localhost:3000/auth/logout" className="home-btn">
             {" "}
             Logout
           </Link>
