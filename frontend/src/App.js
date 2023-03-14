@@ -3,6 +3,7 @@ import Grid from "@mui/material/Grid";
 import { useLocation, Routes, Route, redirect, Link } from "react-router-dom";
 import UserPage from "./components/Form/UserPage";
 import HomePage from "./components/home/HomePage";
+import HistoryPage from "./components/History/HistoryPage";
 import CreateAccount from "./components/Login/CreateAccount";
 import Signin from "./components/Login/Signin";
 import ForgotPassword from "./components/Login/ForgotPassword";
@@ -11,7 +12,9 @@ import Payment from "./components/payment/Payment";
 
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 
+
 function App() {
+  const location = useLocation();
   return (
     <>
       <div className="App">
@@ -20,6 +23,7 @@ function App() {
             <div className="logo-panel-wrapper"></div>
             <Routes>
               <Route path="/" element={<HomePage />} />
+              <Route path="/history" element={<HistoryPage />} />
               <Route path="/create-account" element={<CreateAccount />} />
               <Route path="/login" element={<Signin />} />
               <Route path="/payment" element={<Payment />} />
@@ -27,6 +31,7 @@ function App() {
                 path="/login/forgot-password"
                 element={<ForgotPassword />}
               />
+              <Route path="/login/reset-password" element={<ResetPassword />} />
               <Route
                 path="/productdescription"
                 element={
@@ -1609,6 +1614,7 @@ function App() {
           </Grid>
         </Grid>
       </div>
+      {!location.pathname.startsWith("/login") && <Footer />}
     </>
   );
 }
