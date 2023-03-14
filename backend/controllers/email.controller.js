@@ -1,59 +1,89 @@
 import express, { json } from "express";
 import bodyParser from "body-parser";
 import { verifyEmail } from "../helpers/email/verify-email.js";
-import nodemailer from "nodemailer";
+import { sendOTP } from "../helpers/email/send-OTP.js";
+import { getHashedOTP } from "../helpers/auth/hashing.js";
+import { compare } from "../helpers/auth/hashing.js";
+import {
+  deleteOTP,
+  findOTP,
+  findUser,
+  insertOTP,
+} from "../helpers/misc/mongo-db-helpers.js";
 
 const emailController = express.Router();
 
 const jsonParser = bodyParser.json();
 
 emailController.post("/send-otp", jsonParser, async (req, res) => {
-  let status = 200;
-  let err = null;
+  const email = req.body?.email?.trim().toLowerCase();
+  const user = await findUser(email);
 
-  // const otp = Math.floor(Math.random());
+  const userOTP = await findOTP(email);
 
-  var transporter = nodemailer.createTransport({
-    service: "hotmail",
-    auth: {
-      user: "curry09213@hotmail.com",
-      pass: "&*ASD-90=)}SAD)_{}ihi12DUN[",
-    },
-  });
+  if (userOTP) {
+    deleteOTP(email);
+  }
 
-  var mailOptions = {
-    from: "curry09213@hotmail.com",
-    to: req.body.email,
-    subject: "Email verification code for AI ProdCopywriter",
-    text: req.body.code,
-    html: `<body style="text-align: center">
-    <h1>See below for your verification code</h1>
-    <p style="font-weight: 800; text-align: center">
-      Code: ${req.body.code}
-    </p>
-    <br />
-    <a href="http://localhost:3001/login">Click here to login</a>
-    </body>`,
-  };
+  const newOTP = `${100000 + Math.floor(Math.random() * 900000)}`;
 
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      console.log(`There was an error: ${error}`);
-      err = error;
-      status = 500;
-    } else {
-      console.log("Email sent: " + info.response);
-    }
-  });
+  const hashedOTP = await getHashedOTP(newOTP);
 
-  res.status(status).send({ success: status === 200, error: err });
+  if (user) {
+    insertOTP(email, hashedOTP, 300 * 1000);
+
+    const emailResponse = await sendOTP(email, newOTP, "5 minutes");
+
+    res.status(emailResponse.status).send({
+      success: emailResponse?.status === 200,
+      error: emailResponse?.err,
+    });
+  } else {
+    res.status(200).send({
+      success: true,
+      error: {},
+    });
+  }
 });
 
 emailController.get("/verify-otp", async (req, res) => {
-  let status = 200;
-  let err = null;
+  try {
+    let email = req.query.email;
+    let OTPGuess = req.query.OTPGuess;
 
-  res.status(status).send({ success: status === 200, error: err });
+    if (!email || !OTPGuess) {
+      throw Error("Cannot verify OTP: empty OTP or empty email");
+    } else {
+      const userOTP = await findOTP(email);
+
+      if (!userOTP) {
+        throw new Error("Cannot find an OTP for that email");
+      } else {
+        const expiry = userOTP.expiresAt;
+        const hashedOTP = userOTP.hashedOTP;
+
+        if (expiry < Date.now()) {
+          await deleteOTP(email);
+          throw new Error("Code has expired. Please request another one.");
+        } else {
+          const isValid = compare(OTPGuess, hashedOTP);
+
+          if (!isValid) {
+            throw new Error("Invalid code. Please check your inbox.");
+          } else {
+            await deleteOTP(email);
+
+            res.send({
+              status: "verified",
+              msg: "User email verified successfully",
+            });
+          }
+        }
+      }
+    }
+  } catch (e) {
+    res.status(403).send({ success: false, message: e });
+  }
 });
 
 emailController.get("/verify-email", async (req, res) => {

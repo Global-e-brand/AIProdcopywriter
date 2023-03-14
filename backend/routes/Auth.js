@@ -8,14 +8,8 @@ import { authUser } from "../helpers/auth/auth-user.js";
 import { checkAuthenticated } from "../helpers/auth/check-authenticated.js";
 import { checkNotAuthenticated } from "../helpers/auth/check-not-authenticated.js";
 import { verifyEmail } from "../helpers/email/verify-email.js";
-import { insertUser, findUser } from "../helpers/misc/mongo-db-helpers.js";
-import {
-  comparePassword,
-  hashPassword,
-} from "../helpers/auth/password-hashing.js";
-import nodemailer from "nodemailer";
-import { getUserId } from "../general/common.function.js";
-import session from "express-session";
+import { findUser } from "../helpers/misc/mongo-db-helpers.js";
+import { compare } from "../helpers/auth/hashing.js";
 
 dotenv.config();
 
@@ -60,7 +54,6 @@ passport.use(
     },
     async (email, password, done) => {
       email = email ? email.trim().toLowerCase() : "";
-      console.log(`${email} + ${password}`);
 
       try {
         const user = await findUser(email);
@@ -70,7 +63,7 @@ passport.use(
           return done(null, null);
         }
 
-        const isValid = comparePassword(password, user.password);
+        const isValid = compare(password, user.password);
 
         if (!isValid) {
           console.log("Incorrect password");

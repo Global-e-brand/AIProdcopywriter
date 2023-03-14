@@ -28,15 +28,13 @@ const user_creation = mongoose.Schema({
   },
 });
 
-user_creation.pre("save",async function(next){
-  
-  if(this.isModified("password")){
-    this.password=await bcrypt.hash(this.password,10)
-    this.confirm_password=await bcrypt.hash(this.confirm_password,10)
+user_creation.pre("save", async function (next) {
+  if (this.isModified("password")) {
+    this.password = await bcrypt.hash(this.password, 10);
+    this.confirm_password = await bcrypt.hash(this.confirm_password, 10);
   }
   next();
-
-})
+});
 
 const userModel = mongoose.model("user", user_creation);
 export default userModel;
