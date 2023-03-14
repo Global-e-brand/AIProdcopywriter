@@ -2,6 +2,7 @@ import express from "express";
 import router from "./routes/Post.js";
 import apirouter from "./routes/Api.js";
 import authrouter from "./routes/Auth.js";
+import paymentRouter from "./routes/Payment.js"
 import fetch from "node-fetch";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
@@ -39,6 +40,7 @@ app.use(passport.session());
 app.use("/posts", router);
 app.use("/api", apirouter);
 app.use("/auth", authrouter);
+app.use("/payment", paymentRouter);
 
 if (process.env.NODE_ENV == "production") {
   app.use(express.static(path.join(__dirname + "/public")));
