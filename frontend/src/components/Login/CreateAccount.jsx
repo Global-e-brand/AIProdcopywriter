@@ -64,10 +64,19 @@ function CreateAccount() {
 
   return (
     <div className="bg-ac">
+      <img
+        className="app-logo outside"
+        src={fulllogo}
+        alt="AI ProdCopywriter logo"
+      ></img>
       <div className="cr-wrapper">
         <Grid container spacing={4}>
           <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-            <img src={fulllogo} alt="logo" className="logo" />
+            <img
+              className="app-logo inside"
+              src={fulllogo}
+              alt="AI ProdCopywriter logo"
+            ></img>
           </Grid>
 
           <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
@@ -75,9 +84,7 @@ function CreateAccount() {
               <h1>
                 <strong>Register</strong>
               </h1>
-              <span>
-                <strong>Create the perfect description for your needs!</strong>
-              </span>
+              <span>Create the perfect description for your needs!</span>
             </div>
           </Grid>
           {/* 
@@ -96,8 +103,8 @@ function CreateAccount() {
           <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
             <h1 className="hr-or">or</h1>
           </Grid>*/}
-          <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-            {alertVisibility && (
+          {alertVisibility && (
+            <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
               <Alert
                 severity="error"
                 variant="standard"
@@ -106,8 +113,9 @@ function CreateAccount() {
               >
                 {alertMessage}
               </Alert>
-            )}
-          </Grid>
+            </Grid>
+          )}
+
           <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
             <TextField
               id="outlined-basic"
@@ -179,18 +187,13 @@ function CreateAccount() {
             </Button>
           </Grid>
           <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-            <div className="text-container">
-              <span>
-                <h5>
-                  <strong>Already have an account?</strong>
-                </h5>
-                <p>
-                  <strong className="blue-clr">
-                    {" "}
-                    <Link to="/login">Login now</Link>
-                  </strong>
-                </p>
-              </span>
+            <div className={"login-return"}>
+              <p className="small-text">
+                Already have an account?{" "}
+                <Link className="text-link" to="/login">
+                  Login now
+                </Link>
+              </p>
             </div>
           </Grid>
         </Grid>
