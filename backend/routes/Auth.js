@@ -10,7 +10,8 @@ import { checkNotAuthenticated } from "../helpers/auth/check-not-authenticated.j
 import { verifyEmail } from "../helpers/email/verify-email.js";
 import { findUser } from "../helpers/misc/mongo-db-helpers.js";
 import { compare } from "../helpers/auth/hashing.js";
-import { getUserId, getProvider } from "../general/common.function.js";
+import { getUserId, socialMediaUsers } from "../general/common.function.js";
+
 
 dotenv.config();
 
@@ -152,9 +153,12 @@ authrouter.get("/fail", (req, res) => {
   res.redirect("http://localhost:3001/login");
 });
 
-authrouter.get("/success", checkAuthenticated, (req, res) => {
-  console.log("Success");
-  res.redirect("http://localhost:3001/productdescription");
+authrouter.get("/success", checkAuthenticated,async (req, res) => {
+   await socialMediaUsers(req.user);
+
+   console.log("Success");
+    
+   res.redirect("http://localhost:3001/productdescription");
 });
 
 authrouter.get("/logout", checkAuthenticated, (req, res) => {
