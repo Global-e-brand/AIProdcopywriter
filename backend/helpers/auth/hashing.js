@@ -5,6 +5,12 @@ export const hashPassword = (password) => {
   return bcrypt.hashSync(password, salt);
 };
 
-export const comparePassword = (raw, hash) => {
+export const getHashedOTP = async (otp) => {
+  const hashedOTP = await bcrypt.hash(otp, 10);
+
+  return hashedOTP;
+};
+
+export const compare = (raw, hash) => {
   return bcrypt.compareSync(raw, hash);
 };
