@@ -10,6 +10,7 @@ import { checkNotAuthenticated } from "../helpers/auth/check-not-authenticated.j
 import { verifyEmail } from "../helpers/email/verify-email.js";
 import { findUser } from "../helpers/misc/mongo-db-helpers.js";
 import { compare } from "../helpers/auth/hashing.js";
+import { getUserId, getProvider } from "../general/common.function.js";
 
 dotenv.config();
 
@@ -64,7 +65,6 @@ passport.use(
         }
 
         const isValid = compare(password, user.password);
-        
 
         if (!isValid) {
           console.log("Incorrect password");

@@ -3,10 +3,6 @@ export function getUserId(req) {
   return req?.session?.passport?.user?._id || req?.session?.passport?.user?.id;
 }
 
-export function getGoogleId(){
-
-}
-
-export function getMetaId(){
-  
+export function getProvider(req) {
+  return req?.session?.passport?.user?.provider;
 }
