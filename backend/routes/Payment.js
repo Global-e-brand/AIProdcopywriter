@@ -5,6 +5,7 @@ const paymentRouter = express.Router();
 import bodyParser from "body-parser";
 import paymentData from "../models/PaymentsData.js";
 import { getUserId } from "../general/common.function.js";
+import checkTrial from "../controllers/checkTrial.js";
 var app = express();
 
 app.use(
@@ -35,6 +36,7 @@ paymentRouter.post("/order", bodyParser.json(), async (req, res) => {
         paymentId: req.body.data.paymentID,
         paymentSource: req.body.data.paymentSource,
         paymentStatus: true,
+        IsTrail: true,
       });
     } catch (err) {
       console.log("err", err);

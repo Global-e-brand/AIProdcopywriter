@@ -11,6 +11,7 @@ import { verifyEmail } from "../helpers/email/verify-email.js";
 import { findUser } from "../helpers/misc/mongo-db-helpers.js";
 import { compare } from "../helpers/auth/hashing.js";
 import { getUserId, getProvider } from "../general/common.function.js";
+import checkTrial from "../controllers/checkTrial.js";
 
 dotenv.config();
 
@@ -154,7 +155,12 @@ authrouter.get("/fail", (req, res) => {
 
 authrouter.get("/success", checkAuthenticated, (req, res) => {
   console.log("Success");
-  res.redirect("http://localhost:3001/productdescription");
+
+  //payment subscription model
+  let userId = getUserId();
+  let result = checkTrial(userId);
+  if (result) res.redirect("http://localhost:3001/productdescription");
+  else res.redirect("http://localhost:3001/payment");
 });
 
 authrouter.get("/logout", checkAuthenticated, (req, res) => {
