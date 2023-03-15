@@ -21,8 +21,7 @@ const getGPTResponse = async (prompt) => {
   var requestOptions = {
     method: "POST",
     headers: {
-      Authorization:
-        "Bearer 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",
+      Authorization: "Bearer " + process.env.OPEN_AI_KEY,
       "Content-Type": "application/json",
     },
     body: raw,
