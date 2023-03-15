@@ -153,14 +153,19 @@ authrouter.get("/fail", (req, res) => {
   res.redirect("http://localhost:3001/login");
 });
 
-authrouter.get("/success", checkAuthenticated, (req, res) => {
+authrouter.get("/success", checkAuthenticated, async (req, res) => {
   console.log("Success");
 
   //payment subscription model
-  let userId = getUserId();
-  let result = checkTrial(userId);
-  if (result) res.redirect("http://localhost:3001/productdescription");
-  else res.redirect("http://localhost:3001/payment");
+  let userId = await getUserId();
+  console.log(userId);
+  let result = await checkTrial(userId);
+  if (result) {
+    res.redirect("http://localhost:3001/productdescription");
+  } else {
+    console.log("Redirect to Payments");
+    res.redirect("http://localhost:3001/payment");
+  }
 });
 
 authrouter.get("/logout", checkAuthenticated, (req, res) => {

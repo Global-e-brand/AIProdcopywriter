@@ -25,16 +25,17 @@ function Dummy(props) {
   const [showMenu, setShowMenu] = useState(false);
   const [index, setIndex] = useState(0);
   const [flip, setFlip] = useState(true);
+  const [isPaid, setIsPaid] = useState(true);
 
   const location = useLocation();
   const textAreaRef = useRef(null);
 
-  // useEffect(() => {
-  //   setAuthenticated(undefined);
-  //   authenticate((status) => {
-  //     setAuthenticated(status === "authenticated" ? true : false);
-  //   });
-  // }, [location.pathname]);
+  useEffect(() => {
+    setAuthenticated(undefined);
+    authenticate((status) => {
+      setAuthenticated(status === "authenticated" ? true : false);
+    });
+  }, [location.pathname]);
 
   function copyToClipboard(item, i) {
     let clipboardData = "";
@@ -64,36 +65,44 @@ function Dummy(props) {
     return () => clearTimeout(timer);
   }
 
-  let path=window.location.href.substring(window.location.origin.length)
-  console.log("path",path);
+  let path = window.location.href.substring(window.location.origin.length);
+  console.log("path", path);
 
   async function handleSubmit(path) {
     setLoading(true);
-    let res = await fetch("/api" + path, {
-      method: "POST",
+    let checkPayment = await fetch("/checkpayment", {
+      method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        category: props.category,
-        inputOneBool: props.inputOne,
-        inputTwoBool: props.inputTwo,
-        inputThreeBool: props.toneInput,
-        inputOne: inputOne,
-        inputTwo: inputTwo,
-        tone: tone,
-        data: `${inputOne}`,
-      }),
     });
-
-    let response = res.json();
-    console.log("response", response);
-    response.then((data) => {
-      setData(data);
-    });
+    let result = checkPayment.json();
+    result.then((res) => setIsPaid(res));
+    if (isPaid == true) {
+      let res = await fetch("/api" + path, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          category: props.category,
+          inputOneBool: props.inputOne,
+          inputTwoBool: props.inputTwo,
+          inputThreeBool: props.toneInput,
+          inputOne: inputOne,
+          inputTwo: inputTwo,
+          tone: tone,
+          data: `${inputOne}`,
+        }),
+      });
+      let response = res.json();
+      console.log("response", response);
+      response.then((data) => {
+        setData(data);
+      });
+    }
     setLoading(false);
   }
-
   const handleTone = (e) => {
     setTone(e);
   };
@@ -110,7 +119,7 @@ function Dummy(props) {
     setFlip(!flip);
   }
 
-  return (
+  return isPaid ? (
     <>
       <div className="category-page">
         <div className="category-title">
@@ -509,6 +518,8 @@ function Dummy(props) {
         </div>
       </div>
     </>
+  ) : (
+    <Navigate to="/payment" />
   );
 }
 

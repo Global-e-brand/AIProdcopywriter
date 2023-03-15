@@ -2,7 +2,7 @@ import express from "express";
 import router from "./routes/Post.js";
 import apirouter from "./routes/Api.js";
 import authrouter from "./routes/Auth.js";
-import paymentRouter from "./routes/Payment.js"
+import paymentRouter from "./routes/Payment.js";
 import fetch from "node-fetch";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
@@ -15,6 +15,8 @@ import userController from "./controllers/user.controller.js";
 import contentController from "./controllers/content.controller.js";
 import emailController from "./controllers/email.controller.js";
 import bodyParser from "body-parser";
+import { getUserId } from "./general/common.function.js";
+import checkTrial from "./controllers/checkTrial.js";
 
 dotenv.config();
 
@@ -83,7 +85,17 @@ if (process.env.NODE_ENV == "production") {
     res.sendFile(path.resolve(__dirname, "public", "index.html"));
   });
 }
-
+app.get("/checkpayment", async (req, res) => {
+  let userId = await getUserId();
+  console.log(userId);
+  let result = await checkTrial(userId);
+  if (result) {
+    res.send(true);
+  } else {
+    console.log("Redirect to Payments");
+    res.send(false);
+  }
+});
 app.listen(PORT, function (err) {
   if (err) console.log("Error in server setup");
   console.log("Server listening on Port", PORT);
