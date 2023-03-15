@@ -148,6 +148,7 @@ function CreateAccount() {
                 }
                 onChange={(e) => setTextPassword(e.target.value)}
                 label="Password"
+                autoComplete="current-password"
               />
             </FormControl>
           </Grid>
@@ -173,6 +174,7 @@ function CreateAccount() {
                 }
                 onChange={(e) => setTextConfirmPassword(e.target.value)}
                 label="confirm-Password"
+                autoComplete="new-password"
               />
             </FormControl>
           </Grid>

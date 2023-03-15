@@ -1,15 +1,18 @@
 import fetch from "node-fetch";
 
-export const verifyEmail = async (email) => {
+export const getEmailStatus = async (email) => {
+  const apiKey = process.env.ZEROBOUNCE_API_KEY;
+
   return await fetch(
-    `https://api.hunter.io/v2/email-verifier?email=${email}&api_key=49056e12eb363cfdce598e3d4397e4d3f8d06eba`
+    `https://api.zerobounce.net/v2/validate?api_key=${apiKey}&email=${email}`
   )
     .then(async (response) => {
       const data = await response.json();
 
-      return data;
+      return data?.status === "valid";
     })
     .catch((error) => {
       console.log(error);
+      return false;
     });
 };

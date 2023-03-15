@@ -1,6 +1,6 @@
 import express, { json } from "express";
 import bodyParser from "body-parser";
-import { verifyEmail } from "../helpers/email/verify-email.js";
+import { getEmailStatus } from "../helpers/email/verify-email.js";
 import { sendOTP } from "../helpers/email/send-OTP.js";
 import { getHashedOTP } from "../helpers/auth/hashing.js";
 import { compare } from "../helpers/auth/hashing.js";
@@ -87,7 +87,7 @@ emailController.get("/verify-otp", async (req, res) => {
 });
 
 emailController.get("/verify-email", async (req, res) => {
-  const data = await verifyEmail(req.query.email);
+  const data = await getEmailStatus(req.query.email);
 
   res.send(data);
 });

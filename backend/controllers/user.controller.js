@@ -5,7 +5,7 @@ import { updateUserPassword } from "../helpers/misc/mongo-db-helpers.js";
 import { getUserId } from "../general/common.function.js";
 import { hashPassword } from "../helpers/auth/hashing.js";
 import { findUser } from "../helpers/misc/mongo-db-helpers.js";
-import { verifyEmail } from "../helpers/email/verify-email.js";
+import { getEmailStatus } from "../helpers/email/verify-email.js";
 
 var app = express();
 
@@ -19,13 +19,13 @@ userController.post("/register", bodyParser.json(), async (req, res) => {
   let confirm_password = req.body.confirm_password;
 
   const user = await findUser(email);
-  const emailStatus = await verifyEmail(email);
+  const emailIsValid = await getEmailStatus(email);
 
   if (email == null || password == null || confirm_password == null) {
     return res.status(400).send({ error: "text fields should not be empty" });
   }
 
-  if (emailStatus.errors) {
+  if (!emailIsValid) {
     return res.status(400).send({ error: "Invalid email address" });
   }
 

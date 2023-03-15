@@ -168,6 +168,7 @@ function Signin() {
                     onChange={handleEmail}
                     label="email"
                     error={alertVisibility}
+                    autoComplete="username"
                   />
                 </FormControl>
               </Grid>
@@ -177,6 +178,7 @@ function Signin() {
                   value={password}
                   setValue={setPassword}
                   error={alertVisibility}
+                  autoComplete="current-password"
                 />
               </Grid>
               <Grid item xs={5} sm={5} md={5} lg={5} xl={5}>
@@ -200,12 +202,10 @@ function Signin() {
                   hidden
                   onLoad={(e) => handleFormResponse(e)}
                 ></iframe>
-                <input type="hidden" name="email" value={email}></input>
                 <button
                   className="submit-btn"
                   type="submit"
                   name="password"
-                  value={password}
                   disabled={
                     email.length === 0 ||
                     password.length === 0 ||

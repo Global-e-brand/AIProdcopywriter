@@ -7,10 +7,8 @@ import { Strategy as LocalStrategy } from "passport-local";
 import { authUser } from "../helpers/auth/auth-user.js";
 import { checkAuthenticated } from "../helpers/auth/check-authenticated.js";
 import { checkNotAuthenticated } from "../helpers/auth/check-not-authenticated.js";
-import { verifyEmail } from "../helpers/email/verify-email.js";
 import { findUser } from "../helpers/misc/mongo-db-helpers.js";
 import { compare } from "../helpers/auth/hashing.js";
-import { getUserId, getProvider } from "../general/common.function.js";
 
 dotenv.config();
 

@@ -40,6 +40,7 @@ export const SecureInput = (props) => {
         }
         onChange={(e) => props.setValue(e.target.value)}
         label={props.title}
+        autoComplete={props.autoComplete || ""}
       />
     </FormControl>
   );
