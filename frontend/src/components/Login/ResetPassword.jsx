@@ -117,7 +117,7 @@ function ResetPassword(props) {
                   severity="error"
                   variant="standard"
                   className="alert"
-                  style={{ margin: "10px 0" }}
+                  style={{ margin: "10px 0", textAlign: "left" }}
                 >
                   {alertMessage}
                 </Alert>

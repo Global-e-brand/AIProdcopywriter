@@ -1,4 +1,9 @@
 @media only screen and (max-width: 600px) and (min-width: 200px) {
+  * {
+    font-family: "Manrope";
+    font-style: normal;
+  }
+
   .sidebar-mobile-wrapper {
     overflow: hidden;
     padding: 20px 0;
