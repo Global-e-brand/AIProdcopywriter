@@ -1,6 +1,6 @@
 import express, { json } from "express";
 import bodyParser from "body-parser";
-import { verifyEmail } from "../helpers/email/verify-email.js";
+import { getEmailStatus } from "../helpers/email/verify-email.js";
 import { sendOTP } from "../helpers/email/send-OTP.js";
 import { getHashedOTP } from "../helpers/auth/hashing.js";
 import { compare } from "../helpers/auth/hashing.js";
@@ -52,27 +52,28 @@ emailController.get("/verify-otp", async (req, res) => {
     let OTPGuess = req.query.OTPGuess;
 
     if (!email || !OTPGuess) {
-      throw Error("Cannot verify OTP: empty OTP or empty email");
+      res.status(400).send({ success: false });
     } else {
       const userOTP = await findOTP(email);
 
       if (!userOTP) {
-        throw new Error("Cannot find an OTP for that email");
+        res.status(400).send({ success: false });
       } else {
         const expiry = userOTP.expiresAt;
         const hashedOTP = userOTP.hashedOTP;
 
         if (expiry < Date.now()) {
           await deleteOTP(email);
-          throw new Error("Code has expired. Please request another one.");
+          res.status(400).send({
+            success: false,
+            error: "Code expired. Please request another one.",
+          });
         } else {
           const isValid = compare(OTPGuess, hashedOTP);
 
           if (!isValid) {
-            throw new Error("Invalid code. Please check your inbox.");
+            res.status(400).send({ success: false });
           } else {
-            await deleteOTP(email);
-
             res.send({
               status: "verified",
               msg: "User email verified successfully",
@@ -82,12 +83,12 @@ emailController.get("/verify-otp", async (req, res) => {
       }
     }
   } catch (e) {
-    res.status(403).send({ success: false, message: e });
+    res.status(400).send({ success: false, error: e });
   }
 });
 
 emailController.get("/verify-email", async (req, res) => {
-  const data = await verifyEmail(req.query.email);
+  const data = await getEmailStatus(req.query.email);
 
   res.send(data);
 });

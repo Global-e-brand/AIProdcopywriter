@@ -25,6 +25,7 @@ export const SecureInput = (props) => {
       </InputLabel>
       <OutlinedInput
         type={inputIsVisible ? "text" : "password"}
+        id={props.autoComplete || ""}
         error={props.error}
         endAdornment={
           <InputAdornment>
@@ -40,6 +41,7 @@ export const SecureInput = (props) => {
         }
         onChange={(e) => props.setValue(e.target.value)}
         label={props.title}
+        autoComplete={props.autoComplete || ""}
       />
     </FormControl>
   );

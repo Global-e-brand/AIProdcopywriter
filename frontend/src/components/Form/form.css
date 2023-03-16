@@ -420,6 +420,7 @@ button[aria-expanded="false"] img {
   }
   .mobile-view-carousal-card h4 {
     font-weight: 600;
+    white-space: pre-wrap;
   }
   .output-container-mobile-view div[aria-expanded="true"] {
     transition: ease 1s;

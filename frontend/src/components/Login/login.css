@@ -3,17 +3,20 @@
 }
 
 .bg-ac {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   background-image: url(../../assets/images/authentication-background.png);
   background-repeat: no-repeat;
   background-size: cover;
   height: 100%;
+  padding: 20px;
 }
 
 .cr-wrapper {
-  position: absolute;
-  width: 30vw;
-  top: 6vw;
-  left: 37vw;
+  width: 614px !important;
+  max-width: fit-content;
   padding: 20px;
   background: #ffffff;
   box-shadow: 0px 0px 50px 3px rgb(0 0 0 / 40%);
@@ -73,13 +76,16 @@
   text-align: center;
 }
 
-.text-container span strong {
-  display: block;
-  text-align: center;
-  font-size: 1.2vw;
-}
-
 .text-container span {
   display: block;
   text-align: center;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.text-container h1 strong {
+  display: block;
+  text-align: center;
+  font-size: 36px;
 }

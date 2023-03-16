@@ -8,13 +8,13 @@ export const sendOTP = async (email, otp, expiryTime) => {
     host: "smtp.office365.com",
     port: 587,
     auth: {
-      user: "support@smartecomtech.com",
-      pass: "Bombay#25#",
+      user: process.env.COMPANY_EMAIL,
+      pass: process.env.COMPANY_EMAIL_PASSWORD,
     },
   });
 
   let mailOptions = {
-    from: "support@smartecomtech.com",
+    from: `${process.env.COMPANY_EMAIL}`,
     to: email,
     subject: "Email verification code for CreativeWriter.AI",
     text: otp,

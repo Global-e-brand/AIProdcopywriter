@@ -15,10 +15,10 @@
   background-color: white;
   box-shadow: 0px 0px 50px 3px rgba(0, 0, 0, 0.4);
   border-radius: 20px;
-  width: 614px;
+  width: 614px !important;
   padding: 1.5em 3em;
   text-align: center;
-  min-height: 627px;
+  min-height: 627px !important;
 }
 
 .authentication-grid {
@@ -26,7 +26,7 @@
 }
 
 .app-logo {
-  width: 95%;
+  width: 100%;
   margin: 0;
 }
 
@@ -49,8 +49,8 @@
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
-  margin-bottom: 10px;
   margin: 0;
+  margin-bottom: 10px;
 }
 
 .google-btn {
@@ -280,7 +280,7 @@ input::-ms-clear {
   line-height: 24px;
   color: #ffffff;
   width: 100%;
-  height: 2.5em;
+  height: 56px;
   border: none;
   background: rgba(21, 75, 137, 1);
   border-radius: 10px;
@@ -305,147 +305,34 @@ input::-ms-clear {
   justify-content: center;
   align-items: flex-end;
   height: 100%;
+  text-align: center;
 }
 
 .small-text {
   display: block;
   font-size: small;
   font-weight: bolder;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.05em;
   margin: 0;
-}
-
-@media (max-width: 600px) {
-  .authentication-page {
-    background-image: url("../../assets/images/authentication-background-mobile.png");
-  }
-
-  .authentication-card {
-    border-radius: 10px;
-    min-height: 328px;
-    width: 343px;
-    max-width: fit-content;
-    padding: 0.5em 0.5em;
-    box-shadow: 0px 4px 35px 10px rgba(0, 0, 0, 0.25);
-  }
-
-  .app-logo {
-    height: fit-content;
-    max-width: 343px;
-    margin: 20px auto;
-  }
-
-  .inside {
-    display: none;
-  }
-
-  .outside {
-    display: block;
-  }
-
-  .card-header {
-    font-size: 20px;
-    line-height: 27px;
-  }
-
-  .card-subheader {
-    font-size: 14px;
-    line-height: 19px;
-  }
-
-  .google-btn {
-    border-radius: 5px;
-    height: 28px;
-    padding: 2px;
-  }
-
-  .facebook-btn {
-    border-radius: 5px;
-    height: 28px;
-    padding: 2px;
-  }
-
-  .line {
-    width: 100%;
-    height: 0px;
-    border: 1.5px solid rgba(0, 0, 0, 0.25);
-    margin: 0;
-  }
-
-  .divider-text {
-    font-size: 15px;
-    line-height: 18px;
-    margin: 4px 0;
-  }
-
-  .forgot-password-btn {
-    font-size: 10px;
-    line-height: 12px;
-  }
-
-  .login-help-btn {
-    font-size: 10px;
-    line-height: 12px;
-  }
-
-  .submit-btn {
-    font-size: 20px;
-    line-height: 27px;
-    border-radius: 7px;
-    height: 37px;
-    margin-top: 0.5em;
-  }
-
-  .submit-btn-2 {
-    font-size: 20px;
-    line-height: 27px;
-    border-radius: 7px;
-    height: 37px;
-    margin-top: 0.5em;
-  }
-
-  .secondary-btn {
-    font-size: 20px;
-    line-height: 27px;
-    border-radius: 7px;
-    height: 37px;
-    margin-top: 0.5em;
-    padding: 0;
-  }
-
-  .form-btn {
-    font-size: 15px;
-    line-height: 18px;
-    height: 28px;
-    border-radius: 5px;
-  }
-
-  .login-return {
-    margin-bottom: 5px;
-  }
-
-  .small-text {
-    font-size: 12px;
-    line-height: 15px;
-    letter-spacing: 0.1em;
-  }
 }
 
 @media (max-width: 1000px) {
   .authentication-page {
     background-image: url("../../assets/images/authentication-background-tablet.png");
+    padding: 20px;
   }
 
   .authentication-card {
     border-radius: 10px;
-    min-height: 447px;
-    width: 568px;
+    min-height: 447px !important;
+    width: 568px !important;
     max-width: fit-content;
     padding: 0.5em 2em;
     box-shadow: 0px 4px 35px 10px rgba(0, 0, 0, 0.25);
   }
 
   .app-logo {
+    display: flex;
     height: fit-content;
     max-width: 568px;
     margin: 20px auto;
@@ -460,13 +347,13 @@ input::-ms-clear {
   }
 
   .card-header {
-    font-size: 32px;
-    line-height: 44px;
+    font-size: 32px !important;
+    line-height: 44px !important;
   }
 
   .card-subheader {
-    font-size: 20px;
-    line-height: 27px;
+    font-size: 20px !important;
+    line-height: 27px !important;
   }
 
   .google-btn {
@@ -532,7 +419,6 @@ input::-ms-clear {
   .form-btn {
     font-size: 20px;
     line-height: 22px;
-    height: 43px;
     border-radius: 10px;
   }
 
@@ -543,6 +429,121 @@ input::-ms-clear {
   .small-text {
     font-size: 12px;
     line-height: 15px;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.05em;
+  }
+}
+
+@media (max-width: 600px) {
+  .authentication-page {
+    background-image: url("../../assets/images/authentication-background-mobile.png");
+  }
+
+  .authentication-card {
+    border-radius: 10px;
+    min-height: 328px !important;
+    width: 343px !important;
+    max-width: fit-content;
+    padding: 0.5em 0.5em;
+    box-shadow: 0px 4px 35px 10px rgba(0, 0, 0, 0.25);
+  }
+
+  .app-logo {
+    height: fit-content;
+    max-width: 343px;
+    margin: 20px auto;
+  }
+
+  .inside {
+    display: none;
+  }
+
+  .outside {
+    display: block;
+  }
+
+  .card-header {
+    font-size: 20px !important;
+    line-height: 27px !important;
+  }
+
+  .card-subheader {
+    font-size: 14px !important;
+    line-height: 19px !important;
+  }
+
+  .google-btn {
+    border-radius: 5px;
+    height: 28px;
+    padding: 2px;
+  }
+
+  .facebook-btn {
+    border-radius: 5px;
+    height: 28px;
+    padding: 2px;
+  }
+
+  .line {
+    width: 100%;
+    height: 0px;
+    border: 1.5px solid rgba(0, 0, 0, 0.25);
+    margin: 0;
+  }
+
+  .divider-text {
+    font-size: 15px;
+    line-height: 18px;
+    margin: 4px 0;
+  }
+
+  .forgot-password-btn {
+    font-size: 10px;
+    line-height: 12px;
+  }
+
+  .login-help-btn {
+    font-size: 10px;
+    line-height: 12px;
+  }
+
+  .submit-btn {
+    font-size: 20px;
+    line-height: 27px;
+    border-radius: 7px;
+    height: 37px;
+    margin-top: 0.5em;
+  }
+
+  .submit-btn-2 {
+    font-size: 20px;
+    line-height: 27px;
+    border-radius: 7px;
+    height: 37px;
+    margin-top: 0.5em;
+  }
+
+  .secondary-btn {
+    font-size: 20px;
+    line-height: 27px;
+    border-radius: 7px;
+    height: 37px;
+    margin-top: 0.5em;
+    padding: 0;
+  }
+
+  .form-btn {
+    font-size: 15px;
+    line-height: 18px;
+    border-radius: 5px;
+  }
+
+  .login-return {
+    margin-bottom: 5px;
+  }
+
+  .small-text {
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: 0.05em;
   }
 }

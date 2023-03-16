@@ -7,7 +7,6 @@ import { Strategy as LocalStrategy } from "passport-local";
 import { authUser } from "../helpers/auth/auth-user.js";
 import { checkAuthenticated } from "../helpers/auth/check-authenticated.js";
 import { checkNotAuthenticated } from "../helpers/auth/check-not-authenticated.js";
-import { verifyEmail } from "../helpers/email/verify-email.js";
 import { findUser } from "../helpers/misc/mongo-db-helpers.js";
 import { compare } from "../helpers/auth/hashing.js";
 import { getUserId, socialMediaUsers } from "../general/common.function.js";
@@ -113,7 +112,7 @@ authrouter.post(
   checkNotAuthenticated,
   passport.authenticate("local", {
     successRedirect: "/auth/success",
-    failureRedirect: "/auth/fail",
+    failureRedirect: "/auth/fail-local",
   })
 );
 
@@ -151,6 +150,12 @@ authrouter.get("/fail", (req, res) => {
   console.log("Failed");
 
   res.redirect("http://localhost:3001/login");
+});
+
+authrouter.get("/fail-local", (req, res) => {
+  console.log("Failed local login");
+
+  res.status(400).send({ error: "Error" });
 });
 
 authrouter.get("/success", checkAuthenticated,async (req, res) => {

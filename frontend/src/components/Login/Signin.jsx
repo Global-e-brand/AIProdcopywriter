@@ -2,31 +2,69 @@ import React from "react";
 import { useState, useEffect } from "react";
 import "./authentication.css";
 import { fulllogo, googleIcon, facebookIcon, appleIcon } from "../../assets";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Grid } from "@mui/material";
 import { SecureInput } from "./SecureInput";
-import { FormControl, InputLabel, OutlinedInput, Alert } from "@mui/material";
+import {
+  FormControl,
+  InputLabel,
+  OutlinedInput,
+  Alert,
+  Snackbar,
+} from "@mui/material";
 
 function Signin() {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [alertVisibility, setAlertVisibility] = useState(false);
   const [isLoading, setLoading] = useState(false);
+  const [isOpen, setOpen] = useState(false);
 
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location?.state?.success) {
+      setOpen(true);
+
+      // the following is used to prevent page refreshes from
+      // re-rendering the "successful account registeration"
+      // snackbar
+      navigate("/login", {
+        state: { message: location?.state?.message },
+      });
+    }
+  }, [location?.state?.success]);
 
   const handleEmail = (e) => {
     setEmail(e.target.value);
   };
 
   const handleFormResponse = async (e) => {
-    if (e.target.contentDocument.location.href !== "about:blank") {
-      navigate(e.target.contentDocument.location);
+    /*
+    Since we want to display error messages, we need to ensure that the
+    page is not refreshed. However, standard redirect requests from the server
+    will force a page refresh. Thus, instead of redirecting the page directly, we redirect
+    to an element that is on the page (an IFrame). Then, once the IFrame is updated
+    we take the URL that is stored in the body of the IFrame and use that URL to 
+    redirect the user to the correct destination.
+    */
+    if (
+      e.target?.contentDocument?.location?.href &&
+      e.target?.contentDocument?.location?.href !== "about:blank"
+    ) {
+      navigate(e.target.contentDocument.location || "/login");
+    } else if (e.target?.contentDocument?.location?.href !== "about:blank") {
       setAlertVisibility(true);
       setLoading(false);
     }
   };
 
+  /*
+  We must submit the data via a form because the server needs to be able to redirect the browser
+  to complete the authentication process. The fetch API doesn't allow such behaviour as the server
+  cannot redirect from fetch requests.
+  */
   const handleFormSubmission = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -130,7 +168,7 @@ function Signin() {
                     className="alert"
                     style={{ margin: "10px 0" }}
                   >
-                    Incorrect email and password
+                    Incorrect email and/or password
                   </Alert>
                 )}
               </Grid>
@@ -147,6 +185,7 @@ function Signin() {
                     onChange={handleEmail}
                     label="email"
                     error={alertVisibility}
+                    autoComplete="username"
                   />
                 </FormControl>
               </Grid>
@@ -156,9 +195,10 @@ function Signin() {
                   value={password}
                   setValue={setPassword}
                   error={alertVisibility}
+                  autoComplete="current-password"
                 />
               </Grid>
-              <Grid item xs={3} sm={3} md={3} lg={3} xl={3}>
+              <Grid item xs={5} sm={5} md={5} lg={5} xl={5}>
                 <Link
                   to="/login/forgot-password"
                   className="forgot-password-btn"
@@ -166,7 +206,7 @@ function Signin() {
                   Forgot Password
                 </Link>
               </Grid>
-              <Grid item xs={4} sm={4} md={4} lg={4} xl={4}>
+              <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
                 <Link to="" className="login-help-btn">
                   Need help logging in?
                 </Link>
@@ -179,12 +219,10 @@ function Signin() {
                   hidden
                   onLoad={(e) => handleFormResponse(e)}
                 ></iframe>
-                <input type="hidden" name="email" value={email}></input>
                 <button
                   className="submit-btn"
                   type="submit"
                   name="password"
-                  value={password}
                   disabled={
                     email.length === 0 ||
                     password.length === 0 ||
@@ -203,6 +241,24 @@ function Signin() {
           </Grid>
         </form>
       </div>
+      <Snackbar
+        open={isOpen}
+        autoHideDuration={2000}
+        onClose={() => {
+          setOpen(false);
+        }}
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+      >
+        <Alert
+          onClose={() => {
+            setOpen(false);
+          }}
+          severity="success"
+          sx={{ width: "100%" }}
+        >
+          {location?.state?.message}
+        </Alert>
+      </Snackbar>
     </div>
   );
 }
