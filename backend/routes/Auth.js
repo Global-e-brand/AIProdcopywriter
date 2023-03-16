@@ -10,7 +10,7 @@ import { checkNotAuthenticated } from "../helpers/auth/check-not-authenticated.j
 import { findUser } from "../helpers/misc/mongo-db-helpers.js";
 import { compare } from "../helpers/auth/hashing.js";
 import { getUserId, socialMediaUsers } from "../general/common.function.js";
-
+import checkTrial from "../controllers/checkTrial.js";
 
 dotenv.config();
 
@@ -162,8 +162,18 @@ authrouter.get("/success", checkAuthenticated,async (req, res) => {
    await socialMediaUsers(req.user);
 
    console.log("Success");
-    
-   res.redirect("http://localhost:3001/home");
+
+  //payment subscription model
+  let userId = await getUserId();
+  console.log(userId);
+  let result = await checkTrial(userId);
+  if (true) {
+    // check for result
+    res.redirect("http://localhost:3001/productdescription");
+  } else {
+    console.log("Redirect to Payments");
+    res.redirect("http://localhost:3001/payment");
+  }
 });
 
 authrouter.get("/logout", checkAuthenticated, (req, res) => {

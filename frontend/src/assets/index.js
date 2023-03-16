@@ -15,3 +15,4 @@ export { default as eyeClosedIcon } from "../assets/images/eye-closed-icon.png";
 export { default as eyeOpenIcon } from "../assets/images/eye-open-icon.png";
 export { default as facebookIcon } from "../assets/images/facebook-icon.png";
 export { default as googleIcon } from "../assets/images/google-icon.png";
+export { default as Tick } from "./Vector.png";

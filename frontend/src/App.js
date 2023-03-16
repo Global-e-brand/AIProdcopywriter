@@ -8,7 +8,7 @@ import CreateAccount from "./components/Login/CreateAccount";
 import Signin from "./components/Login/Signin";
 import ForgotPassword from "./components/Login/ForgotPassword";
 import ResetPassword from "./components/Login/ResetPassword";
-import Payment from "./components/payment/Payment";
+import PaymentNew from "./components/payment/PaymentNew";
 
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import Footer from "./Footer";
@@ -27,7 +27,7 @@ function App() {
               <Route path="/history" element={<HistoryPage />} />
               <Route path="/create-account" element={<CreateAccount />} />
               <Route path="/login" element={<Signin />} />
-              <Route path="/payment" element={<Payment />} />
+              <Route path="/payment" element={<PaymentNew />} />
               <Route
                 path="/login/forgot-password"
                 element={<ForgotPassword />}

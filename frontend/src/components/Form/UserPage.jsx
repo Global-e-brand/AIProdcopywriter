@@ -6,11 +6,9 @@ import Loader from "../loader/loader";
 import HeaderLogo from "../../HeaderLogo";
 import SidebarMenu from "../../SidebarMenu";
 import { GiHamburgerMenu } from "react-icons/gi";
-import Footer from "../../Footer";
 import { authenticate } from "../../helpers/authenticationStatus";
 import { useLocation } from "react-router-dom";
 import SidebarMobile from "../mobile-view/SidebarMobile";
-import Carousel from "react-bootstrap/Carousel";
 import { leftarrow } from "../../assets";
 
 function Dummy(props) {
@@ -26,12 +24,15 @@ function Dummy(props) {
   const [index, setIndex] = useState(0);
   const [flip, setFlip] = useState(true);
   const [singleContent, setSingleContent] = useState();
+  const [isPaid, setIsPaid] = useState(true);
   const [multipleContent, setSMultipleContent] = useState();
 
   const location = useLocation();
   const navigate = useNavigate();
   const textAreaRef = useRef(null);
-
+  const closeMenu = () => {
+    setShowMenu(false);
+  };
   useEffect(() => {
     setAuthenticated(undefined);
     authenticate((status) => {
@@ -77,24 +78,32 @@ function Dummy(props) {
       setSingleContent(i);
     }
 
-    let res = await fetch("/api" + path, {
-      method: "POST",
+    let checkPayment = await fetch("/checkpayment", {
+      method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        category: props.category,
-        inputOneBool: props.inputOne,
-        inputTwoBool: props.inputTwo,
-        inputThreeBool: props.toneInput,
-        inputOne: inputOne,
-        inputTwo: inputTwo,
-        tone: tone,
-        data: `${inputOne}`,
-        single_content: text,
-      }),
     });
-
+    let result = checkPayment.json();
+    result.then((res) => setIsPaid(res));
+    if (isPaid == true) {
+      let res = await fetch("/api" + path, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          category: props.category,
+          inputOneBool: props.inputOne,
+          inputTwoBool: props.inputTwo,
+          inputThreeBool: props.toneInput,
+          inputOne: inputOne,
+          inputTwo: inputTwo,
+          tone: tone,
+          data: `${inputOne}`,
+        single_content: text,
+        }),
+      });
     let response = await res.json();
     // console.log("response", response);
     if (response?.authenticated === false) {
@@ -109,6 +118,7 @@ function Dummy(props) {
 
     if (text != null) {
       setSingleContent(false);
+    }
     }
   }
 
@@ -128,7 +138,7 @@ function Dummy(props) {
     setFlip(!flip);
   }
 
-  return (
+  return isPaid ? (
     <>
       <div className="category-page">
         <div className="category-title">
@@ -373,7 +383,7 @@ function Dummy(props) {
             <div className="mobile-view-product">
               <ul aria-expanded={showMenu}>
                 <li>
-                  <SidebarMobile />
+              <SidebarMobile closeMenu={closeMenu} />
                 </li>
               </ul>
               <div className="main-form-mobile">
@@ -560,6 +570,8 @@ function Dummy(props) {
         )}
       </div>
     </>
+  ) : (
+    <Navigate to="/payment" />
   );
 }
 

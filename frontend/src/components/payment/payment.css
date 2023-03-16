@@ -62,3 +62,131 @@
 .basic-plan-button p {
   box-shadow: 5px 5px 20px 1px rgba(0, 0, 0, 0.5);
 }
+
+/* New Payment CSS */
+
+.payment-desktop-view {
+  background-image: url("../../assets/images/authentication-background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.basic-plan-card-desktop,
+.standard-plan-card-desktop {
+  width: 410px;
+  height: 438px;
+  background: #ffffff;
+  border: 10px solid #b5d3ff;
+  box-shadow: 0px 0px 20px 3px rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  margin: 35px;
+}
+.standard-plan-card-desktop {
+  border: 10px solid #ffc56f !important;
+}
+.basic-plan-heading,
+.standard-plan-heading {
+  width: 381px;
+  height: 92px;
+  position: relative;
+  background: linear-gradient(276.87deg, #4280c7 12.25%, #7ca7e8 123.9%);
+  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.7);
+  left: -40px;
+  top: -28px;
+  border-radius: 10px;
+}
+.basic-plan-heading h2,
+.standard-plan-heading h2 {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 50px;
+  color: #ffffff;
+  position: relative;
+  left: 20px;
+  top: 15px;
+}
+.standard-plan-heading {
+  background: linear-gradient(
+    276.87deg,
+    #cb7a00 12.25%,
+    #ffb03a 123.9%
+  ) !important;
+  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.7) !important;
+}
+.basic-plan-content,
+.standard-plan-content {
+  text-align: center;
+}
+.basic-plan-content p {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 80px;
+  line-height: 116px;
+  color: #4280c7;
+  margin-top: -5%;
+}
+.basic-plan-content span {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 100%;
+  color: #4280c7;
+  margin-top: -30px;
+  margin-left: 2%;
+}
+.price {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: start;
+}
+.standard-plan-content span {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 100%;
+  color: #cb7a00;
+  margin-top: -30px;
+  margin-left: 2%;
+}
+.standard-plan-content p {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 80px;
+  line-height: 116px;
+  color: #cb7a00;
+  margin-top: -5%;
+}
+.checkout-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: -2px;
+}
+li {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+}
+img {
+  margin-right: 5px;
+  height: 11px;
+}
+ul {
+  list-style: none;
+}
+.standard-plan-content ul,
+.basic-plan-content ul {
+  margin-top: -5%;
+  margin-left: -7%;
+}

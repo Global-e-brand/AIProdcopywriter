@@ -8,7 +8,7 @@ import "../mobile-view/sidebarmobile.css";
 import { Grid } from "@mui/material";
 import { footerlogo } from "../../assets";
 
-function SidebarMobile() {
+function SidebarMobile({ closeMenu }) {
   return (
     <>
       <div className="sidebar-mobile-wrapper">
@@ -38,6 +38,7 @@ function SidebarMobile() {
                                 to={menu.url}
                                 className="category-link"
                                 style={{ fontSize: "20px !important" }}
+                                onClick={closeMenu}
                               >
                                 {menu.name}
                               </Link>
