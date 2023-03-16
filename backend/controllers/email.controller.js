@@ -64,15 +64,16 @@ emailController.get("/verify-otp", async (req, res) => {
 
         if (expiry < Date.now()) {
           await deleteOTP(email);
-          res.status(400).send({ success: false });
+          res.status(400).send({
+            success: false,
+            error: "Code expired. Please request another one.",
+          });
         } else {
           const isValid = compare(OTPGuess, hashedOTP);
 
           if (!isValid) {
             res.status(400).send({ success: false });
           } else {
-            await deleteOTP(email);
-
             res.send({
               status: "verified",
               msg: "User email verified successfully",

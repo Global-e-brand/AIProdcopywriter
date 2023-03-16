@@ -24,30 +24,47 @@ function Signin() {
   const location = useLocation();
 
   useEffect(() => {
-    if (location.state?.success) {
+    if (location?.state?.success) {
       setOpen(true);
 
       // the following is used to prevent page refreshes from
       // re-rendering the "successful account registeration"
       // snackbar
       navigate("/login", {
-        state: { message: location.state?.message },
+        state: { message: location?.state?.message },
       });
     }
-  }, [location.state?.success]);
+  }, [location?.state?.success]);
 
   const handleEmail = (e) => {
     setEmail(e.target.value);
   };
 
   const handleFormResponse = async (e) => {
-    if (e.target.contentDocument.location.href !== "about:blank") {
-      navigate(e.target.contentDocument.location);
+    /*
+    Since we want to display error messages, we need to ensure that the
+    page is not refreshed. However, standard redirect requests from the server
+    will force a page refresh. Thus, instead of redirecting the page directly, we redirect
+    to an element that is on the page (an IFrame). Then, once the IFrame is updated
+    we take the URL that is stored in the body of the IFrame and use that URL to 
+    redirect the user to the correct destination.
+    */
+    if (
+      e.target?.contentDocument?.location?.href &&
+      e.target?.contentDocument?.location?.href !== "about:blank"
+    ) {
+      navigate(e.target.contentDocument.location || "/login");
+    } else if (e.target?.contentDocument?.location?.href !== "about:blank") {
       setAlertVisibility(true);
       setLoading(false);
     }
   };
 
+  /*
+  We must submit the data via a form because the server needs to be able to redirect the browser
+  to complete the authentication process. The fetch API doesn't allow such behaviour as the server
+  cannot redirect from fetch requests.
+  */
   const handleFormSubmission = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -151,7 +168,7 @@ function Signin() {
                     className="alert"
                     style={{ margin: "10px 0" }}
                   >
-                    Incorrect email and password
+                    Incorrect email and/or password
                   </Alert>
                 )}
               </Grid>
@@ -239,7 +256,7 @@ function Signin() {
           severity="success"
           sx={{ width: "100%" }}
         >
-          {location.state?.message}
+          {location?.state?.message}
         </Alert>
       </Snackbar>
     </div>

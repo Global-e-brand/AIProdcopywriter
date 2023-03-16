@@ -10,37 +10,9 @@ import { isEmailValid } from "../../helpers/checkEmail";
 import { FormControl, InputLabel, OutlinedInput, Alert } from "@mui/material";
 
 function EmailVerification(props) {
-  const navigate = useNavigate();
-  const [verificationCode, setVerificationCode] = useState("");
   const [hasCodeSent, setCodeSent] = useState(false);
-  const [isVerifying, setVerifying] = useState(false);
+
   const [alertVisibility, setAlertVisibility] = useState(false);
-
-  const handleVerifyEmail = async () => {
-    setVerifying(true);
-
-    await fetch(
-      "http://localhost:3000/email/verify-otp?" +
-        new URLSearchParams({
-          email: props.email || null,
-          OTPGuess: verificationCode || null,
-        })
-    )
-      .then(async (res) => {
-        const data = await res.json();
-        console.log(data);
-        if (data.status === "verified") {
-          props.setStage(1);
-        } else {
-          setAlertVisibility(true);
-        }
-      })
-      .catch((e) => {
-        console.log("An ERROR occurred while verifying the email OTP: " + e);
-      });
-
-    setVerifying(false);
-  };
 
   const sendCode = async () => {
     setCodeSent(true);
@@ -58,6 +30,8 @@ function EmailVerification(props) {
         body: JSON.stringify({
           email: props.email,
         }),
+      }).then(() => {
+        props.setStage(1);
       });
     } else {
       setAlertVisibility(true);
@@ -99,8 +73,8 @@ function EmailVerification(props) {
                   className="alert"
                   style={{ margin: "10px 0", textAlign: "left" }}
                 >
-                  Incorrect verification code or email. Check your email and try
-                  again.
+                  Incorrect verification code and/or email. Check your email and
+                  try again.
                 </Alert>
               )}
             </Grid>
@@ -127,27 +101,6 @@ function EmailVerification(props) {
                 disabled={props.email.length === 0 || hasCodeSent}
               >
                 Send Code
-              </button>
-            </Grid>
-            <Grid item xs={16} sm={16} md={16} lg={16} xl={16}>
-              <SecureInput
-                title={"Verification Code"}
-                value={verificationCode}
-                setValue={setVerificationCode}
-                error={alertVisibility}
-              />
-            </Grid>
-            <Grid item xs={16} sm={16} md={16} lg={16} xl={16}>
-              <button
-                className="submit-btn-2"
-                onClick={handleVerifyEmail}
-                disabled={
-                  props.email.length === 0 ||
-                  verificationCode.length === 0 ||
-                  isVerifying
-                }
-              >
-                Verify Email
               </button>
             </Grid>
           </Grid>

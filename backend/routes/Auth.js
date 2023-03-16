@@ -110,7 +110,7 @@ authrouter.post(
   checkNotAuthenticated,
   passport.authenticate("local", {
     successRedirect: "/auth/success",
-    failureRedirect: "/auth/fail",
+    failureRedirect: "/auth/fail-local",
   })
 );
 
@@ -148,6 +148,12 @@ authrouter.get("/fail", (req, res) => {
   console.log("Failed");
 
   res.redirect("http://localhost:3001/login");
+});
+
+authrouter.get("/fail-local", (req, res) => {
+  console.log("Failed local login");
+
+  res.status(400).send({ error: "Error" });
 });
 
 authrouter.get("/success", checkAuthenticated, (req, res) => {

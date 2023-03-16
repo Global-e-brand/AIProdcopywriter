@@ -14,27 +14,75 @@ function ResetPassword(props) {
   const [password, setPassword] = useState("");
   const [confirmedPassword, setConfirmedPassword] = useState("");
   const [alertVisibility, setAlertVisibility] = useState(false);
+  const [verificationCode, setVerificationCode] = useState("");
+  const [isVerifying, setVerifying] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
+
+  const handleVerifyEmail = async () => {
+    setVerifying(true);
+
+    await fetch(
+      "http://localhost:3000/email/verify-otp?" +
+        new URLSearchParams({
+          email: props.email || null,
+          OTPGuess: verificationCode || null,
+        })
+    )
+      .then(async (res) => {
+        const data = await res.json();
+
+        if (data.status === "verified") {
+          handleResetPassword();
+        } else {
+          setAlertVisibility(true);
+          setVerifying(false);
+          setAlertMessage(
+            data.error || "Invalid verification code. Check your inbox."
+          );
+        }
+      })
+      .catch((e) => {
+        setAlertVisibility(true);
+        setVerifying(false);
+        setAlertMessage(
+          "An ERROR occurred while verifying the email OTP. Please try again."
+        );
+        console.log("An ERROR occurred while verifying the email OTP: " + e);
+      });
+  };
 
   const handleResetPassword = async () => {
-    if (password === confirmedPassword) {
-      setAlertVisibility(false);
+    await fetch("http://localhost:3000/user/reset-password", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: props.email,
+        password: password,
+        confirmedPassword: confirmedPassword,
+      }),
+    })
+      .then(async (res) => {
+        const data = await res.json();
 
-      await fetch("http://localhost:3000/user/reset-password", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: props.email,
-          password: password,
-          confirmedPassword: confirmedPassword,
-        }),
+        if (data.error) {
+          setAlertMessage(data.error);
+          setAlertVisibility(true);
+        } else {
+          setAlertVisibility(false);
+          setIsPasswordReset(true);
+        }
+
+        setVerifying(false);
+      })
+      .catch((e) => {
+        setAlertMessage(
+          "There was an error while resetting your password. Please try again."
+        );
+        setAlertVisibility(true);
+        console.log("Error resetting password: " + e);
       });
-
-      setIsPasswordReset(true);
-    } else {
-      setAlertVisibility(true);
-    }
   };
 
   const handleLogin = () => {
@@ -71,9 +119,18 @@ function ResetPassword(props) {
                   className="alert"
                   style={{ margin: "10px 0" }}
                 >
-                  Passwords do not match
+                  {alertMessage}
                 </Alert>
               )}
+            </Grid>
+            <Grid item xs={16} sm={16} md={16} lg={16} xl={16}>
+              <SecureInput
+                title={"Verification Code"}
+                value={verificationCode}
+                setValue={setVerificationCode}
+                error={alertVisibility}
+                disabled={isPasswordReset}
+              />
             </Grid>
             <Grid item xs={16} sm={16} md={16} lg={16} xl={16}>
               <SecureInput
@@ -82,7 +139,7 @@ function ResetPassword(props) {
                 setValue={setPassword}
                 disabled={isPasswordReset}
                 error={alertVisibility}
-                autoComplete="new-password"
+                autoComplete="current-password"
               />
             </Grid>
             <Grid item xs={16} sm={16} md={16} lg={16} xl={16}>
@@ -97,8 +154,12 @@ function ResetPassword(props) {
             <Grid item xs={16} sm={16} md={16} lg={16} xl={16}>
               <button
                 className="submit-btn-2"
-                onClick={handleResetPassword}
-                disabled={isPasswordReset || !(password && confirmedPassword)}
+                onClick={handleVerifyEmail}
+                disabled={
+                  isVerifying ||
+                  isPasswordReset ||
+                  !(password && confirmedPassword)
+                }
               >
                 {isPasswordReset ? "Password Reset!" : "Reset Password"}
               </button>

@@ -25,6 +25,7 @@ export const SecureInput = (props) => {
       </InputLabel>
       <OutlinedInput
         type={inputIsVisible ? "text" : "password"}
+        id={props.autoComplete || ""}
         error={props.error}
         endAdornment={
           <InputAdornment>
