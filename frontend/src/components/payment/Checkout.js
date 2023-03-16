@@ -1,9 +1,10 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   PayPalScriptProvider,
   PayPalButtons,
   usePayPalScriptReducer,
 } from "@paypal/react-paypal-js";
+import { Navigate } from "react-router-dom";
 
 // This values are the props in the UI
 
@@ -13,6 +14,7 @@ const style = { layout: "vertical", color: "gold" };
 const ButtonWrapper = ({ currency, showSpinner, price }) => {
   const amount = `${price}`;
   const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
+  const [approve, setApprove] = useState(false);
 
   useEffect(() => {
     dispatch({
@@ -37,7 +39,9 @@ const ButtonWrapper = ({ currency, showSpinner, price }) => {
     return;
   }
 
-  return (
+  return approve ? (
+    <Navigate to="/productdescription" />
+  ) : (
     <>
       {showSpinner && isPending && <div className="spinner" />}
       <PayPalButtons
@@ -66,6 +70,7 @@ const ButtonWrapper = ({ currency, showSpinner, price }) => {
           return actions.order.capture().then(function () {
             handlePaymentDB(data);
             console.log(data);
+            setApprove(true);
             return;
           });
         }}
