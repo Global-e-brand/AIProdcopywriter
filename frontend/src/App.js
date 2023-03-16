@@ -11,7 +11,6 @@ import ResetPassword from "./components/Login/ResetPassword";
 import Payment from "./components/payment/Payment";
 
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
-import Footer from "./Footer";
 
 function App() {
   const location = useLocation();
@@ -1615,7 +1614,6 @@ function App() {
           </Grid>
         </Grid>
       </div>
-      {!location.pathname.startsWith("/login") && <Footer />}
     </>
   );
 }
