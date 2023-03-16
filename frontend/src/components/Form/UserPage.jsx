@@ -6,11 +6,9 @@ import Loader from "../loader/loader";
 import HeaderLogo from "../../HeaderLogo";
 import SidebarMenu from "../../SidebarMenu";
 import { GiHamburgerMenu } from "react-icons/gi";
-import Footer from "../../Footer";
 import { authenticate } from "../../helpers/authenticationStatus";
 import { useLocation } from "react-router-dom";
 import SidebarMobile from "../mobile-view/SidebarMobile";
-import Carousel from "react-bootstrap/Carousel";
 import { leftarrow } from "../../assets";
 
 function Dummy(props) {
@@ -29,7 +27,9 @@ function Dummy(props) {
 
   const location = useLocation();
   const textAreaRef = useRef(null);
-
+  const closeMenu = () => {
+    setShowMenu(false);
+  };
   useEffect(() => {
     setAuthenticated(undefined);
     authenticate((status) => {
@@ -343,7 +343,7 @@ function Dummy(props) {
         <div className="mobile-view-product">
           <ul aria-expanded={showMenu}>
             <li>
-              <SidebarMobile />
+              <SidebarMobile closeMenu={closeMenu} />
             </li>
           </ul>
           <div className="main-form-mobile">

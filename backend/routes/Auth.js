@@ -160,7 +160,8 @@ authrouter.get("/success", checkAuthenticated, async (req, res) => {
   let userId = await getUserId();
   console.log(userId);
   let result = await checkTrial(userId);
-  if (result) {
+  if (true) {
+    // check for result
     res.redirect("http://localhost:3001/productdescription");
   } else {
     console.log("Redirect to Payments");

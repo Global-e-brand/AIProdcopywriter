@@ -86,15 +86,16 @@ if (process.env.NODE_ENV == "production") {
   });
 }
 app.get("/checkpayment", async (req, res) => {
-  let userId = await getUserId();
-  console.log(userId);
-  let result = await checkTrial(userId);
-  if (result) {
-    res.send(true);
-  } else {
-    console.log("Redirect to Payments");
-    res.send(false);
-  }
+  // let userId = await getUserId();
+  // console.log(userId);
+  // let result = await checkTrial(userId);
+  // if (result) {
+  //   res.send(true);
+  // } else {
+  //   console.log("Redirect to Payments");
+  //   res.send(false);
+  // }
+  res.send(true);
 });
 app.listen(PORT, function (err) {
   if (err) console.log("Error in server setup");
