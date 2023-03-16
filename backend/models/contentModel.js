@@ -30,6 +30,14 @@ user_id: {
     required :false
 
   },
+  single_content:{
+    type:String,
+    required:false
+  },
+  multiple_content:{
+    type:Array,
+    required:false
+  },
   created_date: {
     type: Date,
     required : true,

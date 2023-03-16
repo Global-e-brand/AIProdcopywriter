@@ -3,5 +3,5 @@ export const checkNotAuthenticated = (req, res, next) => {
     return next();
   }
   console.log("Authenticated");
-  res.redirect("http://localhost:3001/");
+  res.redirect("http://localhost:3001/home");
 };

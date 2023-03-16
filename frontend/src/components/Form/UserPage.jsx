@@ -25,16 +25,11 @@ function Dummy(props) {
   const [showMenu, setShowMenu] = useState(false);
   const [index, setIndex] = useState(0);
   const [flip, setFlip] = useState(true);
+  const [singleContent, setSingleContent] = useState();
+  const [multipleContent, setSMultipleContent] = useState();
 
   const location = useLocation();
   const textAreaRef = useRef(null);
-
-  // useEffect(() => {
-  //   setAuthenticated(undefined);
-  //   authenticate((status) => {
-  //     setAuthenticated(status === "authenticated" ? true : false);
-  //   });
-  // }, [location.pathname]);
 
   function copyToClipboard(item, i) {
     let clipboardData = "";
@@ -64,11 +59,17 @@ function Dummy(props) {
     return () => clearTimeout(timer);
   }
 
-  let path=window.location.href.substring(window.location.origin.length)
-  console.log("path",path);
+  let path = window.location.href.substring(window.location.origin.length);
 
-  async function handleSubmit(path) {
-    setLoading(true);
+  async function handleSubmit(path, text, i) {
+    if (text == null) {
+      setLoading(true);
+    }
+
+    if (text != null) {
+      setSingleContent(i);
+    }
+
     let res = await fetch("/api" + path, {
       method: "POST",
       headers: {
@@ -83,15 +84,23 @@ function Dummy(props) {
         inputTwo: inputTwo,
         tone: tone,
         data: `${inputOne}`,
+        single_content: text,
       }),
     });
 
     let response = res.json();
-    console.log("response", response);
+    // console.log("response", response);
     response.then((data) => {
       setData(data);
     });
-    setLoading(false);
+
+    if (text == null) {
+      setLoading(false);
+    }
+
+    if (text != null) {
+      setSingleContent(false);
+    }
   }
 
   const handleTone = (e) => {
@@ -231,7 +240,7 @@ function Dummy(props) {
 
                     <div className="submitButton">
                       <button
-                        onClick={() => handleSubmit(path)}
+                        onClick={() => handleSubmit(path, null)}
                         disabled={loading}
                         variant="contained"
                       >
@@ -256,20 +265,17 @@ function Dummy(props) {
                     <>
                       {data != undefined ? (
                         <>
-                          <button
-                            className="cpyall-btn"
-                            onClick={() => copyToAllClipboard(data)}
-                          >
-                            {" "}
-                            Copy All
-                          </button>
-                          {AllCopied ? (
-                            <h1 className="text-cp-al">
-                              ALL RESULTS COPIED !{" "}
-                            </h1>
-                          ) : (
-                            ""
-                          )}
+                        <Grid container>
+                          <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+                            <button className="cpyall-btn" onClick={() => copyToAllClipboard(data)}>Copy All</button>
+                            {AllCopied ? (<h1 className="text-cp-al">ALL RESULTS COPIED !{" "}</h1>) : ("")}
+                          </Grid>
+                          <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+                            {/* <button className="cpyall-btn" onClick={() => handleSubmit(path,data)}>Save All</button>
+                            {multipleContent ? (<h1 className="text-cp-al">SAVED ALL !{" "}</h1>) : ("")} */}
+                          </Grid>
+                        </Grid>
+                          
 
                           <div className="output-container">
                             {data.map((item, i) => {
@@ -277,12 +283,34 @@ function Dummy(props) {
                                 <>
                                   <div className="output-layout">
                                     <Grid container>
-                                      <Grid item xs={10} md={10}>
+                                      <Grid item xs={4} sm={4} md={4} lg={4}>
+                                        <div className="hd-cp">
+                                          <button
+                                            className="cpy-btn"
+                                            onClick={() =>
+                                              handleSubmit(
+                                                path,item.text.trim(),
+                                                i + 1
+                                              )
+                                            }
+                                          >
+                                            Save
+                                          </button>
+                                          {singleContent == i + 1 ? (
+                                            <h1 className="text-status-save">
+                                              Result {i + 1} Saving in History!{" "}
+                                            </h1>
+                                          ) : (
+                                            ""
+                                          )}
+                                        </div>
+                                      </Grid>
+                                      <Grid item xs={4} sm={4} md={4} lg={4}>
                                         <div className="ot-hd">
                                           <div>Result {i + 1}</div>
                                         </div>
                                       </Grid>
-                                      <Grid item xs={2} md={2}>
+                                      <Grid item xs={4} sm={4} md={4} lg={4}>
                                         <div className="hd-cp">
                                           <button
                                             className="cpy-btn"
@@ -428,7 +456,7 @@ function Dummy(props) {
 
                 <div className="submitButton">
                   <button
-                    onClick={() => handleSubmit(path)}
+                    onClick={() => handleSubmit(path, null)}
                     disabled={loading}
                     variant="contained"
                   >

@@ -158,7 +158,7 @@ authrouter.get("/success", checkAuthenticated,async (req, res) => {
 
    console.log("Success");
     
-   res.redirect("http://localhost:3001/productdescription");
+   res.redirect("http://localhost:3001/home");
 });
 
 authrouter.get("/logout", checkAuthenticated, (req, res) => {

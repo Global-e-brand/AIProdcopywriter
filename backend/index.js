@@ -12,7 +12,7 @@ import { dirname } from "path";
 import passport from "passport";
 import session from "express-session";
 import userController from "./controllers/user.controller.js";
-import contentController from "./controllers/content.controller.js";
+import {contentHistory, createContent} from "./controllers/content.controller.js";
 import emailController from "./controllers/email.controller.js";
 import bodyParser from "body-parser";
 
@@ -57,8 +57,9 @@ app.options("*", (req, res) => {
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false,
+    resave: true,
+    saveUninitialized: true,
+    cookie: { maxAge: 24 * 60 * 60 * 1000  }
   })
 );
 app.use(passport.initialize());
@@ -74,9 +75,17 @@ app.use("/payment", paymentRouter);
 
 app.use("/user", userController);
 
-app.use("/content", contentController);
+// app.use("/content", createContent);
+
+app.get('/content/history', async (req, res)=>{
+  let contentHistoryData=await contentHistory(req);
+  //console.log("contentHistoryData",contentHistoryData)
+
+  res.json(contentHistoryData)
+});
 
 app.use("/email", emailController);
+
 if (process.env.NODE_ENV == "production") {
   app.use(express.static(path.join(__dirname + "/public")));
   app.get("*", (req, res) => {

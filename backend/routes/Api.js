@@ -5,7 +5,7 @@ import fetch from "node-fetch";
 import getGPTResponse from "../helpers/api/get-GPT-response.js";
 import createPrompt from "../helpers/api/prompt-creator.js";
 import GptApi from "../controllers/GPTApi.js";
-import  createContent  from "../controllers/content.controller.js";
+import  {createContent}  from "../controllers/content.controller.js";
 
 var app = express();
 
@@ -450,6 +450,7 @@ apirouter.post("/productdescription", bodyParser.json(), async (req, res) => {
   });
 
   const response = await getGPTResponse(prompt);
+  // console.log("response_453",response)
   await createContent(req,response);
   res.send(response);
 });

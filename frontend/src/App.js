@@ -1,6 +1,6 @@
 import "./App.css";
 import Grid from "@mui/material/Grid";
-import { useLocation, Routes, Route, redirect, Link } from "react-router-dom";
+import { useLocation, Routes, Route, Navigate, Link } from "react-router-dom";
 import UserPage from "./components/Form/UserPage";
 import HomePage from "./components/home/HomePage";
 import HistoryPage from "./components/History/HistoryPage";
@@ -13,7 +13,6 @@ import Payment from "./components/payment/Payment";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import Footer from "./Footer";
 
-
 function App() {
   const location = useLocation();
   return (
@@ -23,7 +22,8 @@ function App() {
           <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
             <div className="logo-panel-wrapper"></div>
             <Routes>
-              <Route path="/" element={<HomePage />} />
+              <Route path="/" element={<Navigate replace to="/login" />} />
+              <Route path="/home" element={<HomePage />} />
               <Route path="/history" element={<HistoryPage />} />
               <Route path="/create-account" element={<CreateAccount />} />
               <Route path="/login" element={<Signin />} />

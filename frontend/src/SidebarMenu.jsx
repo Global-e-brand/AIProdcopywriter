@@ -20,7 +20,7 @@ function SidebarMenu() {
     <>
       <div className="side-bar-wrapper">
         <div className="side-Bar">
-          <Link to="/" className="home-btn">
+          <Link to="/home" className="home-btn">
             {" "}
             Home
           </Link>

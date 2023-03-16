@@ -196,6 +196,16 @@ h1.text-status {
   top: 0px;
   border-radius: 4px;
 }
+h1.text-status-save {
+  position: absolute;
+  background: #154b89;
+  font-size: 25px;
+  padding: 6px;
+  width: max-content;
+  /* right: 60px; */
+  top: 0px;
+  border-radius: 4px;
+}
 .text-cp-al {
   background: #154b89;
   font-size: 22px;
