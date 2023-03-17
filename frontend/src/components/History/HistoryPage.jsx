@@ -379,7 +379,7 @@ const HistoryPage = () => {
                   </div>
                 </AccordionDetails>
               </Accordion>
-            </Grid>:""}
+            </Grid>: (<Navigate to="/login" />)}
            
 
           </Grid>
