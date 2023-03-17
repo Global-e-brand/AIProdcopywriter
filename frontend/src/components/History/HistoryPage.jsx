@@ -470,7 +470,6 @@ const HistoryPage = () => {
         </div>
         {/* Desktop View End */}
 
-
         {/* Mobile View start */}
         {isAuthenticated ? (
           <>
@@ -480,7 +479,7 @@ const HistoryPage = () => {
                   <SidebarMobile closeMenu={closeMenu} />
                 </li>
               </ul>
-              <Grid item xs={12} sm={12} md={9} lg={9} xl={9}>
+              <Grid item xs={12} sm={12} md={8} lg={8} xl={8}>
                 {/* today accordion */}
                 <Accordion className="closeacc">
                   <AccordionSummary
@@ -497,16 +496,10 @@ const HistoryPage = () => {
                           <Card className="indivcard">
                             <Grid container spacing={2}>
                               {/* card headings */}
-                              <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
+                              <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
                                 <Grid container spacing={2}>
-                                  <Grid
-                                    item
-                                    xs={12}
-                                    sm={12}
-                                    md={6}
-                                    lg={6}
-                                    xl={6}
-                                  >
+                                  {/* <div className="history-mobileview-card-headings"> */}
+                                  <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
                                     <div>
                                       <strong>{txt_msg.category}</strong>
                                     </div>
@@ -524,14 +517,7 @@ const HistoryPage = () => {
                                       <strong>Tone</strong>
                                     </div>
                                   </Grid>
-                                  <Grid
-                                    item
-                                    xs={12}
-                                    sm={12}
-                                    md={6}
-                                    lg={6}
-                                    xl={6}
-                                  >
+                                  <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
                                     <div>
                                       <card-text>{item.category}</card-text>
                                     </div>
@@ -551,11 +537,12 @@ const HistoryPage = () => {
                                       <card-text>{item.tone}</card-text>
                                     </div>
                                   </Grid>
+                                  {/* </div> */}
                                 </Grid>
                               </Grid>
 
                               {/* carousel of description */}
-                              <Grid item xs={12} sm={12} md={8} lg={8} xl={8}>
+                              <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
                                 <Card className="instruction-carousel-history">
                                   {item.single_content}
                                 </Card>

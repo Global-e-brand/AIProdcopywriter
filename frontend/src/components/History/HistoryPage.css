@@ -119,3 +119,12 @@
   font-size: 28px;
   color: #02111f;
 }
+.history-mobileview-card-headings {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+card-text {
+  font-size: 15px !important;
+  line-height: normal;
+}
