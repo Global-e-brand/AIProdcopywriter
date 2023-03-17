@@ -87,8 +87,7 @@ const HistoryPage = () => {
                 <SidebarMenu />
               </div>
             </Grid>
-
-            <Grid item xs={12} sm={12} md={9} lg={9} xl={9}>
+{isAuthenticated ? <Grid item xs={12} sm={12} md={9} lg={9} xl={9}>
               {/* today accordion */}
               <Accordion className="closeacc">
                 <AccordionSummary
@@ -158,7 +157,6 @@ const HistoryPage = () => {
                     ) : (
                       <div className="n-txt">{txt_msg.today_no_txt}</div>
                     )}
-                    consequat.
                   </div>
                 </AccordionDetails>
               </Accordion>
@@ -381,7 +379,9 @@ const HistoryPage = () => {
                   </div>
                 </AccordionDetails>
               </Accordion>
-            </Grid>
+            </Grid>:""}
+           
+
           </Grid>
         </div>
       </div>

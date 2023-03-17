@@ -87,10 +87,9 @@ function Dummy(props) {
     });
     let result = checkPayment.json();
     result.then((res) => setIsPaid(res));
-    {
-      console.log("isPaid", isPaid);
-    }
+    
     if (isPaid == true) {
+      console.log("isPaid",isPaid);
       let res = await fetch("/api" + path, {
         method: "POST",
         headers: {
