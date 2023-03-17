@@ -190,3 +190,11 @@ ul {
   margin-top: -5%;
   margin-left: -7%;
 }
+
+/* Media Query For Mobile View */
+
+@media only screen and (max-width: 830px) {
+  .payment-desktop-view {
+    display: none;
+  }
+}

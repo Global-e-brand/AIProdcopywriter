@@ -149,7 +149,7 @@ authrouter.get(
 authrouter.get("/fail", (req, res) => {
   console.log("Failed");
 
-  res.redirect("http://localhost:3001/login");
+  res.redirect("https://aiprodcopywriter.herokuapp.com/login");
 });
 
 authrouter.get("/fail-local", (req, res) => {

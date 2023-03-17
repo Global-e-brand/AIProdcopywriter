@@ -3,7 +3,7 @@ import contentModel from "../models/contentModel.js";
 
 export async function createContent(req, dataresponse) {
   let Results = [];
-  await dataresponse.map((data, i) => {
+  await dataresponse?.map((data, i) => {
     Results.push({ id: i + 1, result: data.text });
   });
 
@@ -93,10 +93,10 @@ export async function contentHistory(req) {
     });
 
   let contentHistoryData = [
-    { toDayData: toDayData},
-     {yesterdayData: yesterdayData},
-     { thisweekData: thisweekData},
-     {lastweekData: lastweekData}
+    { toDayData: toDayData },
+    { yesterdayData: yesterdayData },
+    { thisweekData: thisweekData },
+    { lastweekData: lastweekData },
   ];
 
   return contentHistoryData;

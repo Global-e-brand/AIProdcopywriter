@@ -3,7 +3,7 @@ import Carousel from "react-bootstrap/Carousel";
 import "../mobile-view/mobileinstruction.css";
 function MobileInstructions() {
   return (
-    <div className="instruction-carousel">
+    <div className="instruction-carousel1">
       <Carousel>
         <Carousel.Item>
           <h4 className="instruction-title">#1 Step</h4>

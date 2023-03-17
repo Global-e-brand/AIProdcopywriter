@@ -1,8 +1,8 @@
 @media only screen and (max-width: 830px) {
-  .instruction-carousel {
+  .instruction-carousel1 {
     transform: rotateY(180deg) !important;
   }
-  .instruction-carousel {
+  .instruction-carousel1 {
     display: block !important;
   }
   .instruction-title {
@@ -31,6 +31,6 @@
   }
 }
 
-.instruction-carousel {
+.instruction-carousel1 {
   display: none;
 }

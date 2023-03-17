@@ -61,7 +61,7 @@ app.use(
     secret: process.env.SESSION_SECRET,
     resave: true,
     saveUninitialized: true,
-    cookie: { maxAge: 24 * 60 * 60 * 1000  }
+    cookie: { maxAge: 24 * 60 * 60 * 1000 },
   })
 );
 app.use(passport.initialize());
@@ -77,9 +77,9 @@ app.use("/payment", paymentRouter);
 
 app.use("/user", userController);
 
-app.get('/content/history', async (req, res)=>{
-  let contentHistoryData=await contentHistory(req);
-  res.json(contentHistoryData)
+app.get("/content/history", async (req, res) => {
+  let contentHistoryData = await contentHistory(req);
+  res.json(contentHistoryData);
 });
 
 app.use("/email", emailController);
@@ -101,6 +101,10 @@ app.get("/checkpayment", async (req, res) => {
   //   res.send(false);
   // }
   res.send(true);
+});
+
+app.post("/deletion", (req, res) => {
+  res.status(200).send("OK");
 });
 app.listen(PORT, function (err) {
   if (err) console.log("Error in server setup");
