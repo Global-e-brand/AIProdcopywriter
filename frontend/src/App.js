@@ -31,7 +31,6 @@ function App() {
                 path="/login/forgot-password"
                 element={<ForgotPassword />}
               />
-              <Route path="/login/reset-password" element={<ResetPassword />} />
               <Route
                 path="/productdescription"
                 element={

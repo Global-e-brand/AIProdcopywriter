@@ -13,9 +13,12 @@ function SidebarMobile({ closeMenu }) {
     <>
       <div className="sidebar-mobile-wrapper">
         <div className="sidebar-mobile">
-          <Link to="/" className="sidebar-mobile-home-btn">
+          <Link to="/home" className="sidebar-mobile-home-btn">
             {" "}
             Home
+          </Link>
+          <Link to="/history" className="home-btn">
+            History
           </Link>
           {catagoryList.map((cat, i) => {
             return (
@@ -52,28 +55,58 @@ function SidebarMobile({ closeMenu }) {
               </Accordion>
             );
           })}
+          <Link to="http://localhost:3000/auth/logout" className="home-btn">
+            {" "}
+            Logout
+          </Link>
         </div>
       </div>
       <div className="footer">
-        <Grid container spacing={0}>
-          <Grid item xs={8} sm={6} md={2} lg={2} xl={2}>
-            <img src={footerlogo} alt="AI ProdCopywriter logo" />
+        <Grid
+          container
+          spacing={0}
+          columns={20}
+          textAlign="center"
+          alignItems="center"
+        >
+          <Grid item xs={9} sm={9} md={9} lg={9} xl={9}>
+            <Grid container>
+              <Grid
+                item
+                xs={12}
+                sm={12}
+                md={12}
+                lg={12}
+                xl={12}
+                className="mobile-footer-text"
+              >{`© 2023 AI ProdCopywriter`}</Grid>
+              <Grid
+                item
+                xs={12}
+                sm={12}
+                md={12}
+                lg={12}
+                xl={12}
+                className="mobile-footer-text"
+              >{`Smart Ecom Tech`}</Grid>
+            </Grid>
           </Grid>
-          <Grid item xs={4} sm={6} md={8} lg={2} xl={2}>
-            {`© 2023 AI ProdCopywriter`}
-          </Grid>
-
-          <Grid item xs={8} sm={6} md={2} lg={2} xl={2}>
-            {`support@smartecomtech.com`}
-          </Grid>
-
-          <Grid item xs={4} sm={4} md={2} lg={2} xl={2}>
-            {`Smart Ecom Tech`}
-          </Grid>
-
           <Grid item xs={2} sm={2} md={2} lg={2} xl={2}>
-            {/* {`(*Contact Detail*)`} */}
+            <img
+              src={footerlogo}
+              alt="AI ProdCopywriter logo"
+              className="mobile-footer-icon"
+            />
           </Grid>
+          <Grid
+            item
+            xs={9}
+            sm={9}
+            md={9}
+            lg={9}
+            xl={9}
+            className="mobile-footer-text"
+          >{`support@smartecomtech.com`}</Grid>
         </Grid>
       </div>
     </>

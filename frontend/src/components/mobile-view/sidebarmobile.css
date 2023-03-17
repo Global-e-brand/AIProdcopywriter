@@ -1,9 +1,14 @@
-@media only screen and (max-width: 600px) and (min-width: 200px) {
-  * {
-    font-family: "Manrope";
-    font-style: normal;
-  }
+* {
+  font-family: "Manrope";
+  font-style: normal;
+}
 
+.mobile-footer-icon {
+  height: 100%;
+  margin: 0;
+}
+
+@media only screen and (max-width: 600px) and (min-width: 200px) {
   .sidebar-mobile-wrapper {
     overflow: hidden;
     padding: 20px 0;
@@ -144,6 +149,9 @@
     font-weight: 800;
     margin-left: -10%;
   }
+  .mobile-footer-text {
+    font-size: 9px;
+  }
 }
 
 @media only screen and (max-width: 830px) and (min-width: 601px) {
@@ -283,5 +291,8 @@
     position: relative;
     font-weight: 800;
     margin-left: -5%;
+  }
+  .mobile-footer-text {
+    font-size: 16px;
   }
 }
