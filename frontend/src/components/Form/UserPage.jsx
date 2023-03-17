@@ -10,6 +10,7 @@ import { authenticate } from "../../helpers/authenticationStatus";
 import { useLocation } from "react-router-dom";
 import SidebarMobile from "../mobile-view/SidebarMobile";
 import { leftarrow } from "../../assets";
+import ReactGA from 'react-ga';
 
 function Dummy(props) {
   const [tone, setTone] = useState("Friendly");
@@ -70,6 +71,12 @@ function Dummy(props) {
   let path = window.location.href.substring(window.location.origin.length);
 
   async function handleSubmit(path, text, i) {
+    ReactGA.event({
+      category:path,
+      action:"test",
+      label:"test"
+    })
+    
     if (text == null) {
       setLoading(true);
     }

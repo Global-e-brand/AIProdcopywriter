@@ -1,6 +1,6 @@
 import "./App.css";
 import Grid from "@mui/material/Grid";
-import { useLocation, Routes, Route, Navigate, Link } from "react-router-dom";
+import { useLocation, Routes, Route, Navigate, Link, BrowserRouter } from "react-router-dom";
 import UserPage from "./components/Form/UserPage";
 import HomePage from "./components/home/HomePage";
 import HistoryPage from "./components/History/HistoryPage";
@@ -9,11 +9,16 @@ import Signin from "./components/Login/Signin";
 import ForgotPassword from "./components/Login/ForgotPassword";
 import ResetPassword from "./components/Login/ResetPassword";
 import PaymentNew from "./components/payment/PaymentNew";
-
+import ReactGA from 'react-ga';
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
+
+const TRACKING_ID = "G-TZ130WGSG9"; 
+ReactGA.initialize(TRACKING_ID);
 
 function App() {
   const location = useLocation();
+  ReactGA.pageview(location.pathname);
+  
   return (
     <>
       <div className="App">
