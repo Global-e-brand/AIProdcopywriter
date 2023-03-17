@@ -149,7 +149,7 @@ authrouter.get(
 authrouter.get("/fail", (req, res) => {
   console.log("Failed");
 
-  res.redirect("http://localhost:3001/login");
+  res.redirect("https://aiprodcopywriter.herokuapp.com/login");
 });
 
 authrouter.get("/fail-local", (req, res) => {
@@ -158,10 +158,10 @@ authrouter.get("/fail-local", (req, res) => {
   res.status(400).send({ error: "Error" });
 });
 
-authrouter.get("/success", checkAuthenticated,async (req, res) => {
-   await socialMediaUsers(req.user);
+authrouter.get("/success", checkAuthenticated, async (req, res) => {
+  await socialMediaUsers(req.user);
 
-   console.log("Success");
+  console.log("Success");
 
   //payment subscription model
   let userId = await getUserId();
@@ -169,7 +169,7 @@ authrouter.get("/success", checkAuthenticated,async (req, res) => {
   let result = await checkTrial(userId);
   if (true) {
     // check for result
-    res.redirect("http://localhost:3001/productdescription");
+    res.redirect("https://aiprodcopywriter.herokuapp.com/productdescription");
   } else {
     console.log("Redirect to Payments");
     res.redirect("http://localhost:3001/payment");
@@ -184,7 +184,7 @@ authrouter.get("/logout", checkAuthenticated, (req, res) => {
     }
 
     req.session.destroy();
-    res.redirect("http://localhost:3001/");
+    res.redirect("https://aiprodcopywriter.herokuapp.com/");
   });
 });
 

@@ -39,7 +39,7 @@ const ButtonWrapper = ({ currency, showSpinner, price }) => {
     return;
   }
 
-  return approve ? (
+  return false ? (
     <Navigate to="/productdescription" />
   ) : (
     <>
