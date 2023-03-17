@@ -158,10 +158,10 @@ authrouter.get("/fail-local", (req, res) => {
   res.status(400).send({ error: "Error" });
 });
 
-authrouter.get("/success", checkAuthenticated,async (req, res) => {
-   await socialMediaUsers(req.user);
+authrouter.get("/success", checkAuthenticated, async (req, res) => {
+  await socialMediaUsers(req.user);
 
-   console.log("Success");
+  console.log("Success");
 
   //payment subscription model
   let userId = await getUserId();

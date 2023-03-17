@@ -73,8 +73,7 @@ function EmailVerification(props) {
                   className="alert"
                   style={{ margin: "10px 0", textAlign: "left" }}
                 >
-                  Incorrect verification code and/or email. Check your email and
-                  try again.
+                  Incorrect email. Please check it and try again.
                 </Alert>
               )}
             </Grid>

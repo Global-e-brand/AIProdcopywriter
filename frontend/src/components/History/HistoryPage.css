@@ -1,94 +1,90 @@
 .controlof {
-    overflow-y: auto;
+  overflow-y: auto;
 }
 
 .main-wrapper {
-    overflow: hidden;
-    padding: 20px 0;
-    height: 80%
+  overflow: hidden;
+  padding: 20px 0;
+  height: 80%;
 }
 
 .maincomponent {
-    display: flex;
-    align-items: center;
-    height: 100%;
-    overflow-y: scroll;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  overflow-y: scroll;
 }
 
 .maincomponent::-webkit-scrollbar {
-    width: 0;
-    background: transparent;
+  width: 0;
+  background: transparent;
 }
 
 .closeacc {
-    background: rgba(181, 211, 255, 0.9) !important;
+  background: rgba(181, 211, 255, 0.9) !important;
     margin: 15px;
 }
 
 .openacc {
-    background: rgba(140, 185, 251, 0.9);
-    padding-top: 15px;
-    padding-bottom: 15px;
+  background: rgba(140, 185, 251, 0.9);
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
 .indivcard {
-    background: #ffffff;
-    padding-top: 10px;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-bottom: 10px;
+  background: #ffffff;
+  padding-top: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 10px;
     margin: 10px;
 }
 
-.carousel
-
-.headings {
-    font-size: 16px;
+.carousel .headings {
+  font-size: 16px;
 }
 
 .btwcards {
-    height: 10px;
-    background: rgba(140, 185, 251, 0);
+  height: 10px;
+  background: rgba(140, 185, 251, 0);
 }
-
 
 .destyle {
-    padding-left: 30px;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    width: 380px;
-    text-align: center;
+  padding-left: 30px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  width: 380px;
+  text-align: center;
 }
 
-
 .descard {
-    height: 175px;
-    border-radius: 5px;
-    background: #b5d3ff;
+  height: 175px;
+  border-radius: 5px;
+  background: #b5d3ff;
 }
 
 .cardestyle {
-    padding-left: 60px;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    width: 350px;
-    height: 140px;
-    overflow: hidden;
-    text-align: center;
+  padding-left: 60px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  width: 350px;
+  height: 140px;
+  overflow: hidden;
+  text-align: center;
 }
 
 .cardescard {
-    height: 175px;
-    border-radius: 5px;
-    background: #b5d3ff;
+  height: 175px;
+  border-radius: 5px;
+  background: #b5d3ff;
 }
 
 .instruction-carousel {
-    display: block !important;
-    border-radius: 5px;
+  display: block !important;
+  border-radius: 5px;
     background: #b5d3ff !important;
     height: 100%;
-    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5)) !important;
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5)) !important;
     color: #000 !important;
     padding: 10px;
     font-size: 18px;
@@ -96,25 +92,25 @@
 }
 
 .instruction-title {
-    background: #b5d3ff;
-    height: 38px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px 10px 0px 0px;
-    /* filter: drop-shadow(5px 5px 20px rgba(0, 0, 0, 0.5)) !important; */
+  background: #b5d3ff;
+  height: 38px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px 10px 0px 0px;
+  /* filter: drop-shadow(5px 5px 20px rgba(0, 0, 0, 0.5)) !important; */
 }
 .instruction-desc {
-    filter: drop-shadow(5px 5px 20px rgba(0, 0, 0, 0.5)) !important;
-    background: #b5d3ff;
-    border-radius: 5px;
-    height: 163px;
-    margin-top: -2%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 16px;
+  filter: drop-shadow(5px 5px 20px rgba(0, 0, 0, 0.5)) !important;
+  background: #b5d3ff;
+  border-radius: 5px;
+  height: 163px;
+  margin-top: -2%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
 }
 
 .n-txt {
@@ -123,7 +119,3 @@
     font-size: 28px;
     color: #02111f;
 }
-
-
-
-

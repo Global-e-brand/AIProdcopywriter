@@ -166,7 +166,7 @@ function Signin() {
                     severity="error"
                     variant="standard"
                     className="alert"
-                    style={{ margin: "10px 0" }}
+                    style={{ margin: "10px 0", textAlign: "left" }}
                   >
                     Incorrect email and/or password
                   </Alert>
@@ -254,7 +254,7 @@ function Signin() {
             setOpen(false);
           }}
           severity="success"
-          sx={{ width: "100%" }}
+          sx={{ width: "100%", textAlign: "left" }}
         >
           {location?.state?.message}
         </Alert>

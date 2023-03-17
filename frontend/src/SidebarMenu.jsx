@@ -21,11 +21,9 @@ function SidebarMenu() {
       <div className="side-bar-wrapper">
         <div className="side-Bar">
           <Link to="/home" className="home-btn">
-            {" "}
             Home
           </Link>
           <Link to="/history" className="home-btn">
-            {" "}
             History
           </Link>
           {catagoryList.map((cat, i) => {

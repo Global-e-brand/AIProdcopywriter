@@ -12,28 +12,44 @@ import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import AccordionBody from "react-bootstrap/esm/AccordionBody";
 import CarouselSlider from "react-carousel-slider";
+import { Navigate, useLocation } from "react-router-dom";
+import { authenticate } from "../../helpers/authenticationStatus";
 
 const HistoryPage = () => {
   const [toDayData, setToDayData] = useState([]);
   const [yesterdayData, setYesterdayData] = useState([]);
   const [thisweekData, setThisweekData] = useState([]);
   const [lastweekData, setLastweekData] = useState([]);
+  const [isAuthenticated, setAuthenticated] = useState();
 
-  useEffect(async () => {
-    console.log("HistoryPage");
-    let res = await fetch("/content/history", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
+  const location = useLocation();
+
+  useEffect(() => {
+    setAuthenticated(undefined);
+    authenticate((status) => {
+      setAuthenticated(status === "authenticated" ? true : false);
     });
-    let response = res.json();
-    response.then((data) => {
-      setToDayData(data[0].toDayData);
-      setYesterdayData(data[1].yesterdayData);
-      setThisweekData(data[2].thisweekData);
-      setLastweekData(data[3].lastweekData);
-    });
+  }, [location.pathname]);
+
+  useEffect(() => {
+    const lamda = async () => {
+      console.log("HistoryPage");
+      let res = await fetch("/content/history", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      let response = res.json();
+
+      response.then((data) => {
+        setToDayData(data[0].toDayData);
+        setYesterdayData(data[1].yesterdayData);
+        setThisweekData(data[2].thisweekData);
+        setLastweekData(data[3].lastweekData);
+      });
+    };
+    lamda();
   }, []);
 
   const txt_msg = {
@@ -52,29 +68,27 @@ const HistoryPage = () => {
   };
 
   return (
-    <div className="category-page">
-      {/* Recently Saved Searches Title */}
-      {console.log("toDayData", toDayData)}
-      {console.log("yesterdayData", yesterdayData)}
-      {console.log("thisweekData", thisweekData)}
-      {console.log("lastweekData", lastweekData)}
+    <>
+      <div className="category-page">
+        {/* Recently Saved Searches Title */}
+ 
 
-      <div className="category-title">
-        <h2 className="category-title-text">
-          <strong>Recently Used Categories</strong>
-        </h2>
-      </div>
+        <div className="category-title">
+          <h2 className="category-title-text">
+            <strong>Recently Used Categories</strong>
+          </h2>
+        </div>
 
-      <div className="main-division">
-        <Grid container spacing={4}>
-          {/* sidebar */}
-          <Grid item xs={12} sm={12} md={3} lg={3} xl={3}>
-            <div className="logo-panel">
-              <HeaderLogo />
-              <SidebarMenu />
-            </div>
-          </Grid>
-
+        <div className="main-division">
+          <Grid container spacing={4}>
+            {/* sidebar */}
+            <Grid item xs={3} sm={3} md={3} lg={3} xl={3}>
+              <div className="logo-panel">
+                <HeaderLogo />
+                <SidebarMenu />
+              </div>
+            </Grid>
+            {isAuthenticated ? (
           <Grid item xs={12} sm={12} md={9} lg={9} xl={9}>
             {/* today accordion */}
             <Accordion className="closeacc">
@@ -145,6 +159,7 @@ const HistoryPage = () => {
                   ) : (
                     <div className="n-txt">{txt_msg.today_no_txt}</div>
                   )}
+                                    consequat.
                 </div>
               </AccordionDetails>
             </Accordion>
@@ -173,16 +188,19 @@ const HistoryPage = () => {
                                 </div>
                                 <div>
                                   <strong>{txt_msg.input_one}</strong>
+                                    consequat.
                                 </div>
                                 {item.question_two != "" ? (
                                   <div>
                                     <strong>{txt_msg.input_two}</strong>
+                                    consequat.
                                   </div>
                                 ) : (
                                   ""
                                 )}
                                 <div>
                                   <strong>Tone</strong>
+                                    consequat.
                                 </div>
                               </Grid>
                               <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
