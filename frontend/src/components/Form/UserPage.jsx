@@ -107,6 +107,7 @@ function Dummy(props) {
           single_content: text,
         }),
       });
+      console.log("response", res);
       let response = await res.json();
       // console.log("response", response);
       if (response?.authenticated === false) {
@@ -537,7 +538,7 @@ function Dummy(props) {
                               aria-expanded={flip}
                             >
                               <div className="mobile-carousal-card-title">
-                                <h3>{props.category + "-" + index}</h3>
+                                <h3>{"Result" + "-" + (index + 1)}</h3>
                                 <button
                                   className="cpy-btn-mobile-view"
                                   onClick={() =>

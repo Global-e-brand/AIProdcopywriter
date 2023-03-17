@@ -39,7 +39,7 @@ function HomePage() {
     alert("You clicked Skip!");
   }
   const description =
-    "AIProdCopyWriter is a revolutionary AI app that helps to generate high-quality, automatic text content in just a few clicks. This innovative tool can be used to quickly and easily create product descriptions,Ad copy, blog posts, press releases and more. With its intuitive interface and powerful features, this app will be your go-to for all writing needs!";
+    " creativewriter.ai is a revolutionary AI app that helps to generate high-quality, automatic text content in just a few clicks. This innovative tool can be used to quickly and easily create product descriptions,Ad copy, blog posts, press releases and more. With its intuitive interface and powerful features, this app will be your go-to for all writing needs!";
 
   return (
     <>
@@ -50,7 +50,7 @@ function HomePage() {
               <img
                 className="robot-img"
                 src={robot}
-                alt="AI ProdCopywriter robot mascot"
+            alt="CreativeAI robot mascot"
               />
             </Grid>
             <Grid item sm={16} md={10}>
@@ -58,17 +58,17 @@ function HomePage() {
                 <img
                   className="robot-logo"
                   src={fulllogo}
-                  alt="AI ProdCopywriter logo"
+              alt=" creativewriter.ai logo"
                 />
               </div>
 
               <div>
-                <h2 className="welcome">Welcome to AI ProdCopywriter!</h2>
+            <h2 className="welcome">Welcome to creativewriter.ai!</h2>
               </div>
 
               <div>
                 <p className="subheader">
-                  Create the perfect description for your needs!
+              Create the perfect content for your needs!
                 </p>
               </div>
 

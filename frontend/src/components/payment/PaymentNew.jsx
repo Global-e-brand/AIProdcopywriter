@@ -96,6 +96,8 @@ function PaymentNew() {
       ) : (
         <Navigate to="/login" />
       )}
+       
+     
     </>
   );
 }

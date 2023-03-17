@@ -4,8 +4,7 @@ import bodyParser from "body-parser";
 import fetch from "node-fetch";
 import getGPTResponse from "../helpers/api/get-GPT-response.js";
 import createPrompt from "../helpers/api/prompt-creator.js";
-import GptApi from "../controllers/GPTApi.js";
-import  {createContent}  from "../controllers/content.controller.js";
+import { createContent } from "../controllers/content.controller.js";
 import { checkAuthenticatedNoRedirect } from "../helpers/auth/check-authenticated.js";
 
 apirouter.use(

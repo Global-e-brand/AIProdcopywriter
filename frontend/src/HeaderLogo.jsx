@@ -13,7 +13,7 @@ function HeaderLogo() {
           <img src={logo} />
         </Grid>
         <Grid xs={10} sm={8} md={10} className="text-logo">
-          <h2 className="lg-title">AI ProdCopywriter</h2>
+          <h2 className="lg-title"> creativewriter.ai</h2>
         </Grid>
       </Grid>
     </div>
