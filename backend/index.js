@@ -77,7 +77,7 @@ app.use("/payment", paymentRouter);
 
 app.use("/user", userController);
 
-// app.use("/content", createContent);
+app.use("/content", createContent);
 
 app.get('/content/history', async (req, res)=>{
   let contentHistoryData=await contentHistory(req);

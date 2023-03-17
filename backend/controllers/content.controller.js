@@ -44,6 +44,7 @@ export async function contentHistory(req) {
     .find({
       user_id: userId,
       created_date: { $gt: today_dte },
+      single_content : { $exists: true, $ne: null }
     })
     .then((data) => {
       return data;
@@ -56,6 +57,7 @@ export async function contentHistory(req) {
     .find({
       user_id: userId,
       created_date: { $gt: yesterday_dte, $lt: today_dte },
+      single_content : { $exists: true, $ne: null }
     })
     .then((data) => {
       return data;
@@ -68,6 +70,7 @@ export async function contentHistory(req) {
     .find({
       user_id: userId,
       created_date: { $gte: thisweek_dte },
+      single_content : { $exists: true, $ne: null }
     })
     .then((data) => {
       return data;
@@ -80,6 +83,7 @@ export async function contentHistory(req) {
     .find({
       user_id: userId,
       created_date: { $lte: thisweek_dte, $gte: lastweek_dte },
+      single_content : { $exists: true, $ne: null }
     })
     .then((data) => {
       return data;

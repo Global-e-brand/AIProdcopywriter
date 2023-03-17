@@ -169,7 +169,7 @@ authrouter.get("/success", checkAuthenticated,async (req, res) => {
   let result = await checkTrial(userId);
   if (true) {
     // check for result
-    res.redirect("http://localhost:3001/productdescription");
+    res.redirect("http://localhost:3001/home");
   } else {
     console.log("Redirect to Payments");
     res.redirect("http://localhost:3001/payment");

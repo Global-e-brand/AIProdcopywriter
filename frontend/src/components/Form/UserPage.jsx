@@ -73,6 +73,7 @@ function Dummy(props) {
     if (text == null) {
       setLoading(true);
     }
+    console.log("comin");
 
     if (text != null) {
       setSingleContent(i);
@@ -86,6 +87,9 @@ function Dummy(props) {
     });
     let result = checkPayment.json();
     result.then((res) => setIsPaid(res));
+    {
+      console.log("isPaid", isPaid);
+    }
     if (isPaid == true) {
       let res = await fetch("/api" + path, {
         method: "POST",
@@ -101,24 +105,23 @@ function Dummy(props) {
           inputTwo: inputTwo,
           tone: tone,
           data: `${inputOne}`,
-        single_content: text,
+          single_content: text,
         }),
       });
-    let response = await res.json();
-    // console.log("response", response);
-    if (response?.authenticated === false) {
-      navigate("/login");
-    }
-     setData(response);
+      let response = await res.json();
+      // console.log("response", response);
+      if (response?.authenticated === false) {
+        navigate("/login");
+      }
+      setData(response);
 
-    if (text == null) {   
-      setLoading(false);
-    }
-    
+      if (text == null) {
+        setLoading(false);
+      }
 
-    if (text != null) {
-      setSingleContent(false);
-    }
+      if (text != null) {
+        setSingleContent(false);
+      }
     }
   }
 
@@ -284,17 +287,27 @@ function Dummy(props) {
                     <>
                       {data != undefined ? (
                         <>
-                        <Grid container>
-                          <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
-                            <button className="cpyall-btn" onClick={() => copyToAllClipboard(data)}>Copy All</button>
-                            {AllCopied ? (<h1 className="text-cp-al">ALL RESULTS COPIED !{" "}</h1>) : ("")}
-                          </Grid>
-                          <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
-                            {/* <button className="cpyall-btn" onClick={() => handleSubmit(path,data)}>Save All</button>
+                          <Grid container>
+                            <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+                              <button
+                                className="cpyall-btn"
+                                onClick={() => copyToAllClipboard(data)}
+                              >
+                                Copy All
+                              </button>
+                              {AllCopied ? (
+                                <h1 className="text-cp-al">
+                                  ALL RESULTS COPIED !{" "}
+                                </h1>
+                              ) : (
+                                ""
+                              )}
+                            </Grid>
+                            <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+                              {/* <button className="cpyall-btn" onClick={() => handleSubmit(path,data)}>Save All</button>
                             {multipleContent ? (<h1 className="text-cp-al">SAVED ALL !{" "}</h1>) : ("")} */}
+                            </Grid>
                           </Grid>
-                        </Grid>
-                          
 
                           <div className="output-container">
                             {data.map((item, i) => {
@@ -308,7 +321,8 @@ function Dummy(props) {
                                             className="cpy-btn"
                                             onClick={() =>
                                               handleSubmit(
-                                                path,item.text.trim(),
+                                                path,
+                                                item.text.trim(),
                                                 i + 1
                                               )
                                             }
@@ -383,7 +397,7 @@ function Dummy(props) {
             <div className="mobile-view-product">
               <ul aria-expanded={showMenu}>
                 <li>
-              <SidebarMobile closeMenu={closeMenu} />
+                  <SidebarMobile closeMenu={closeMenu} />
                 </li>
               </ul>
               <div className="main-form-mobile">
@@ -479,7 +493,7 @@ function Dummy(props) {
 
                     <div className="submitButton">
                       <button
-                    onClick={() => handleSubmit(path, null)}
+                        onClick={() => handleSubmit(path, null)}
                         disabled={loading}
                         variant="contained"
                       >
