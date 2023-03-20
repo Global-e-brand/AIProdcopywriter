@@ -68,47 +68,77 @@ const HistoryComponent = () => {
                     <Grid container spacing={2}>
                       {/* card headings */}
                       <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
-                        <Grid container spacing={2}>
-                          <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
-                            <div>
+                        <Grid container>
+                          <Grid
+                            item
+                            xs={12}
+                            sm={12}
+                            md={12}
+                            lg={12}
+                            xl={12}
+                            className="card-header-section-history"
+                          >
+                            <div className="card-subheader-history">
                               <strong>{txt_msg.category}</strong>
                             </div>
                             <div>
-                              <strong>{txt_msg.input_one}</strong>
-                            </div>
-                            {item.question_two != "" ? (
-                              <div>
-                                <strong>{txt_msg.input_two}</strong>
-                              </div>
-                            ) : (
-                              ""
-                            )}
-                            <div>
-                              <strong>Tone</strong>
+                              <card-text>{item.category}</card-text>
                             </div>
                           </Grid>
-                          <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
-                            <div>
-                              <card-text>{item.category}</card-text>
+                          <Grid
+                            item
+                            xs={12}
+                            sm={12}
+                            md={12}
+                            lg={12}
+                            xl={12}
+                            className="card-header-section-history"
+                          >
+                            <div className="card-subheader-history">
+                              <strong>{txt_msg.input_one}</strong>
                             </div>
                             <div>
                               <card-text>{item.question_one}</card-text>
                             </div>
-                            {item.question_two != "" ? (
+                          </Grid>
+                          {item.question_two != "" ? (
+                            <Grid
+                              item
+                              xs={12}
+                              sm={12}
+                              md={12}
+                              lg={12}
+                              xl={12}
+                              className="card-header-section-history"
+                            >
+                              <div className="card-subheader-history">
+                                <strong>{txt_msg.input_two}</strong>
+                              </div>
                               <div>
                                 <card-text>{item.question_two}</card-text>
                               </div>
-                            ) : (
-                              ""
-                            )}
+                            </Grid>
+                          ) : (
+                            ""
+                          )}
+                          <Grid
+                            item
+                            xs={12}
+                            sm={12}
+                            md={12}
+                            lg={12}
+                            xl={12}
+                            className="card-header-section-history"
+                          >
+                            <div className="card-subheader-history">
+                              <strong>Tone</strong>
+                            </div>
                             <div>
                               <card-text>{item.tone}</card-text>
                             </div>
                           </Grid>
                         </Grid>
                       </Grid>
-
-                      {/* carousel of description */}
                       <Grid item xs={12} sm={12} md={8} lg={8} xl={8}>
                         <Card className="instruction-carousel-history">
                           {item.single_content}
@@ -141,49 +171,77 @@ const HistoryComponent = () => {
                     <Grid container spacing={2}>
                       {/* card headings */}
                       <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
-                        <Grid container spacing={2}>
-                          <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
-                            <div>
+                        <Grid container>
+                          <Grid
+                            item
+                            xs={12}
+                            sm={12}
+                            md={12}
+                            lg={12}
+                            xl={12}
+                            className="card-header-section-history"
+                          >
+                            <div className="card-subheader-history">
                               <strong>{txt_msg.category}</strong>
                             </div>
                             <div>
-                              <strong>{txt_msg.input_one}</strong>
-                              consequat.
-                            </div>
-                            {item.question_two != "" ? (
-                              <div>
-                                <strong>{txt_msg.input_two}</strong>
-                                consequat.
-                              </div>
-                            ) : (
-                              ""
-                            )}
-                            <div>
-                              <strong>Tone</strong>
-                              consequat.
+                              <card-text>{item.category}</card-text>
                             </div>
                           </Grid>
-                          <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
-                            <div>
-                              <card-text>{item.category}</card-text>
+                          <Grid
+                            item
+                            xs={12}
+                            sm={12}
+                            md={12}
+                            lg={12}
+                            xl={12}
+                            className="card-header-section-history"
+                          >
+                            <div className="card-subheader-history">
+                              <strong>{txt_msg.input_one}</strong>
                             </div>
                             <div>
                               <card-text>{item.question_one}</card-text>
                             </div>
-                            {item.question_two != "" ? (
+                          </Grid>
+                          {item.question_two != "" ? (
+                            <Grid
+                              item
+                              xs={12}
+                              sm={12}
+                              md={12}
+                              lg={12}
+                              xl={12}
+                              className="card-header-section-history"
+                            >
+                              <div className="card-subheader-history">
+                                <strong>{txt_msg.input_two}</strong>
+                              </div>
                               <div>
                                 <card-text>{item.question_two}</card-text>
                               </div>
-                            ) : (
-                              ""
-                            )}
+                            </Grid>
+                          ) : (
+                            ""
+                          )}
+                          <Grid
+                            item
+                            xs={12}
+                            sm={12}
+                            md={12}
+                            lg={12}
+                            xl={12}
+                            className="card-header-section-history"
+                          >
+                            <div className="card-subheader-history">
+                              <strong>Tone</strong>
+                            </div>
                             <div>
                               <card-text>{item.tone}</card-text>
                             </div>
                           </Grid>
                         </Grid>
                       </Grid>
-
                       <Grid item xs={12} sm={12} md={8} lg={8} xl={8}>
                         <Card className="instruction-carousel-history">
                           {item.single_content}
@@ -216,46 +274,77 @@ const HistoryComponent = () => {
                     <Grid container spacing={2}>
                       {/* card headings */}
                       <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
-                        <Grid container spacing={2}>
-                          <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
-                            <div>
+                        <Grid container>
+                          <Grid
+                            item
+                            xs={12}
+                            sm={12}
+                            md={12}
+                            lg={12}
+                            xl={12}
+                            className="card-header-section-history"
+                          >
+                            <div className="card-subheader-history">
                               <strong>{txt_msg.category}</strong>
                             </div>
                             <div>
-                              <strong>{txt_msg.input_one}</strong>
-                            </div>
-                            {item.question_two != "" ? (
-                              <div>
-                                <strong>{txt_msg.input_two}</strong>
-                              </div>
-                            ) : (
-                              ""
-                            )}
-                            <div>
-                              <strong>Tone</strong>
+                              <card-text>{item.category}</card-text>
                             </div>
                           </Grid>
-                          <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
-                            <div>
-                              <card-text>{item.category}</card-text>
+                          <Grid
+                            item
+                            xs={12}
+                            sm={12}
+                            md={12}
+                            lg={12}
+                            xl={12}
+                            className="card-header-section-history"
+                          >
+                            <div className="card-subheader-history">
+                              <strong>{txt_msg.input_one}</strong>
                             </div>
                             <div>
                               <card-text>{item.question_one}</card-text>
                             </div>
-                            {item.question_two != "" ? (
+                          </Grid>
+                          {item.question_two != "" ? (
+                            <Grid
+                              item
+                              xs={12}
+                              sm={12}
+                              md={12}
+                              lg={12}
+                              xl={12}
+                              className="card-header-section-history"
+                            >
+                              <div className="card-subheader-history">
+                                <strong>{txt_msg.input_two}</strong>
+                              </div>
                               <div>
                                 <card-text>{item.question_two}</card-text>
                               </div>
-                            ) : (
-                              ""
-                            )}
+                            </Grid>
+                          ) : (
+                            ""
+                          )}
+                          <Grid
+                            item
+                            xs={12}
+                            sm={12}
+                            md={12}
+                            lg={12}
+                            xl={12}
+                            className="card-header-section-history"
+                          >
+                            <div className="card-subheader-history">
+                              <strong>Tone</strong>
+                            </div>
                             <div>
                               <card-text>{item.tone}</card-text>
                             </div>
                           </Grid>
                         </Grid>
                       </Grid>
-
                       <Grid item xs={12} sm={12} md={8} lg={8} xl={8}>
                         <Card className="instruction-carousel-history">
                           {item.single_content}
@@ -288,46 +377,77 @@ const HistoryComponent = () => {
                     <Grid container spacing={2}>
                       {/* card headings */}
                       <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
-                        <Grid container spacing={2}>
-                          <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
-                            <div>
+                        <Grid container>
+                          <Grid
+                            item
+                            xs={12}
+                            sm={12}
+                            md={12}
+                            lg={12}
+                            xl={12}
+                            className="card-header-section-history"
+                          >
+                            <div className="card-subheader-history">
                               <strong>{txt_msg.category}</strong>
                             </div>
                             <div>
-                              <strong>{txt_msg.input_one}</strong>
-                            </div>
-                            {item.question_two != "" ? (
-                              <div>
-                                <strong>{txt_msg.input_two}</strong>
-                              </div>
-                            ) : (
-                              ""
-                            )}
-                            <div>
-                              <strong>Tone</strong>
+                              <card-text>{item.category}</card-text>
                             </div>
                           </Grid>
-                          <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
-                            <div>
-                              <card-text>{item.category}</card-text>
+                          <Grid
+                            item
+                            xs={12}
+                            sm={12}
+                            md={12}
+                            lg={12}
+                            xl={12}
+                            className="card-header-section-history"
+                          >
+                            <div className="card-subheader-history">
+                              <strong>{txt_msg.input_one}</strong>
                             </div>
                             <div>
                               <card-text>{item.question_one}</card-text>
                             </div>
-                            {item.question_two != "" ? (
+                          </Grid>
+                          {item.question_two != "" ? (
+                            <Grid
+                              item
+                              xs={12}
+                              sm={12}
+                              md={12}
+                              lg={12}
+                              xl={12}
+                              className="card-header-section-history"
+                            >
+                              <div className="card-subheader-history">
+                                <strong>{txt_msg.input_two}</strong>
+                              </div>
                               <div>
                                 <card-text>{item.question_two}</card-text>
                               </div>
-                            ) : (
-                              ""
-                            )}
+                            </Grid>
+                          ) : (
+                            ""
+                          )}
+                          <Grid
+                            item
+                            xs={12}
+                            sm={12}
+                            md={12}
+                            lg={12}
+                            xl={12}
+                            className="card-header-section-history"
+                          >
+                            <div className="card-subheader-history">
+                              <strong>Tone</strong>
+                            </div>
                             <div>
                               <card-text>{item.tone}</card-text>
                             </div>
                           </Grid>
                         </Grid>
                       </Grid>
-
                       <Grid item xs={12} sm={12} md={8} lg={8} xl={8}>
                         <Card className="instruction-carousel-history">
                           {item.single_content}

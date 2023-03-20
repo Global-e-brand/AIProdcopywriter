@@ -43,6 +43,7 @@
   padding-right: 15px;
   padding-bottom: 10px;
   margin: 10px;
+  white-space: pre-wrap;
 }
 
 .carousel .headings {
@@ -125,20 +126,20 @@
   color: #02111f;
 }
 
-.card-header-section-mobile {
+.card-header-section-history {
   display: flex;
 }
 
-.card-subheader-mobile {
-  width: 100px;
+.card-subheader-history {
+  min-width: 100px;
 }
 
-@media (max-width: 330px) {
-  .card-header-section-mobile {
+@media (max-width: 370px) {
+  .card-header-section-history {
     display: block;
   }
 
-  .card-subheader-mobile {
+  .card-subheader-history {
     width: auto;
   }
 }
