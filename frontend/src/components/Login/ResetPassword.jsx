@@ -22,7 +22,7 @@ function ResetPassword(props) {
     setVerifying(true);
 
     await fetch(
-      "http://localhost:3000/email/verify-otp?" +
+      "/email/verify-otp?" +
         new URLSearchParams({
           email: props.email || null,
           OTPGuess: verificationCode || null,
@@ -52,7 +52,7 @@ function ResetPassword(props) {
   };
 
   const handleResetPassword = async () => {
-    await fetch("http://localhost:3000/user/reset-password", {
+    await fetch("https://aiprodcopywriter.herokuapp.com/user/reset-password", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -1,6 +1,7 @@
 import trainingData from "../../models/TrainingData.js";
 import userModel from "../../models/userModel.js";
-import UserOTPModel from "../../models/userOtpModel.js";
+// import UserOTPModel from "../../models/userOtpModel.js";
+import UserOTPModel from "../../models/userOTPModel.js";
 
 export const getCategoryData = async (category) => {
   let categoryData;

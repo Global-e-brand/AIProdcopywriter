@@ -111,9 +111,15 @@ authrouter.post(
   "/local",
   checkNotAuthenticated,
   passport.authenticate("local", {
-    successRedirect: "/auth/success",
+    // successRedirect: `http://localhost:3000/auth/success`,
     failureRedirect: "/auth/fail-local",
-  })
+  }),
+  (req, res) => {
+    console.log("req params ", req.query);
+    res.redirect(
+      "https://" + req.query.host + "/auth/success?host=" + req.query.host
+    );
+  }
 );
 
 authrouter.get(
@@ -159,6 +165,7 @@ authrouter.get("/fail-local", (req, res) => {
 });
 
 authrouter.get("/success", checkAuthenticated, async (req, res) => {
+  console.log(req.params);
   await socialMediaUsers(req.user);
 
   console.log("Success");
@@ -167,9 +174,10 @@ authrouter.get("/success", checkAuthenticated, async (req, res) => {
   let userId = await getUserId();
   console.log(userId);
   let result = await checkTrial(userId);
+  console.log(result);
   if (true) {
     // check for result
-    res.redirect("http://localhost:3001/home");
+    res.redirect("https://" + req.query.host + "/home");
   } else {
     console.log("Redirect to Payments");
     res.redirect("http://localhost:3001/payment");
@@ -184,7 +192,8 @@ authrouter.get("/logout", checkAuthenticated, (req, res) => {
     }
 
     req.session.destroy();
-    res.redirect("http://localhost:3001/");
+    res.send(true);
+    // res.redirect("http://localhost:3001/");
   });
 });
 

@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import HomeIcon from "@mui/icons-material/Home";
 import WidgetsIcon from "@mui/icons-material/Widgets";
 import ClassIcon from "@mui/icons-material/Class";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, Navigate } from "react-router-dom";
 import "./App.css";
 import catagoryList from "./components/json/category-list.json";
 import { arrow } from "./assets";
@@ -16,47 +16,61 @@ import Card from "react-bootstrap/Card";
 import { GiHamburgerMenu } from "react-icons/gi";
 
 function SidebarMenu() {
+  const [logout, setLogout] = useState(false);
+  function handleLogout() {
+    fetch("/auth/logout", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => setLogout(data));
+  }
   return (
     <>
-      <div className="side-bar-wrapper">
-        <div className="side-Bar">
-          <Link to="/home" className="home-btn">
-            Home
-          </Link>
-          <Link to="/history" className="home-btn">
-            History
-          </Link>
-          {catagoryList.map((cat, i) => {
-            return (
-              <Accordion>
-                <Card>
-                  <Accordion.Item eventKey="0">
-                    <Accordion.Header>{cat.parentcategory}</Accordion.Header>
-                    <Accordion.Collapse eventKey="0">
-                      <Card.Body>
-                        <hr className="menu-separator" />
-                        {cat.childcategory.map((menu) => {
-                          return (
-                            <Dropdown.Item id={"bs-item-override"}>
-                              <Link to={menu.url} className="category-link">
-                                {menu.name}
-                              </Link>
-                            </Dropdown.Item>
-                          );
-                        })}
-                      </Card.Body>
-                    </Accordion.Collapse>
-                  </Accordion.Item>
-                </Card>
-              </Accordion>
-            );
-          })}
-          <Link to="http://localhost:3000/auth/logout" className="home-btn">
-            {" "}
-            Logout
-          </Link>
+      {logout ? (
+        <Navigate to="/" />
+      ) : (
+        <div className="side-bar-wrapper">
+          <div className="side-Bar">
+            <Link to="/home" className="home-btn">
+              Home
+            </Link>
+            <Link to="/history" className="home-btn">
+              History
+            </Link>
+            {catagoryList.map((cat, i) => {
+              return (
+                <Accordion>
+                  <Card>
+                    <Accordion.Item eventKey="0" key={i}>
+                      <Accordion.Header>{cat.parentcategory}</Accordion.Header>
+                      <Accordion.Collapse eventKey="0">
+                        <Card.Body>
+                          <hr className="menu-separator" />
+                          {cat.childcategory.map((menu, key) => {
+                            return (
+                              <Dropdown.Item id={"bs-item-override"} key={key}>
+                                <Link to={menu.url} className="category-link">
+                                  {menu.name}
+                                </Link>
+                              </Dropdown.Item>
+                            );
+                          })}
+                        </Card.Body>
+                      </Accordion.Collapse>
+                    </Accordion.Item>
+                  </Card>
+                </Accordion>
+              );
+            })}
+            <button className="home-btn" onClick={() => handleLogout()}>
+              Logout
+            </button>
+          </div>
         </div>
-      </div>
+      )}
       {/* <div className="hamburger-menu">
         <a href="#">
           <GiHamburgerMenu />

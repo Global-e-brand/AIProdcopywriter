@@ -449,10 +449,10 @@ apirouter.post("/productdescription", async (req, res) => {
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
-  console.log("prompt_453",prompt)
+  console.log("prompt_453", prompt);
 
   const response = await getGPTResponse(prompt);
- console.log("response_456",response)
+  console.log("response_456", response);
   await createContent(req, response);
   res.send(response);
 });
@@ -875,7 +875,7 @@ apirouter.post("/birthdaycard", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  
+
   await createContent(req, response);
   res.send(response);
 });
