@@ -241,38 +241,78 @@ function MobileForm(props) {
                   ) : (
                     ""
                   )}
-
-                  <div className="output-container-mobile-view">
-                    <div
-                      className="mobile-view-carousal-card"
-                      aria-expanded={flip}
-                    >
-                      <div className="mobile-carousal-card-title">
-                        <h3>{props.category + "-" + index}</h3>
-                        <button
-                          className="cpy-btn-mobile-view"
-                          onClick={() => copyToClipboard(data[index], index)}
-                        >
-                          Copy
-                        </button>
-                      </div>
-                      <h4>{data[index].text}</h4>
-                      <div className="mobile-carousal-buttons">
-                        <button
-                          onClick={() => handlePrev()}
-                          className="mobile-left-arrow"
-                        >
-                          <img src={leftarrow} />{" "}
-                        </button>
-                        <button
-                          onClick={() => handleNext()}
-                          className="mobile-right-arrow"
-                        >
-                          <img src={leftarrow} />{" "}
-                        </button>
+                  <Grid container justifyContent="center" alignItems={"center"}>
+                    <div className="output-container-mobile-view">
+                      <div
+                        className="mobile-view-carousal-card"
+                        aria-expanded={flip}
+                      >
+                        <div className="mobile-carousal-card-title">
+                          <Grid
+                            container
+                            justifyContent="center"
+                            alignItems="center"
+                          >
+                            <Grid item xs={2}>
+                              <div className="hd-cp">
+                                <button
+                                  className="cpy-btn"
+                                  onClick={() =>
+                                    handleSubmit(path, null, index + 1)
+                                  }
+                                >
+                                  Save
+                                </button>
+                                {singleContent == index + 1 ? (
+                                  <h1 className="text-status-save">
+                                    Result {index + 1} Saving in History!{" "}
+                                  </h1>
+                                ) : (
+                                  ""
+                                )}
+                              </div>
+                            </Grid>
+                            <Grid item xs={8}>
+                              <h3 className="result-title">
+                                {props.category + "-" + index}
+                              </h3>
+                            </Grid>
+                            <Grid item xs={2}>
+                              <div className="hd-cp">
+                                <button
+                                  className="cpy-btn"
+                                  onClick={() =>
+                                    copyToClipboard(data[index], index)
+                                  }
+                                >
+                                  Copy
+                                </button>
+                              </div>
+                            </Grid>
+                          </Grid>
+                        </div>
+                        <Grid xs={12}>
+                          <div className="result-body">
+                            <h4>{data[index].text.trim()}</h4>
+                            <div className="mobile-carousal-buttons">
+                              <button
+                                onClick={() => handlePrev()}
+                                className="mobile-left-arrow"
+                              >
+                                <img src={leftarrow} />{" "}
+                              </button>
+                              <button
+                                onClick={() => handleNext()}
+                                className="mobile-right-arrow"
+                              >
+                                <img src={leftarrow} />{" "}
+                              </button>
+                            </div>
+                          </div>
+                        </Grid>
                       </div>
                     </div>
-                  </div>
+                  </Grid>
                 </>
               ) : (
                 <>{/* <div className="err-msg">Oops Try Again !</div> */}</>
