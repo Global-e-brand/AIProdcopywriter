@@ -258,7 +258,11 @@ function MobileForm(props) {
                                 <button
                                   className="cpy-btn"
                                   onClick={() =>
-                                    handleSubmit(path, null, index + 1)
+                                    handleSubmit(
+                                      path,
+                                      data[index].text.trim(),
+                                      index + 1
+                                    )
                                   }
                                 >
                                   Save
