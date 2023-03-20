@@ -119,3 +119,21 @@
   font-size: 28px;
   color: #02111f;
 }
+
+.card-header-section-mobile {
+  display: flex;
+}
+
+.card-subheader-mobile {
+  width: 100px;
+}
+
+@media (max-width: 330px) {
+  .card-header-section-mobile {
+    display: block;
+  }
+
+  .card-subheader-mobile {
+    width: auto;
+  }
+}
