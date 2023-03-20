@@ -3,11 +3,9 @@ import Grid from "@mui/material/Grid";
 import { useLocation, Routes, Route, Navigate, Link, BrowserRouter } from "react-router-dom";
 import UserPage from "./components/Form/UserPage";
 import HomePage from "./components/home/HomePage";
-import HistoryPage from "./components/History/HistoryPage";
 import CreateAccount from "./components/Login/CreateAccount";
 import Signin from "./components/Login/Signin";
 import ForgotPassword from "./components/Login/ForgotPassword";
-import ResetPassword from "./components/Login/ResetPassword";
 import PaymentNew from "./components/payment/PaymentNew";
 import ReactGA from 'react-ga';
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
@@ -28,7 +26,15 @@ function App() {
             <Routes>
               <Route path="/" element={<Navigate replace to="/login" />} />
               <Route path="/home" element={<HomePage />} />
-              <Route path="/history" element={<HistoryPage />} />
+              <Route
+                path="/history"
+                element={
+                  <UserPage
+                    type="history"
+                    category="Recently Used Categories"
+                  />
+                }
+              />
               <Route path="/create-account" element={<CreateAccount />} />
               <Route path="/login" element={<Signin />} />
               <Route path="/payment" element={<PaymentNew />} />
@@ -40,6 +46,7 @@ function App() {
                 path="/productdescription"
                 element={
                   <UserPage
+                    type="category"
                     path={"/productdescription"}
                     category={"Product Description"}
                     inputOne={true}
@@ -58,6 +65,7 @@ function App() {
                 path="/adcopyvariants"
                 element={
                   <UserPage
+                    type="category"
                     path={"/adcopyvariants"}
                     category={"Ad Copy Variants"}
                     inputOne={true}
@@ -76,6 +84,7 @@ function App() {
                 path="/facebookheadlines"
                 element={
                   <UserPage
+                    type="category"
                     path={"/facebookheadlines"}
                     category={"Facebook Headlines"}
                     inputOne={true}
@@ -92,6 +101,7 @@ function App() {
                 path="/facebooklinkdescription"
                 element={
                   <UserPage
+                    type="category"
                     path={"/facebooklinkdescription"}
                     category={"Facebook Link Descriptions"}
                     inputOne={true}
@@ -108,6 +118,7 @@ function App() {
                 path="/facebooklisticle"
                 element={
                   <UserPage
+                    type="category"
                     path={"/facebooklisticle"}
                     category={"Facebook Listicle"}
                     inputOne={true}
@@ -126,6 +137,7 @@ function App() {
                 path="/facebookprimarytext"
                 element={
                   <UserPage
+                    type="category"
                     path={"/facebookprimarytext"}
                     category={"Facebook Primary Text"}
                     inputOne={true}
@@ -144,6 +156,7 @@ function App() {
                 path="/generaladcopy"
                 element={
                   <UserPage
+                    type="category"
                     path={"/generaladcopy"}
                     category={"General Ad Copy"}
                     inputOne={true}
@@ -160,6 +173,7 @@ function App() {
                 path="/googledescriptions"
                 element={
                   <UserPage
+                    type="category"
                     path={"/googledescriptions"}
                     category={"Google Descriptions"}
                     inputOne={true}
@@ -178,6 +192,7 @@ function App() {
                 path="/googleheadlines"
                 element={
                   <UserPage
+                    type="category"
                     path={"/googleheadlines"}
                     category={"Google Headlines"}
                     inputOne={true}
@@ -196,6 +211,7 @@ function App() {
                 path="/linkedinadcopy"
                 element={
                   <UserPage
+                    type="category"
                     path={"/linkedinadcopy"}
                     category={"LinkedIn Ad Copy"}
                     inputOne={true}
@@ -212,6 +228,7 @@ function App() {
                 path="/audiencerefiner"
                 element={
                   <UserPage
+                    type="category"
                     path={"/audiencerefiner"}
                     category={"Audience Refiner"}
                     inputOne={true}
@@ -230,6 +247,7 @@ function App() {
                 path="/brandmission"
                 element={
                   <UserPage
+                    type="category"
                     path={"/brandmission"}
                     category={"Brand Mission"}
                     inputOne={true}
@@ -248,6 +266,7 @@ function App() {
                 path="/brandvoice"
                 element={
                   <UserPage
+                    type="category"
                     path={"/brandvoice"}
                     category={"Brand Voice"}
                     inputOne={true}
@@ -266,6 +285,7 @@ function App() {
                 path="/mottogenerator"
                 element={
                   <UserPage
+                    type="category"
                     path={"/mottogenerator"}
                     category={"Motto Generator"}
                     inputOne={true}
@@ -284,6 +304,7 @@ function App() {
                 path="/valueproposition"
                 element={
                   <UserPage
+                    type="category"
                     path={"/valueproposition"}
                     category={"Value Proposition"}
                     inputOne={true}
@@ -302,6 +323,7 @@ function App() {
                 path="/calltoaction"
                 element={
                   <UserPage
+                    type="category"
                     path={"/calltoaction"}
                     category={"Call To Action"}
                     inputOne={true}
@@ -320,6 +342,7 @@ function App() {
                 path="/eventcopy"
                 element={
                   <UserPage
+                    type="category"
                     path={"/eventcopy"}
                     category={"Event Copy"}
                     inputOne={true}
@@ -338,6 +361,7 @@ function App() {
                 path="/landingpageherotext"
                 element={
                   <UserPage
+                    type="category"
                     path={"/landingpageherotext"}
                     category={"Landing Page Hero Text"}
                     inputOne={true}
@@ -356,6 +380,7 @@ function App() {
                 path="/listicle"
                 element={
                   <UserPage
+                    type="category"
                     path={"/listicle"}
                     category={"Listicle"}
                     inputOne={true}
@@ -374,6 +399,7 @@ function App() {
                 path="/metadescription"
                 element={
                   <UserPage
+                    type="category"
                     path={"/metadescription"}
                     category={"Meta Descriptions"}
                     inputOne={true}
@@ -392,6 +418,7 @@ function App() {
                 path="/microcopy"
                 element={
                   <UserPage
+                    type="category"
                     path={"/microcopy"}
                     category={"Microcopy"}
                     inputOne={true}
@@ -410,6 +437,7 @@ function App() {
                 path="/questiongenerator"
                 element={
                   <UserPage
+                    type="category"
                     path={"/questiongenerator"}
                     category={"Question Generator"}
                     inputOne={true}
@@ -426,6 +454,7 @@ function App() {
                 path="/socialprooftext"
                 element={
                   <UserPage
+                    type="category"
                     path={"/socialprooftext"}
                     category={"Social Proof Text"}
                     inputOne={true}
@@ -444,6 +473,7 @@ function App() {
                 path="/subheader"
                 element={
                   <UserPage
+                    type="category"
                     path={"/subheader"}
                     category={"Subheader"}
                     inputOne={true}
@@ -462,6 +492,7 @@ function App() {
                 path="/testimonialrewriter"
                 element={
                   <UserPage
+                    type="category"
                     path={"/testimonialrewriter"}
                     category={"Testimonial Rewriter"}
                     inputOne={true}
@@ -482,6 +513,7 @@ function App() {
                 path="/blogconclusion"
                 element={
                   <UserPage
+                    type="category"
                     path={"/blogconclusion"}
                     category={"Blog Conclusion"}
                     inputOne={true}
@@ -502,6 +534,7 @@ function App() {
                 path="/blogideas"
                 element={
                   <UserPage
+                    type="category"
                     path={"/blogideas"}
                     category={"Blog Ideas"}
                     inputOne={true}
@@ -518,6 +551,7 @@ function App() {
                 path="/blogintro"
                 element={
                   <UserPage
+                    type="category"
                     path={"/blogintro"}
                     category={"Blog Intro"}
                     inputOne={true}
@@ -538,6 +572,7 @@ function App() {
                 path="/blogoutline"
                 element={
                   <UserPage
+                    type="category"
                     path={"/blogoutline"}
                     category={"Blog Outline"}
                     inputOne={true}
@@ -558,6 +593,7 @@ function App() {
                 path="/blogtitle"
                 element={
                   <UserPage
+                    type="category"
                     path={"/blogtitle"}
                     category={"Blog Title"}
                     inputOne={true}
@@ -576,6 +612,7 @@ function App() {
                 path="/blogtitlelisticle"
                 element={
                   <UserPage
+                    type="category"
                     path={"/blogtitlelisticle"}
                     category={"Blog Title Listicle"}
                     inputOne={true}
@@ -594,6 +631,7 @@ function App() {
                 path="/bulletpointtoblogsection"
                 element={
                   <UserPage
+                    type="category"
                     path={"/bulletpointtoblogsection"}
                     category={"Bullet Point To Blog Section"}
                     inputOne={true}
@@ -612,6 +650,7 @@ function App() {
                 path="/keywordgenerator"
                 element={
                   <UserPage
+                    type="category"
                     path={"/keywordgenerator"}
                     category={"Keyword Generator"}
                     inputOne={true}
@@ -630,6 +669,7 @@ function App() {
                 path="/cancellationemail"
                 element={
                   <UserPage
+                    type="category"
                     path={"/cancellationemail"}
                     category={"Cancellation Email"}
                     inputOne={true}
@@ -648,6 +688,7 @@ function App() {
                 path="/emailsubjectlines"
                 element={
                   <UserPage
+                    type="category"
                     path={"/emailsubjectlines"}
                     category={"Email Subject Lines"}
                     inputOne={true}
@@ -666,6 +707,7 @@ function App() {
                 path="/confirmationemails"
                 element={
                   <UserPage
+                    type="category"
                     path={"/confirmationemails"}
                     category={"Confirmation Emails"}
                     inputOne={true}
@@ -684,6 +726,7 @@ function App() {
                 path="followupemail"
                 element={
                   <UserPage
+                    type="category"
                     path={"/followupemail"}
                     category={"Follow Up Email"}
                     inputOne={true}
@@ -702,6 +745,7 @@ function App() {
                 path="/thankyounote"
                 element={
                   <UserPage
+                    type="category"
                     path={"/thankyounote"}
                     category={"Thank You Note"}
                     inputOne={true}
@@ -720,6 +764,7 @@ function App() {
                 path="/welcomeemail"
                 element={
                   <UserPage
+                    type="category"
                     path={"/welcomeemail"}
                     category={"Welcome Email"}
                     inputOne={true}
@@ -736,6 +781,7 @@ function App() {
                 path="/add-emoji"
                 element={
                   <UserPage
+                    type="category"
                     path={"/add-emoji"}
                     category={"Add Emoji To List"}
                     inputOne={true}
@@ -754,6 +800,7 @@ function App() {
                 path="/bullet-points"
                 element={
                   <UserPage
+                    type="category"
                     path={"/bullet-points"}
                     category={"Bullet Points"}
                     inputOne={true}
@@ -770,6 +817,7 @@ function App() {
                 path="/carousel-post"
                 element={
                   <UserPage
+                    type="category"
                     path={"/carousel-post"}
                     category={"Carousel Post"}
                     inputOne={true}
@@ -788,6 +836,7 @@ function App() {
                 path="/youtube-ideas"
                 element={
                   <UserPage
+                    type="category"
                     path={"/youtube-ideas"}
                     category={"YouTube Ideas"}
                     inputOne={true}
@@ -806,6 +855,7 @@ function App() {
                 path="/hashtag-generator"
                 element={
                   <UserPage
+                    type="category"
                     path={"/hashtag-generator"}
                     category={"Hashtag Generator"}
                     inputOne={true}
@@ -824,6 +874,7 @@ function App() {
                 path="/hook-generator"
                 element={
                   <UserPage
+                    type="category"
                     path={"/hook-generator"}
                     category={"Hook Generator"}
                     inputOne={true}
@@ -842,6 +893,7 @@ function App() {
                 path="/instagram-caption"
                 element={
                   <UserPage
+                    type="category"
                     path={"/instagram-caption"}
                     category={"Instagram Caption"}
                     inputOne={true}
@@ -860,6 +912,7 @@ function App() {
                 path="/instagram-products"
                 element={
                   <UserPage
+                    type="category"
                     path={"/instagram-products"}
                     category={"Instagram Product Showcase"}
                     inputOne={true}
@@ -878,6 +931,7 @@ function App() {
                 path="/launchyourproduct"
                 element={
                   <UserPage
+                    type="category"
                     path={"/launchyourproduct"}
                     category={"Launch Your Product"}
                     inputOne={true}
@@ -896,6 +950,7 @@ function App() {
                 path="/relatable-experiences"
                 element={
                   <UserPage
+                    type="category"
                     path={"/relatable-experiences"}
                     category={"Relatable Experiences"}
                     inputOne={true}
@@ -914,6 +969,7 @@ function App() {
                 path="/short-texthook"
                 element={
                   <UserPage
+                    type="category"
                     path={"/short-texthook"}
                     category={"Short Text Hook"}
                     inputOne={true}
@@ -932,6 +988,7 @@ function App() {
                 path="/tiktok-brainstorm-topics"
                 element={
                   <UserPage
+                    type="category"
                     path={"/tiktok-brainstorm-topics"}
                     category={"TikTok Brainstorm Topics"}
                     inputOne={true}
@@ -948,6 +1005,7 @@ function App() {
                 path="/videocalltoaction"
                 element={
                   <UserPage
+                    type="category"
                     path={"/videocalltoaction"}
                     category={"Video Call To Action"}
                     inputOne={true}
@@ -966,6 +1024,7 @@ function App() {
                 path="/youtubedescriptionintro"
                 element={
                   <UserPage
+                    type="category"
                     path={"/youtubedescriptionintro"}
                     category={"YouTube Description Intro"}
                     inputOne={true}
@@ -984,6 +1043,7 @@ function App() {
                 path="/youtubevideotitle"
                 element={
                   <UserPage
+                    type="category"
                     path={"/youtubevideotitle"}
                     category={"YouTube Video Title"}
                     inputOne={true}
@@ -1002,6 +1062,7 @@ function App() {
                 path="/adjectiveaccelerator"
                 element={
                   <UserPage
+                    type="category"
                     path={"/adjectiveaccelerator"}
                     category={"Adjective Accelerator"}
                     inputOne={true}
@@ -1018,6 +1079,7 @@ function App() {
                 path="/analogygenerator"
                 element={
                   <UserPage
+                    type="category"
                     path={"/analogygenerator"}
                     category={"Analogy Generator"}
                     inputOne={true}
@@ -1036,6 +1098,7 @@ function App() {
                 path="/bulletpointtoparagraph"
                 element={
                   <UserPage
+                    type="category"
                     path={"/bulletpointtoparagraph"}
                     category={"Bullet Point To Paragraph"}
                     inputOne={true}
@@ -1054,6 +1117,7 @@ function App() {
                 path="/cliffhanger"
                 element={
                   <UserPage
+                    type="category"
                     path={"/cliffhanger"}
                     category={"Cliffhanger"}
                     inputOne={true}
@@ -1072,6 +1136,7 @@ function App() {
                 path="/essayintro"
                 element={
                   <UserPage
+                    type="category"
                     path={"/essayintro"}
                     category={"Essay Intro"}
                     inputOne={true}
@@ -1090,6 +1155,7 @@ function App() {
                 path="/essayoutline"
                 element={
                   <UserPage
+                    type="category"
                     path={"/essayoutline"}
                     category={"Essay Outline"}
                     inputOne={true}
@@ -1110,6 +1176,7 @@ function App() {
                 path="/herostoryintro"
                 element={
                   <UserPage
+                    type="category"
                     path={"/herostoryintro"}
                     category={"Hero Story Intro"}
                     inputOne={true}
@@ -1128,6 +1195,7 @@ function App() {
                 path="/herostoryvillain"
                 element={
                   <UserPage
+                    type="category"
                     path={"/herostoryvillain"}
                     category={"Hero Story Villain"}
                     inputOne={true}
@@ -1146,6 +1214,7 @@ function App() {
                 path="/passivetoactivevoice"
                 element={
                   <UserPage
+                    type="category"
                     path={"/passivetoactivevoice"}
                     category={"Passive To Active Voice"}
                     inputOne={true}
@@ -1164,6 +1233,7 @@ function App() {
                 path="/pressreleaseintros"
                 element={
                   <UserPage
+                    type="category"
                     path={"/pressreleaseintros"}
                     category={"Press Release Intros"}
                     inputOne={true}
@@ -1182,6 +1252,7 @@ function App() {
                 path="/rewritewithkeywords"
                 element={
                   <UserPage
+                    type="category"
                     path={"/rewritewithkeywords"}
                     category={"Rewrite With Keywords"}
                     inputOne={true}
@@ -1200,6 +1271,7 @@ function App() {
                 path="/sentencerewriter"
                 element={
                   <UserPage
+                    type="category"
                     path={"/sentencerewriter"}
                     category={"Sentence Rewriter"}
                     inputOne={true}
@@ -1218,6 +1290,7 @@ function App() {
                 path="/simplifysentences"
                 element={
                   <UserPage
+                    type="category"
                     path={"/simplifysentences"}
                     category={"Simplify Sentences"}
                     inputOne={true}
@@ -1236,6 +1309,7 @@ function App() {
                 path="/tonechanger"
                 element={
                   <UserPage
+                    type="category"
                     path={"/tonechanger"}
                     category={"Tone Changer"}
                     inputOne={true}
@@ -1254,6 +1328,7 @@ function App() {
                 path="/twosentencestories"
                 element={
                   <UserPage
+                    type="category"
                     path={"/twosentencestories"}
                     category={"Two Sentence Stories"}
                     inputOne={true}
@@ -1270,6 +1345,7 @@ function App() {
                 path="/verbbooster"
                 element={
                   <UserPage
+                    type="category"
                     path={"/verbbooster"}
                     category={"Verb Booster"}
                     inputOne={true}
@@ -1286,6 +1362,7 @@ function App() {
                 path="/growthideas"
                 element={
                   <UserPage
+                    type="category"
                     path={"/growthideas"}
                     category={"Growth Ideas"}
                     inputOne={true}
@@ -1304,6 +1381,7 @@ function App() {
                 path="/namegenerator"
                 element={
                   <UserPage
+                    type="category"
                     path={"/namegenerator"}
                     category={"Name Generator"}
                     inputOne={true}
@@ -1320,6 +1398,7 @@ function App() {
                 path="/nextproduct"
                 element={
                   <UserPage
+                    type="category"
                     path={"/nextproduct"}
                     category={"Next Product"}
                     inputOne={true}
@@ -1338,6 +1417,7 @@ function App() {
                 path="/startupideas"
                 element={
                   <UserPage
+                    type="category"
                     path={"/startupideas"}
                     category={"Startup Ideas"}
                     inputOne={true}
@@ -1354,6 +1434,7 @@ function App() {
                 path="/viralideas"
                 element={
                   <UserPage
+                    type="category"
                     path={"/viralideas"}
                     category={"Viral Ideas"}
                     inputOne={true}
@@ -1372,6 +1453,7 @@ function App() {
                 path="/birthdaycard"
                 element={
                   <UserPage
+                    type="category"
                     path={"/birthdaycard"}
                     category={"Birthday Card"}
                     inputOne={true}
@@ -1388,6 +1470,7 @@ function App() {
                 path="/clubhousebio"
                 element={
                   <UserPage
+                    type="category"
                     path={"/clubhousebio"}
                     category={"Clubhouse Bio"}
                     inputOne={true}
@@ -1406,6 +1489,7 @@ function App() {
                 path="/coverletter"
                 element={
                   <UserPage
+                    type="category"
                     path={"/coverletter"}
                     category={"Cover Letter"}
                     inputOne={true}
@@ -1424,6 +1508,7 @@ function App() {
                 path="/loveletter"
                 element={
                   <UserPage
+                    type="category"
                     path={"/loveletter"}
                     category={"Love Letter"}
                     inputOne={true}
@@ -1440,6 +1525,7 @@ function App() {
                 path="/resumebulletpoints"
                 element={
                   <UserPage
+                    type="category"
                     path={"/resumebulletpoints"}
                     category={"Resume Bullet Points"}
                     inputOne={true}
@@ -1458,6 +1544,7 @@ function App() {
                 path="/showerthoughts"
                 element={
                   <UserPage
+                    type="category"
                     path={"/showerthoughts"}
                     category={"Shower Thoughts"}
                     inputOne={true}
@@ -1474,6 +1561,7 @@ function App() {
                 path="/aida"
                 element={
                   <UserPage
+                    type="category"
                     category={"AIDA"}
                     inputOne={true}
                     inputOneTitle={"Describe your product/brand"}
@@ -1492,6 +1580,7 @@ function App() {
                 path="/bab"
                 element={
                   <UserPage
+                    type="category"
                     category={"BAB"}
                     inputOne={true}
                     inputOneTitle={"Describe your product/brand"}
@@ -1510,6 +1599,7 @@ function App() {
                 path="/features-to-benefits"
                 element={
                   <UserPage
+                    type="category"
                     category={"Features To Benefits"}
                     inputOne={true}
                     inputOneTitle={"What is the product/brand?"}
@@ -1528,6 +1618,7 @@ function App() {
                 path="/fab"
                 element={
                   <UserPage
+                    type="category"
                     category={"FAB"}
                     inputOne={true}
                     inputOneTitle={"Describe your product/brand"}
@@ -1546,6 +1637,7 @@ function App() {
                 path="/marketing-angles"
                 element={
                   <UserPage
+                    type="category"
                     category={"Marketing Angles"}
                     inputOne={true}
                     inputOneTitle={"Describe your product/brand"}
@@ -1564,6 +1656,7 @@ function App() {
                 path="/pas"
                 element={
                   <UserPage
+                    type="category"
                     category={"PAS"}
                     inputOne={true}
                     inputOneTitle={"Describe your product/brand"}
@@ -1582,6 +1675,7 @@ function App() {
                 path="/pppp"
                 element={
                   <UserPage
+                    type="category"
                     category={"PPPP"}
                     inputOne={true}
                     inputOneTitle={"Describe your product/brand"}
@@ -1600,6 +1694,7 @@ function App() {
                 path="/quest-copywriting"
                 element={
                   <UserPage
+                    type="category"
                     category={"QUEST Copywriting"}
                     inputOne={true}
                     inputOneTitle={"Describe your product/brand"}
