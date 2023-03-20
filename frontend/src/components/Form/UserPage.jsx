@@ -10,14 +10,11 @@ import { authenticate } from "../../helpers/authenticationStatus";
 import { useLocation } from "react-router-dom";
 import SidebarMobile from "../mobile-view/SidebarMobile";
 import { leftarrow } from "../../assets";
-<<<<<<< HEAD
 import ReactGA from 'react-ga';
-=======
 import MobileForm from "./mobileForm";
 import Form from "./form";
 import HistoryComponent from "../History/HistoryComponent";
 import MobileHistoryComponent from "../History/MobileHistoryComponent";
->>>>>>> feature/jason
 
 function Dummy(props) {
   const [isAuthenticated, setAuthenticated] = useState(true);
@@ -36,35 +33,6 @@ function Dummy(props) {
     });
   }, [location.pathname]);
 
-<<<<<<< HEAD
-  function copyToAllClipboard(data) {
-    let clipboardData = "";
-    data.map((item, i) => {
-      i = i + 1;
-      clipboardData += `Result #` + i + ":\n" + item.text.trim() + `\n\n`;
-    });
-
-    // clipboardData.
-    navigator.clipboard.writeText(clipboardData.trim());
-    setAllCopied(true);
-    const timer = setTimeout(() => {
-      setAllCopied(false);
-    }, 2000);
-    return () => clearTimeout(timer);
-  }
-
-  let path = window.location.href.substring(window.location.origin.length);
-
-  async function handleSubmit(path, text, i) {
-    ReactGA.event({
-      category:path,
-      action:"test",
-      label:"test"
-    })
-    
-    if (text == null) {
-      setLoading(true);
-=======
   const selectComponent = () => {
     console.log(props.type);
     switch (props.type) {
@@ -109,7 +77,6 @@ function Dummy(props) {
         return <MobileHistoryComponent />;
       default:
         return <></>;
->>>>>>> feature/jason
     }
   };
 
