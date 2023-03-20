@@ -74,7 +74,7 @@ function Signin() {
     let passwordInput = document.createElement("input");
 
     form.method = "POST";
-    form.action = "http://localhost:3000/auth/local";
+    form.action = "/auth/local";
     form.target = "stay";
 
     emailInput.value = email;
@@ -127,23 +127,17 @@ function Signin() {
                 </p>
               </Grid>
               <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
-                <a
-                  className="google-btn"
-                  href="http://localhost:3000/auth/google"
-                >
+                <a className="google-btn" href="/auth/google">
                   <img src={googleIcon} alt={"Signin with Google."}></img>
                 </a>
               </Grid>
               <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
-                <a
-                  className="facebook-btn"
-                  href="http://localhost:3000/auth/facebook"
-                >
+                <a className="facebook-btn" href="/auth/facebook">
                   <img src={facebookIcon} alt={"Signin with Facebook."}></img>
                 </a>
               </Grid>
               {/* <Grid item xs={4} sm={4} md={4} lg={4} xl={4}>
-              <a className="apple-btn" href="http://localhost:3000/auth/apple">
+              <a className="apple-btn" href="https://aiprodcopywriter.herokuapp.com/auth/apple">
                 <img src={appleIcon} alt={"Signin with Apple."}></img>
               </a>
             </Grid> */}

@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, Navigate } from "react-router-dom";
 import catagoryList from "../../components/json/category-list.json";
 import Dropdown from "react-bootstrap/Dropdown";
 import Accordion from "react-bootstrap/Accordion";
@@ -9,6 +9,14 @@ import { Grid } from "@mui/material";
 import { footerlogo } from "../../assets";
 
 function SidebarMobile({ closeMenu }) {
+  async function handleLogout() {
+    let result = await fetch("/auth/logout", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  }
   return (
     <>
       <div className="sidebar-mobile-wrapper">
@@ -55,10 +63,10 @@ function SidebarMobile({ closeMenu }) {
               </Accordion>
             );
           })}
-          <Link to="http://localhost:3000/auth/logout" className="home-btn">
+          <button className="home-btn" onClick={() => handleLogout()}>
             {" "}
             Logout
-          </Link>
+          </button>
         </div>
       </div>
       <div className="footer">

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import HomeIcon from "@mui/icons-material/Home";
@@ -16,6 +16,14 @@ import Card from "react-bootstrap/Card";
 import { GiHamburgerMenu } from "react-icons/gi";
 
 function SidebarMenu() {
+  function handleLogout() {
+    fetch("/auth/logout", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  }
   return (
     <>
       <div className="side-bar-wrapper">
@@ -51,10 +59,9 @@ function SidebarMenu() {
               </Accordion>
             );
           })}
-          <Link to="http://localhost:3000/auth/logout" className="home-btn">
-            {" "}
+          <button className="home-btn" onClick={() => handleLogout()}>
             Logout
-          </Link>
+          </button>
         </div>
       </div>
       {/* <div className="hamburger-menu">

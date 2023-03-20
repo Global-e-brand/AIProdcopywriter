@@ -1,5 +1,7 @@
 export const isEmailValid = async (email) => {
-  return await fetch("http://localhost:3000/email/verify-email?email=" + email)
+  return await fetch(
+    "https://aiprodcopywriter.herokuapp.com/email/verify-email?email=" + email
+  )
     .then(async (raw) => {
       const data = await raw.json();
 

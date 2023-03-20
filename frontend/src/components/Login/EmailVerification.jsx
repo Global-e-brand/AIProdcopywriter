@@ -22,7 +22,7 @@ function EmailVerification(props) {
     if (isValid) {
       setAlertVisibility(false);
 
-      await fetch("http://localhost:3000/email/send-otp", {
+      await fetch("/email/send-otp", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
