@@ -73,8 +73,9 @@ function Signin() {
     let emailInput = document.createElement("input");
     let passwordInput = document.createElement("input");
 
+    let host = window.location.hostname;
     form.method = "POST";
-    form.action = "/auth/local";
+    form.action = `/auth/local?host=${host}`;
     form.target = "stay";
 
     emailInput.value = email;
@@ -126,7 +127,7 @@ function Signin() {
                   Create the perfect description for your needs
                 </p>
               </Grid>
-              <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
+              {/* <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
                 <a className="google-btn" href="/auth/google">
                   <img src={googleIcon} alt={"Signin with Google."}></img>
                 </a>
@@ -135,14 +136,14 @@ function Signin() {
                 <a className="facebook-btn" href="/auth/facebook">
                   <img src={facebookIcon} alt={"Signin with Facebook."}></img>
                 </a>
-              </Grid>
+              </Grid> */}
               {/* <Grid item xs={4} sm={4} md={4} lg={4} xl={4}>
               <a className="apple-btn" href="https://aiprodcopywriter.herokuapp.com/auth/apple">
                 <img src={appleIcon} alt={"Signin with Apple."}></img>
               </a>
             </Grid> */}
             </Grid>
-            <Grid container direction="row" columns={20} alignItems="center">
+            {/* <Grid container direction="row" columns={20} alignItems="center">
               <Grid item xs={9} sm={9} md={9} lg={9} xl={9}>
                 <div className="line"></div>
               </Grid>
@@ -152,7 +153,7 @@ function Signin() {
               <Grid item xs={9} sm={9} md={9} lg={9} xl={9}>
                 <div className="line"></div>
               </Grid>
-            </Grid>
+            </Grid> */}
             <Grid container direction="row" justifyContent="space-between">
               <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                 {alertVisibility && (

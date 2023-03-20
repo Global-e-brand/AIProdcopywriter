@@ -16,8 +16,8 @@ function EmailVerification(props) {
 
   const sendCode = async () => {
     setCodeSent(true);
-
-    const isValid = await isEmailValid(props.email);
+    let host = window.location.hostname;
+    const isValid = await isEmailValid(props.email, host);
 
     if (isValid) {
       setAlertVisibility(false);
