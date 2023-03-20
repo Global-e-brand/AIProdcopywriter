@@ -28,7 +28,7 @@ function Signin() {
       setOpen(true);
 
       // the following is used to prevent page refreshes from
-      // re-rendering the "successful account registeration"
+      // re-rendering the "successful account registration"
       // snackbar
       navigate("/login", {
         state: { message: location?.state?.message },
