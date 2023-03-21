@@ -2,13 +2,12 @@ import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Grid, Button } from "@mui/material";
 import Loader from "../loader/loader";
+import {
+  copyToAllClipboard,
+  copyToClipboard,
+} from "../../helpers/copyFunctions";
 
 function Form(props) {
-  const [tone, setTone] = useState("Friendly");
-  const [inputOne, setInputOne] = useState("");
-  const [inputTwo, setInputTwo] = useState("");
-  const [data, setData] = useState();
-  const [loading, setLoading] = useState(false);
   const [Copied, setCopied] = useState();
   const [AllCopied, setAllCopied] = useState();
   const [singleContent, setSingleContent] = useState();
@@ -16,39 +15,11 @@ function Form(props) {
   const navigate = useNavigate();
   const textAreaRef = useRef(null);
 
-  function copyToClipboard(item, i) {
-    let clipboardData = "";
-    i = i + 1;
-    clipboardData += item.text.trim();
-    navigator.clipboard.writeText(clipboardData);
-    setCopied(i);
-    const timer = setTimeout(() => {
-      setCopied(false);
-    }, 2000);
-    return () => clearTimeout(timer);
-  }
-
-  function copyToAllClipboard(data) {
-    let clipboardData = "";
-    data.map((item, i) => {
-      i = i + 1;
-      clipboardData += `Result #` + i + ":\n" + item.text.trim() + `\n\n`;
-    });
-
-    // clipboardData.
-    navigator.clipboard.writeText(clipboardData.trim());
-    setAllCopied(true);
-    const timer = setTimeout(() => {
-      setAllCopied(false);
-    }, 2000);
-    return () => clearTimeout(timer);
-  }
-
   let path = window.location.href.substring(window.location.origin.length);
 
   async function handleSubmit(path, text, i) {
     if (text == null) {
-      setLoading(true);
+      props.states.setLoading(true);
     }
 
     if (text != null) {
@@ -71,13 +42,13 @@ function Form(props) {
       },
       body: JSON.stringify({
         category: props.category,
-        inputOneBool: props.inputOne,
-        inputTwoBool: props.inputTwo,
-        inputThreeBool: props.toneInput,
-        inputOne: inputOne,
-        inputTwo: inputTwo,
-        tone: tone,
-        data: `${inputOne}`,
+        inputOneBool: props.inputOneActive,
+        inputTwoBool: props.inputTwoActive,
+        inputThreeBool: props.toneInputActive,
+        inputOne: props.states.inputOne,
+        inputTwo: props.states.inputTwo,
+        tone: props.states.tone,
+        data: `${props.states.inputOne}`,
         single_content: text,
       }),
     });
@@ -86,10 +57,10 @@ function Form(props) {
     if (response?.authenticated === false) {
       navigate("/login");
     }
-    setData(response);
+    props.states.setData(response);
 
     if (text == null) {
-      setLoading(false);
+      props.states.setLoading(false);
     }
 
     if (text != null) {
@@ -98,7 +69,7 @@ function Form(props) {
   }
 
   const handleTone = (e) => {
-    setTone(e);
+    props.states.setTone(e);
   };
 
   return (
@@ -112,21 +83,20 @@ function Form(props) {
               <strong>{props.inputOneTitle}</strong>
             </h5>
             <textarea
-              value={inputOne}
-              onChange={(e) => setInputOne(e.target.value)}
+              value={props.states.inputOne}
+              onChange={(e) => props.states.setInputOne(e.target.value)}
               placeholder={props.placeholderOne}
             />
-            {/* {console.log(inputOne, inputTwo, tone)} */}
           </div>
-          {props.inputTwo ? (
+          {props.inputTwoActive ? (
             <div className="input_one">
               <h5>
                 <strong>{props.inputTwoTitle}</strong>
               </h5>
 
               <textarea
-                value={inputTwo}
-                onChange={(e) => setInputTwo(e.target.value)}
+                value={props.states.inputTwo}
+                onChange={(e) => props.states.setInputTwo(e.target.value)}
                 placeholder={props.placeholderTwo}
               />
             </div>
@@ -134,7 +104,7 @@ function Form(props) {
             <></>
           )}
 
-          {props.toneInput ? (
+          {props.toneInputActive ? (
             <div className="input_three">
               <h5>
                 <strong>Select a tone</strong>
@@ -143,7 +113,9 @@ function Form(props) {
                 <Grid item xs={3} sm={3} md={3}>
                   <Button
                     className={
-                      tone == "Friendly" ? "tone-btn-selected" : "tone-btn"
+                      props.states.tone == "Friendly"
+                        ? "tone-btn-selected"
+                        : "tone-btn"
                     }
                     onClick={(e) => handleTone("Friendly")}
                   >
@@ -153,7 +125,9 @@ function Form(props) {
                 <Grid item xs={3} sm={3} md={3}>
                   <Button
                     className={
-                      tone == "Professional" ? "tone-btn-selected" : "tone-btn"
+                      props.states.tone == "Professional"
+                        ? "tone-btn-selected"
+                        : "tone-btn"
                     }
                     onClick={(e) => handleTone("Professional")}
                   >
@@ -163,7 +137,9 @@ function Form(props) {
                 <Grid item xs={3} sm={3} md={3}>
                   <Button
                     className={
-                      tone == "Empathetic" ? "tone-btn-selected" : "tone-btn"
+                      props.states.tone == "Empathetic"
+                        ? "tone-btn-selected"
+                        : "tone-btn"
                     }
                     onClick={(e) => handleTone("Empathetic")}
                   >
@@ -173,7 +149,9 @@ function Form(props) {
                 <Grid item xs={3} sm={3} md={3}>
                   <Button
                     className={
-                      tone == "Bold" ? "tone-btn-selected" : "tone-btn"
+                      props.states.tone == "Bold"
+                        ? "tone-btn-selected"
+                        : "tone-btn"
                     }
                     onClick={(e) => handleTone("Bold")}
                   >
@@ -189,7 +167,7 @@ function Form(props) {
           <div className="submitButton">
             <button
               onClick={() => handleSubmit(path, null)}
-              disabled={loading}
+              disabled={props.states.loading}
               variant="contained"
             >
               Submit
@@ -207,17 +185,19 @@ function Form(props) {
           </h2>
         </div>
         {/* {console.log("data",data)} */}
-        {loading ? (
+        {props.states.loading ? (
           <Loader />
         ) : (
           <>
-            {data != undefined ? (
+            {props.states.data != undefined ? (
               <>
                 <Grid container>
                   <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                     <button
                       className="cpyall-btn"
-                      onClick={() => copyToAllClipboard(data)}
+                      onClick={() =>
+                        copyToAllClipboard(props.states.data, setAllCopied)
+                      }
                     >
                       Copy All
                     </button>
@@ -234,7 +214,7 @@ function Form(props) {
                 </Grid>
 
                 <div className="output-container">
-                  {data.map((item, i) => {
+                  {props.states.data.map((item, i) => {
                     return (
                       <>
                         <div className="output-layout">
@@ -267,7 +247,9 @@ function Form(props) {
                               <div className="hd-cp">
                                 <button
                                   className="cpy-btn"
-                                  onClick={() => copyToClipboard(item, i)}
+                                  onClick={() =>
+                                    copyToClipboard(item, i, setCopied)
+                                  }
                                 >
                                   Copy
                                 </button>
