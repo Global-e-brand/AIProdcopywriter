@@ -17,14 +17,8 @@ function Form(props) {
 
   let path = window.location.href.substring(window.location.origin.length);
 
-  async function handleSubmit(path, text, i) {
-    if (text == null) {
-      props.states.setLoading(true);
-    }
-
-    if (text != null) {
-      setSingleContent(i);
-    }
+  async function handleSubmit(path) {
+    props.states.setLoading(true);
 
     // let checkPayment = await fetch("/checkpayment", {
     //   method: "GET",
@@ -49,7 +43,6 @@ function Form(props) {
         inputTwo: props.states.inputTwo,
         tone: props.states.tone,
         data: `${props.states.inputOne}`,
-        single_content: text,
       }),
     });
     let response = await res.json();
@@ -59,14 +52,34 @@ function Form(props) {
     }
     props.states.setData(response);
 
-    if (text == null) {
-      props.states.setLoading(false);
+    props.states.setLoading(false);
+  }
+
+  const handleSave = async (text, i) => {
+    setSingleContent(i);
+
+    let res = await fetch("/content/create", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        category: props.category,
+        inputOne: props.states.inputOne,
+        inputTwo: props.states.inputTwo,
+        tone: props.states.tone,
+        data: props.states.data,
+        single_content: text,
+      }),
+    });
+    let response = await res.json();
+
+    if (response?.authenticated === false) {
+      navigate("/login");
     }
 
-    if (text != null) {
-      setSingleContent(false);
-    }
-  }
+    setSingleContent(false);
+  };
 
   const handleTone = (e) => {
     props.states.setTone(e);
@@ -166,7 +179,7 @@ function Form(props) {
 
           <div className="submitButton">
             <button
-              onClick={() => handleSubmit(path, null)}
+              onClick={() => handleSubmit(path)}
               disabled={props.states.loading}
               variant="contained"
             >
@@ -224,7 +237,7 @@ function Form(props) {
                                 <button
                                   className="cpy-btn"
                                   onClick={() =>
-                                    handleSubmit(path, item.text.trim(), i + 1)
+                                    handleSave(item.text.trim(), i + 1)
                                   }
                                 >
                                   Save

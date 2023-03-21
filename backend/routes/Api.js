@@ -26,7 +26,6 @@ apirouter.post("/calltoaction", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -37,7 +36,6 @@ apirouter.post("/eventcopy", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -48,7 +46,6 @@ apirouter.post("/landingpageherotext", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -59,7 +56,6 @@ apirouter.post("/listicle", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -70,7 +66,6 @@ apirouter.post("/metadescription", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -81,7 +76,6 @@ apirouter.post("/microcopy", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -92,7 +86,6 @@ apirouter.post("/questiongenerator", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -103,7 +96,6 @@ apirouter.post("/socialprooftext", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -114,7 +106,6 @@ apirouter.post("/subheader", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -125,7 +116,6 @@ apirouter.post("/testimonialrewriter", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -136,7 +126,6 @@ apirouter.post("/blogconclusion", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -147,7 +136,6 @@ apirouter.post("/blogideas", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -158,7 +146,6 @@ apirouter.post("/blogintro", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -169,7 +156,6 @@ apirouter.post("/blogoutline", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -180,7 +166,6 @@ apirouter.post("/blogtitle", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -191,7 +176,6 @@ apirouter.post("/blogtitlelisticle", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -205,7 +189,6 @@ apirouter.post(
       inputThree: req.body.inputThreeBool,
     });
     const response = await getGPTResponse(prompt);
-    await createContent(req, response);
     res.send(response);
   }
 );
@@ -217,7 +200,6 @@ apirouter.post("/keywordgenerator", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -228,7 +210,6 @@ apirouter.post("/cancellationemail", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -239,7 +220,6 @@ apirouter.post("/emailsubjectlines", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -250,7 +230,6 @@ apirouter.post("/confirmationemails", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -261,7 +240,6 @@ apirouter.post("/followupemail", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -272,7 +250,6 @@ apirouter.post("/thankyounote", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -283,7 +260,6 @@ apirouter.post("/welcomeemail", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -294,7 +270,6 @@ apirouter.post("/adcopyvariants", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -305,7 +280,6 @@ apirouter.post("/facebookheadlines", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -319,7 +293,6 @@ apirouter.post(
       inputThree: req.body.inputThreeBool,
     });
     const response = await getGPTResponse(prompt);
-    await createContent(req, response);
     res.send(response);
   }
 );
@@ -331,7 +304,6 @@ apirouter.post("/facebooklisticle", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 apirouter.post("/facebookprimarytext", async (req, res) => {
@@ -341,7 +313,6 @@ apirouter.post("/facebookprimarytext", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -352,7 +323,6 @@ apirouter.post("/generaladcopy", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -363,7 +333,6 @@ apirouter.post("/googledescriptions", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -374,7 +343,6 @@ apirouter.post("/googleheadlines", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 apirouter.post("/linkedinadcopy", async (req, res) => {
@@ -384,7 +352,6 @@ apirouter.post("/linkedinadcopy", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -395,7 +362,6 @@ apirouter.post("/audiencerefiner", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -406,7 +372,6 @@ apirouter.post("/brandmission", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -417,7 +382,6 @@ apirouter.post("/brandvoice", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -428,7 +392,6 @@ apirouter.post("/mottogenerator", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -439,7 +402,6 @@ apirouter.post("/valueproposition", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -453,7 +415,7 @@ apirouter.post("/productdescription", async (req, res) => {
 
   const response = await getGPTResponse(prompt);
   console.log("response_456", response);
-  await createContent(req, response);
+
   res.send(response);
 });
 
@@ -464,7 +426,6 @@ apirouter.post("/add-emoji", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -475,7 +436,6 @@ apirouter.post("/bullet-points", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -486,7 +446,6 @@ apirouter.post("/carousel-post", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -497,7 +456,6 @@ apirouter.post("/youtube-ideas", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -508,7 +466,6 @@ apirouter.post("/hashtag-generator", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -519,7 +476,6 @@ apirouter.post("/hook-generator", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -530,7 +486,6 @@ apirouter.post("/instagram-caption", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -541,7 +496,6 @@ apirouter.post("/instagram-products", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -552,7 +506,6 @@ apirouter.post("/launchyourproduct", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -566,7 +519,6 @@ apirouter.post(
       inputThree: req.body.inputThreeBool,
     });
     const response = await getGPTResponse(prompt);
-    await createContent(req, response);
     res.send(response);
   }
 );
@@ -578,7 +530,6 @@ apirouter.post("/short-texthook", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -592,7 +543,6 @@ apirouter.post(
       inputThree: req.body.inputThreeBool,
     });
     const response = await getGPTResponse(prompt);
-    await createContent(req, response);
     res.send(response);
   }
 );
@@ -604,7 +554,6 @@ apirouter.post("/videocalltoaction", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -618,7 +567,6 @@ apirouter.post(
       inputThree: req.body.inputThreeBool,
     });
     const response = await getGPTResponse(prompt);
-    await createContent(req, response);
     res.send(response);
   }
 );
@@ -630,7 +578,6 @@ apirouter.post("/youtubevideotitle", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -641,7 +588,6 @@ apirouter.post("/adjectiveaccelerator", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -652,7 +598,6 @@ apirouter.post("/analogygenerator", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -666,7 +611,6 @@ apirouter.post(
       inputThree: req.body.inputThreeBool,
     });
     const response = await getGPTResponse(prompt);
-    await createContent(req, response);
     res.send(response);
   }
 );
@@ -678,7 +622,6 @@ apirouter.post("/cliffhanger", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -689,7 +632,6 @@ apirouter.post("/essayintro", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -700,7 +642,6 @@ apirouter.post("/essayoutline", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -711,7 +652,6 @@ apirouter.post("/herostoryintro", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -722,7 +662,6 @@ apirouter.post("/herostoryvillain", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -733,7 +672,6 @@ apirouter.post("/passivetoactivevoice", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -744,7 +682,6 @@ apirouter.post("/pressreleaseintros", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 apirouter.post("/rewritewithkeywords", async (req, res) => {
@@ -754,7 +691,6 @@ apirouter.post("/rewritewithkeywords", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -765,7 +701,6 @@ apirouter.post("/sentencerewriter", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -776,7 +711,6 @@ apirouter.post("/simplifysentences", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -787,7 +721,6 @@ apirouter.post("/tonechanger", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -798,7 +731,6 @@ apirouter.post("/twosentencestories", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -809,7 +741,6 @@ apirouter.post("/verbbooster", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -820,7 +751,6 @@ apirouter.post("/growthideas", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -831,7 +761,6 @@ apirouter.post("/namegenerator", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -842,7 +771,6 @@ apirouter.post("/nextproduct", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -853,7 +781,6 @@ apirouter.post("/startupideas", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -864,7 +791,6 @@ apirouter.post("/viralideas", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -875,8 +801,6 @@ apirouter.post("/birthdaycard", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -887,7 +811,6 @@ apirouter.post("/clubhousebio", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -898,7 +821,6 @@ apirouter.post("/coverletter", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -909,7 +831,6 @@ apirouter.post("/loveletter", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -920,7 +841,6 @@ apirouter.post("/resumebulletpoints", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -931,7 +851,6 @@ apirouter.post("/showerthoughts", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -942,7 +861,6 @@ apirouter.post("/aida", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -953,7 +871,6 @@ apirouter.post("/bab", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -964,7 +881,6 @@ apirouter.post("/features-to-benefits", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -975,7 +891,6 @@ apirouter.post("/fab", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -986,7 +901,6 @@ apirouter.post("/marketing-angles", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -997,7 +911,6 @@ apirouter.post("/pas", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -1008,7 +921,6 @@ apirouter.post("/pppp", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
@@ -1019,7 +931,6 @@ apirouter.post("/quest-copywriting", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  await createContent(req, response);
   res.send(response);
 });
 
