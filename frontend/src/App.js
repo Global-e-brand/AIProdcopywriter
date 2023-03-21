@@ -1,22 +1,29 @@
 import "./App.css";
 import Grid from "@mui/material/Grid";
-import { useLocation, Routes, Route, Navigate, Link, BrowserRouter } from "react-router-dom";
+import {
+  useLocation,
+  Routes,
+  Route,
+  Navigate,
+  Link,
+  BrowserRouter,
+} from "react-router-dom";
 import UserPage from "./components/Form/UserPage";
 import HomePage from "./components/home/HomePage";
 import CreateAccount from "./components/Login/CreateAccount";
 import Signin from "./components/Login/Signin";
 import ForgotPassword from "./components/Login/ForgotPassword";
 import PaymentNew from "./components/payment/PaymentNew";
-import ReactGA from 'react-ga';
+import ReactGA from "react-ga";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 
-const TRACKING_ID = "G-TZ130WGSG9"; 
+const TRACKING_ID = "G-TZ130WGSG9";
 ReactGA.initialize(TRACKING_ID);
 
 function App() {
   const location = useLocation();
   ReactGA.pageview(location.pathname);
-  
+
   return (
     <>
       <div className="App">
@@ -24,7 +31,7 @@ function App() {
           <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
             <div className="logo-panel-wrapper"></div>
             <Routes>
-              <Route path="/" element={<Navigate replace to="/login" />} />
+              <Route path="/" element={<Navigate replace to="/home" />} />
               <Route path="/home" element={<HomePage />} />
               <Route
                 path="/history"

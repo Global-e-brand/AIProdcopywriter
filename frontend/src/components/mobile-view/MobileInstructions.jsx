@@ -4,11 +4,11 @@ import "../mobile-view/mobileinstruction.css";
 function MobileInstructions() {
   return (
     <div className="instruction-carousel1">
-      <Carousel>
+      <Carousel variant="dark" interval={null}>
         <Carousel.Item>
-          <h4 className="instruction-title">#1 Step</h4>
-          <h6 className="instruction-desc">
-            Go to the main page. Select a category of your choice.
+          <h4 className="instruction-title-mobile">Step #1</h4>
+          <h6 className="instruction-desc-mobile">
+            Go to the main page and select a category.
           </h6>
 
           {/* <Carousel.Caption>
@@ -17,15 +17,15 @@ function MobileInstructions() {
           </Carousel.Caption> */}
         </Carousel.Item>
         <Carousel.Item>
-          <h4 className="instruction-title">#2 Step</h4>
-          <h6 className="instruction-desc">
-            Answer the following questions. Set the tone.
+          <h4 className="instruction-title-mobile">Step #2</h4>
+          <h6 className="instruction-desc-mobile">
+            Answer the questions. Set the Tone.
           </h6>
         </Carousel.Item>
-        <Carousel.Item>
-          <h4 className="instruction-title">#3 Step</h4>
-          <h6 className="instruction-desc">
-            Hit the Create Content button. Boom!!
+        <Carousel.Item className="test">
+          <h4 className="instruction-title-mobile">Step #3</h4>
+          <h6 className="instruction-desc-mobile">
+            Hit the SUBMIT button. Boom!!
           </h6>
         </Carousel.Item>
       </Carousel>

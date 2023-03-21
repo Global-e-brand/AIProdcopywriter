@@ -4,30 +4,32 @@
   }
   .instruction-carousel1 {
     display: block !important;
+    filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.25));
   }
-  .instruction-title {
+  .instruction-title-mobile {
     background: #b5d3ff;
     height: 38px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    min-height: fit-content;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 28px;
     font-weight: 600;
     border-radius: 10px 10px 0px 0px;
-    /* filter: drop-shadow(5px 5px 20px rgba(0, 0, 0, 0.5)) !important; */
+    margin: 0;
+    padding-bottom: 5px;
   }
-  .instruction-desc {
-    filter: drop-shadow(5px 5px 20px rgba(0, 0, 0, 0.5)) !important;
-    background: #b5d3ff;
-    border-radius: 5px;
+  .instruction-desc-mobile {
+    background: #99bdf4;
+    border-radius: 0px 0px 10px 10px;
     height: 163px;
-    margin-top: -2%;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 22px;
     font-weight: 600;
+    padding: 0 40px;
+    margin: 0;
   }
 }
 

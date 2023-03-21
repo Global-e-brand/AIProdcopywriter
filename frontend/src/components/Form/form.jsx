@@ -70,6 +70,7 @@ function Form(props) {
         tone: props.states.tone,
         data: props.states.data,
         single_content: text,
+        multiple_content: [],
       }),
     });
     let response = await res.json();

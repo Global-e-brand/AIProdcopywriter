@@ -43,67 +43,85 @@ function HomePage() {
 
   return (
     <>
-      {isAuthenticated ? (
-        <div className="bg-image-mobile homepage">
-          <Grid container spacing={2} columns={16}>
-            <Grid item sm={16} md={6} className="robot-img-homepage">
-              <img
-                className="robot-img"
-                src={robot}
-            alt="CreativeAI robot mascot"
-              />
-            </Grid>
-            <Grid item sm={16} md={10}>
+      <div className="bg-image-mobile homepage">
+        <Grid
+          container
+          spacing={2}
+          columns={16}
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Grid item xs={16} sm={5} className="robot-img-homepage">
+            <img
+              className="robot-img"
+              src={robot}
+              alt="CreativeAI robot mascot"
+            />
+          </Grid>
+          <Grid item xs={16} sm={11} alignItems="center">
+            <div className="homepage-info-section">
               <div>
                 <img
                   className="robot-logo"
                   src={fulllogo}
-              alt=" creativewriter.ai logo"
+                  alt=" creativewriter.ai logo"
                 />
               </div>
 
               <div>
-            <h2 className="welcome">Welcome to creativewriter.ai!</h2>
+                <h2 className="welcome">Welcome to creativewriter.ai!</h2>
               </div>
 
               <div>
                 <p className="subheader">
-              Create the perfect content for your needs!
+                  Create the perfect content for your needs!
                 </p>
               </div>
 
               <div className="content-homepage">
-                <p className="description" aria-expanded={!swap}>
+                <p className="description-mobile" aria-expanded={!swap}>
                   {swap ? description : <MobileInstructions />}
                 </p>
-                {/* <p>{description}</p> */}
+
+                <p className="description">{description}</p>
 
                 <Grid container spacing={2} columns={16}>
-                  <Grid item xs={8} sm={16} md={8}>
+                  <Grid item xs={16} sm={16} md={8}>
                     <button
                       onClick={() => instructions()}
                       className="infobutton"
                     >
                       Instructions
                     </button>
-                    {showModel && <InstructionModal closeModal={closeModal} />}
+                    {showModel && (
+                      <InstructionModal
+                        closeModal={closeModal}
+                        enableLink={true}
+                        linkValue={isAuthenticated ? "Skip" : "Get Started"}
+                        linkTarget={
+                          isAuthenticated ? "/productdescription" : "/login"
+                        }
+                      />
+                    )}
                   </Grid>
 
-                  <Grid item xs={8} sm={16} md={8}>
-                    <Link to="/productdescription">
-                      <button className="skipbutton">Skip</button>
-                    </Link>
+                  <Grid item xs={16} sm={16} md={8}>
+                    {isAuthenticated ? (
+                      <Link to="/productdescription">
+                        <button className="skipbutton">Skip</button>
+                      </Link>
+                    ) : (
+                      <Link to="/login">
+                        <button className="skipbutton">Get Started</button>
+                      </Link>
+                    )}
                   </Grid>
                 </Grid>
               </div>
-            </Grid>
+            </div>
           </Grid>
-        </div>
-      ) : isAuthenticated === undefined ? (
-        ""
-      ) : (
-        <Navigate to="/login" />
-      )}
+        </Grid>
+      </div>
     </>
   );
 }
