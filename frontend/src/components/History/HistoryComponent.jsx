@@ -36,8 +36,8 @@ const HistoryComponent = () => {
   const txt_msg = {
     today: "Today",
     yesterday: "Yesterday",
-    thisweek: "ThisWeek",
-    lastweek: "Lastweek",
+    thisweek: "This Week",
+    lastweek: "Last Week",
     category: "Category",
     input_one: "Input One",
     input_two: "Input Two",

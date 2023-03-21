@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Grid, Button } from "@mui/material";
 import Loader from "../loader/loader";
+import ReactGA from "react-ga";
 
 function Form(props) {
   const [tone, setTone] = useState("Friendly");
@@ -47,6 +48,12 @@ function Form(props) {
   let path = window.location.href.substring(window.location.origin.length);
 
   async function handleSubmit(path, text, i) {
+    ReactGA.event({
+      category: path,
+      action: "test",
+      label: "desktop-test",
+    });
+
     if (text == null) {
       setLoading(true);
     }

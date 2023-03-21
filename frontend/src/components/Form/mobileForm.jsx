@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Grid, Button } from "@mui/material";
 import Loader from "../loader/loader";
 import { leftarrow } from "../../assets";
+import ReactGA from "react-ga";
 
 function MobileForm(props) {
   const [tone, setTone] = useState("Friendly");
@@ -49,6 +50,11 @@ function MobileForm(props) {
   let path = window.location.href.substring(window.location.origin.length);
 
   async function handleSubmit(path, text, i) {
+    ReactGA.event({
+      category: path,
+      action: "test",
+      label: "mobile-test",
+    });
     if (text == null) {
       setLoading(true);
     }
