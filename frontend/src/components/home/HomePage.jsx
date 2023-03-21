@@ -44,13 +44,7 @@ function HomePage() {
   return (
     <>
       <div className="bg-image-mobile homepage">
-        <Grid
-          container
-          spacing={2}
-          columns={16}
-          justifyContent="center"
-          alignItems="center"
-        >
+        <Grid container spacing={2} columns={16}>
           <Grid item xs={16} sm={5} className="robot-img-homepage">
             <img
               className="robot-img"
