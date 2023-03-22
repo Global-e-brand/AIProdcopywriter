@@ -12,11 +12,15 @@ import { dirname } from "path";
 import passport from "passport";
 import session from "express-session";
 import userController from "./controllers/user.controller.js";
-import {contentHistory, createContent} from "./controllers/content.controller.js";
+import {
+  contentHistory,
+  createContent,
+} from "./controllers/content.controller.js";
 import emailController from "./controllers/email.controller.js";
 import bodyParser from "body-parser";
 import { getUserId } from "./general/common.function.js";
 import checkTrial from "./controllers/checkTrial.js";
+import contentRouter from "./routes/Content.js";
 
 dotenv.config();
 
@@ -77,10 +81,7 @@ app.use("/payment", paymentRouter);
 
 app.use("/user", userController);
 
-app.get("/content/history", async (req, res) => {
-  let contentHistoryData = await contentHistory(req);
-  res.json(contentHistoryData);
-});
+app.use("/content", contentRouter);
 
 app.use("/email", emailController);
 

@@ -10,7 +10,7 @@ import { authenticate } from "../../helpers/authenticationStatus";
 import { useLocation } from "react-router-dom";
 import SidebarMobile from "../mobile-view/SidebarMobile";
 import { leftarrow } from "../../assets";
-import ReactGA from 'react-ga';
+import ReactGA from "react-ga";
 import MobileForm from "./mobileForm";
 import Form from "./form";
 import HistoryComponent from "../History/HistoryComponent";
@@ -20,6 +20,11 @@ function Dummy(props) {
   const [isAuthenticated, setAuthenticated] = useState(true);
   const [showMenu, setShowMenu] = useState(false);
   const [isPaid, setIsPaid] = useState(true);
+  const [tone, setTone] = useState("Friendly");
+  const [inputOne, setInputOne] = useState("");
+  const [inputTwo, setInputTwo] = useState("");
+  const [data, setData] = useState();
+  const [loading, setLoading] = useState(false);
 
   const location = useLocation();
 
@@ -33,21 +38,34 @@ function Dummy(props) {
     });
   }, [location.pathname]);
 
+  const states = {
+    tone: tone,
+    setTone: setTone,
+    inputOne: inputOne,
+    setInputOne: setInputOne,
+    inputTwo: inputTwo,
+    setInputTwo: setInputTwo,
+    data: data,
+    setData: setData,
+    loading: loading,
+    setLoading: setLoading,
+  };
+
   const selectComponent = () => {
-    console.log(props.type);
     switch (props.type) {
       case "category":
         return (
           <Form
             path={props.path}
             category={props.category}
-            inputOne={props.inputOne}
             inputOneTitle={props.inputOneTitle}
-            inputTwo={props.inputTwo}
             inputTwoTitle={props.inputTwoTitle}
-            toneInput={props.toneInput}
             placeholderOne={props.placeholderOne}
             placeholderTwo={props.placeholderTwo}
+            toneInputActive={props.toneInput}
+            inputOneActive={props.inputOne}
+            inputTwoActive={props.inputTwo}
+            states={states}
           />
         );
       case "history":
@@ -64,13 +82,14 @@ function Dummy(props) {
           <MobileForm
             path={props.path}
             category={props.category}
-            inputOne={props.inputOne}
             inputOneTitle={props.inputOneTitle}
-            inputTwo={props.inputTwo}
             inputTwoTitle={props.inputTwoTitle}
-            toneInput={props.toneInput}
             placeholderOne={props.placeholderOne}
             placeholderTwo={props.placeholderTwo}
+            toneInputActive={props.toneInput}
+            inputOneActive={props.inputOne}
+            inputTwoActive={props.inputTwo}
+            states={states}
           />
         );
       case "history":

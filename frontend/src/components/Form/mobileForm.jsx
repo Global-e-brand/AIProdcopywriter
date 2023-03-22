@@ -4,6 +4,10 @@ import { Grid, Button } from "@mui/material";
 import Loader from "../loader/loader";
 import { leftarrow } from "../../assets";
 import ReactGA from "react-ga";
+import {
+  copyToAllClipboard,
+  copyToClipboard,
+} from "../../helpers/copyFunctions";
 
 function MobileForm(props) {
   const [tone, setTone] = useState("Friendly");
@@ -49,7 +53,8 @@ function MobileForm(props) {
 
   let path = window.location.href.substring(window.location.origin.length);
 
-  async function handleSubmit(path, text, i) {
+  async function handleSubmit(path) {
+    props.states.setLoading(true);
     ReactGA.event({
       category: path,
       action: "test",
@@ -79,14 +84,13 @@ function MobileForm(props) {
       },
       body: JSON.stringify({
         category: props.category,
-        inputOneBool: props.inputOne,
-        inputTwoBool: props.inputTwo,
-        inputThreeBool: props.toneInput,
-        inputOne: inputOne,
-        inputTwo: inputTwo,
-        tone: tone,
-        data: `${inputOne}`,
-        single_content: text,
+        inputOneBool: props.inputOneActive,
+        inputTwoBool: props.inputTwoActive,
+        inputThreeBool: props.toneInputActive,
+        inputOne: props.states.inputOne,
+        inputTwo: props.states.inputTwo,
+        tone: props.states.tone,
+        data: `${props.states.inputOne}`,
       }),
     });
     let response = await res.json();
@@ -94,19 +98,39 @@ function MobileForm(props) {
     if (response?.authenticated === false) {
       navigate("/login");
     }
-    setData(response);
+    props.states.setData(response);
 
-    if (text == null) {
-      setLoading(false);
-    }
-
-    if (text != null) {
-      setSingleContent(false);
-    }
+    props.states.setLoading(false);
   }
 
+  const handleSave = async (text, i) => {
+    setSingleContent(i);
+
+    let res = await fetch("/content/create", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        category: props.category,
+        inputOne: props.states.inputOne,
+        inputTwo: props.states.inputTwo,
+        tone: props.states.tone,
+        data: props.states.data,
+        single_content: text,
+      }),
+    });
+    let response = await res.json();
+
+    if (response?.authenticated === false) {
+      navigate("/login");
+    }
+
+    setSingleContent(false);
+  };
+
   const handleTone = (e) => {
-    setTone(e);
+    props.states.setTone(e);
   };
 
   function handleNext() {
@@ -133,21 +157,21 @@ function MobileForm(props) {
                 <strong>{props.inputOneTitle}</strong>
               </h5>
               <textarea
-                value={inputOne}
-                onChange={(e) => setInputOne(e.target.value)}
+                value={props.states.inputOne}
+                onChange={(e) => props.states.setInputOne(e.target.value)}
                 placeholder={props.placeholderOne}
               />
               {/* {console.log(inputOne, inputTwo, tone)} */}
             </div>
-            {props.inputTwo ? (
+            {props.inputTwoActive ? (
               <div className="input_one">
                 <h5>
                   <strong>{props.inputTwoTitle}</strong>
                 </h5>
 
                 <textarea
-                  value={inputTwo}
-                  onChange={(e) => setInputTwo(e.target.value)}
+                  value={props.states.inputTwo}
+                  onChange={(e) => props.states.setInputTwo(e.target.value)}
                   placeholder={props.placeholderTwo}
                 />
               </div>
@@ -155,7 +179,7 @@ function MobileForm(props) {
               <></>
             )}
 
-            {props.toneInput ? (
+            {props.toneInputActive ? (
               <div className="input_three">
                 <h5>
                   <strong>Select a tone</strong>
@@ -164,7 +188,9 @@ function MobileForm(props) {
                   <Grid item xs={6}>
                     <Button
                       className={
-                        tone == "Friendly" ? "tone-btn-selected" : "tone-btn"
+                        props.states.tone == "Friendly"
+                          ? "tone-btn-selected"
+                          : "tone-btn"
                       }
                       onClick={(e) => handleTone("Friendly")}
                     >
@@ -174,7 +200,7 @@ function MobileForm(props) {
                   <Grid item xs={6}>
                     <Button
                       className={
-                        tone == "Professional"
+                        props.states.tone == "Professional"
                           ? "tone-btn-selected"
                           : "tone-btn"
                       }
@@ -186,7 +212,9 @@ function MobileForm(props) {
                   <Grid item xs={6}>
                     <Button
                       className={
-                        tone == "Empathetic" ? "tone-btn-selected" : "tone-btn"
+                        props.states.tone == "Empathetic"
+                          ? "tone-btn-selected"
+                          : "tone-btn"
                       }
                       onClick={(e) => handleTone("Empathetic")}
                     >
@@ -196,7 +224,9 @@ function MobileForm(props) {
                   <Grid item xs={6}>
                     <Button
                       className={
-                        tone == "Bold" ? "tone-btn-selected" : "tone-btn"
+                        props.states.tone == "Bold"
+                          ? "tone-btn-selected"
+                          : "tone-btn"
                       }
                       onClick={(e) => handleTone("Bold")}
                     >
@@ -211,8 +241,8 @@ function MobileForm(props) {
 
             <div className="submitButton">
               <button
-                onClick={() => handleSubmit(path, null)}
-                disabled={loading}
+                onClick={() => handleSubmit(path)}
+                disabled={props.states.loading}
                 variant="contained"
               >
                 Submit
@@ -229,15 +259,17 @@ function MobileForm(props) {
             </h2>
           </div>
           {/* {console.log("data",data)} */}
-          {loading ? (
+          {props.states.loading ? (
             <Loader />
           ) : (
             <>
-              {data != undefined ? (
+              {props.states.data != undefined ? (
                 <>
                   <button
                     className="cpyall-btn"
-                    onClick={() => copyToAllClipboard(data)}
+                    onClick={() =>
+                      copyToAllClipboard(props.states.data, setAllCopied)
+                    }
                   >
                     {" "}
                     Copy All
@@ -264,9 +296,8 @@ function MobileForm(props) {
                                 <button
                                   className="cpy-btn"
                                   onClick={() =>
-                                    handleSubmit(
-                                      path,
-                                      data[index].text.trim(),
+                                    handleSave(
+                                      props.states.data[index].text.trim(),
                                       index + 1
                                     )
                                   }
@@ -292,7 +323,11 @@ function MobileForm(props) {
                                 <button
                                   className="cpy-btn"
                                   onClick={() =>
-                                    copyToClipboard(data[index], index)
+                                    copyToClipboard(
+                                      props.states.data[index],
+                                      index,
+                                      setCopied
+                                    )
                                   }
                                 >
                                   Copy
@@ -303,7 +338,7 @@ function MobileForm(props) {
                         </div>
                         <Grid xs={12}>
                           <div className="result-body">
-                            <h4>{data[index].text.trim()}</h4>
+                            <h4>{props.states.data[index].text.trim()}</h4>
                             <div className="mobile-carousal-buttons">
                               <button
                                 onClick={() => handlePrev()}

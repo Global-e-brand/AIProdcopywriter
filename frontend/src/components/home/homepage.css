@@ -92,9 +92,13 @@
 }
 
 .robot-img {
-  width: 75%;
-  height: 95%;
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+
+.homepage-info-section {
+  margin: 0 auto;
+  width: 90%;
 }
 
 .robot-logo {
@@ -112,7 +116,12 @@
   font-size: 18px;
 }
 
+.description-mobile {
+  display: none;
+}
+
 .description {
+  display: block;
   font-size: 18px;
 }
 
@@ -125,3 +134,14 @@
     margin-top: 0;
   }
 } */
+
+@media (max-width: 830px) {
+  .description-mobile {
+    display: block;
+    font-size: 18px;
+  }
+
+  .description {
+    display: none;
+  }
+}

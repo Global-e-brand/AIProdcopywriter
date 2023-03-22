@@ -2,5 +2,8 @@
   "dependencies": {
     "passport-facebook": "^3.0.0",
     "react-icons": "^4.8.0"
+  },
+  "devDependencies": {
+    "file-loader": "^6.2.0"
   }
 }
