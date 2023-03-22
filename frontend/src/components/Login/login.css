@@ -93,6 +93,7 @@
 @media (max-width: 1000px) {
   .cr-wrapper {
     padding: 0.5em 2em;
+    border-radius: 10px;
   }
 
   .text-container h1 strong {
@@ -109,6 +110,7 @@
 @media (max-width: 600px) {
   .cr-wrapper {
     padding: 1em 1em;
+    border-radius: 10px;
   }
 
   .text-container h1 strong {
