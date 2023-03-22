@@ -177,7 +177,11 @@ authrouter.get("/success", checkAuthenticated, async (req, res) => {
   console.log(result);
   if (true) {
     // check for result
-    res.redirect("https://" + req.query.host + "/home");
+    if(req.query.host=="localhost"){
+      res.redirect("https://localhost:3001/home");
+    }else{
+      res.redirect("https://" + req.query.host + "/home");
+    }
   } else {
     console.log("Redirect to Payments");
     res.redirect("http://localhost:3001/payment");

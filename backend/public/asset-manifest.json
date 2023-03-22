@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.999dd1f6.css",
-    "main.js": "/static/js/main.96df5e7e.js",
+    "main.css": "/static/css/main.0831f0f8.css",
+    "main.js": "/static/js/main.7e3719c3.js",
     "static/js/787.cda612ba.chunk.js": "/static/js/787.cda612ba.chunk.js",
     "static/media/authentication-background.png": "/static/media/authentication-background.7ccca4766933383e6b4f.png",
     "static/media/authentication-background-tablet.png": "/static/media/authentication-background-tablet.4b7e5f458a3ce440741a.png",
@@ -15,12 +15,12 @@
     "static/media/27.png": "/static/media/27.d69deb1d345891612d90.png",
     "static/media/FullLogo.png": "/static/media/FullLogo.c191a867eabd0c6b3c03.png",
     "index.html": "/index.html",
-    "main.999dd1f6.css.map": "/static/css/main.999dd1f6.css.map",
-    "main.96df5e7e.js.map": "/static/js/main.96df5e7e.js.map",
+    "main.0831f0f8.css.map": "/static/css/main.0831f0f8.css.map",
+    "main.7e3719c3.js.map": "/static/js/main.7e3719c3.js.map",
     "787.cda612ba.chunk.js.map": "/static/js/787.cda612ba.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.999dd1f6.css",
-    "static/js/main.96df5e7e.js"
+    "static/css/main.0831f0f8.css",
+    "static/js/main.7e3719c3.js"
   ]
 }

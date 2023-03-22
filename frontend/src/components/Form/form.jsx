@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Grid, Button } from "@mui/material";
 import Loader from "../loader/loader";
+import ReactGA from "react-ga";
 import {
   copyToAllClipboard,
   copyToClipboard,
@@ -18,6 +19,13 @@ function Form(props) {
   let path = window.location.href.substring(window.location.origin.length);
 
   async function handleSubmit(path) {
+    props.states.setLoading(true);
+    ReactGA.event({
+      category: path,
+      action: "test",
+      label: "desktop-test",
+    });
+
     props.states.setLoading(true);
 
     // let checkPayment = await fetch("/checkpayment", {
