@@ -6,15 +6,15 @@ body {
 }
 
 div#root {
-    height: 100%;
+  height: 100%;
 }
 
 .App {
   font-family: "Manrope";
   height: 100%;
 }
-.App > div{
-  height: 100%; 
+.App > div {
+  height: 100%;
 }
 
 .logo-panel-wrapper {
@@ -223,18 +223,13 @@ footer {
   position: absolute;
   width: 100%;
   display: flex;
-  background-color: rgba(181, 211, 255, 0.9);
+  background-color: rgb(144 176 224);
   height: 6vh;
   min-height: fit-content;
   text-align: center;
   align-items: center;
   font-weight: bold;
   font-family: "Manrope";
-}
-
-.footerLogo {
-  height: 5vh;
-  max-height: 50px;
 }
 
 .infobutton {
@@ -283,6 +278,17 @@ footer {
 
 .category-link:hover {
   color: white;
+}
+
+.icon-component {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon-component p {
+  margin: 0 0 0 5px;
 }
 
 /*

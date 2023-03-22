@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import HomeIcon from "@mui/icons-material/Home";
+import HistoryIcon from "@mui/icons-material/History";
+import LogoutIcon from "@mui/icons-material/Logout";
 import WidgetsIcon from "@mui/icons-material/Widgets";
 import ClassIcon from "@mui/icons-material/Class";
 import { Routes, Route, Link, Navigate } from "react-router-dom";
@@ -34,14 +36,20 @@ function SidebarMenu() {
       ) : (
         <div className="side-bar-wrapper">
           <div className="side-Bar">
-            <Link to="/home" className="home-btn">
-              Home
+            <Link to="/home" className="icon-component home-btn">
+              <HomeIcon />
+              <p>Home</p>
             </Link>
-            <Link to="/history" className="home-btn">
-              History
+            <Link to="/history" className="icon-component home-btn">
+              <HistoryIcon />
+              <p>History</p>
             </Link>
-            <button className="home-btn" onClick={() => handleLogout()}>
-              Logout
+            <button
+              className="icon-component home-btn"
+              onClick={() => handleLogout()}
+            >
+              <LogoutIcon />
+              <p>Logout</p>
             </button>
             {catagoryList.map((cat, i) => {
               return (

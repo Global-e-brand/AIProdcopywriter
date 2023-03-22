@@ -4,37 +4,44 @@ import "./authentication.css";
 import { fulllogo } from "../../assets";
 import { Link } from "react-router-dom";
 import { Grid } from "@mui/material";
-import { SecureInput } from "./SecureInput";
-import { useNavigate } from "react-router-dom";
 import { isEmailValid } from "../../helpers/checkEmail";
 import { FormControl, InputLabel, OutlinedInput, Alert } from "@mui/material";
+import Loader from "../loader/loader";
 
 function EmailVerification(props) {
   const [hasCodeSent, setCodeSent] = useState(false);
-
+  const [alertMessage, setAlertMessage] = useState("");
   const [alertVisibility, setAlertVisibility] = useState(false);
 
   const sendCode = async () => {
     setCodeSent(true);
-    let host = window.location.hostname;
-    const isValid = await isEmailValid(props.email, host);
+    setAlertVisibility(false);
 
-    if (isValid) {
-      setAlertVisibility(false);
-
-      await fetch("/email/send-otp", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: props.email,
-        }),
-      }).then(() => {
-        props.setStage(1);
-      });
-    } else {
+    if (props.email?.length > 254) {
       setAlertVisibility(true);
+      setAlertMessage("Email addresses cannot be longer than 254 characters.");
+    } else {
+      let host = window.location.hostname;
+      const isValid = await isEmailValid(props.email, host);
+
+      if (isValid) {
+        setAlertVisibility(false);
+
+        await fetch("/email/send-otp", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: props.email,
+          }),
+        }).then(() => {
+          props.setStage("reset");
+        });
+      } else {
+        setAlertMessage("Incorrect email. Please check it and try again.");
+        setAlertVisibility(true);
+      }
     }
 
     setCodeSent(false);
@@ -73,23 +80,27 @@ function EmailVerification(props) {
                   className="alert"
                   style={{ margin: "10px 0", textAlign: "left" }}
                 >
-                  Incorrect email. Please check it and try again.
+                  {alertMessage}
                 </Alert>
               )}
             </Grid>
             <Grid item xs={11} sm={11} md={11} lg={11} xl={11}>
               <FormControl className="w-100 form-input">
                 <InputLabel
+                  size="small"
                   htmlFor="email"
-                  color={alertVisibility ? "error" : "primary"}
+                  error={alertVisibility}
                 >
                   Email
                 </InputLabel>
                 <OutlinedInput
+                  size="small"
                   id="email"
                   onChange={(e) => props.setEmail(e.target.value)}
                   label="email"
                   error={alertVisibility}
+                  value={props.email}
+                  autoFocus
                 />
               </FormControl>
             </Grid>
@@ -99,7 +110,11 @@ function EmailVerification(props) {
                 onClick={sendCode}
                 disabled={props.email.length === 0 || hasCodeSent}
               >
-                Send Code
+                {hasCodeSent ? (
+                  <Loader scale="0.5" color="#b5d3ff" />
+                ) : (
+                  "Send Code"
+                )}
               </button>
             </Grid>
           </Grid>

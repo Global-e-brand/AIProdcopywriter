@@ -8,13 +8,10 @@ import {
   copyToAllClipboard,
   copyToClipboard,
 } from "../../helpers/copyFunctions";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 
 function MobileForm(props) {
-  const [tone, setTone] = useState("Friendly");
-  const [inputOne, setInputOne] = useState("");
-  const [inputTwo, setInputTwo] = useState("");
-  const [data, setData] = useState();
-  const [loading, setLoading] = useState(false);
   const [Copied, setCopied] = useState();
   const [AllCopied, setAllCopied] = useState();
   const [index, setIndex] = useState(0);
@@ -23,50 +20,19 @@ function MobileForm(props) {
 
   const navigate = useNavigate();
 
-  function copyToClipboard(item, i) {
-    let clipboardData = "";
-    i = i + 1;
-    clipboardData += item.text.trim();
-    navigator.clipboard.writeText(clipboardData);
-    setCopied(i);
-    const timer = setTimeout(() => {
-      setCopied(false);
-    }, 2000);
-    return () => clearTimeout(timer);
-  }
-
-  function copyToAllClipboard(data) {
-    let clipboardData = "";
-    data.map((item, i) => {
-      i = i + 1;
-      clipboardData += `Result #` + i + ":\n" + item.text.trim() + `\n\n`;
-    });
-
-    // clipboardData.
-    navigator.clipboard.writeText(clipboardData.trim());
-    setAllCopied(true);
-    const timer = setTimeout(() => {
-      setAllCopied(false);
-    }, 2000);
-    return () => clearTimeout(timer);
-  }
-
   let path = window.location.href.substring(window.location.origin.length);
 
   async function handleSubmit(path) {
+    setIndex(0);
+
     props.states.setLoading(true);
     ReactGA.event({
       category: path,
       action: "test",
       label: "mobile-test",
     });
-    // if (text == null) {
-    //   setLoading(true);
-    // }
 
-    // if (text != null) {
-    //   setSingleContent(i);
-    // }
+    props.states.setLoading(true);
 
     // let checkPayment = await fetch("/checkpayment", {
     //   method: "GET",
@@ -149,7 +115,7 @@ function MobileForm(props) {
   return (
     <>
       <div className="main-form-mobile">
-        <p>{props.category}</p>
+        <p className="mobile-category-title">{props.category}</p>
         <Grid item xs={12}>
           <form className="form">
             <div className="input_one">
@@ -184,53 +150,62 @@ function MobileForm(props) {
                 <h5>
                   <strong>Select a tone</strong>
                 </h5>
-                <Grid container justifyContent="center" spacing={4}>
+                <Grid
+                  container
+                  justifyContent="center"
+                  rowSpacing={1}
+                  columnSpacing={2}
+                >
                   <Grid item xs={6}>
                     <Button
-                      className={
+                      className={`icon-component ${
                         props.states.tone == "Friendly"
                           ? "tone-btn-selected"
                           : "tone-btn"
-                      }
+                      }`}
                       onClick={(e) => handleTone("Friendly")}
                     >
-                      Friendly
+                      <span>&#x1F600;</span>
+                      <p>Friendly</p>
                     </Button>
                   </Grid>
                   <Grid item xs={6}>
                     <Button
-                      className={
+                      className={`icon-component ${
                         props.states.tone == "Professional"
                           ? "tone-btn-selected"
                           : "tone-btn"
-                      }
+                      }`}
                       onClick={(e) => handleTone("Professional")}
                     >
-                      Professional
+                      <span>&#128196;</span>
+                      <p>Professional</p>
                     </Button>
                   </Grid>
                   <Grid item xs={6}>
                     <Button
-                      className={
+                      className={`icon-component ${
                         props.states.tone == "Empathetic"
                           ? "tone-btn-selected"
                           : "tone-btn"
-                      }
+                      }`}
                       onClick={(e) => handleTone("Empathetic")}
                     >
-                      Empathetic
+                      <span>&#x1F495;</span>
+                      <p>Empathetic</p>
                     </Button>
                   </Grid>
                   <Grid item xs={6}>
                     <Button
-                      className={
+                      className={`icon-component ${
                         props.states.tone == "Bold"
                           ? "tone-btn-selected"
                           : "tone-btn"
-                      }
+                      }`}
                       onClick={(e) => handleTone("Bold")}
                     >
-                      Bold
+                      <span>&#9889;</span>
+                      <p>Bold</p>
                     </Button>
                   </Grid>
                 </Grid>
@@ -242,10 +217,15 @@ function MobileForm(props) {
             <div className="submitButton">
               <button
                 onClick={() => handleSubmit(path)}
-                disabled={props.states.loading}
+                disabled={
+                  (props.inputOneActive && !props.states.inputOne) ||
+                  (props.inputTwoActive && !props.states.inputTwo) ||
+                  (props.inputThreeActive && !props.states.inputThree) ||
+                  props.states.loading
+                }
                 variant="contained"
               >
-                Submit
+                {props.states.loading ? "Generating Results" : "Submit"}
               </button>
             </div>
           </form>
@@ -272,8 +252,7 @@ function MobileForm(props) {
                       copyToAllClipboard(props.states.data, setAllCopied)
                     }
                   >
-                    {" "}
-                    Copy All
+                    <ContentCopyIcon /> <p>Copy All</p>
                   </button>
                   {AllCopied ? (
                     <h1 className="text-cp-al">ALL RESULTS COPIED ! </h1>
@@ -303,7 +282,8 @@ function MobileForm(props) {
                                     )
                                   }
                                 >
-                                  Save
+                                  <BookmarkBorderIcon />
+                                  <p>Save</p>
                                 </button>
                                 {singleContent == index + 1 ? (
                                   <h1 className="text-status-save">
@@ -331,7 +311,8 @@ function MobileForm(props) {
                                     )
                                   }
                                 >
-                                  Copy
+                                  <ContentCopyIcon />
+                                  <p>Copy</p>
                                 </button>
                               </div>
                             </Grid>

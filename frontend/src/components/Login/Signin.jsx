@@ -12,6 +12,7 @@ import {
   Alert,
   Snackbar,
 } from "@mui/material";
+import Loader from "../loader/loader";
 
 function Signin() {
   const [password, setPassword] = useState("");
@@ -63,6 +64,7 @@ function Signin() {
     } else if (e.target?.contentDocument?.location?.href !== "about:blank") {
       setAlertVisibility(true);
       setLoading(false);
+      setPassword("");
     }
   };
 
@@ -76,31 +78,38 @@ function Signin() {
   const handleFormSubmission = async (e) => {
     e.preventDefault();
     setLoading(true);
+    setAlertVisibility(false);
 
-    let form = document.createElement("form");
-    let emailInput = document.createElement("input");
-    let passwordInput = document.createElement("input");
+    if (email.length > 254) {
+      setAlertVisibility(true);
+      setLoading(false);
+      setPassword("");
+    } else {
+      let form = document.createElement("form");
+      let emailInput = document.createElement("input");
+      let passwordInput = document.createElement("input");
 
-    let host = window.location.hostname;
-    form.method = "POST";
+      let host = window.location.hostname;
+      form.method = "POST";
     form.action = `/auth/local?host=${host}&&categorypath=${categorypath}`;
-    form.target = "stay";
+      form.target = "stay";
 
-    emailInput.value = email;
-    emailInput.name = "email";
-    form.appendChild(emailInput);
+      emailInput.value = email;
+      emailInput.name = "email";
+      form.appendChild(emailInput);
 
-    passwordInput.value = password;
-    passwordInput.name = "password";
-    form.appendChild(passwordInput);
+      passwordInput.value = password;
+      passwordInput.name = "password";
+      form.appendChild(passwordInput);
 
-    document.body.appendChild(form);
+      document.body.appendChild(form);
 
-    form.submit();
+      form.submit();
 
-    emailInput.remove();
-    passwordInput.remove();
-    form.remove();
+      emailInput.remove();
+      passwordInput.remove();
+      form.remove();
+    }
   };
 
   const handleCreateAccount = () => {
@@ -178,17 +187,21 @@ function Signin() {
               <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                 <FormControl className="w-100 form-input">
                   <InputLabel
+                    size="small"
                     htmlFor="email"
-                    color={alertVisibility ? "error" : "primary"}
+                    error={alertVisibility}
                   >
                     Email
                   </InputLabel>
                   <OutlinedInput
                     id="emailInput"
+                    size="small"
                     onChange={handleEmail}
                     label="email"
                     error={alertVisibility}
                     autoComplete="username"
+                    autoFocus={true}
+                    value={email}
                   />
                 </FormControl>
               </Grid>
@@ -202,17 +215,21 @@ function Signin() {
                 />
               </Grid>
               <Grid item xs={5} sm={5} md={5} lg={5} xl={5}>
-                <Link
-                  to="/login/forgot-password"
-                  className="forgot-password-btn"
-                >
-                  Forgot Password
-                </Link>
+                <div className="forgot-password-wrapper">
+                  <Link
+                    to="/login/forgot-password"
+                    className="forgot-password-btn"
+                  >
+                    Forgot Password
+                  </Link>
+                </div>
               </Grid>
               <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
-                <Link to="" className="login-help-btn">
-                  Need help logging in?
-                </Link>
+                <div className="login-help-wrapper">
+                  <Link to="" className="login-help-btn">
+                    Need help logging in?
+                  </Link>
+                </div>
               </Grid>
             </Grid>
             <Grid container direction="row">
@@ -227,12 +244,16 @@ function Signin() {
                   type="submit"
                   name="password"
                   disabled={
-                    email.length === 0 ||
-                    password.length === 0 ||
-                    (isLoading && email.length !== 0 && password.length !== 0)
+                    email?.length === 0 ||
+                    password?.length === 0 ||
+                    (isLoading && email?.length !== 0 && password?.length !== 0)
                   }
                 >
-                  Sign In
+                  {isLoading ? (
+                    <Loader scale="0.5" color="#b5d3ff" />
+                  ) : (
+                    "Sign In"
+                  )}
                 </button>
               </Grid>
               <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>

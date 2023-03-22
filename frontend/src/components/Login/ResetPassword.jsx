@@ -6,7 +6,8 @@ import { Link } from "react-router-dom";
 import { Grid } from "@mui/material";
 import { SecureInput } from "./SecureInput";
 import { useNavigate } from "react-router-dom";
-import { Alert } from "@mui/material";
+import { Alert, Snackbar, Button } from "@mui/material";
+import Loader from "../loader/loader";
 
 function ResetPassword(props) {
   const navigate = useNavigate();
@@ -17,63 +18,85 @@ function ResetPassword(props) {
   const [verificationCode, setVerificationCode] = useState("");
   const [isVerifying, setVerifying] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
+  const [errors, setErrors] = useState({
+    email: false,
+    password: false,
+    confirm_password: false,
+  });
+  const [isOpen, setOpen] = useState(false);
+  const [isOTPValid, setOTPValid] = useState();
+
+  const resetInputs = () => {
+    setPassword("");
+    setConfirmedPassword("");
+  };
 
   const handleVerifyEmail = async () => {
     setVerifying(true);
+    setAlertVisibility(false);
 
     await fetch(
       "/email/verify-otp?" +
         new URLSearchParams({
-          email: props.email || null,
-          OTPGuess: verificationCode || null,
+          email: props.email || "",
+          OTPGuess: verificationCode || "",
         })
     )
       .then(async (res) => {
         const data = await res.json();
 
         if (data.status === "verified") {
+          setOTPValid(true);
           handleResetPassword();
         } else {
           setAlertVisibility(true);
           setVerifying(false);
+          setOTPValid(false);
+          resetInputs();
           setAlertMessage(
-            data.error || "Invalid verification code. Check your inbox."
+            data.error ||
+              "Invalid verification code and/or email. Please check your inbox."
           );
+          setErrors({ code: true, password: false, confirm_password: false });
         }
       })
       .catch((e) => {
         setAlertVisibility(true);
+        resetInputs();
         setVerifying(false);
+        setOTPValid(false);
         setAlertMessage(
           "An ERROR occurred while verifying the email OTP. Please try again."
         );
         console.log("An ERROR occurred while verifying the email OTP: " + e);
+        setErrors({ code: true, password: false, confirmed_password: false });
       });
   };
 
   const handleResetPassword = async () => {
-    await fetch("https://aiprodcopywriter.herokuapp.com/user/reset-password", {
+    await fetch("/user/reset-password", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        email: props.email,
+        email: props.email || "",
         password: password,
         confirmedPassword: confirmedPassword,
       }),
     })
       .then(async (res) => {
         const data = await res.json();
-
         if (data.error) {
           setAlertMessage(data.error);
           setAlertVisibility(true);
+          resetInputs();
+          setErrors(data.errorTypes);
         } else {
           setAlertVisibility(false);
           setIsPasswordReset(true);
+          setOpen(true);
         }
-
         setVerifying(false);
       })
       .catch((e) => {
@@ -81,6 +104,8 @@ function ResetPassword(props) {
           "There was an error while resetting your password. Please try again."
         );
         setAlertVisibility(true);
+        resetInputs();
+        setErrors({ code: false, password: false, confirmed_password: false });
         console.log("Error resetting password: " + e);
       });
   };
@@ -120,6 +145,25 @@ function ResetPassword(props) {
                   style={{ margin: "10px 0", textAlign: "left" }}
                 >
                   {alertMessage}
+                  {!isOTPValid ? (
+                    <>
+                      <p>
+                        Alternatively,{" "}
+                        <span>
+                          <button
+                            className="text-link text-button"
+                            onClick={() => {
+                              props.setStage("email");
+                            }}
+                          >
+                            resend a code.
+                          </button>
+                        </span>
+                      </p>
+                    </>
+                  ) : (
+                    ""
+                  )}
                 </Alert>
               )}
             </Grid>
@@ -128,8 +172,9 @@ function ResetPassword(props) {
                 title={"Verification Code"}
                 value={verificationCode}
                 setValue={setVerificationCode}
-                error={alertVisibility}
+                error={alertVisibility && errors.code}
                 disabled={isPasswordReset}
+                autoFocus={true}
               />
             </Grid>
             <Grid item xs={16} sm={16} md={16} lg={16} xl={16}>
@@ -138,7 +183,7 @@ function ResetPassword(props) {
                 value={password}
                 setValue={setPassword}
                 disabled={isPasswordReset}
-                error={alertVisibility}
+                error={alertVisibility && errors.password}
                 autoComplete="current-password"
               />
             </Grid>
@@ -148,7 +193,7 @@ function ResetPassword(props) {
                 value={confirmedPassword}
                 setValue={setConfirmedPassword}
                 disabled={isPasswordReset}
-                error={alertVisibility}
+                error={alertVisibility && errors.confirm_password}
               />
             </Grid>
             <Grid item xs={16} sm={16} md={16} lg={16} xl={16}>
@@ -161,7 +206,13 @@ function ResetPassword(props) {
                   !(password && confirmedPassword)
                 }
               >
-                {isPasswordReset ? "Password Reset!" : "Reset Password"}
+                {isPasswordReset ? (
+                  "Password Reset!"
+                ) : isVerifying ? (
+                  <Loader scale="0.5" color="#b5d3ff" />
+                ) : (
+                  "Reset Password"
+                )}
               </button>
             </Grid>
             {isPasswordReset && (
@@ -184,6 +235,24 @@ function ResetPassword(props) {
           </p>
         </div>
       )}
+      <Snackbar
+        open={isOpen}
+        autoHideDuration={2000}
+        onClose={() => {
+          setOpen(false);
+        }}
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+      >
+        <Alert
+          onClose={() => {
+            setOpen(false);
+          }}
+          severity="success"
+          sx={{ width: "100%", textAlign: "left" }}
+        >
+          Password successfully reset!
+        </Alert>
+      </Snackbar>
     </>
   );
 }

@@ -1,10 +1,11 @@
 import fetch from "node-fetch";
 const getGPTResponse = async (prompt) => {
   if (prompt == "") {
-    console.log(
-      "One or more fields are empty, or that category has not yet been implemented!"
-    );
-    return;
+    return [
+      {
+        text: `One or more fields are empty.`,
+      },
+    ];
   }
 
   var raw = JSON.stringify({
@@ -32,6 +33,7 @@ const getGPTResponse = async (prompt) => {
     requestOptions
   );
   let respond = await data_value.json();
+
   return respond.choices;
   //   res.send("");
 };

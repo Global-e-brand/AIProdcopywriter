@@ -7,13 +7,10 @@ import {
   copyToAllClipboard,
   copyToClipboard,
 } from "../../helpers/copyFunctions";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 
 function Form(props) {
-  const [tone, setTone] = useState("Friendly");
-  const [inputOne, setInputOne] = useState("");
-  const [inputTwo, setInputTwo] = useState("");
-  const [data, setData] = useState();
-  const [loading, setLoading] = useState(false);
   const [Copied, setCopied] = useState();
   const [AllCopied, setAllCopied] = useState();
   const [singleContent, setSingleContent] = useState();
@@ -21,37 +18,9 @@ function Form(props) {
   const navigate = useNavigate();
   const textAreaRef = useRef(null);
 
-  function copyToClipboard(item, i) {
-    let clipboardData = "";
-    i = i + 1;
-    clipboardData += item.text.trim();
-    navigator.clipboard.writeText(clipboardData);
-    setCopied(i);
-    const timer = setTimeout(() => {
-      setCopied(false);
-    }, 2000);
-    return () => clearTimeout(timer);
-  }
-
-  function copyToAllClipboard(data) {
-    let clipboardData = "";
-    data.map((item, i) => {
-      i = i + 1;
-      clipboardData += `Result #` + i + ":\n" + item.text.trim() + `\n\n`;
-    });
-
-    // clipboardData.
-    navigator.clipboard.writeText(clipboardData.trim());
-    setAllCopied(true);
-    const timer = setTimeout(() => {
-      setAllCopied(false);
-    }, 2000);
-    return () => clearTimeout(timer);
-  }
-
   let path = window.location.href.substring(window.location.origin.length);
 
-  async function handleSubmit(path, text, i) {
+  async function handleSubmit(path) {
     props.states.setLoading(true);
     ReactGA.event({
       category: path,
@@ -59,13 +28,7 @@ function Form(props) {
       label: "desktop-test",
     });
 
-    if (text == null) {
-      setLoading(true);
-    }
-
-    if (text != null) {
-      setSingleContent(i);
-    }
+    props.states.setLoading(true);
 
     // let checkPayment = await fetch("/checkpayment", {
     //   method: "GET",
@@ -140,9 +103,7 @@ function Form(props) {
       <Grid item xs={6} sm={8} md={5} lg={5} xl={5}>
         <form className="form">
           <div className="input_one">
-            <h5>
-              <strong>{props.inputOneTitle}</strong>
-            </h5>
+            <h5>{props.inputOneTitle}</h5>
             <textarea
               value={props.states.inputOne}
               onChange={(e) => props.states.setInputOne(e.target.value)}
@@ -151,9 +112,7 @@ function Form(props) {
           </div>
           {props.inputTwoActive ? (
             <div className="input_one">
-              <h5>
-                <strong>{props.inputTwoTitle}</strong>
-              </h5>
+              <h5>{props.inputTwoTitle}</h5>
 
               <textarea
                 value={props.states.inputTwo}
@@ -167,56 +126,58 @@ function Form(props) {
 
           {props.toneInputActive ? (
             <div className="input_three">
-              <h5>
-                <strong>Select a tone</strong>
-              </h5>
+              <h5>Select a tone</h5>
               <Grid container justifyContent="center" spacing={4}>
                 <Grid item xs={3} sm={3} md={3}>
                   <Button
-                    className={
+                    className={`icon-component ${
                       props.states.tone == "Friendly"
                         ? "tone-btn-selected"
                         : "tone-btn"
-                    }
+                    }`}
                     onClick={(e) => handleTone("Friendly")}
                   >
-                    Friendly
+                    <span>&#x1F600;</span>
+                    <p>Friendly</p>
                   </Button>
                 </Grid>
                 <Grid item xs={3} sm={3} md={3}>
                   <Button
-                    className={
+                    className={`icon-component ${
                       props.states.tone == "Professional"
                         ? "tone-btn-selected"
                         : "tone-btn"
-                    }
+                    }`}
                     onClick={(e) => handleTone("Professional")}
                   >
-                    Professional
+                    <span>&#128196;</span>
+                    <p>Professional</p>
                   </Button>
                 </Grid>
                 <Grid item xs={3} sm={3} md={3}>
                   <Button
-                    className={
+                    className={`icon-component ${
                       props.states.tone == "Empathetic"
                         ? "tone-btn-selected"
                         : "tone-btn"
-                    }
+                    }`}
                     onClick={(e) => handleTone("Empathetic")}
                   >
-                    Empathetic
+                    <span>&#x1F495;</span>
+                    <p>Empathetic</p>
                   </Button>
                 </Grid>
                 <Grid item xs={3} sm={3} md={3}>
                   <Button
-                    className={
+                    className={`icon-component ${
                       props.states.tone == "Bold"
                         ? "tone-btn-selected"
                         : "tone-btn"
-                    }
+                    }`}
                     onClick={(e) => handleTone("Bold")}
                   >
-                    Bold
+                    <span>&#9889;</span>
+                    <p>Bold</p>
                   </Button>
                 </Grid>
               </Grid>
@@ -228,10 +189,15 @@ function Form(props) {
           <div className="submitButton">
             <button
               onClick={() => handleSubmit(path)}
-              disabled={props.states.loading}
               variant="contained"
+              disabled={
+                (props.inputOneActive && !props.states.inputOne) ||
+                (props.inputTwoActive && !props.states.inputTwo) ||
+                (props.inputThreeActive && !props.states.inputThree) ||
+                props.states.loading
+              }
             >
-              Submit
+              {props.states.loading ? "Generating Results" : "Submit"}
             </button>
           </div>
         </form>
@@ -241,9 +207,7 @@ function Form(props) {
       {/* results */}
       <Grid item xs={4} sm={12} md={4} lg={4} xl={4}>
         <div className="category-title mr-2">
-          <h2>
-            <strong>Results</strong>
-          </h2>
+          <h2>Results</h2>
         </div>
         {/* {console.log("data",data)} */}
         {props.states.loading ? (
@@ -252,15 +216,16 @@ function Form(props) {
           <>
             {props.states.data != undefined ? (
               <>
-                <Grid container>
+                <Grid container rowSpacing={1}>
                   <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                     <button
-                      className="cpyall-btn"
+                      className="icon-component cpyall-btn"
                       onClick={() =>
                         copyToAllClipboard(props.states.data, setAllCopied)
                       }
                     >
-                      Copy All
+                      <ContentCopyIcon />
+                      <p>Copy All</p>
                     </button>
                     {AllCopied ? (
                       <h1 className="text-cp-al">ALL RESULTS COPIED ! </h1>
@@ -279,16 +244,17 @@ function Form(props) {
                     return (
                       <>
                         <div className="output-layout">
-                          <Grid container>
+                          <Grid container className="result-card-title-bar">
                             <Grid item xs={4} sm={4} md={4} lg={4}>
                               <div className="hd-cp">
                                 <button
-                                  className="cpy-btn"
+                                  className="icon-component cpy-btn"
                                   onClick={() =>
                                     handleSave(item.text.trim(), i + 1)
                                   }
                                 >
-                                  Save
+                                  <BookmarkBorderIcon />
+                                  <p>Save</p>
                                 </button>
                                 {singleContent == i + 1 ? (
                                   <h1 className="text-status-save">
@@ -307,12 +273,13 @@ function Form(props) {
                             <Grid item xs={4} sm={4} md={4} lg={4}>
                               <div className="hd-cp">
                                 <button
-                                  className="cpy-btn"
+                                  className="icon-component cpy-btn"
                                   onClick={() =>
                                     copyToClipboard(item, i, setCopied)
                                   }
                                 >
-                                  Copy
+                                  <ContentCopyIcon />
+                                  <p>Copy</p>
                                 </button>
                                 {/* <h1 className="text-status">Description {i+1} Copied ! </h1> */}
                                 {Copied == i + 1 ? (

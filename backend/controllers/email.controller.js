@@ -48,7 +48,7 @@ emailController.post("/send-otp", jsonParser, async (req, res) => {
 
 emailController.get("/verify-otp", async (req, res) => {
   try {
-    let email = req.query.email;
+    let email = req.query?.email ? req.query.email.trim().toLowerCase() : "";
     let OTPGuess = req.query.OTPGuess;
 
     if (!email || !OTPGuess) {

@@ -20,12 +20,12 @@ export const SecureInput = (props) => {
 
   return (
     <FormControl className="w-100 form-input" disabled={props.disabled}>
-      <InputLabel htmlFor="input" color={props.error ? "error" : "primary"}>
+      <InputLabel size="small" htmlFor="input" error={props.error}>
         {props.title}
       </InputLabel>
       <OutlinedInput
+        size="small"
         type={inputIsVisible ? "text" : "password"}
-        id={props.autoComplete || ""}
         error={props.error}
         endAdornment={
           <InputAdornment>
@@ -34,6 +34,7 @@ export const SecureInput = (props) => {
               onClick={toggleVisibility}
               edge="end"
               disabled={props.disabled}
+              tabIndex={-1}
             >
               {inputIsVisible ? <VisibilityOff /> : <Visibility />}
             </IconButton>
@@ -42,6 +43,8 @@ export const SecureInput = (props) => {
         onChange={(e) => props.setValue(e.target.value)}
         label={props.title}
         autoComplete={props.autoComplete || ""}
+        value={props.value}
+        autoFocus={props.autoFocus}
       />
     </FormControl>
   );

@@ -25,23 +25,37 @@ userController.post("/register", bodyParser.json(), async (req, res) => {
   const emailIsValid = await getEmailStatus(email);
 
   if (email == null || password == null || confirm_password == null) {
-    return res.status(400).send({ error: "text fields should not be empty" });
+    return res.status(400).send({
+      error: "Fields should not be empty",
+      errorTypes: {
+        email: true,
+        password: true,
+        confirm_password: true,
+      },
+    });
   }
 
-  if (!emailIsValid) {
-    return res.status(400).send({ error: "Invalid email address" });
+  if (!emailIsValid || email.length > 254) {
+    return res.status(400).send({
+      error: "Invalid email address",
+      errorTypes: { email: true, password: false, confirm_password: false },
+    });
   }
 
   if (user) {
-    return res.status(400).send({ error: "This email has already been used" });
+    return res.status(400).send({
+      error: "This email has already been used",
+      errorTypes: { email: true, password: false, confirm_password: false },
+    });
   }
 
   try {
     if (password === confirm_password) {
       if (password.length < 6) {
-        return res
-          .status(400)
-          .send({ error: "Passwords must be at least 6 characters long" });
+        return res.status(400).send({
+          error: "Passwords must be at least 6 characters long",
+          errorTypes: { email: false, password: true, confirm_password: true },
+        });
       }
 
       const userModelData = new userModel();
@@ -55,7 +69,10 @@ userController.post("/register", bodyParser.json(), async (req, res) => {
 
       res.status(201).send({ message: "Account registered successfully!" });
     } else {
-      res.status(400).send({ error: "Passwords do not match" });
+      res.status(400).send({
+        error: "Passwords do not match",
+        errorTypes: { email: false, password: true, confirm_password: true },
+      });
     }
   } catch (e) {
     res.status(400).send(e);
@@ -63,20 +80,28 @@ userController.post("/register", bodyParser.json(), async (req, res) => {
 });
 
 userController.post("/reset-password", async (req, res) => {
-  let email = req.body.email ? req.body.email.trim().toLowerCase() : "";
+  let email = req.body?.email ? req.body.email.trim().toLowerCase() : "";
   let password = req.body.password;
   let confirmedPassword = req.body.confirmedPassword;
 
   if (!email || !password || !confirmedPassword) {
-    return res.status(400).send({ error: "text fields should not be empty" });
+    return res.status(400).send({
+      error: "Fields should not be empty",
+      errorTypes: {
+        code: false,
+        password: true,
+        confirm_password: true,
+      },
+    });
   }
 
   try {
     if (password === confirmedPassword) {
       if (password.length < 6) {
-        res
-          .status(400)
-          .send({ error: "Passwords must be at least 6 characters long" });
+        res.status(400).send({
+          error: "Passwords must be at least 6 characters long",
+          errorTypes: { password: true, confirm_password: true },
+        });
       } else {
         password = hashPassword(password);
         confirmedPassword = hashPassword(confirmedPassword);
@@ -88,7 +113,10 @@ userController.post("/reset-password", async (req, res) => {
         res.status(201).send({ message: "User password reset!" });
       }
     } else {
-      res.status(400).send({ error: "Passwords do not match" });
+      res.status(400).send({
+        error: "Passwords do not match",
+        errorTypes: { code: false, password: true, confirm_password: true },
+      });
     }
   } catch (e) {
     res.status(400).send({ error: e });
