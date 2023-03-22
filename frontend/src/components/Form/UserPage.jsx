@@ -18,6 +18,7 @@ import MobileHistoryComponent from "../History/MobileHistoryComponent";
 
 function Dummy(props) {
   const [isAuthenticated, setAuthenticated] = useState(true);
+  const [authenticating, setAuthenticating] = useState(true);
   const [showMenu, setShowMenu] = useState(false);
   const [isPaid, setIsPaid] = useState(true);
   const [tone, setTone] = useState("Friendly");
@@ -27,6 +28,7 @@ function Dummy(props) {
   const [loading, setLoading] = useState(false);
 
   const location = useLocation();
+  const navigate = useNavigate();
 
   const closeMenu = () => {
     setShowMenu(false);
@@ -35,6 +37,12 @@ function Dummy(props) {
     setAuthenticated(undefined);
     authenticate((status) => {
       setAuthenticated(status === "authenticated" ? true : false);
+
+      if (status !== "authenticated") {
+        navigate("/login");
+      } else {
+        setAuthenticating(false);
+      }
     });
   }, [location.pathname]);
 
@@ -101,58 +109,62 @@ function Dummy(props) {
 
   return isPaid ? (
     <>
-      <div className="category-page">
-        <div className="category-title">
-          <h2 className="category-title-text">
-            <strong>{props.category}</strong>
-          </h2>
-          <div className="header-mobile-view">
-            <HeaderLogo />
-            <div className="hamburger-menu">
-              <h2 onClick={() => setShowMenu(!showMenu)}>
-                <GiHamburgerMenu />
-              </h2>
+      {!authenticating ? (
+        <div className="category-page">
+          <div className="category-title">
+            <h2 className="category-title-text">{props.category}</h2>
+            <div className="header-mobile-view">
+              <HeaderLogo />
+              <div className="hamburger-menu">
+                <h2 onClick={() => setShowMenu(!showMenu)}>
+                  <GiHamburgerMenu />
+                </h2>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="main-division">
-          <Grid container spacing={4}>
-            {/* siderbar */}
-            <Grid item xs={12} sm={12} md={3} lg={3} xl={3}>
-              <div className="logo-panel">
-                <HeaderLogo />
-                <SidebarMenu />
-              </div>
+          <div className="main-division">
+            <Grid container spacing={4}>
+              {/* siderbar */}
+              <Grid item xs={12} sm={12} md={3} lg={3} xl={3}>
+                <div className="logo-panel">
+                  <div className="logo-wrapper">
+                    <HeaderLogo />
+                  </div>
+                  <SidebarMenu />
+                </div>
+              </Grid>
+
+              {isAuthenticated ? (
+                selectComponent()
+              ) : isAuthenticated === undefined ? (
+                ""
+              ) : (
+                <Navigate to="/login" />
+              )}
             </Grid>
+          </div>
 
-            {isAuthenticated ? (
-              selectComponent()
-            ) : isAuthenticated === undefined ? (
-              ""
-            ) : (
-              <Navigate to="/login" />
-            )}
-          </Grid>
+          {/* Mobile View */}
+          {isAuthenticated ? (
+            <>
+              <div className="mobile-view-product">
+                <ul aria-expanded={showMenu}>
+                  <li>
+                    <SidebarMobile closeMenu={closeMenu} />
+                  </li>
+                </ul>
+                {selectMobileComponent()}
+              </div>
+            </>
+          ) : isAuthenticated === undefined ? (
+            ""
+          ) : (
+            <Navigate to="/login" />
+          )}
         </div>
-
-        {/* Mobile View */}
-        {isAuthenticated ? (
-          <>
-            <div className="mobile-view-product">
-              <ul aria-expanded={showMenu}>
-                <li>
-                  <SidebarMobile closeMenu={closeMenu} />
-                </li>
-              </ul>
-              {selectMobileComponent()}
-            </div>
-          </>
-        ) : isAuthenticated === undefined ? (
-          ""
-        ) : (
-          <Navigate to="/login" />
-        )}
-      </div>
+      ) : (
+        ""
+      )}
     </>
   ) : (
     <Navigate to="/payment" />

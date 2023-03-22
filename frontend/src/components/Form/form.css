@@ -33,6 +33,16 @@
 .input_one textarea:focus-visible {
   outline: none;
 }
+
+.input_one h5,
+.input_two h5,
+.input_three h5 {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 32px;
+  color: black;
+}
+
 .input_one {
   font-family: "Manrope";
   font-style: normal;
@@ -51,7 +61,7 @@
 .input_three {
   display: inline-block;
   width: 100%;
-  margin-bottom: 5%;
+  margin-bottom: 10px;
   text-align: left;
 }
 .submitButton button {
@@ -95,6 +105,7 @@
 .submitButton button:disabled {
   filter: opacity(1);
   filter: grayscale(1);
+  cursor: not-allowed;
 }
 
 .main-division {
@@ -120,18 +131,21 @@ label {
 
 .output-layout {
   border-radius: 8px;
+  height: fit-content;
   margin: 14px;
   background: #b5d3ff;
   color: white;
   box-shadow: 0px 4px 10px rgb(0 0 0 / 25%);
 }
 .ot-hd {
-  font-size: 22px;
+  font-size: 20px;
+  height: 100%;
   background: #b5d3ff;
-  box-shadow: 0px 4px 10px rgb(0 0 0 / 25%);
   font-weight: 600;
   color: black;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .ot-bd {
@@ -165,7 +179,6 @@ label {
 }
 
 .cpyall-btn {
-  display: block;
   background: #ffff;
   border: 2px solid #154b89;
   border-radius: 7px;
@@ -184,6 +197,10 @@ label {
 }
 .hd-cp {
   position: relative;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 h1.text-status {
   position: absolute;
@@ -216,9 +233,11 @@ h1.text-status-save {
   margin-top: 10px;
   color: #fff;
 }
+
 .hd-logo {
   display: flex;
   justify-content: inherit;
+  margin: 0 20px;
 }
 .hd-logo img {
   display: flex;
@@ -228,19 +247,22 @@ h1.text-status-save {
 }
 .lg-title {
   margin: 10% 0% 0% 10% !important;
-  font-size: 2vw;
 }
 
 .tone-btn {
   border: 2px solid #b5d3ff !important;
   width: 100% !important;
   text-transform: capitalize !important;
+  height: 100%;
+  font-weight: 800 !important;
 }
 .tone-btn-selected {
   background-color: #154b89 !important;
   color: #fff !important;
   width: 100% !important;
   text-transform: capitalize !important;
+  height: 100%;
+  font-weight: 800 !important;
 }
 
 .tone-btn:hover {
@@ -330,14 +352,27 @@ button[aria-expanded="false"] img {
   margin: 0;
   margin-bottom: 15px;
   background: rgba(181, 211, 255, 0.9);
-  color: #2e72d2;
   align-items: center;
   flex-direction: column;
   border-radius: 4px;
 }
 
+.category-title h2 {
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 44px;
+  color: black;
+}
+
 .result-title {
   text-align: center;
+  margin: 10px 0;
+  font-size: 20px;
+}
+
+.result-card-title-bar {
+  height: 40px;
+  box-shadow: 0px 4px 10px rgb(0 0 0 / 25%);
 }
 
 /*Media Query For responsive Design*/
@@ -350,20 +385,20 @@ button[aria-expanded="false"] img {
     display: none !important;
   }
   .header-mobile-view {
+    width: 100%;
+    padding: 0 20px;
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     background: rgba(181, 211, 255, 0.9);
   }
   .hamburger-menu {
-    width: 40% !important;
-    height: 100% !important;
-    margin-top: 10%;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 3%;
+    flex-direction: column;
   }
   .main-division {
     display: none !important;
@@ -400,7 +435,9 @@ button[aria-expanded="false"] img {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 24px;
+  }
+  .mobile-category-title {
+    font-size: 30px;
     font-weight: 800;
   }
   .result-mobile-view {
@@ -491,6 +528,32 @@ button[aria-expanded="false"] img {
     padding: 0 15px;
     padding-bottom: 15px;
   }
+
+  .result-body h4 {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 22px;
+  }
+
+  .tone-btn {
+    border-radius: 5px !important;
+  }
+
+  .tone-btn-selected {
+    border-radius: 5px !important;
+  }
+
+  .input_one textarea {
+    border-radius: 5px;
+  }
+
+  .input_two textarea {
+    border-radius: 5px;
+  }
+
+  .input_three {
+    margin-bottom: 5%;
+  }
 }
 
 @media only screen and (max-width: 2000px) and (min-width: 830px) {
@@ -499,5 +562,32 @@ button[aria-expanded="false"] img {
   }
   .mobile-view-product {
     display: none;
+  }
+
+  .input_one textarea {
+    border-radius: 5px;
+  }
+
+  .input_two textarea {
+    border-radius: 5px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .header-mobile-view {
+    width: 100%;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(181, 211, 255, 0.9);
+  }
+  .hamburger-menu {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
 }

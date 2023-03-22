@@ -8,6 +8,9 @@ import Card from "react-bootstrap/Card";
 import "../mobile-view/sidebarmobile.css";
 import { Grid } from "@mui/material";
 import { footerlogo } from "../../assets";
+import HomeIcon from "@mui/icons-material/Home";
+import HistoryIcon from "@mui/icons-material/History";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 function SidebarMobile({ closeMenu }) {
   const [logout, setLogout] = useState(false);
@@ -29,12 +32,16 @@ function SidebarMobile({ closeMenu }) {
         <>
           <div className="sidebar-mobile-wrapper">
             <div className="sidebar-mobile">
-              <Link to="/home" className="sidebar-mobile-home-btn">
-                {" "}
-                Home
+              <Link
+                to="/home"
+                className="icon-component sidebar-mobile-home-btn"
+              >
+                <HomeIcon />
+                <p>Home</p>
               </Link>
-              <Link to="/history" className="home-btn">
-                History
+              <Link to="/history" className="icon-component home-btn">
+                <HistoryIcon />
+                <p>History</p>
               </Link>
               {catagoryList.map((cat, i) => {
                 return (
@@ -73,9 +80,12 @@ function SidebarMobile({ closeMenu }) {
                   </Accordion>
                 );
               })}
-              <button className="home-btn" onClick={() => handleLogout()}>
-                {" "}
-                Logout
+              <button
+                className="icon-component home-btn"
+                onClick={() => handleLogout()}
+              >
+                <LogoutIcon />
+                <p>Logout</p>
               </button>
             </div>
           </div>

@@ -7,15 +7,15 @@ import { Grid } from "@mui/material";
 
 function HeaderLogo() {
   return (
-    <div className="hd-logo">
-      <Grid container className="img-text-mobileview">
-        <Grid xs={2} sm={2} md={2} className="img-logo">
+    <div className="logo-wrapper">
+      <div className="hd-logo">
+        <div className="img-logo">
           <img src={logo} />
-        </Grid>
-        <Grid xs={10} sm={8} md={10} className="text-logo">
-          <h2 className="lg-title"> creativewriter.ai</h2>
-        </Grid>
-      </Grid>
+        </div>
+        <div className="text-logo">
+          <h2>creativewriter.ai</h2>
+        </div>
+      </div>
     </div>
   );
 }

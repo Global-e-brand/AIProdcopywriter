@@ -1,10 +1,15 @@
-.loader {
+.loader-wrapper {
   display: block;
   position: relative;
-  height: 64px;
-  width: 64px;
-  /* z-index: -1; */
+  height: 70px;
+  width: 70px;
   margin: auto;
+}
+
+.loader {
+  height: 50px;
+  width: 50px;
+  /* z-index: -1; */
 }
 
 .loader img {
