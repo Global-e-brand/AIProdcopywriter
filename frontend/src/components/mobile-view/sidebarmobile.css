@@ -111,7 +111,7 @@
   }
 
   div.accordion-collapse {
-    transition: height 0.3s ease;
+    transition: height 1.0s ease;
     font-size: 20px !important;
   }
   .sidebar-mobile-home-btn {
@@ -140,7 +140,7 @@
     list-style: none;
   }
   .footer {
-    background-color: #b5d3ff;
+    background-color: rgb(181 211 255);
     padding: 10px;
     display: flex;
     justify-content: center;
@@ -257,7 +257,7 @@
   }
 
   div.accordion-collapse {
-    transition: height 0.3s ease;
+    transition: height 1.0s ease;
     font-size: 20px !important;
   }
   .sidebar-mobile-home-btn {
@@ -286,7 +286,7 @@
     list-style: none;
   }
   .footer {
-    background-color: #b5d3ff;
+    background-color: rgb(181 211 255);
     padding: 10px;
     position: relative;
     font-weight: 800;

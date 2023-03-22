@@ -242,7 +242,7 @@ function Form(props) {
       <Grid item xs={4} sm={12} md={4} lg={4} xl={4}>
         <div className="category-title mr-2">
           <h2>
-            <strong>Result</strong>
+            <strong>Results</strong>
           </h2>
         </div>
         {/* {console.log("data",data)} */}

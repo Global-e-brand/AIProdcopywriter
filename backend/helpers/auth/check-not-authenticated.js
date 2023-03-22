@@ -2,7 +2,13 @@ export const checkNotAuthenticated = (req, res, next) => {
   if (!req.isAuthenticated()) {
     return next();
   }
-  console.log("Authenticated");
-  console.log(req.params);
-  res.redirect("http://localhost:3001/home");
+  console.log("Authenticated"); 
+  let path=req.query.categorypath; 
+  if(path !== ''){
+    res.redirect(`http://localhost:3001${path}`);
+  }else{
+    res.redirect("http://localhost:3001/home");
+  }
+   
+  
 };

@@ -16,6 +16,10 @@
   /* overflow-y: scroll; */
 }
 
+.hr-blue{
+  border:2px solid #B5D3FF;
+}
+
 .category_name {
   margin-bottom: 10%;
   color: #2e72d2;
@@ -59,11 +63,12 @@
   font-style: normal;
   font-weight: "Bold";
   font-size: 16px;
+  font-weight: 800;
   line-height: 22px;
   text-align: center;
   color: #154b89;
   background: #ffffff;
-  border: 4px solid #154b89;
+  border: 4px solid #b5d3ff;
   border-radius: 7px;
   width: 100%;
   height: 35px;
@@ -153,6 +158,7 @@ label {
   height: 34px;
   font-weight: Bold;
   text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .cpy-btn:hover {
@@ -174,6 +180,7 @@ label {
   font-family: serif;
   text-transform: uppercase;
   margin: 0 auto;
+  letter-spacing: 1px;
 }
 
 .cpyall-btn:hover {
@@ -219,16 +226,16 @@ h1.text-status-save {
 .hd-logo {
   display: flex;
   justify-content: inherit;
+  padding: 10px;
 }
 .hd-logo img {
   display: flex;
   width: 100%;
   height: auto;
-  margin: 20px 0px 0px 20px;
+  /* margin: 20px 0px 0px 20px; */
 }
 .lg-title {
-  margin: 10% 0% 0% 10% !important;
-  font-size: 2vw;
+  text-align: center;  
 }
 
 .tone-btn {
@@ -328,7 +335,7 @@ button[aria-expanded="false"] img {
 .category-title {
   display: flex;
   margin: 0;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   background: rgba(181, 211, 255, 0.9);
   color: #2e72d2;
   align-items: center;
@@ -402,6 +409,7 @@ button[aria-expanded="false"] img {
     align-items: center;
     font-size: 24px;
     font-weight: 800;
+    background-color: rgba(181, 211, 255, 0.9);
   }
   .result-mobile-view {
     padding: 10px;

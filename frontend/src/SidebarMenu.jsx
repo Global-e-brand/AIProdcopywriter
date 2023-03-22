@@ -40,6 +40,9 @@ function SidebarMenu() {
             <Link to="/history" className="home-btn">
               History
             </Link>
+            <button className="home-btn" onClick={() => handleLogout()}>
+              Logout
+            </button>
             {catagoryList.map((cat, i) => {
               return (
                 <Accordion>
@@ -65,9 +68,7 @@ function SidebarMenu() {
                 </Accordion>
               );
             })}
-            <button className="home-btn" onClick={() => handleLogout()}>
-              Logout
-            </button>
+           
           </div>
         </div>
       )}

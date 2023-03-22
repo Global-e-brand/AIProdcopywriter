@@ -19,6 +19,8 @@ function Signin() {
   const [alertVisibility, setAlertVisibility] = useState(false);
   const [isLoading, setLoading] = useState(false);
   const [isOpen, setOpen] = useState(false);
+  const [categorypath, setCategorypath] = useState();
+  
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -35,6 +37,10 @@ function Signin() {
       });
     }
   }, [location?.state?.success]);
+
+  useEffect(()=>{
+    setCategorypath(localStorage.getItem("categorypath"));
+  })
 
   const handleEmail = (e) => {
     setEmail(e.target.value);
@@ -65,6 +71,8 @@ function Signin() {
   to complete the authentication process. The fetch API doesn't allow such behaviour as the server
   cannot redirect from fetch requests.
   */
+  {console.log("categorypath",categorypath)}
+
   const handleFormSubmission = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -75,7 +83,7 @@ function Signin() {
 
     let host = window.location.hostname;
     form.method = "POST";
-    form.action = `/auth/local?host=${host}`;
+    form.action = `/auth/local?host=${host}&&categorypath=${categorypath}`;
     form.target = "stay";
 
     emailInput.value = email;

@@ -60,13 +60,13 @@ function MobileForm(props) {
       action: "test",
       label: "mobile-test",
     });
-    if (text == null) {
-      setLoading(true);
-    }
+    // if (text == null) {
+    //   setLoading(true);
+    // }
 
-    if (text != null) {
-      setSingleContent(i);
-    }
+    // if (text != null) {
+    //   setSingleContent(i);
+    // }
 
     // let checkPayment = await fetch("/checkpayment", {
     //   method: "GET",
@@ -251,11 +251,12 @@ function MobileForm(props) {
           </form>
         </Grid>
       </div>
+      <hr className="hr-blue"></hr>
       <div className="result-mobile-view">
         <Grid item xs={12}>
           <div className="category-title mr-2">
             <h2>
-              <strong>Result</strong>
+              <strong>Results</strong>
             </h2>
           </div>
           {/* {console.log("data",data)} */}
@@ -315,7 +316,7 @@ function MobileForm(props) {
                             </Grid>
                             <Grid item xs={8}>
                               <h3 className="result-title">
-                                {props.category + "-" + index}
+                                {`Result ${index+1}`}
                               </h3>
                             </Grid>
                             <Grid item xs={2}>

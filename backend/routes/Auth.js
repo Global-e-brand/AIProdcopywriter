@@ -117,7 +117,7 @@ authrouter.post(
   (req, res) => {
     console.log("req params ", req.query);
     res.redirect(
-      "https://" + req.query.host + "/auth/success?host=" + req.query.host
+      "https://" + req.query.host + ":3000/auth/success?host=" + req.query.host
     );
   }
 );
@@ -165,7 +165,7 @@ authrouter.get("/fail-local", (req, res) => {
 });
 
 authrouter.get("/success", checkAuthenticated, async (req, res) => {
-  console.log(req.params);
+  console.log("168",req.query);
   await socialMediaUsers(req.user);
 
   console.log("Success");
@@ -174,13 +174,13 @@ authrouter.get("/success", checkAuthenticated, async (req, res) => {
   let userId = await getUserId();
   console.log(userId);
   let result = await checkTrial(userId);
-  console.log(result);
+  console.log("result",result);
   if (true) {
     // check for result
-    if(req.query.host=="localhost"){
-      res.redirect("https://localhost:3001/home");
+    if(req.query.host=="localhost" && req.query.categorypath !=''){
+      res.redirect(`https://localhost:3001/${req.query.categorypath}`);
     }else{
-      res.redirect("https://" + req.query.host + "/home");
+      res.redirect(`https://${req.query.host}/${req.query.categorypath}`);
     }
   } else {
     console.log("Redirect to Payments");
