@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Grid, Button } from "@mui/material";
 import Loader from "../loader/loader";
 import ReactGA from "react-ga";
+import {
   copyToAllClipboard,
   copyToClipboard,
 } from "../../helpers/copyFunctions";
