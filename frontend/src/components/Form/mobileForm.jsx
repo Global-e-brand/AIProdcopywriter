@@ -249,7 +249,11 @@ function MobileForm(props) {
                   <button
                     className="icon-component cpyall-btn"
                     onClick={() =>
-                      copyToAllClipboard(props.states.data, setAllCopied)
+                      copyToAllClipboard(
+                        props.states.data,
+                        AllCopied,
+                        setAllCopied
+                      )
                     }
                   >
                     <ContentCopyIcon /> <p>Copy All</p>
@@ -271,7 +275,7 @@ function MobileForm(props) {
                             justifyContent="center"
                             alignItems="center"
                           >
-                            <Grid item xs={2}>
+                            <Grid item xs={4} sm={2}>
                               <div className="hd-cp">
                                 <button
                                   className="icon-component cpy-btn"
@@ -294,12 +298,12 @@ function MobileForm(props) {
                                 )}
                               </div>
                             </Grid>
-                            <Grid item xs={8}>
+                            <Grid item xs={4} sm={8}>
                               <h3 className="result-title">
                                 {`Result ${index + 1}`}
                               </h3>
                             </Grid>
-                            <Grid item xs={2}>
+                            <Grid item xs={4} sm={2}>
                               <div className="hd-cp">
                                 <button
                                   className="icon-component cpy-btn"
@@ -307,6 +311,7 @@ function MobileForm(props) {
                                     copyToClipboard(
                                       props.states.data[index],
                                       index,
+                                      Copied,
                                       setCopied
                                     )
                                   }

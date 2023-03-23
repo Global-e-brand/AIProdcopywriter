@@ -226,7 +226,11 @@ function Form(props) {
                     <button
                       className="icon-component cpyall-btn"
                       onClick={() =>
-                        copyToAllClipboard(props.states.data, setAllCopied)
+                        copyToAllClipboard(
+                          props.states.data,
+                          AllCopied,
+                          setAllCopied
+                        )
                       }
                     >
                       <ContentCopyIcon />
@@ -280,7 +284,7 @@ function Form(props) {
                                 <button
                                   className="icon-component cpy-btn"
                                   onClick={() =>
-                                    copyToClipboard(item, i, setCopied)
+                                    copyToClipboard(item, i, Copied, setCopied)
                                   }
                                 >
                                   <ContentCopyIcon />
