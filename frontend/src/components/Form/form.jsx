@@ -127,8 +127,13 @@ function Form(props) {
           {props.toneInputActive ? (
             <div className="input_three">
               <h5>Select a tone</h5>
-              <Grid container justifyContent="center" spacing={4}>
-                <Grid item xs={3} sm={3} md={3}>
+              <Grid
+                container
+                justifyContent="center"
+                columnSpacing={{ xs: 1, sm: 1, md: 2, lg: 1, xl: 4 }}
+                rowSpacing={{ xs: 1, sm: 1, md: 1, lg: 3, xl: 4 }}
+              >
+                <Grid item xs={6} sm={6} md={6} lg={3}>
                   <Button
                     className={`icon-component ${
                       props.states.tone == "Friendly"
@@ -141,7 +146,7 @@ function Form(props) {
                     <p>Friendly</p>
                   </Button>
                 </Grid>
-                <Grid item xs={3} sm={3} md={3}>
+                <Grid item xs={6} sm={6} md={6} lg={3}>
                   <Button
                     className={`icon-component ${
                       props.states.tone == "Professional"
@@ -154,7 +159,7 @@ function Form(props) {
                     <p>Professional</p>
                   </Button>
                 </Grid>
-                <Grid item xs={3} sm={3} md={3}>
+                <Grid item xs={6} sm={6} md={6} lg={3}>
                   <Button
                     className={`icon-component ${
                       props.states.tone == "Empathetic"
@@ -167,7 +172,7 @@ function Form(props) {
                     <p>Empathetic</p>
                   </Button>
                 </Grid>
-                <Grid item xs={3} sm={3} md={3}>
+                <Grid item xs={6} sm={6} md={6} lg={3}>
                   <Button
                     className={`icon-component ${
                       props.states.tone == "Bold"
