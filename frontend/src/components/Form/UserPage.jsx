@@ -30,9 +30,9 @@ function Dummy(props) {
   const location = useLocation();
   const navigate = useNavigate();
 
-  useEffect(()=>{
-    localStorage.setItem("categorypath",location.pathname)
-  })
+  useEffect(() => {
+    localStorage.setItem("categorypath", location.pathname);
+  });
 
   const closeMenu = () => {
     setShowMenu(false);
@@ -121,8 +121,7 @@ function Dummy(props) {
               <HeaderLogo />
               <div className="hamburger-menu">
                 <h2 onClick={() => setShowMenu(!showMenu)}>
-                {showMenu?
-                "x":<GiHamburgerMenu />}
+                  {showMenu ? "x" : <GiHamburgerMenu />}
                 </h2>
               </div>
             </div>

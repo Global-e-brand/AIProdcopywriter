@@ -13,11 +13,13 @@
 
 .category-page {
   height: 100vh;
+  display: flex;
+  flex-direction: column;
   /* overflow-y: scroll; */
 }
 
-.hr-blue{
-  border:2px solid #B5D3FF;
+.hr-blue {
+  border: 2px solid #b5d3ff;
 }
 
 .category_name {
@@ -115,6 +117,7 @@
 
 .main-division {
   display: flex;
+  flex-grow: 1;
   /* cursor: pointer; */
 }
 label {
@@ -253,7 +256,7 @@ h1.text-status-save {
   /* margin: 20px 0px 0px 20px; */
 }
 .lg-title {
-  text-align: center;  
+  text-align: center;
 }
 
 .tone-btn {
@@ -287,7 +290,7 @@ h1.text-status-save {
   background: #b5d3ff;
   color: #000 !important;
   font-weight: 600 !important;
-  margin: 5px;
+  margin: 5px 0;
   padding: 8px;
   width: 100%;
 }

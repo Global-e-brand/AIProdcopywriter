@@ -17,18 +17,15 @@ div#root {
   height: 100%;
 }
 
-.logo-panel-wrapper {
-  overflow: hidden;
-  padding: 0 20px 0 0;
-}
-
 .logo-panel {
   position: relative;
   background-image: url("../src/assets/images/Sidebar-bg.png");
   background-size: cover;
   background-repeat: no-repeat;
   box-shadow: 0px 4px 5px 0px;
-  height: 94vh;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 /*h2 {
@@ -59,30 +56,43 @@ div#root {
   border-radius: 4px;
 }
 
-.side-bar-wrapper {
-  overflow: hidden;
-  height: 80%;
-}
-
-.side-Bar {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+.side-bar-menu {
   height: 100%;
-  overflow-y: scroll;
+  overflow: hidden;
 }
 
-.side-Bar::-webkit-scrollbar {
+.static-menu-items {
+  padding: 0 20px 20px 20px;
+}
+
+.scrollable-menu-items {
+  height: 50vh;
+  overflow-y: scroll;
+  padding: 0 20px 20px 20px;
+}
+
+.scrollable-menu-items::-webkit-scrollbar {
   width: 0;
   background: transparent;
 }
 
-/* @supports (scrollbar-gutter: stable) {
-  .side-Bar {
-    overflow-y: auto;
-    scrollbar-gutter: stable;
+@media (max-height: 1000px) {
+  .scrollable-menu-items {
+    height: 60vh;
   }
-} */
+}
+
+@media (max-height: 830px) {
+  .scrollable-menu-items {
+    height: 45vh;
+  }
+}
+
+@media (max-height: 600px) {
+  .scrollable-menu-items {
+    height: 30vh;
+  }
+}
 
 .menu-separator {
   margin-top: -10px;
@@ -110,7 +120,7 @@ div.card-body {
   animation: background-fade 0.7s ease forwards;
   margin-top: 0 !important;
 }
-.side-Bar .accordion {
+.category-items .accordion {
   width: 100%;
 }
 button.accordion-button {
@@ -162,7 +172,7 @@ button.accordion-button:hover {
 }
 
 div.accordion-collapse {
-  transition: height 1.0s ease;
+  transition: height 1s ease;
 }
 
 #bs-item-override {
@@ -357,7 +367,7 @@ style={{ position: "absolute", width: "229px", height: "45px", backgroundColor: 
 
 /*Media Query*/
 @media only screen and (max-width: 830px) {
-  .side-Bar {
+  .category-items {
     display: none !important;
   }
   .logo-panel {

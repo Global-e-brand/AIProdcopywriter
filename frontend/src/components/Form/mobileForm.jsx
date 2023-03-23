@@ -247,7 +247,7 @@ function MobileForm(props) {
               {props.states.data != undefined ? (
                 <>
                   <button
-                    className="cpyall-btn"
+                    className="icon-component cpyall-btn"
                     onClick={() =>
                       copyToAllClipboard(props.states.data, setAllCopied)
                     }
@@ -274,7 +274,7 @@ function MobileForm(props) {
                             <Grid item xs={2}>
                               <div className="hd-cp">
                                 <button
-                                  className="cpy-btn"
+                                  className="icon-component cpy-btn"
                                   onClick={() =>
                                     handleSave(
                                       props.states.data[index].text.trim(),
@@ -296,13 +296,13 @@ function MobileForm(props) {
                             </Grid>
                             <Grid item xs={8}>
                               <h3 className="result-title">
-                                {`Result ${index+1}`}
+                                {`Result ${index + 1}`}
                               </h3>
                             </Grid>
                             <Grid item xs={2}>
                               <div className="hd-cp">
                                 <button
-                                  className="cpy-btn"
+                                  className="icon-component cpy-btn"
                                   onClick={() =>
                                     copyToClipboard(
                                       props.states.data[index],
