@@ -17,6 +17,7 @@ function MobileForm(props) {
   const [index, setIndex] = useState(0);
   const [flip, setFlip] = useState(true);
   const [singleContent, setSingleContent] = useState();
+  const [touchPosition, setTouchPosition] = useState(null);
 
   const navigate = useNavigate();
 
@@ -97,6 +98,32 @@ function MobileForm(props) {
 
   const handleTone = (e) => {
     props.states.setTone(e);
+  };
+
+  const handleTouchStart = (e) => {
+    const touchDown = e.touches[0].clientX;
+    setTouchPosition(touchDown);
+  };
+
+  const handleTouchMove = (e) => {
+    const touchDown = touchPosition;
+
+    if (touchDown === null) {
+      return;
+    }
+
+    const currentTouch = e.touches[0].clientX;
+    const diff = touchDown - currentTouch;
+
+    if (diff > 5) {
+      handleNext();
+    }
+
+    if (diff < -5) {
+      handlePrev();
+    }
+
+    setTouchPosition(null);
   };
 
   function handleNext() {
@@ -324,7 +351,11 @@ function MobileForm(props) {
                           </Grid>
                         </div>
                         <Grid xs={12}>
-                          <div className="result-body">
+                          <div
+                            className="result-body"
+                            onTouchStart={handleTouchStart}
+                            onTouchMove={handleTouchMove}
+                          >
                             <h4 id="result-text">
                               {props.states.data[index].text.trim()}
                             </h4>

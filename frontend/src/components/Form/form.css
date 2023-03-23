@@ -199,12 +199,12 @@ label {
   font-weight: 600;
   font-family: serif;
   text-transform: uppercase;
-  margin: 5px auto;
+  margin: 10px auto 0 auto;
   letter-spacing: 1px;
 }
 
 .cpyall-btn:hover {
-  margin: auto;
+  margin: 10px auto 0 auto;
   background: #154b89;
   color: #fff;
 }
