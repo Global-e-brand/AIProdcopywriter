@@ -112,6 +112,11 @@ div#root {
   border-radius: 5px !important;
 }
 
+.accordion-header {
+  min-height: 32px !important;
+  padding: 0 10px !important;
+}
+
 .accordion.Mui-expanded {
   margin: 10px 0 !important;
   animation: background-fade 0.7s ease forwards;
@@ -121,6 +126,10 @@ div#root {
   border-top-left-radius: inherit;
   border-top-right-radius: inherit;
   animation: background-fade 0.7s ease forwards;
+}
+
+.MuiAccordionSummary-content {
+  margin: 0px !important;
 }
 
 .accordion-header.Mui-expanded + .MuiCollapse-root {
