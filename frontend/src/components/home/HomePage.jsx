@@ -45,14 +45,14 @@ function HomePage() {
     <>
       <div className="bg-image-mobile homepage">
         <Grid container spacing={2} columns={16}>
-          <Grid item xs={16} sm={5} className="robot-img-homepage">
+          <Grid item xs={16} sm={16} md={5} className="robot-img-homepage">
             <img
               className="robot-img"
               src={robot}
               alt="CreativeAI robot mascot"
             />
           </Grid>
-          <Grid item xs={16} sm={11} alignItems="center">
+          <Grid item xs={16} sm={16} md={11} alignItems="center">
             <div className="homepage-info-section">
               <div>
                 <img

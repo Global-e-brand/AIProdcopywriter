@@ -102,20 +102,22 @@ function MobileForm(props) {
   function handleNext() {
     if (index < 4) {
       setIndex(index + 1);
-    } else setIndex(4);
+    } else setIndex(0);
+    document.getElementById("result-text").scrollTop = 0;
     setFlip(!flip);
   }
   function handlePrev() {
     if (index > 0) {
       setIndex(index - 1);
-    } else setIndex(0);
+    } else setIndex(4);
+    document.getElementById("result-text").scrollTop = 0;
     setFlip(!flip);
   }
 
   return (
     <>
       <div className="main-form-mobile">
-        <p className="mobile-category-title">{props.category}</p>
+        <p className="mobile-category-title smooth-edge">{props.category}</p>
         <Grid item xs={12}>
           <form className="form">
             <div className="input_one">
@@ -231,13 +233,11 @@ function MobileForm(props) {
           </form>
         </Grid>
       </div>
-      <hr className="hr-blue"></hr>
+      <div className="hr-blue"></div>
       <div className="result-mobile-view">
         <Grid item xs={12}>
-          <div className="category-title mr-2">
-            <h2>
-              <strong>Results</strong>
-            </h2>
+          <div className="category-title mr-2 smooth-edge">
+            <h2>Results</h2>
           </div>
           {/* {console.log("data",data)} */}
           {props.states.loading ? (
@@ -325,7 +325,9 @@ function MobileForm(props) {
                         </div>
                         <Grid xs={12}>
                           <div className="result-body">
-                            <h4>{props.states.data[index].text.trim()}</h4>
+                            <h4 id="result-text">
+                              {props.states.data[index].text.trim()}
+                            </h4>
                             <div className="mobile-carousal-buttons">
                               <button
                                 onClick={() => handlePrev()}

@@ -1,4 +1,4 @@
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 900px) {
   .robot-img-homepage {
     display: none !important;
   }
@@ -135,7 +135,7 @@
   }
 } */
 
-@media (max-width: 1000px) {
+@media (max-width: 900px) {
   .description-mobile {
     display: block;
     font-size: 18px;

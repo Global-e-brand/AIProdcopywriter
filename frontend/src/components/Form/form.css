@@ -429,7 +429,6 @@ button[aria-expanded="false"] img {
     display: none !important;
   }
   .mobile-view-product {
-    width: 100%;
     overflow-y: auto;
   }
   .mobile-view-product ul[aria-expanded="true"] {
@@ -439,7 +438,8 @@ button[aria-expanded="false"] img {
     height: 100%;
     animation: slide-from-left 0.3s forwards;
     z-index: 1;
-    width: 100%;
+    width: calc(100vw - 10px);
+    padding: 10px;
   }
 
   /* TranslateX is used instead of left:0 since translateX

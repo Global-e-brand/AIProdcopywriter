@@ -8,18 +8,11 @@
   margin: 0;
 }
 
-/* @supports (scrollbar-gutter: stable) {
-  .sidebar-mobile-wrapper {
-    overflow-y: auto;
-    scrollbar-gutter: stable;
-  }
-} */
-
 @media only screen and (max-width: 600px) and (min-width: 200px) {
   .sidebar-mobile-wrapper {
     overflow: hidden;
-    padding: 20px 0;
     height: 100%;
+    padding: 20px 10px;
   }
 
   /* @supports (scrollbar-gutter: stable) {
@@ -89,9 +82,8 @@
 @media only screen and (max-width: 1000px) and (min-width: 601px) {
   .sidebar-mobile-wrapper {
     overflow: hidden;
-    padding: 20px 0;
+    padding: 20px 10px;
     height: 100%;
-    margin-left: -5%;
   }
 
   .sidebar-mobile {
