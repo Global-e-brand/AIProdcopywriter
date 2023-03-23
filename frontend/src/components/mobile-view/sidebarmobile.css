@@ -8,13 +8,26 @@
   margin: 0;
 }
 
+/* @supports (scrollbar-gutter: stable) {
+  .sidebar-mobile-wrapper {
+    overflow-y: auto;
+    scrollbar-gutter: stable;
+  }
+} */
+
 @media only screen and (max-width: 600px) and (min-width: 200px) {
   .sidebar-mobile-wrapper {
     overflow: hidden;
     padding: 20px 0;
     height: 100%;
-    margin-left: -5%;
   }
+
+  /* @supports (scrollbar-gutter: stable) {
+    .sidebar-mobile-wrapper {
+      overflow-y: auto;
+      scrollbar-gutter: stable;
+    }
+  } */
 
   .sidebar-mobile {
     display: flex;
@@ -27,15 +40,6 @@
   .sidebar-mobile::-webkit-scrollbar {
     width: 0;
     background: transparent;
-  }
-
-  .menu-separator {
-    margin-top: -10px;
-    border: none;
-    opacity: 1;
-    height: 5px;
-    background-color: black;
-    animation: fade-in 0.7s ease both;
   }
 
   .sidebar-mobile .accordion {
@@ -101,15 +105,6 @@
   .sidebar-mobile::-webkit-scrollbar {
     width: 0;
     background: transparent;
-  }
-
-  .menu-separator {
-    margin-top: -10px;
-    border: none;
-    opacity: 1;
-    height: 5px;
-    background-color: black;
-    animation: fade-in 0.7s ease both;
   }
 
   .sidebar-mobile .accordion {

@@ -15,6 +15,7 @@ import MobileForm from "./mobileForm";
 import Form from "./form";
 import HistoryComponent from "../History/HistoryComponent";
 import MobileHistoryComponent from "../History/MobileHistoryComponent";
+import CloseIcon from "@mui/icons-material/Close";
 
 function Dummy(props) {
   const [isAuthenticated, setAuthenticated] = useState(true);
@@ -121,7 +122,13 @@ function Dummy(props) {
               <HeaderLogo />
               <div className="hamburger-menu">
                 <h2 onClick={() => setShowMenu(!showMenu)}>
-                  {showMenu ? "x" : <GiHamburgerMenu />}
+                  {showMenu ? (
+                    <button className="close-button" onClick={props.closeModal}>
+                      <CloseIcon className="close-icon" />
+                    </button>
+                  ) : (
+                    <GiHamburgerMenu />
+                  )}
                 </h2>
               </div>
             </div>

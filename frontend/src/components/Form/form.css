@@ -19,7 +19,10 @@
 }
 
 .hr-blue {
-  border: 2px solid #b5d3ff;
+  margin: 5px 10px 20px 10px;
+  height: 3px;
+  border-radius: 2px;
+  background-color: #b5d3ff;
 }
 
 .category_name {
@@ -176,6 +179,7 @@ label {
   font-weight: Bold;
   text-transform: uppercase;
   letter-spacing: 1px;
+  margin: 0 5px;
 }
 
 .cpy-btn:hover {
@@ -364,7 +368,16 @@ button[aria-expanded="false"] img {
   color: #2e72d2;
   align-items: center;
   flex-direction: column;
+  justify-content: center;
   border-radius: 0;
+}
+
+.category-title h2 {
+  margin: 0;
+}
+
+.smooth-edge {
+  border-radius: 5px;
 }
 
 .category-title h2 {
@@ -402,6 +415,8 @@ button[aria-expanded="false"] img {
     align-items: center;
     justify-content: space-between;
     background: rgba(181, 211, 255, 0.9);
+    /* position: absolute;
+    z-index: 1; */
   }
   .hamburger-menu {
     cursor: pointer;
@@ -415,24 +430,26 @@ button[aria-expanded="false"] img {
   }
   .mobile-view-product {
     width: 100%;
+    overflow-y: auto;
   }
   .mobile-view-product ul[aria-expanded="true"] {
     display: block;
     background-color: #f7f7f7;
     position: absolute;
-    height: 90vh;
-    animation: myfirst 1s;
-    animation-direction: reverse;
-    width: 98%;
-    z-index: 2;
+    height: 100%;
+    animation: slide-from-left 0.3s forwards;
+    z-index: 1;
+    width: 100%;
   }
-  @keyframes myfirst {
+
+  /* TranslateX is used instead of left:0 since translateX
+     performs better on mobile devices */
+  @keyframes slide-from-left {
     0% {
-      left: 0;
+      transform: translateX(100%);
     }
     100% {
-      left: 100%;
-      width: 100%;
+      transform: translateX(0%);
     }
   }
   .mobile-view-product ul[aria-expanded="false"] {
@@ -464,7 +481,7 @@ button[aria-expanded="false"] img {
   .mobile-view-carousal-card {
     width: 100%;
     background-color: #b5d3ff;
-    box-shadow: 5px 5px 20px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 3px 4px 7px 1px rgba(0, 0, 0, 0.3);
     border-radius: 8px;
     margin-top: 3%;
     overflow-y: hidden;
@@ -544,6 +561,9 @@ button[aria-expanded="false"] img {
     font-size: 16px;
     font-weight: 600;
     line-height: 22px;
+    height: fit-content;
+    max-height: 30vh;
+    overflow-y: auto;
   }
 
   .tone-btn {
