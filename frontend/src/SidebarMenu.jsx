@@ -11,11 +11,9 @@ import "./App.css";
 import catagoryList from "./components/json/category-list.json";
 import { arrow } from "./assets";
 
-import Dropdown from "react-bootstrap/Dropdown";
-import DropdownButton from "react-bootstrap/DropdownButton";
-import Accordion from "react-bootstrap/Accordion";
-import Card from "react-bootstrap/Card";
+import { Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
 import { GiHamburgerMenu } from "react-icons/gi";
+import ExpandMore from "@mui/icons-material/ExpandMore";
 
 function SidebarMenu() {
   const [logout, setLogout] = useState(false);
@@ -29,63 +27,56 @@ function SidebarMenu() {
       .then((res) => res.json())
       .then((data) => setLogout(data));
   }
-  return (
-    <>
-      {logout ? (
-        <Navigate to="/" />
-      ) : (
-        <div className="side-bar-wrapper">
-          <div className="side-Bar">
-            <Link to="/home" className="icon-component home-btn">
-              <HomeIcon />
-              <p>Home</p>
-            </Link>
-            <Link to="/history" className="icon-component home-btn">
-              <HistoryIcon />
-              <p>History</p>
-            </Link>
-            <button
-              className="icon-component home-btn"
-              onClick={() => handleLogout()}
-            >
-              <LogoutIcon />
-              <p>Logout</p>
-            </button>
-            {catagoryList.map((cat, i) => {
-              return (
-                <Accordion>
-                  <Card>
-                    <Accordion.Item eventKey="0" key={i}>
-                      <Accordion.Header>{cat.parentcategory}</Accordion.Header>
-                      <Accordion.Collapse eventKey="0">
-                        <Card.Body>
-                          <hr className="menu-separator" />
-                          {cat.childcategory.map((menu, key) => {
-                            return (
-                              <Dropdown.Item id={"bs-item-override"} key={key}>
-                                <Link to={menu.url} className="category-link">
-                                  {menu.name}
-                                </Link>
-                              </Dropdown.Item>
-                            );
-                          })}
-                        </Card.Body>
-                      </Accordion.Collapse>
-                    </Accordion.Item>
-                  </Card>
-                </Accordion>
-              );
-            })}
-           
-          </div>
-        </div>
-      )}
-      {/* <div className="hamburger-menu">
-        <a href="#">
-          <GiHamburgerMenu />
-        </a>
-      </div> */}
-    </>
+  return logout ? (
+    <Navigate to="/" />
+  ) : (
+    <div className="side-bar-menu">
+      <div className="static-menu-items">
+        <Link to="/home" className="icon-component home-btn">
+          <HomeIcon />
+          <p>Home</p>
+        </Link>
+        <Link to="/history" className="icon-component home-btn">
+          <HistoryIcon />
+          <p>History</p>
+        </Link>
+        <button
+          className="icon-component home-btn"
+          onClick={() => handleLogout()}
+        >
+          <LogoutIcon />
+          <p>Logout</p>
+        </button>
+      </div>
+      <div className="scrollable-menu-items">
+        {catagoryList.map((cat, i) => {
+          return (
+            <Accordion className="accordion" disableGutters>
+              <AccordionSummary
+                className="accordion-header"
+                expandIcon={<ExpandMore />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+              >
+                {cat.parentcategory}
+              </AccordionSummary>
+              <AccordionDetails className="open-accordion">
+                <hr className="menu-separator" />
+                {cat.childcategory.map((menu, key) => {
+                  return (
+                    <div className="accordion-item" key={key}>
+                      <Link to={menu.url} className="category-link">
+                        {menu.name}
+                      </Link>
+                    </div>
+                  );
+                })}
+              </AccordionDetails>
+            </Accordion>
+          );
+        })}
+      </div>
+    </div>
   );
 }
 

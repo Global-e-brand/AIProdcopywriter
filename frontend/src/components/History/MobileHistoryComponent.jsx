@@ -66,14 +66,7 @@ const MobileHistoryComponent = () => {
 
   return (
     <>
-      <Grid
-        item
-        xs={12}
-        sm={12}
-        md={9}
-        lg={9}
-        xl={9}
-      >
+      <Grid item xs={12} sm={12} md={12} lg={9} xl={9}>
         {/* today accordion */}
         <Accordion className="closeacc">
           <AccordionSummary

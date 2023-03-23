@@ -12,7 +12,7 @@ function InstructionModal(props) {
           <div className="modal-header">
             <h2>Instructions</h2>
             <div>
-              <button onClick={props.closeModal}>
+              <button className="close-button" onClick={props.closeModal}>
                 <CloseIcon className="close-icon" />
               </button>
             </div>

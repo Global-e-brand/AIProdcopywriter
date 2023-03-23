@@ -17,6 +17,7 @@ function MobileForm(props) {
   const [index, setIndex] = useState(0);
   const [flip, setFlip] = useState(true);
   const [singleContent, setSingleContent] = useState();
+  const [touchPosition, setTouchPosition] = useState(null);
 
   const navigate = useNavigate();
 
@@ -99,23 +100,51 @@ function MobileForm(props) {
     props.states.setTone(e);
   };
 
+  const handleTouchStart = (e) => {
+    const touchDown = e.touches[0].clientX;
+    setTouchPosition(touchDown);
+  };
+
+  const handleTouchMove = (e) => {
+    const touchDown = touchPosition;
+
+    if (touchDown === null) {
+      return;
+    }
+
+    const currentTouch = e.touches[0].clientX;
+    const diff = touchDown - currentTouch;
+
+    if (diff > 5) {
+      handleNext();
+    }
+
+    if (diff < -5) {
+      handlePrev();
+    }
+
+    setTouchPosition(null);
+  };
+
   function handleNext() {
     if (index < 4) {
       setIndex(index + 1);
-    } else setIndex(4);
+    } else setIndex(0);
+    document.getElementById("result-text").scrollTop = 0;
     setFlip(!flip);
   }
   function handlePrev() {
     if (index > 0) {
       setIndex(index - 1);
-    } else setIndex(0);
+    } else setIndex(4);
+    document.getElementById("result-text").scrollTop = 0;
     setFlip(!flip);
   }
 
   return (
     <>
       <div className="main-form-mobile">
-        <p className="mobile-category-title">{props.category}</p>
+        <p className="mobile-category-title smooth-edge">{props.category}</p>
         <Grid item xs={12}>
           <form className="form">
             <div className="input_one">
@@ -231,13 +260,11 @@ function MobileForm(props) {
           </form>
         </Grid>
       </div>
-      <hr className="hr-blue"></hr>
+      <div className="hr-blue"></div>
       <div className="result-mobile-view">
         <Grid item xs={12}>
-          <div className="category-title mr-2">
-            <h2>
-              <strong>Results</strong>
-            </h2>
+          <div className="category-title mr-2 smooth-edge">
+            <h2>Results</h2>
           </div>
           {/* {console.log("data",data)} */}
           {props.states.loading ? (
@@ -247,9 +274,13 @@ function MobileForm(props) {
               {props.states.data != undefined ? (
                 <>
                   <button
-                    className="cpyall-btn"
+                    className="icon-component cpyall-btn"
                     onClick={() =>
-                      copyToAllClipboard(props.states.data, setAllCopied)
+                      copyToAllClipboard(
+                        props.states.data,
+                        AllCopied,
+                        setAllCopied
+                      )
                     }
                   >
                     <ContentCopyIcon /> <p>Copy All</p>
@@ -271,10 +302,10 @@ function MobileForm(props) {
                             justifyContent="center"
                             alignItems="center"
                           >
-                            <Grid item xs={2}>
+                            <Grid item xs={4} sm={2}>
                               <div className="hd-cp">
                                 <button
-                                  className="cpy-btn"
+                                  className="icon-component cpy-btn"
                                   onClick={() =>
                                     handleSave(
                                       props.states.data[index].text.trim(),
@@ -294,19 +325,20 @@ function MobileForm(props) {
                                 )}
                               </div>
                             </Grid>
-                            <Grid item xs={8}>
+                            <Grid item xs={4} sm={8}>
                               <h3 className="result-title">
-                                {`Result ${index+1}`}
+                                {`Result ${index + 1}`}
                               </h3>
                             </Grid>
-                            <Grid item xs={2}>
+                            <Grid item xs={4} sm={2}>
                               <div className="hd-cp">
                                 <button
-                                  className="cpy-btn"
+                                  className="icon-component cpy-btn"
                                   onClick={() =>
                                     copyToClipboard(
                                       props.states.data[index],
                                       index,
+                                      Copied,
                                       setCopied
                                     )
                                   }
@@ -319,8 +351,14 @@ function MobileForm(props) {
                           </Grid>
                         </div>
                         <Grid xs={12}>
-                          <div className="result-body">
-                            <h4>{props.states.data[index].text.trim()}</h4>
+                          <div
+                            className="result-body"
+                            onTouchStart={handleTouchStart}
+                            onTouchMove={handleTouchMove}
+                          >
+                            <h4 id="result-text">
+                              {props.states.data[index].text.trim()}
+                            </h4>
                             <div className="mobile-carousal-buttons">
                               <button
                                 onClick={() => handlePrev()}
