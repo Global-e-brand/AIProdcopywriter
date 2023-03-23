@@ -9,12 +9,14 @@ function HeaderLogo() {
   return (
     <div className="logo-wrapper">
       <div className="hd-logo">
-        <div className="img-logo">
-          <img src={logo} />
-        </div>
-        <div className="text-logo">
-          <h2>creativewriter.ai</h2>
-        </div>
+        <Link to="/home" className="home-link">
+          <div className="img-logo">
+            <img src={logo} />
+          </div>
+          <div className="text-logo">
+            <h2>creativewriter.ai</h2>
+          </div>
+        </Link>
       </div>
     </div>
   );

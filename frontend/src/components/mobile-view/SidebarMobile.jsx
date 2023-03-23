@@ -3,7 +3,6 @@ import { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import catagoryList from "../../components/json/category-list.json";
 import Dropdown from "react-bootstrap/Dropdown";
-import Accordion from "react-bootstrap/Accordion";
 import Card from "react-bootstrap/Card";
 import "../mobile-view/sidebarmobile.css";
 import { Grid } from "@mui/material";
@@ -11,6 +10,8 @@ import { footerlogo } from "../../assets";
 import HomeIcon from "@mui/icons-material/Home";
 import HistoryIcon from "@mui/icons-material/History";
 import LogoutIcon from "@mui/icons-material/Logout";
+import { AccordionSummary, AccordionDetails, Accordion } from "@mui/material";
+import ExpandMore from "@mui/icons-material/ExpandMore";
 
 function SidebarMobile({ closeMenu }) {
   const [logout, setLogout] = useState(false);
@@ -45,38 +46,37 @@ function SidebarMobile({ closeMenu }) {
               </Link>
               {catagoryList.map((cat, i) => {
                 return (
-                  <Accordion>
-                    <Card>
-                      <Accordion.Item eventKey="0">
-                        <Accordion.Header
-                          style={{ fontSize: "20px !important" }}
-                        >
-                          {cat.parentcategory}
-                        </Accordion.Header>
-                        <Accordion.Collapse eventKey="0">
-                          <Card.Body>
-                            <hr className="menu-separator" />
-                            {cat.childcategory.map((menu) => {
-                              return (
-                                <Dropdown.Item
-                                  id={"bs-item-override"}
-                                  style={{ fontSize: "20px !important" }}
-                                >
-                                  <Link
-                                    to={menu.url}
-                                    className="category-link"
-                                    style={{ fontSize: "20px !important" }}
-                                    onClick={closeMenu}
-                                  >
-                                    {menu.name}
-                                  </Link>
-                                </Dropdown.Item>
-                              );
-                            })}
-                          </Card.Body>
-                        </Accordion.Collapse>
-                      </Accordion.Item>
-                    </Card>
+                  <Accordion className="accordion" disableGutters>
+                    <AccordionSummary
+                      className="accordion-header"
+                      expandIcon={<ExpandMore />}
+                      aria-controls="panel1a-content"
+                      id="panel1a-header"
+                      style={{ fontSize: "20px !important" }}
+                    >
+                      {cat.parentcategory}
+                    </AccordionSummary>
+                    <AccordionDetails className="open-accordion">
+                      <hr className="menu-separator" />
+                      {cat.childcategory.map((menu, key) => {
+                        return (
+                          <div
+                            className="accordion-item"
+                            style={{ fontSize: "20px !important" }}
+                            key={key}
+                          >
+                            <Link
+                              to={menu.url}
+                              className="category-link"
+                              style={{ fontSize: "20px !important" }}
+                              onClick={closeMenu}
+                            >
+                              {menu.name}
+                            </Link>
+                          </div>
+                        );
+                      })}
+                    </AccordionDetails>
                   </Accordion>
                 );
               })}

@@ -95,101 +95,51 @@ div#root {
 }
 
 .menu-separator {
-  margin-top: -10px;
   border: none;
+  margin: 0;
   opacity: 1;
-  height: 5px;
+  height: 2px;
   background-color: black;
   animation: fade-in 0.7s ease both;
 }
 
-div.accordion {
-  width: 100%;
-}
-
-div.accordion-item,
-div.card {
-  background-color: transparent !important;
-  border: none !important;
-}
-
-div.card-body {
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-  margin-bottom: 10px;
-  animation: background-fade 0.7s ease forwards;
-  margin-top: 0 !important;
-}
-.category-items .accordion {
-  width: 100%;
-}
-button.accordion-button {
-  margin-top: 10px;
-  color: black !important;
-  font-size: 1.2vw !important;
-  font-weight: 600 !important;
-  height: auto !important;
-  width: 100% !important;
-  margin-bottom: 0 !important;
-  padding: 8px !important;
-}
-
-button.accordion-button:focus {
-  box-shadow: none;
-  border-color: rgba(0, 0, 0, 0.125);
-}
-
-button.accordion-button::after {
-  margin-left: auto !important;
-  transition: ease 0.7s !important;
-  transform: rotate(-180deg) !important;
-}
-
-button.accordion-button:not(.collapsed) {
-  background-color: rgba(140, 185, 251, 0.9) !important;
-}
-
-button.accordion-button.collapsed {
+.accordion {
   margin-top: 10px;
   background-color: rgba(181, 211, 255, 0.9) !important;
   color: black !important;
   font-size: 1.2vw !important;
   font-weight: 600 !important;
-  border: none;
-  height: auto !important;
-  width: 100% !important;
+  border-radius: 5px !important;
 }
 
-button.accordion-button.collapsed::after {
-  margin-left: auto !important;
-  transition: ease 0.7s !important;
-  transform: rotate(0deg) !important;
+.accordion.Mui-expanded {
+  margin: 10px 0 !important;
+  animation: background-fade 0.7s ease forwards;
 }
 
-button.accordion-button:hover {
-  color: black !important;
-  /* background-color: rgba(140, 185, 251, 0.9) !important; */
+.accordion-header.Mui-expanded {
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+  animation: background-fade 0.7s ease forwards;
 }
 
-div.accordion-collapse {
-  transition: height 1s ease;
+.accordion-header.Mui-expanded + .MuiCollapse-root {
+  animation: background-fade 0.7s ease forwards;
 }
 
-#bs-item-override {
+.accordion-item {
   font-size: 1.2vw;
   font-weight: 600;
-  background-color: rgba(181, 211, 255, 0.9);
+  background-color: rgba(181, 211, 255, 0.9) !important;
   text-align: center;
   margin: 10px 0 10px 0;
   box-shadow: 0px 4px 10px rgb(0 0 0 / 50%);
   border-radius: 5px;
-  width: auto;
-  min-width: fit-content;
-  animation: fade-in 0.7s ease both;
+  border-color: transparent !important;
 }
 
-#bs-item-override:hover {
-  background-color: #154b89;
+.accordion-item:hover {
+  background-color: #154b89 !important;
 }
 
 @keyframes background-fade {
@@ -198,15 +148,6 @@ div.accordion-collapse {
   }
   100% {
     background-color: rgba(140, 185, 251, 0.9);
-  }
-}
-
-@keyframes fade-in {
-  0% {
-    opacity: 0.3;
-  }
-  100% {
-    opacity: 1;
   }
 }
 
@@ -366,8 +307,8 @@ style={{ position: "absolute", width: "229px", height: "45px", backgroundColor: 
 }*/
 
 /*Media Query*/
-@media only screen and (max-width: 830px) {
-  .category-items {
+@media only screen and (max-width: 1000px) {
+  .scrollable-menu-items {
     display: none !important;
   }
   .logo-panel {

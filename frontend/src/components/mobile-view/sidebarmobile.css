@@ -38,80 +38,8 @@
     animation: fade-in 0.7s ease both;
   }
 
-  div.accordion {
-    width: 100%;
-  }
-
-  div.accordion-item,
-  div.card {
-    background-color: transparent !important;
-    border: none !important;
-  }
-
-  div.card-body {
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    margin-bottom: 10px;
-    animation: background-fade 0.7s ease forwards;
-    margin-top: 0 !important;
-    font-size: 20px !important;
-  }
   .sidebar-mobile .accordion {
     width: 100%;
-    font-size: 20px !important;
-  }
-  button.accordion-button {
-    margin-top: 10px;
-    color: black !important;
-    font-size: 20px !important;
-    font-weight: 600 !important;
-    height: auto !important;
-    width: 100% !important;
-    margin-bottom: 0 !important;
-    padding: 8px !important;
-  }
-
-  button.accordion-button:focus {
-    box-shadow: none;
-    border-color: rgba(0, 0, 0, 0.125);
-  }
-
-  button.accordion-button::after {
-    margin-left: auto !important;
-    transition: ease 0.7s !important;
-    transform: rotate(-180deg) !important;
-    font-size: 20px !important;
-  }
-
-  button.accordion-button:not(.collapsed) {
-    background-color: rgba(140, 185, 251, 0.9) !important;
-    font-size: 20px !important;
-  }
-
-  button.accordion-button.collapsed {
-    margin-top: 10px;
-    background-color: rgba(181, 211, 255, 0.9) !important;
-    color: black !important;
-    font-size: 20px !important;
-    font-weight: 600 !important;
-    border: none;
-    height: auto !important;
-    width: 100% !important;
-  }
-
-  button.accordion-button.collapsed::after {
-    margin-left: auto !important;
-    transition: ease 0.7s !important;
-    transform: rotate(0deg) !important;
-  }
-
-  button.accordion-button:hover {
-    color: black !important;
-    font-size: 20px !important;
-  }
-
-  div.accordion-collapse {
-    transition: height 1.0s ease;
     font-size: 20px !important;
   }
   .sidebar-mobile-home-btn {
@@ -154,7 +82,7 @@
   }
 }
 
-@media only screen and (max-width: 830px) and (min-width: 601px) {
+@media only screen and (max-width: 1000px) and (min-width: 601px) {
   .sidebar-mobile-wrapper {
     overflow: hidden;
     padding: 20px 0;
@@ -184,82 +112,11 @@
     animation: fade-in 0.7s ease both;
   }
 
-  div.accordion {
-    width: 100%;
-  }
-
-  div.accordion-item,
-  div.card {
-    background-color: transparent !important;
-    border: none !important;
-  }
-
-  div.card-body {
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    margin-bottom: 10px;
-    animation: background-fade 0.7s ease forwards;
-    margin-top: 0 !important;
-    font-size: 20px !important;
-  }
   .sidebar-mobile .accordion {
     width: 100%;
     font-size: 20px !important;
   }
-  button.accordion-button {
-    margin-top: 10px;
-    color: black !important;
-    font-size: 20px !important;
-    font-weight: 600 !important;
-    height: auto !important;
-    width: 100% !important;
-    margin-bottom: 0 !important;
-    padding: 8px !important;
-  }
 
-  button.accordion-button:focus {
-    box-shadow: none;
-    border-color: rgba(0, 0, 0, 0.125);
-  }
-
-  button.accordion-button::after {
-    margin-left: auto !important;
-    transition: ease 0.7s !important;
-    transform: rotate(-180deg) !important;
-    font-size: 20px !important;
-  }
-
-  button.accordion-button:not(.collapsed) {
-    background-color: rgba(140, 185, 251, 0.9) !important;
-    font-size: 20px !important;
-  }
-
-  button.accordion-button.collapsed {
-    margin-top: 10px;
-    background-color: rgba(181, 211, 255, 0.9) !important;
-    color: black !important;
-    font-size: 20px !important;
-    font-weight: 600 !important;
-    border: none;
-    height: auto !important;
-    width: 100% !important;
-  }
-
-  button.accordion-button.collapsed::after {
-    margin-left: auto !important;
-    transition: ease 0.7s !important;
-    transform: rotate(0deg) !important;
-  }
-
-  button.accordion-button:hover {
-    color: black !important;
-    font-size: 20px !important;
-  }
-
-  div.accordion-collapse {
-    transition: height 1.0s ease;
-    font-size: 20px !important;
-  }
   .sidebar-mobile-home-btn {
     text-align: center;
     text-decoration: none;

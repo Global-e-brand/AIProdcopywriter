@@ -11,11 +11,9 @@ import "./App.css";
 import catagoryList from "./components/json/category-list.json";
 import { arrow } from "./assets";
 
-import Dropdown from "react-bootstrap/Dropdown";
-import DropdownButton from "react-bootstrap/DropdownButton";
-import Accordion from "react-bootstrap/Accordion";
-import Card from "react-bootstrap/Card";
+import { Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
 import { GiHamburgerMenu } from "react-icons/gi";
+import ExpandMore from "@mui/icons-material/ExpandMore";
 
 function SidebarMenu() {
   const [logout, setLogout] = useState(false);
@@ -53,26 +51,27 @@ function SidebarMenu() {
       <div className="scrollable-menu-items">
         {catagoryList.map((cat, i) => {
           return (
-            <Accordion>
-              <Card>
-                <Accordion.Item eventKey="0" key={i}>
-                  <Accordion.Header>{cat.parentcategory}</Accordion.Header>
-                  <Accordion.Collapse eventKey="0">
-                    <Card.Body>
-                      <hr className="menu-separator" />
-                      {cat.childcategory.map((menu, key) => {
-                        return (
-                          <Dropdown.Item id={"bs-item-override"} key={key}>
-                            <Link to={menu.url} className="category-link">
-                              {menu.name}
-                            </Link>
-                          </Dropdown.Item>
-                        );
-                      })}
-                    </Card.Body>
-                  </Accordion.Collapse>
-                </Accordion.Item>
-              </Card>
+            <Accordion className="accordion" disableGutters>
+              <AccordionSummary
+                className="accordion-header"
+                expandIcon={<ExpandMore />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+              >
+                {cat.parentcategory}
+              </AccordionSummary>
+              <AccordionDetails className="open-accordion">
+                <hr className="menu-separator" />
+                {cat.childcategory.map((menu, key) => {
+                  return (
+                    <div className="accordion-item" key={key}>
+                      <Link to={menu.url} className="category-link">
+                        {menu.name}
+                      </Link>
+                    </div>
+                  );
+                })}
+              </AccordionDetails>
             </Accordion>
           );
         })}
