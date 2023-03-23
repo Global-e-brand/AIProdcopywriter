@@ -115,9 +115,8 @@ authrouter.post(
     failureRedirect: "/auth/fail-local",
   }),
   (req, res) => {
-    console.log("req params ", req.query);
     res.redirect(
-      "https://" + req.query.host + ":3000/auth/success?host=" + req.query.host
+        `http://${req.query.host}:3000/auth/success?host=${req.query.host}&&categorypath=${req.query.categorypath}`
     );
   }
 );
@@ -178,9 +177,11 @@ authrouter.get("/success", checkAuthenticated, async (req, res) => {
   if (true) {
     // check for result
     if(req.query.host=="localhost" && req.query.categorypath !=''){
-      res.redirect(`https://localhost:3001/${req.query.categorypath}`);
+      res.redirect(`http://localhost:3001${req.query.categorypath}`);
+    }else if(req.query.host=="localhost" && req.query.categorypath ==undefined){
+      res.redirect(`http://localhost:3001/home`);
     }else{
-      res.redirect(`https://${req.query.host}/${req.query.categorypath}`);
+      res.redirect(`https://${req.query.host}${req.query.categorypath}`);
     }
   } else {
     console.log("Redirect to Payments");

@@ -11,6 +11,8 @@ const contentRouter = express.Router();
 
 contentRouter.get("/history", async (req, res) => {
   let contentHistoryData = await contentHistory(req);
+// console.log("contentHistoryData",contentHistoryData)
+
   res.json(contentHistoryData);
 });
 

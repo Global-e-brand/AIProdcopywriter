@@ -3,16 +3,6 @@
   font-style: normal !important;
 }
 
-.history-wrapper {
-  max-height: 100vh;
-  overflow: hidden;
-}
-
-/* .history-wrapper::-webkit-scrollbar {
-  width: 0;
-  background: transparent;
-} */
-
 .closeacc {
   background: rgba(181, 211, 255, 0.9) !important;
   margin: 15px;
@@ -122,6 +112,11 @@
 
 .card-subheader-history {
   min-width: 100px;
+}
+
+.pagination-wrap {
+  display: flex;
+  justify-content: center;
 }
 
 @media (max-width: 370px) {

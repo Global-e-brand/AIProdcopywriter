@@ -91,7 +91,7 @@ function Signin() {
 
       let host = window.location.hostname;
       form.method = "POST";
-    form.action = `/auth/local?host=${host}&&categorypath=${categorypath}`;
+      form.action = `/auth/local?host=${host}&&categorypath=${categorypath}`;
       form.target = "stay";
 
       emailInput.value = email;
