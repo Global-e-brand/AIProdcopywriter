@@ -16,6 +16,7 @@ import Form from "./form";
 import HistoryComponent from "../History/HistoryComponent";
 import MobileHistoryComponent from "../History/MobileHistoryComponent";
 import CloseIcon from "@mui/icons-material/Close";
+import useWindowDimensions from "../../helpers/window-dimensions";
 
 function Dummy(props) {
   const [isAuthenticated, setAuthenticated] = useState(true);
@@ -30,6 +31,14 @@ function Dummy(props) {
 
   const location = useLocation();
   const navigate = useNavigate();
+
+  const { height, width } = useWindowDimensions();
+
+  useEffect(() => {
+    if (width > 999) {
+      setShowMenu(false);
+    }
+  }, [width]);
 
   useEffect(() => {
     localStorage.setItem("categorypath", location.pathname);
