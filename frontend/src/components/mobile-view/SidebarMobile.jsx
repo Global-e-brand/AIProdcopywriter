@@ -16,6 +16,8 @@ import ExpandMore from "@mui/icons-material/ExpandMore";
 function SidebarMobile({ closeMenu }) {
   const [logout, setLogout] = useState(false);
   function handleLogout() {
+    closeMenu();
+
     fetch("/auth/logout", {
       method: "GET",
       headers: {
@@ -35,12 +37,17 @@ function SidebarMobile({ closeMenu }) {
             <div className="sidebar-mobile">
               <Link
                 to="/home"
+                onClick={closeMenu}
                 className="icon-component sidebar-mobile-home-btn"
               >
                 <HomeIcon />
                 <p>Home</p>
               </Link>
-              <Link to="/history" className="icon-component home-btn">
+              <Link
+                to="/history"
+                onClick={closeMenu}
+                className="icon-component home-btn"
+              >
                 <HistoryIcon />
                 <p>History</p>
               </Link>
