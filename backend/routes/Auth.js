@@ -22,6 +22,32 @@ const FACEBOOK_CLIENT_ID = process.env.FACEBOOK_CLIENT_ID;
 const FACEBOOK_CLIENT_SECRET = process.env.FACEBOOK_CLIENT_SECRET;
 
 //userImage,firstname,lastname,location
+function appRedirection(param, req,res) {
+  switch (param) {
+    case "local":
+      if (req.query.host == "localhost") {
+        res.redirect(`https://${req.query.host}:3000/auth/success?host=${req.query.host}&&categorypath=${req.query.categorypath}`);
+      } else {
+        res.redirect(`https://${req.query.host}/auth/success?host=${req.query.host}&&categorypath=${req.query.categorypath}`);
+      }
+      break;
+
+    case "login":
+      if (req.query.host === "localhost" && req.query.categorypath !== "") {
+        res.redirect(`http://localhost:3001${req.query.categorypath}`);
+      } else if (req.query.host === "localhost" &&req.query.categorypath === undefined) {
+        res.redirect(`http://localhost:3001/home`);
+      } else if (req.query.host !== "localhost" &&req.query.categorypath !== "") {
+        res.redirect(`https://${req.query.host}/home`);
+      } else if ((req.query.categorypath == undefined || req.query.categorypath == null) &&req.query.host !== "localhost") {
+        res.redirect(`https://${req.query.host}${req.query.categorypath}`);        
+      }
+      break;
+    default:
+      break;
+  }
+}
+
 
 passport.use(
   new GoogleStrategy(
@@ -81,6 +107,40 @@ passport.use(
   )
 );
 
+// authentication api calls
+authrouter.post(
+  "/local",
+  checkNotAuthenticated,
+  passport.authenticate("local", {
+    // successRedirect: `http://localhost:3000/auth/success`,
+    failureRedirect: "/auth/fail-local",
+  }),
+  (req, res) => {
+    appRedirection("local", req, res);
+  }
+);
+
+authrouter.get("/success", checkAuthenticated, async (req, res) => {
+  console.log("168", req.query);
+  await socialMediaUsers(req.user);
+
+  console.log("Success");
+
+  //payment subscription model
+  let userId = await getUserId();
+  console.log(userId);
+  let result = await checkTrial(userId);
+  console.log("result", result);
+  if (true) {
+    // check for result
+    appRedirection("login", req, res);
+    
+  } else {
+    console.log("Redirect to Payments");
+    res.redirect("http://localhost:3001/payment");
+  }
+});
+
 passport.serializeUser((user, done) => {
   done(null, user);
 });
@@ -106,20 +166,7 @@ passport.deserializeUser((user, done) => {
 //   }
 // });
 
-// authentication api calls
-authrouter.post(
-  "/local",
-  checkNotAuthenticated,
-  passport.authenticate("local", {
-    // successRedirect: `http://localhost:3000/auth/success`,
-    failureRedirect: "/auth/fail-local",
-  }),
-  (req, res) => {
-    res.redirect(
-        `http://${req.query.host}/auth/success?host=${req.query.host}&&categorypath=${req.query.categorypath}`
-    );
-  }
-);
+
 
 authrouter.get(
   "/google",
@@ -161,34 +208,6 @@ authrouter.get("/fail-local", (req, res) => {
   console.log("Failed local login");
 
   res.status(400).send({ error: "Error" });
-});
-
-authrouter.get("/success", checkAuthenticated, async (req, res) => {
-  console.log("168",req.query);
-  await socialMediaUsers(req.user);
-
-  console.log("Success");
-
-  //payment subscription model
-  let userId = await getUserId();
-  console.log(userId);
-  let result = await checkTrial(userId);
-  console.log("result",result);
-  if (true) {
-    // check for result
-    if(req.query.host=="localhost" && req.query.categorypath !=''){
-      res.redirect(`http://localhost:3001${req.query.categorypath}`);
-    }else if(req.query.host=="localhost" && req.query.categorypath ==undefined){
-      res.redirect(`http://localhost:3001/home`);
-    }else if(req.query.host !== "localhost" && req.query.categorypath ==undefined){
-      res.redirect(`https://${req.query.host}/home`);
-    }else{
-      res.redirect(`https://${req.query.host}${req.query.categorypath}`);
-    }
-  } else {
-    console.log("Redirect to Payments");
-    res.redirect("http://localhost:3001/payment");
-  }
 });
 
 authrouter.get("/logout", checkAuthenticated, (req, res) => {
