@@ -116,7 +116,7 @@ authrouter.post(
   }),
   (req, res) => {
     res.redirect(
-        `http://${req.query.host}:3000/auth/success?host=${req.query.host}&&categorypath=${req.query.categorypath}`
+        `http://${req.query.host}/auth/success?host=${req.query.host}&&categorypath=${req.query.categorypath}`
     );
   }
 );
@@ -180,8 +180,10 @@ authrouter.get("/success", checkAuthenticated, async (req, res) => {
       res.redirect(`http://localhost:3001${req.query.categorypath}`);
     }else if(req.query.host=="localhost" && req.query.categorypath ==undefined){
       res.redirect(`http://localhost:3001/home`);
-    }else{
+    }else if(req.query.host !== "localhost" && req.query.categorypath !=''){
       res.redirect(`https://${req.query.host}${req.query.categorypath}`);
+    }else{
+      res.redirect(`https://${req.query.host}/home`);
     }
   } else {
     console.log("Redirect to Payments");
