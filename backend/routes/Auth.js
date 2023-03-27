@@ -180,10 +180,10 @@ authrouter.get("/success", checkAuthenticated, async (req, res) => {
       res.redirect(`http://localhost:3001${req.query.categorypath}`);
     }else if(req.query.host=="localhost" && req.query.categorypath ==undefined){
       res.redirect(`http://localhost:3001/home`);
-    }else if(req.query.host !== "localhost" && req.query.categorypath !=''){
-      res.redirect(`https://${req.query.host}${req.query.categorypath}`);
-    }else{
+    }else if(req.query.host !== "localhost" && req.query.categorypath ==undefined){
       res.redirect(`https://${req.query.host}/home`);
+    }else{
+      res.redirect(`https://${req.query.host}${req.query.categorypath}`);
     }
   } else {
     console.log("Redirect to Payments");
