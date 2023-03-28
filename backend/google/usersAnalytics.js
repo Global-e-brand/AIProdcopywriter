@@ -1,17 +1,13 @@
 import { BetaAnalyticsDataClient } from "@google-analytics/data";
 
-const propertyId = '358145246';
-  
-
-// Using a default constructor instructs the client to use the credentials
-// specified in GOOGLE_APPLICATION_CREDENTIALS environment variable.
+const propertyId = '358145246';  
 
 //service account:creative.ai
 //Email address: creative-ai@creativeai-analytics-api.iam.gserviceaccount.com 
 
 const analyticsDataClient = new BetaAnalyticsDataClient();
 // Runs a simple report.
-export async function runReport() {
+export async function userReport() {
   const [response] = await analyticsDataClient.runReport({
     property: `properties/${propertyId}`,
     dateRanges: [

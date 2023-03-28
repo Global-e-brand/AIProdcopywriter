@@ -3,7 +3,7 @@ import express from "express";
 import {BetaAnalyticsDataClient} from "@google-analytics/data"
 import { google } from "googleapis";
 import dotenv from "dotenv";
-import { runReport } from "../google/usersAnalytics.js";
+import { userReport } from "../google/usersAnalytics.js";
 
 dotenv.config();
 
@@ -14,9 +14,9 @@ let analyticsController =express.Router();
 
 analyticsController.get("/",bodyParser.json(),async (req,res)=>{
 
-  let usersChart=await runReport();
+  let usersChart=await userReport();
 
-console.log("/dashboard")
+console.log("usersChart",usersChart);
 })
 
 
