@@ -1,5 +1,5 @@
 // @flow
-import * as React from "react";
+import {React,useEffect} from "react";
 import { ActiveUsers } from "./ActiveUsers";
 import "./admin.css";
 import { OverallStatistics } from "./cards/OverallStatistics";
@@ -13,6 +13,31 @@ import { AdvancedBarGraphCard } from "./cards/AdvancedBarGraphCard";
 import { ComparisonList } from "./cards/ComparisonList";
 
 export function AnalyticsDashboard(props) {
+
+  useEffect(()=>{
+    const activeUser = async () => {
+      let res=await fetch("/dashboard",{
+     method: "GET",
+     headers: {
+       "Content-Type": "application/json",
+     },
+   });
+   let response = res.json();
+ };
+
+ activeUser();
+  },[])
+
+  const activeUser = async () => {
+    let res=await fetch("/dashboard",{
+   method: "GET",
+   headers: {
+     "Content-Type": "application/json",
+   },
+ });
+ let response = res.json();
+};
+
   return (
     <div className="analytics-dashboard">
       {/* <ActiveUsers /> */}

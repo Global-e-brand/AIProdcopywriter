@@ -1,12 +1,11 @@
 import mongoose from "mongoose";
 
 const analytics_schema = mongoose.Schema({
-  user_id: {
-    type: String,
-    required: true,
+  total_users:{
+    type: Double
   },
   subscription: {
-    type: Integer,
+    type: Array
   },
   visits: {
     type: Integer,
@@ -26,14 +25,39 @@ const analytics_schema = mongoose.Schema({
   users: {
     type: Array,
   },
-  most_recurring_users: {
+  recurring_users: {
     type: Array,
   },
-  active_users: {
-    type: Array,
-  },
+  most_active_by_country:{
+    type: Array
+  }
 });
 
 const analyticsModel = mongoose.model("analytics", analytics_schema);
 
 export default analyticsModel;
+
+
+//Data Structure
+
+// recurring_users=[{
+//   User
+//   Country
+//   Usage
+//   activity
+
+// }],
+
+
+// users=[{
+//   prev_sub
+//   new_sub
+//   rec_sub
+// }],
+
+// most_active_by_country=[{
+//   User
+//   visitors
+// }]
+
+
