@@ -1,0 +1,76 @@
+.analytics-dashboard {
+  background-color: #b5d3ffb2;
+  width: 100vw;
+  height: 100vh;
+  padding: 50px;
+  overflow: auto;
+}
+
+.statistics-card {
+  background-color: #ffffffb2;
+  border-radius: 15px;
+  width: 100%;
+  height: 100%;
+  padding: 27px 32px;
+}
+
+.statistics-title {
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  margin: 0px 0px 5px 0px;
+}
+
+.large-text-blue {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 20px;
+  color: #154b89;
+  margin: 0;
+}
+
+.medium-text-blue {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 18px;
+  color: #154b89;
+  margin: 0;
+}
+
+.small-text-blue {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: -0.05em;
+  color: #154b89;
+  margin: 0;
+}
+
+.medium-text {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 20px;
+  margin: 0;
+}
+
+.view-all-btn {
+  background: #154b89;
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+  color: white;
+}
+
+.stacked-cards {
+  height: 100%;
+}
+
+.list-section {
+  margin-top: 10px !important;
+}
+
+.flag-img {
+  height: 47px;
+}

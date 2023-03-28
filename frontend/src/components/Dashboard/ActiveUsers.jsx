@@ -1,27 +1,24 @@
 // @flow
-import * as React from 'react';
+import * as React from "react";
 import {Grid} from "@mui/material";
 
 export function ActiveUsers(props) {
-
-    const activeUser=async()=>{
+  const activeUser = async () => {
        let res=await fetch("/dashboard",{
-            method:"GET",
-            headers:{
-                "Content-Type":"application/json"
-            }
-        })
-        let response=res.json();
-
-    }
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    let response = res.json();
+  };
   return (
     <div>
-       <Grid container>
+      <Grid container>
         <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
-        {activeUser()}
-        <h1>Analytics</h1>
+          {activeUser()}
         </Grid>
-       </Grid>
+      </Grid>
     </div>
   );
-};
+}

@@ -27,8 +27,6 @@ function App() {
   ReactGA.set({ page: location.pathname });
   ReactGA.pageview(location.pathname);
 
-  
-
   return (
     <>
       <div className="App">
@@ -37,7 +35,7 @@ function App() {
             <div className="logo-panel-wrapper"></div>
             <Routes>
               <Route path="/" element={<Navigate replace to="/login" />} />
-              <Route path="/home" element={<HomePage />} />
+              <Route path="/home" element={<HomePage />} />              
               <Route path="/dashboard" element={<AnalyticsDashboard />} />
               <Route
                 path="/history"
