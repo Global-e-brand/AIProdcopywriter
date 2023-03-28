@@ -38,7 +38,7 @@ export function ActivityCard() {
     <Grid container className="statistics-card" direction="column">
       <Grid container justifyContent="space-between" alignItems="center">
         <Grid item>
-          <h2 className="statistics-title">Most Recurring Users</h2>
+          <h2 className="statistics-title">Active Users</h2>
           <p className="small-text-blue">1,234,567 users this month</p>
         </Grid>
         <Grid item>
