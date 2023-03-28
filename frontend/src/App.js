@@ -17,6 +17,7 @@ import PaymentNew from "./components/payment/PaymentNew";
 import ReactGA from "react-ga";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import { useEffect } from "react";
+import Analytics from "./components/Dashboard/Analytics";
 
 const TRACKING_ID = "G-TZ130WGSG9";
 ReactGA.initialize(TRACKING_ID);
@@ -24,8 +25,6 @@ ReactGA.initialize(TRACKING_ID);
 function App() {
   const location = useLocation();
   ReactGA.pageview(location.pathname);
-
-  
 
   return (
     <>
@@ -36,6 +35,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Navigate replace to="/login" />} />
               <Route path="/home" element={<HomePage />} />
+              <Route path="/admin" element={<Analytics />} />
               <Route
                 path="/history"
                 element={

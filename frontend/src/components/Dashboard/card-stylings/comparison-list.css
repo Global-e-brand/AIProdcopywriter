@@ -1,0 +1,12 @@
+.percent-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  border-radius: 5px !important;
+  padding: 5px 5px !important;
+}
+
+.item-headers {
+  margin-left: 5px;
+}

@@ -12,6 +12,9 @@
     "url": "/create-account"
   },
   {
-    "url":"/history"
+    "url": "/history"
+  },
+  {
+    "url": "/admin"
   }
 ]

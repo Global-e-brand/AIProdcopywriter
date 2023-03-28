@@ -1,0 +1,30 @@
+.color-legend-item {
+  display: flex;
+  align-items: center;
+}
+
+.color-legend-icon {
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
+}
+
+.cited-img {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  flex-direction: column !important;
+}
+
+.relative-data-bar {
+  display: flex;
+  height: 90px !important;
+}
+
+.relative-data-bar-item {
+  display: flex;
+  color: white;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+}

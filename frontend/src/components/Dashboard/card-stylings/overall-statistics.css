@@ -1,0 +1,22 @@
+.statistic-container {
+  display: flex;
+}
+
+.statistic-img {
+  height: 100%;
+}
+
+.statistic-data {
+  margin-left: 10px;
+}
+
+.statistic-value {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 26px;
+  margin: 0 0 3px 0;
+}
+
+.content-row {
+  margin-top: 40px !important;
+}
