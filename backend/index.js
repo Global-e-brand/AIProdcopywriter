@@ -21,6 +21,7 @@ import bodyParser from "body-parser";
 import { getUserId } from "./general/common.function.js";
 import checkTrial from "./controllers/checkTrial.js";
 import contentRouter from "./routes/Content.js";
+import analyticsController from "./controllers/analytics.controller.js";
 
 dotenv.config();
 
@@ -84,6 +85,8 @@ app.use("/user", userController);
 app.use("/content", contentRouter);
 
 app.use("/email", emailController);
+
+app.use("/dashboard",analyticsController)
 
 if (process.env.NODE_ENV == "production") {
   app.use(express.static(path.join(__dirname + "/public")));

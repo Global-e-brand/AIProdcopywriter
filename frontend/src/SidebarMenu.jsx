@@ -40,6 +40,9 @@ function SidebarMenu() {
           <HistoryIcon />
           <p>History</p>
         </Link>
+        <Link to="/dashboard" className="icon-component home-btn">
+          <p>Dashboard</p>
+        </Link>
         <button
           className="icon-component home-btn"
           onClick={() => handleLogout()}
