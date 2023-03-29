@@ -22,32 +22,45 @@ const FACEBOOK_CLIENT_ID = process.env.FACEBOOK_CLIENT_ID;
 const FACEBOOK_CLIENT_SECRET = process.env.FACEBOOK_CLIENT_SECRET;
 
 //userImage,firstname,lastname,location
-function appRedirection(param, req,res) {
+function appRedirection(param, req, res) {
   switch (param) {
     case "local":
       if (req.query.host == "localhost") {
-        res.redirect(`https://${req.query.host}:3000/auth/success?host=${req.query.host}&&categorypath=${req.query.categorypath}`);
+        res.redirect(
+          `https://${req.query.host}:3000/auth/success?host=${req.query.host}&&categorypath=${req.query.categorypath}`
+        );
       } else {
-        res.redirect(`https://${req.query.host}/auth/success?host=${req.query.host}&&categorypath=${req.query.categorypath}`);
+        res.redirect(
+          `https://${req.query.host}/auth/success?host=${req.query.host}&&categorypath=${req.query.categorypath}`
+        );
       }
       break;
 
     case "login":
       if (req.query.host === "localhost" && req.query.categorypath !== "") {
         res.redirect(`http://localhost:3001${req.query.categorypath}`);
-      } else if (req.query.host === "localhost" &&req.query.categorypath === undefined) {
+      } else if (
+        req.query.host === "localhost" &&
+        req.query.categorypath === null
+      ) {
         res.redirect(`http://localhost:3001/home`);
-      } else if (req.query.host !== "localhost" &&req.query.categorypath !== "") {
+      } else if (
+        req.query.host !== "localhost" &&
+        req.query.categorypath !== ""
+      ) {
         res.redirect(`https://${req.query.host}/home`);
-      } else if ((req.query.categorypath == undefined || req.query.categorypath == null) &&req.query.host !== "localhost") {
-        res.redirect(`https://${req.query.host}${req.query.categorypath}`);        
+      } else if (
+        (req.query.categorypath == undefined ||
+          req.query.categorypath == null) &&
+        req.query.host !== "localhost"
+      ) {
+        res.redirect(`https://${req.query.host}${req.query.categorypath}`);
       }
       break;
     default:
       break;
   }
 }
-
 
 passport.use(
   new GoogleStrategy(
@@ -134,7 +147,6 @@ authrouter.get("/success", checkAuthenticated, async (req, res) => {
   if (true) {
     // check for result
     appRedirection("login", req, res);
-    
   } else {
     console.log("Redirect to Payments");
     res.redirect("http://localhost:3001/payment");
@@ -165,8 +177,6 @@ passport.deserializeUser((user, done) => {
 //     res.redirect("http://localhost:3001/login");
 //   }
 // });
-
-
 
 authrouter.get(
   "/google",
