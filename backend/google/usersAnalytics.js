@@ -29,7 +29,7 @@ export async function getCountryEngagementReport(startDate, endDate) {
         name: "activeUsers",
       },
       {
-        name: "engagementRate",
+        name: "engagedSessions",
       },
     ],
   });

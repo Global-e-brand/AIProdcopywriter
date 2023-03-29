@@ -27,9 +27,7 @@ export const getAverageEngagedSessions = async () => {
         engagementDetails.push({
           name: item.country,
           img: canada,
-          value: parseFloat(
-            Math.round(item.average_engagement_rate * 10000) / 100
-          ),
+          value: item.average_engagement_rate,
         });
       });
 

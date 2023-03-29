@@ -34,7 +34,7 @@ export const storeAverageEngagementByCountry = async (
   }
 
   for (let i = 0; i < users.metricHeaders.length; i++) {
-    if (users.metricHeaders[i].name === "engagementRate") {
+    if (users.metricHeaders[i].name === "engagedSessions") {
       engagementRateIndex = i;
     } else if (users.metricHeaders[i].name === "activeUsers") {
       activeUserIndex = i;
