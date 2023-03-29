@@ -24,6 +24,7 @@ export const storeAverageEngagementByCountry = async (
 
   let countryIndex = null;
   let engagementRateIndex = null;
+  let activeUserIndex = null;
 
   for (let i = 0; i < users.dimensionHeaders.length; i++) {
     if (users.dimensionHeaders[i].name === "country") {
@@ -35,7 +36,8 @@ export const storeAverageEngagementByCountry = async (
   for (let i = 0; i < users.metricHeaders.length; i++) {
     if (users.metricHeaders[i].name === "engagementRate") {
       engagementRateIndex = i;
-      break;
+    } else if (users.metricHeaders[i].name === "activeUsers") {
+      activeUserIndex = i;
     }
   }
 
@@ -54,6 +56,10 @@ export const storeAverageEngagementByCountry = async (
         start: startDate,
         end: endDate,
       },
+      active_users:
+        activeUserIndex !== null
+          ? row.metricValues[activeUserIndex].value
+          : null,
     });
   });
 

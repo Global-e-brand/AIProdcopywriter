@@ -11,11 +11,15 @@ import { Grid } from "@mui/material";
 import { ActivityCard } from "./cards/ActivityCard";
 import { AdvancedBarGraphCard } from "./cards/AdvancedBarGraphCard";
 import { ComparisonList } from "./cards/ComparisonList";
-import { getAverageEngagedSessions } from "../../helpers/analyticsData";
+import {
+  getAverageEngagedSessions,
+  getActiveUsersByCountry,
+} from "../../helpers/analyticsData";
 import { sortJSONArrayByValue } from "../../helpers/sorting";
 
 export function AnalyticsDashboard(props) {
   const [countryEngagementData, setCountryEngagementData] = useState([]);
+  const [activeUsersByCountry, setActiveUsersByCountry] = useState([]);
 
   useEffect(() => {
     const activeUser = async () => {
@@ -29,9 +33,11 @@ export function AnalyticsDashboard(props) {
     };
 
     const getData = async () => {
-      const data = await getAverageEngagedSessions();
+      const averageEngagedSessions = await getAverageEngagedSessions();
+      const activeUsersByCountry = await getActiveUsersByCountry();
 
-      setCountryEngagementData(data);
+      setActiveUsersByCountry(activeUsersByCountry);
+      setCountryEngagementData(averageEngagedSessions);
     };
 
     activeUser();
@@ -112,7 +118,19 @@ export function AnalyticsDashboard(props) {
         <Grid item xs={6}>
           <Grid container sx={{ height: "100%" }}>
             <Grid item xs={12} sx={{ paddingBottom: "32px" }}>
-              <ActivityCard />
+              {/* <ActivityCard /> */}
+              <UsageCard
+                title="Active Users Per Country"
+                description="1,234,567 users this month"
+                firstColumn="Country"
+                secondColumn="Active Users"
+                data={sortJSONArrayByValue(activeUsersByCountry, 1).slice(
+                  0,
+                  activeUsersByCountry.length > 3
+                    ? 3
+                    : activeUsersByCountry.length
+                )}
+              />
             </Grid>
             <Grid item xs={6} sx={{ paddingRight: "16px" }}>
               <ComparisonCard

@@ -15,20 +15,24 @@ app.use(bodyParser.urlencoded({ extended: true }));
 let analyticsController = express.Router();
 
 analyticsController.get("/", bodyParser.json(), async (req, res) => {
-  let report = await getCountryEngagementReport("2023-01-01", "today");
+  let engagementReport = await getCountryEngagementReport(
+    "2023-01-01",
+    "today"
+  );
 
-  await storeAverageEngagementByCountry(report, "2023-01-01", "today");
+  await storeAverageEngagementByCountry(
+    engagementReport,
+    "2023-01-01",
+    "today"
+  );
 
   console.log("/dashboard");
 });
 
-analyticsController.get(
-  "/average-session-engagement-per-country",
-  async (req, res) => {
-    const data = await getCountryEngagementData();
+analyticsController.get("/country_engagement", async (req, res) => {
+  const data = await getCountryEngagementData();
 
-    res.send(data);
-  }
-);
+  res.send(data);
+});
 
 export default analyticsController;

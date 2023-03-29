@@ -17,7 +17,7 @@ import { canada, india, unitedStates, unitedKingdom, france } from "../assets";
 */
 
 export const getAverageEngagedSessions = async () => {
-  return await fetch("/dashboard/average-session-engagement-per-country")
+  return await fetch("/dashboard/country_engagement")
     .then(async (raw) => {
       const data = await raw.json();
 
@@ -34,6 +34,30 @@ export const getAverageEngagedSessions = async () => {
       });
 
       return engagementDetails;
+    })
+    .catch((e) =>
+      console.error(
+        "There was an issue fetching the average engaged sessions data: " + e
+      )
+    );
+};
+
+export const getActiveUsersByCountry = async () => {
+  return await fetch("/dashboard/country_engagement")
+    .then(async (raw) => {
+      const data = await raw.json();
+
+      let activeUsers = [];
+      data.map((item) => {
+        console.log(item);
+        activeUsers.push({
+          name: item.country,
+          img: canada,
+          value: parseInt(item.active_users),
+        });
+      });
+
+      return activeUsers;
     })
     .catch((e) =>
       console.error(

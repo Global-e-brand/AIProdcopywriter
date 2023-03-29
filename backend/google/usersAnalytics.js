@@ -35,9 +35,4 @@ export async function getCountryEngagementReport(startDate, endDate) {
   });
 
   return response;
-
-  // console.log("Report result:");
-  // response.rows.map((row) => {
-  //   console.log(row);
-  // });
 }

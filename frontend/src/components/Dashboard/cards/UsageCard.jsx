@@ -55,7 +55,7 @@ export function UsageCard(props) {
                   </div>
                 </TableCell>
                 <TableCell align="left" className="table-cell">
-                  <p className="medium-text-blue">{row.value}</p>
+                  <p className="large-text-blue">{row.value}</p>
                 </TableCell>
               </TableRow>
             ))}
@@ -70,6 +70,9 @@ export function UsageCard(props) {
       <Grid container justifyContent="space-between" alignItems="center">
         <Grid item>
           <h2 className="statistics-title">{props.title}</h2>
+          {props.description && (
+            <p className="small-text-blue">{props.description}</p>
+          )}
         </Grid>
         <Grid item>
           <button className="view-all-btn">View All</button>
