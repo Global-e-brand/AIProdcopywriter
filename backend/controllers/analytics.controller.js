@@ -3,7 +3,7 @@ import express from "express";
 import {BetaAnalyticsDataClient} from "@google-analytics/data"
 import { google } from "googleapis";
 import dotenv from "dotenv";
-import { userReport } from "../google/usersAnalytics.js";
+import { activeOneDayUsers, userConversionRate, usersByCountry, usersPieChart } from "../google/usersAnalytics.js";
 
 dotenv.config();
 
@@ -14,9 +14,28 @@ let analyticsController =express.Router();
 
 analyticsController.get("/",bodyParser.json(),async (req,res)=>{
 
-  let usersChart=await userReport();
+  let usersPieChartData=await usersPieChart();
 
-console.log("usersChart",usersChart);
+  let usersByCountryData= await usersByCountry();
+
+  let userConversionData = await userConversionRate();
+
+  let activeOneDayUsersData =await activeOneDayUsers();
+
+  //db creation
+
+//
+
+
+
+
+
+
+  // console.log("usersPieChartData",usersPieChartData);
+  // console.log("usersByCountryData",usersByCountryData[0],usersByCountryData[1])
+  // console.log("userConversion",userConversionData);
+  // console.log("activeOneDayUsersData",activeOneDayUsersData);
+  
 })
 
 

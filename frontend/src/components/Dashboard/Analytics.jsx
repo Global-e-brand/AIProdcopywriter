@@ -73,13 +73,12 @@ export function AnalyticsDashboard(props) {
         <Grid item xs={3}>
           <DonutChartCard
             title="Users"
-            colors={["#154B89", "#038500", "#B40000"]}
+            colors={["#154B89", "#038500"]}
             labels={[
-              "previously subscribed",
-              "new subscribers",
-              "recently cancelled",
+              "Total Users",
+              "New Users",
             ]}
-            values={[900, 80, 20]}
+            values={[900, 80]}
           />
         </Grid>
         <Grid item xs={6}>
@@ -100,7 +99,7 @@ export function AnalyticsDashboard(props) {
             </Grid>
             <Grid item xs={6} sx={{ paddingLeft: "16px" }}>
               <ComparisonCard
-                title="Conversion Rate"
+                title="User Conversion Rate"
                 value="17.37%"
                 percent={11.7}
                 increase={false}
@@ -108,21 +107,22 @@ export function AnalyticsDashboard(props) {
             </Grid>
           </Grid>
         </Grid>
-        <Grid item xs={5}>
+        {/* <Grid item xs={5}>
           <DonutChartCard
             title="Subscriptions"
             colors={["#154B89", "#CB7A00"]}
             labels={["basic subscriptions", "standard subscriptions"]}
             values={[700, 200]}
           />
-        </Grid>
-        <Grid item xs={7}>
+        </Grid> */}
+        {/* <Grid item xs={7}>
           <AdvancedBarGraphCard colors={["#154B89", "#CB7A00"]} />
-        </Grid>
+        </Grid> */}
         <Grid item xs={6}>
           <ComparisonList />
         </Grid>
-        <Grid item xs={6}>
+
+        {/* <Grid item xs={6}>
           <DonutChartCard
             title="Most Revenue by Country"
             description="$1,243,434 total revenue"
@@ -144,7 +144,7 @@ export function AnalyticsDashboard(props) {
             ]}
             values={[373030, 310858, 186515, 161646, 111909, 99476]}
           />
-        </Grid>
+        </Grid> */}
       </Grid>
     </div>
   );

@@ -10,9 +10,6 @@ export function OverallStatistics() {
           <Grid item>
             <h2 className="statistics-title">Overall Statistics</h2>
           </Grid>
-          <Grid item>
-            <p className="medium-text-blue">Updated 1 month ago</p>
-          </Grid>
         </Grid>
       </Grid>
       <Grid item className="content-row" xs={12}>
@@ -20,22 +17,22 @@ export function OverallStatistics() {
           <Grid item className="statistic-container">
             <img className="statistic-img" src={dollar} />
             <div className="statistic-data">
-              <h4 className="statistic-value">$1,243,434</h4>
+              <h4 className="statistic-value">0</h4>
               <p className="small-text-blue">Revenue</p>
             </div>
           </Grid>
           <Grid item className="statistic-container">
             <img className="statistic-img" src={subscribers} />
             <div className="statistic-data">
-              <h4 className="statistic-value">$1,243,434</h4>
+              <h4 className="statistic-value">0</h4>
               <p className="small-text-blue">Subscriptions</p>
             </div>
           </Grid>
           <Grid item className="statistic-container">
             <img className="statistic-img" src={visits} />
             <div className="statistic-data">
-              <h4 className="statistic-value">$1,243,434</h4>
-              <p className="small-text-blue">Visits</p>
+              <h4 className="statistic-value">1</h4>
+              <p className="small-text-blue">Active One Day Users</p>
             </div>
           </Grid>
           <Grid item className="statistic-container">
