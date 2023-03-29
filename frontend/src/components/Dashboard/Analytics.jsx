@@ -12,13 +12,12 @@ import { ActivityCard } from "./cards/ActivityCard";
 import { AdvancedBarGraphCard } from "./cards/AdvancedBarGraphCard";
 import { ComparisonList } from "./cards/ComparisonList";
 import {
-  getAverageEngagedSessions,
+  getSessionEngagementByCountry,
   getActiveUsersByCountry,
 } from "../../helpers/analyticsData";
-import { sortJSONArrayByValue } from "../../helpers/sorting";
 
 export function AnalyticsDashboard(props) {
-  const [countryEngagementData, setCountryEngagementData] = useState([]);
+  const [sessionEngagementData, setSessionEngagementData] = useState([]);
   const [activeUsersByCountry, setActiveUsersByCountry] = useState([]);
 
   useEffect(() => {
@@ -33,11 +32,11 @@ export function AnalyticsDashboard(props) {
     };
 
     const getData = async () => {
-      const averageEngagedSessions = await getAverageEngagedSessions();
-      const activeUsersByCountry = await getActiveUsersByCountry();
+      const sessionEngagementData = await getSessionEngagementByCountry(5);
+      const activeUsersByCountry = await getActiveUsersByCountry(3);
 
+      setSessionEngagementData(sessionEngagementData);
       setActiveUsersByCountry(activeUsersByCountry);
-      setCountryEngagementData(averageEngagedSessions);
     };
 
     activeUser();
@@ -98,18 +97,13 @@ export function AnalyticsDashboard(props) {
             values={[900, 80, 20]}
           />
         </Grid>
-        {countryEngagementData ? (
+        {sessionEngagementData ? (
           <Grid item xs={6}>
             <UsageCard
-              title="Average Session Engagement Per Country"
+              title="Engaged Sessions Per Country"
               firstColumn="Country"
-              secondColumn="Engagement (%)"
-              data={sortJSONArrayByValue(countryEngagementData, 1).slice(
-                0,
-                countryEngagementData.length > 5
-                  ? 5
-                  : countryEngagementData.length
-              )}
+              secondColumn="Sessions"
+              data={sessionEngagementData}
             />
           </Grid>
         ) : (
@@ -124,12 +118,7 @@ export function AnalyticsDashboard(props) {
                 description="1,234,567 users this month"
                 firstColumn="Country"
                 secondColumn="Active Users"
-                data={sortJSONArrayByValue(activeUsersByCountry, 1).slice(
-                  0,
-                  activeUsersByCountry.length > 3
-                    ? 3
-                    : activeUsersByCountry.length
-                )}
+                data={activeUsersByCountry}
               />
             </Grid>
             <Grid item xs={6} sx={{ paddingRight: "16px" }}>
