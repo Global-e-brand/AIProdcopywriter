@@ -7,7 +7,7 @@ const analytics_schema = mongoose.Schema({
   subscription: {
     type: Array
   },
-  visits: {
+  active_one_day_users: {
     type: Integer,
   },
   revenue: {
@@ -18,6 +18,9 @@ const analytics_schema = mongoose.Schema({
   },
   request_thismonth: {
     type: Double,
+  },
+  user_conversion:{
+    type:Double
   },
   top_subcategories: {
     type: Array,
@@ -30,7 +33,8 @@ const analytics_schema = mongoose.Schema({
   },
   most_active_by_country:{
     type: Array
-  }
+  },
+  
 });
 
 const analyticsModel = mongoose.model("analytics", analytics_schema);
@@ -41,23 +45,24 @@ export default analyticsModel;
 //Data Structure
 
 // recurring_users=[{
-//   User
 //   Country
 //   Usage
-//   activity
-
 // }],
 
 
 // users=[{
-//   prev_sub
-//   new_sub
-//   rec_sub
+//   totalusers
+//   new users
 // }],
 
 // most_active_by_country=[{
 //   User
 //   visitors
 // }]
+
+//top_subcategories=[{
+// categoryname
+// count
+//}]
 
 

@@ -94,8 +94,8 @@ export function ComparisonList() {
     <Grid container className="statistics-card" direction="column">
       <Grid container justifyContent="space-between" alignItems="center">
         <Grid item>
-          <h2 className="statistics-title">Most Active by Country</h2>
-          <p className="small-text-blue">195 countries active this month</p>
+          <h2 className="statistics-title">Users by Country</h2>
+          <p className="small-text-blue">195 countries active</p>
         </Grid>
         <Grid item>
           <button className="view-all-btn">View All</button>
