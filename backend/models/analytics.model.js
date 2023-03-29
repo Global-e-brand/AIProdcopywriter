@@ -1,23 +1,23 @@
 import mongoose from "mongoose";
 
 const analytics_schema = mongoose.Schema({
-  total_users:{
-    type: Double
+  total_users: {
+    type: Number,
   },
   subscription: {
-    type: Array
+    type: Array,
   },
   active_one_day_users: {
-    type: Integer,
+    type: Number,
   },
   revenue: {
-    type: Double,
+    type: Number,
   },
   total_requests: {
-    type: Double,
+    type: Number,
   },
   request_thismonth: {
-    type: Double,
+    type: Number,
   },
   user_conversion:{
     type:Double
@@ -28,11 +28,11 @@ const analytics_schema = mongoose.Schema({
   users: {
     type: Array,
   },
-  recurring_users: {
+  country_engagement: {
     type: Array,
   },
-  most_active_by_country:{
-    type: Array
+  most_active_by_country: {
+    type: Array,
   },
   
 });
@@ -41,14 +41,12 @@ const analyticsModel = mongoose.model("analytics", analytics_schema);
 
 export default analyticsModel;
 
-
 //Data Structure
 
 // recurring_users=[{
-//   Country
-//   Usage
+//   Country: String
+//   Usage: percent & range
 // }],
-
 
 // users=[{
 //   totalusers
@@ -64,5 +62,3 @@ export default analyticsModel;
 // categoryname
 // count
 //}]
-
-

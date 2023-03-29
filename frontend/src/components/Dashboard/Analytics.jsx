@@ -1,5 +1,5 @@
 // @flow
-import {React,useEffect} from "react";
+import { React, useEffect, useState } from "react";
 import { ActiveUsers } from "./ActiveUsers";
 import "./admin.css";
 import { OverallStatistics } from "./cards/OverallStatistics";
@@ -11,32 +11,48 @@ import { Grid } from "@mui/material";
 import { ActivityCard } from "./cards/ActivityCard";
 import { AdvancedBarGraphCard } from "./cards/AdvancedBarGraphCard";
 import { ComparisonList } from "./cards/ComparisonList";
+import {
+  getAverageEngagedSessions,
+  getActiveUsersByCountry,
+} from "../../helpers/analyticsData";
+import { sortJSONArrayByValue } from "../../helpers/sorting";
 
 export function AnalyticsDashboard(props) {
+  const [countryEngagementData, setCountryEngagementData] = useState([]);
+  const [activeUsersByCountry, setActiveUsersByCountry] = useState([]);
 
-  useEffect(()=>{
+  useEffect(() => {
     const activeUser = async () => {
-      let res=await fetch("/dashboard",{
-     method: "GET",
-     headers: {
-       "Content-Type": "application/json",
-     },
-   });
-   let response = res.json();
- };
+      let res = await fetch("/dashboard", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      let response = res.json();
+    };
 
- activeUser();
-  },[])
+    const getData = async () => {
+      const averageEngagedSessions = await getAverageEngagedSessions();
+      const activeUsersByCountry = await getActiveUsersByCountry();
+
+      setActiveUsersByCountry(activeUsersByCountry);
+      setCountryEngagementData(averageEngagedSessions);
+    };
+
+    activeUser();
+    getData();
+  }, []);
 
   const activeUser = async () => {
-    let res=await fetch("/dashboard",{
-   method: "GET",
-   headers: {
-     "Content-Type": "application/json",
-   },
- });
- let response = res.json();
-};
+    let res = await fetch("/dashboard", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    let response = res.json();
+  };
 
   return (
     <div className="analytics-dashboard">
@@ -81,13 +97,39 @@ export function AnalyticsDashboard(props) {
             values={[900, 80]}
           />
         </Grid>
-        <Grid item xs={6}>
-          <UsageCard />
-        </Grid>
+        {countryEngagementData ? (
+          <Grid item xs={6}>
+            <UsageCard
+              title="Average Session Engagement Per Country"
+              firstColumn="Country"
+              secondColumn="Engagement (%)"
+              data={sortJSONArrayByValue(countryEngagementData, 1).slice(
+                0,
+                countryEngagementData.length > 5
+                  ? 5
+                  : countryEngagementData.length
+              )}
+            />
+          </Grid>
+        ) : (
+          <></>
+        )}
         <Grid item xs={6}>
           <Grid container sx={{ height: "100%" }}>
             <Grid item xs={12} sx={{ paddingBottom: "32px" }}>
-              <ActivityCard />
+              {/* <ActivityCard /> */}
+              <UsageCard
+                title="Active Users Per Country"
+                description="1,234,567 users this month"
+                firstColumn="Country"
+                secondColumn="Active Users"
+                data={sortJSONArrayByValue(activeUsersByCountry, 1).slice(
+                  0,
+                  activeUsersByCountry.length > 3
+                    ? 3
+                    : activeUsersByCountry.length
+                )}
+              />
             </Grid>
             <Grid item xs={6} sx={{ paddingRight: "16px" }}>
               <ComparisonCard
@@ -148,4 +190,4 @@ export function AnalyticsDashboard(props) {
       </Grid>
     </div>
   );
-};
+}

@@ -5,6 +5,9 @@ import { google } from "googleapis";
 import dotenv from "dotenv";
 import { activeOneDayUsers, userConversionRate, usersByCountry, usersPieChart } from "../google/usersAnalytics.js";
 import { topCategoriesHelper } from "../google/topCategories.js";
+import { storeAverageEngagementByCountry } from "../google/storeAverageEngagementByCountry.js";
+import { getCountryEngagementReport } from "../google/usersAnalytics.js";
+import { getCountryEngagementData } from "../helpers/misc/mongo-db-helpers.js";
 
 dotenv.config();
 
@@ -14,6 +17,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 let analyticsController = express.Router();
 
 analyticsController.get("/", bodyParser.json(), async (req, res) => {
+  let engagementReport = await getCountryEngagementReport(
+    "2023-01-01",
+    "today"
+  );
   // let usersChart = await userReport();
   let topCategories = await topCategoriesHelper();
 
@@ -30,8 +37,20 @@ analyticsController.get("/", bodyParser.json(), async (req, res) => {
 //
 
 
+  await storeAverageEngagementByCountry(
+    engagementReport,
+    "2023-01-01",
+    "today"
+  );
 
+  console.log("/dashboard");
+});
 
+analyticsController.get("/country_engagement", async (req, res) => {
+  const data = await getCountryEngagementData();
+
+  res.send(data);
+});
 
 
   // console.log("usersPieChartData",usersPieChartData);

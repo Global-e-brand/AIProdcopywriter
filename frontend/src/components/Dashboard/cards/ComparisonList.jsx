@@ -7,6 +7,13 @@ import {
   unitedStates,
   france,
 } from "../../../assets";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
 
 export function ComparisonList() {
   const displayUsers = () => {
@@ -53,41 +60,59 @@ export function ComparisonList() {
       },
     ];
 
-    return items.map((item) => {
-      return (
-        <>
-          <Grid container direction="row" alignItems="center">
-            <Grid item xs={7}>
-              <Grid container direction="row" alignItems="center">
-                <img className="flag-img" src={item.imageSource} />
-                <div className="item-headers">
-                  <h4 className="medium-text">{item.title}</h4>
-                  <p className="small-text-blue">{item.description}</p>
-                </div>
-              </Grid>
-            </Grid>
-            <Grid item xs={3}>
-              <p className="large-text-blue">{item.value}</p>
-            </Grid>
-            <Grid item xs={2}>
-              <div
-                className="percent-box"
-                style={{
-                  backgroundColor: item.isIncreased ? "#03850040" : "#B4000040",
-                  color: item.isIncreased ? "#038500" : "#B40000",
-                }}
-              >
-                <p className="medium-text">
-                  {item.isIncreased ? <>&#8593;</> : <>&#8595;</>}
-                  {item.change}
-                </p>
-              </div>
-            </Grid>
-          </Grid>
-          <hr />
-        </>
-      );
-    });
+    return (
+      <>
+        <TableContainer component={Paper} className="table">
+          <Table aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell align="left" className="table-cell">
+                  <p className="normal-text">User</p>
+                </TableCell>
+                <TableCell align="left" className="table-cell">
+                  <p className="normal-text">Visitors</p>
+                </TableCell>
+                <TableCell align="left" className="table-cell"></TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {items.map((item) => (
+                <TableRow key={item.title}>
+                  <TableCell className="table-cell">
+                    <div className="horizontal-container">
+                      <img className="flag-img" src={item.imageSource} />
+                      <div className="item-headers">
+                        <h4 className="medium-text">{item.title}</h4>
+                        <p className="small-text-blue">{item.description}</p>
+                      </div>
+                    </div>
+                  </TableCell>
+                  <TableCell className="table-cell">
+                    <p className="large-text-blue">{item.value}</p>
+                  </TableCell>
+                  <TableCell align="left" className="table-cell">
+                    <div
+                      className="percent-box"
+                      style={{
+                        backgroundColor: item.isIncreased
+                          ? "#03850040"
+                          : "#B4000040",
+                        color: item.isIncreased ? "#038500" : "#B40000",
+                      }}
+                    >
+                      <p className="medium-text">
+                        {item.isIncreased ? <>&#8593;</> : <>&#8595;</>}
+                        {item.change}
+                      </p>
+                    </div>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </>
+    );
   };
 
   return (
@@ -102,17 +127,6 @@ export function ComparisonList() {
         </Grid>
       </Grid>
       <Grid container className="list-section">
-        <Grid item xs={12}>
-          <Grid container>
-            <Grid item xs={7}>
-              User
-            </Grid>
-            <Grid item xs={5}>
-              Visitors
-            </Grid>
-          </Grid>
-          <hr />
-        </Grid>
         <Grid item xs={12}>
           {displayUsers()}
         </Grid>
