@@ -37,10 +37,10 @@ export function UsageCard(props) {
         <Table aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell align="left">
+              <TableCell align="left" className="table-cell">
                 <p className="normal-text">{props.firstColumn}</p>
               </TableCell>
-              <TableCell align="left">
+              <TableCell align="left" className="table-cell">
                 <p className="normal-text">{props.secondColumn}</p>
               </TableCell>
             </TableRow>
@@ -48,13 +48,13 @@ export function UsageCard(props) {
           <TableBody>
             {users.map((row) => (
               <TableRow key={row.name}>
-                <TableCell>
+                <TableCell className="table-cell">
                   <div className="horizontal-container">
                     <img src={row.img} className="flag-img"></img>
                     <p className="medium-text text-margin">{row.name}</p>
                   </div>
                 </TableCell>
-                <TableCell align="left">
+                <TableCell align="left" className="table-cell">
                   <p className="medium-text-blue">{row.value}</p>
                 </TableCell>
               </TableRow>

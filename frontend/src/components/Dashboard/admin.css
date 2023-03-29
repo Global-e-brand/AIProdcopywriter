@@ -88,6 +88,10 @@
   box-shadow: none !important;
 }
 
+.table-cell {
+  border-color: rgba(0, 0, 0, 0.3) !important;
+}
+
 .text-margin {
   margin: 0 10px;
 }

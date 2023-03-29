@@ -66,19 +66,19 @@ export function ComparisonList() {
           <Table aria-label="simple table">
             <TableHead>
               <TableRow>
-                <TableCell align="left">
+                <TableCell align="left" className="table-cell">
                   <p className="normal-text">User</p>
                 </TableCell>
-                <TableCell align="left">
+                <TableCell align="left" className="table-cell">
                   <p className="normal-text">Visitors</p>
                 </TableCell>
-                <TableCell align="left"></TableCell>
+                <TableCell align="left" className="table-cell"></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {items.map((item) => (
                 <TableRow key={item.title}>
-                  <TableCell>
+                  <TableCell className="table-cell">
                     <div className="horizontal-container">
                       <img className="flag-img" src={item.imageSource} />
                       <div className="item-headers">
@@ -87,10 +87,10 @@ export function ComparisonList() {
                       </div>
                     </div>
                   </TableCell>
-                  <TableCell>
+                  <TableCell className="table-cell">
                     <p className="large-text-blue">{item.value}</p>
                   </TableCell>
-                  <TableCell align="left">
+                  <TableCell align="left" className="table-cell">
                     <div
                       className="percent-box"
                       style={{

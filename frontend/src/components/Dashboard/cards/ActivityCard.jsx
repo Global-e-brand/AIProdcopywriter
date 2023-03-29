@@ -19,13 +19,13 @@ export function ActivityCard() {
           <Table aria-label="simple table">
             <TableHead>
               <TableRow>
-                <TableCell align="left">
+                <TableCell align="left" className="table-cell">
                   <p className="normal-text">User</p>
                 </TableCell>
-                <TableCell align="left">
+                <TableCell align="left" className="table-cell">
                   <p className="normal-text">Country</p>
                 </TableCell>
-                <TableCell align="left">
+                <TableCell align="left" className="table-cell">
                   <p className="normal-text">Activity</p>
                 </TableCell>
               </TableRow>
@@ -33,14 +33,14 @@ export function ActivityCard() {
             <TableBody>
               {users.map((row) => (
                 <TableRow key={row.name}>
-                  <TableCell>
+                  <TableCell className="table-cell">
                     <h4 className="medium-text">{row.name}</h4>
                     <p className="small-text-blue">Registered: Jane 1, 2023</p>
                   </TableCell>
-                  <TableCell>
+                  <TableCell className="table-cell">
                     <img className="flag-img" src={canada} />
                   </TableCell>
-                  <TableCell align="left">
+                  <TableCell align="left" className="table-cell">
                     <h5 className="medium-text-blue">Last login</h5>
                     <p className="small-text-blue">5 sec ago</p>
                   </TableCell>
