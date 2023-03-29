@@ -33,7 +33,7 @@ export function UsageCard(props) {
     const users = props.data;
 
     return (
-      <TableContainer component={Paper} className="usage-table">
+      <TableContainer component={Paper} className="table">
         <Table aria-label="simple table">
           <TableHead>
             <TableRow>
@@ -47,23 +47,12 @@ export function UsageCard(props) {
           </TableHead>
           <TableBody>
             {users.map((row) => (
-              <TableRow
-                key={row.name}
-                sx={{
-                  "&:last-child td, &:last-child th": {
-                    border: 0,
-                  },
-                }}
-              >
-                <TableCell
-                  sx={{
-                    display: "flex",
-                    flexDirection: "row",
-                    alignItems: "center",
-                  }}
-                >
-                  {row.img && <img src={row.img} className="flag-img"></img>}
-                  <p className="medium-text text-margin">{row.name}</p>
+              <TableRow key={row.name}>
+                <TableCell>
+                  <div className="horizontal-container">
+                    <img src={row.img} className="flag-img"></img>
+                    <p className="medium-text text-margin">{row.name}</p>
+                  </div>
                 </TableCell>
                 <TableCell align="left">
                   <p className="medium-text-blue">{row.value}</p>

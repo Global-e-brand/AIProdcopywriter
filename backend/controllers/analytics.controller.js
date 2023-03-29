@@ -15,9 +15,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 let analyticsController = express.Router();
 
 analyticsController.get("/", bodyParser.json(), async (req, res) => {
-  let report = await getCountryEngagementReport("30daysAgo", "today");
+  let report = await getCountryEngagementReport("2023-01-01", "today");
 
-  await storeAverageEngagementByCountry(report, "30daysAgo", "today");
+  await storeAverageEngagementByCountry(report, "2023-01-01", "today");
 
   console.log("/dashboard");
 });
