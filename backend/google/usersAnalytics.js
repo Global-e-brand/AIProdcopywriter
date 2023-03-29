@@ -1,40 +1,43 @@
 import { BetaAnalyticsDataClient } from "@google-analytics/data";
 
-const propertyId = '358145246';
-  
+const propertyId = "358145246";
 
 // Using a default constructor instructs the client to use the credentials
 // specified in GOOGLE_APPLICATION_CREDENTIALS environment variable.
 
 //service account:creative.ai
-//Email address: creative-ai@creativeai-analytics-api.iam.gserviceaccount.com 
+//Email address: creative-ai@creativeai-analytics-api.iam.gserviceaccount.com
 
 const analyticsDataClient = new BetaAnalyticsDataClient();
 // Runs a simple report.
-export async function runReport() {
+export async function getCountryEngagementReport(startDate, endDate) {
   const [response] = await analyticsDataClient.runReport({
     property: `properties/${propertyId}`,
     dateRanges: [
       {
-        startDate: '2023-02-01',
-        endDate: 'today',
+        startDate: startDate,
+        endDate: endDate,
       },
     ],
     dimensions: [
       {
-        name: 'city',
+        name: "country",
       },
     ],
     metrics: [
       {
-        name: 'activeUsers',
+        name: "activeUsers",
+      },
+      {
+        name: "engagementRate",
       },
     ],
   });
 
-  console.log('Report result:');
-  response.rows.forEach(row => {
-    console.log(row.dimensionValues[0], row.metricValues[0]);
-  });
-}
+  return response;
 
+  // console.log("Report result:");
+  // response.rows.map((row) => {
+  //   console.log(row);
+  // });
+}

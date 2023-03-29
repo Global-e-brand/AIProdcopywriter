@@ -1,5 +1,6 @@
 import trainingData from "../../models/TrainingData.js";
 import userModel from "../../models/userModel.js";
+import analyticsModel from "../../models/analytics.model.js";
 // import UserOTPModel from "../../models/userOtpModel.js";
 import UserOTPModel from "../../models/userOTPModel.js";
 
@@ -63,4 +64,14 @@ export const updateUserPassword = async (
       confirm_password: confirmedPassword,
     }
   );
+};
+
+export const updateAnalyticsModel = async (newModel) => {
+  await analyticsModel.updateOne(newModel);
+};
+
+export const getCountryEngagementData = async () => {
+  const data = await analyticsModel.findOne();
+
+  return data?.country_engagement;
 };

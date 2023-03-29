@@ -1,75 +1,92 @@
 import { Grid } from "@mui/material";
 import "../card-stylings/usage-card.css";
-import { canada } from "../../../assets";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
 
-export function UsageCard() {
+/* The data passed from props uses the following format:
+
+title="title"
+firstColumn="name"
+secondColumn="name"
+data={[
+        {
+          name: 'name',
+          img: imageComponent || null,
+          value: value
+        },
+        {
+          name: 'name',
+          img: imageComponent || null,
+          value: value
+        },
+        ...
+      ]}
+*/
+
+export function UsageCard(props) {
   const displayUsers = () => {
-    const users = [
-      "Random Username1",
-      "Random Username2",
-      "Random Username3",
-      "Random Username4",
-      "Random Username5",
-    ];
+    const users = props.data;
 
-    return users.map((user) => {
-      return (
-        <>
-          <Grid container direction="row" alignItems="center">
-            <Grid item xs={4}>
-              <h4 className="medium-text">{user}</h4>
-              <p className="small-text-blue">Registered: Jane 1, 2023</p>
-            </Grid>
-            <Grid item xs={3}>
-              <img className="flag-img" src={canada} />
-            </Grid>
-            <Grid item xs={5}>
-              <div className="data-bar-info">
-                <h5 className="data-bar-value">91%</h5>
-                <p className="data-bar-description">
-                  Jan 1, 2023 - Jan 31, 2023
-                </p>
-              </div>
-              <div className="data-bar-slim">
-                <div
-                  className="data-bar-slim-progress"
-                  style={{ width: "90%" }}
-                ></div>
-              </div>
-            </Grid>
-          </Grid>
-          <hr />
-        </>
-      );
-    });
+    return (
+      <TableContainer component={Paper} className="usage-table">
+        <Table aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell align="left">
+                <p className="normal-text">{props.firstColumn}</p>
+              </TableCell>
+              <TableCell align="left">
+                <p className="normal-text">{props.secondColumn}</p>
+              </TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {users.map((row) => (
+              <TableRow
+                key={row.name}
+                sx={{
+                  "&:last-child td, &:last-child th": {
+                    border: 0,
+                  },
+                }}
+              >
+                <TableCell
+                  sx={{
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                  }}
+                >
+                  {row.img && <img src={row.img} className="flag-img"></img>}
+                  <p className="medium-text text-margin">{row.name}</p>
+                </TableCell>
+                <TableCell align="left">
+                  <p className="medium-text-blue">{row.value}</p>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    );
   };
 
   return (
     <Grid container className="statistics-card" direction="column">
       <Grid container justifyContent="space-between" alignItems="center">
         <Grid item>
-          <h2 className="statistics-title">Most Recurring Users</h2>
-          <p className="small-text-blue">1,234,567 users this month</p>
+          <h2 className="statistics-title">{props.title}</h2>
         </Grid>
         <Grid item>
           <button className="view-all-btn">View All</button>
         </Grid>
       </Grid>
       <Grid container className="list-section">
-        <Grid item xs={12}>
-          <Grid container>
-            <Grid item xs={4}>
-              User
-            </Grid>
-            <Grid item xs={3}>
-              Country
-            </Grid>
-            <Grid item xs={5}>
-              Usage
-            </Grid>
-          </Grid>
-          <hr />
-        </Grid>
         <Grid item xs={12}>
           {displayUsers()}
         </Grid>
