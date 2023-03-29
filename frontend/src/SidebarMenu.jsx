@@ -43,6 +43,9 @@ function SidebarMenu() {
         <Link to="/dashboard" className="icon-component home-btn">
           <p>Dashboard</p>
         </Link>
+        <Link to="/settings" className="icon-component home-btn">
+          <p>Settings</p>
+        </Link>
         <button
           className="icon-component home-btn"
           onClick={() => handleLogout()}

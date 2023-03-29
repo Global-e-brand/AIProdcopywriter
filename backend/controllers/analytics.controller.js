@@ -3,6 +3,8 @@ import express from "express";
 import { BetaAnalyticsDataClient } from "@google-analytics/data";
 import { google } from "googleapis";
 import dotenv from "dotenv";
+import { activeOneDayUsers, userConversionRate, usersByCountry, usersPieChart } from "../google/usersAnalytics.js";
+import { topCategoriesHelper } from "../google/topCategories.js";
 import { storeAverageEngagementByCountry } from "../google/storeAverageEngagementByCountry.js";
 import { getCountryEngagementReport } from "../google/usersAnalytics.js";
 import { getCountryEngagementData } from "../helpers/misc/mongo-db-helpers.js";
@@ -23,6 +25,21 @@ analyticsController.get("/", bodyParser.json(), async (req, res) => {
     "2023-01-01",
     "today"
   );
+  // let usersChart = await userReport();
+  let topCategories = await topCategoriesHelper();
+
+  let usersPieChartData=await usersPieChart();
+
+  let usersByCountryData= await usersByCountry();
+
+  let userConversionData = await userConversionRate();
+
+  let activeOneDayUsersData =await activeOneDayUsers();
+
+  //db creation
+
+//
+
 
   await storeAverageEngagementByCountry(
     engagementReport,
@@ -48,5 +65,12 @@ analyticsController.get("/country_engagement", async (req, res) => {
 
   res.send(sortedData);
 });
+
+
+  // console.log("usersPieChartData",usersPieChartData);
+  // console.log("usersByCountryData",usersByCountryData[0],usersByCountryData[1])
+  // console.log("userConversion",userConversionData);
+  // console.log("activeOneDayUsersData",activeOneDayUsersData);
+})
 
 export default analyticsController;

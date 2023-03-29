@@ -86,7 +86,7 @@ app.use("/content", contentRouter);
 
 app.use("/email", emailController);
 
-app.use("/dashboard",analyticsController)
+app.use("/dashboard", analyticsController);
 
 if (process.env.NODE_ENV == "production") {
   app.use(express.static(path.join(__dirname + "/public")));
@@ -110,6 +110,14 @@ app.get("/checkpayment", async (req, res) => {
 app.post("/deletion", (req, res) => {
   res.status(200).send("OK");
 });
+// testing
+
+// app.get("/apitest", async (req, res) => {
+//   // apiTest();
+//   res.send("works");
+// });
+
+//testing
 app.listen(PORT, function (err) {
   if (err) console.log("Error in server setup");
   console.log("Server listening on Port", PORT);
