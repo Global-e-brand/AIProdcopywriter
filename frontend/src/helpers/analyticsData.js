@@ -16,8 +16,13 @@ import { canada, india, unitedStates, unitedKingdom, france } from "../assets";
 ]
 */
 
-export const getAverageEngagedSessions = async () => {
-  return await fetch("/dashboard/country_engagement")
+export const getSessionEngagementByCountry = async (lengthLimit) => {
+  return await fetch(
+    `/dashboard/country_engagement?` +
+      new URLSearchParams({
+        lengthLimit: lengthLimit || null,
+      })
+  )
     .then(async (raw) => {
       const data = await raw.json();
 
@@ -40,8 +45,13 @@ export const getAverageEngagedSessions = async () => {
     );
 };
 
-export const getActiveUsersByCountry = async () => {
-  return await fetch("/dashboard/country_engagement")
+export const getActiveUsersByCountry = async (lengthLimit) => {
+  return await fetch(
+    `/dashboard/country_engagement?` +
+      new URLSearchParams({
+        lengthLimit: lengthLimit || null,
+      })
+  )
     .then(async (raw) => {
       const data = await raw.json();
 
