@@ -120,3 +120,29 @@ export async function activeOneDayUsers(){
 
   return user;
 }
+
+export async function getCountryEngagementReport() {
+  const [response] = await analyticsDataClient.runReport({
+    property: `properties/${propertyId}`,
+    dateRanges: [
+      {
+        startDate: "2023-01-01",
+        endDate: "today",
+      },
+    ],
+    dimensions: [
+      {
+        name: "country",
+      },
+    ],
+    metrics: [
+      {
+        name: "activeUsers",
+      },
+      {
+        name: "engagedSessions",
+      },
+    ],
+  });
+  return response;
+}

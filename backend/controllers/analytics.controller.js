@@ -17,11 +17,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 let analyticsController = express.Router();
 
 analyticsController.get("/", bodyParser.json(), async (req, res) => {
-  let engagementReport = await getCountryEngagementReport(
-    "2023-01-01",
-    "today"
-  );
-  // let usersChart = await userReport();
+  let engagementReport = await getCountryEngagementReport();
+
   let topCategories = await topCategoriesHelper();
 
   let usersPieChartData=await usersPieChart();
@@ -31,12 +28,7 @@ analyticsController.get("/", bodyParser.json(), async (req, res) => {
   let userConversionData = await userConversionRate();
 
   let activeOneDayUsersData =await activeOneDayUsers();
-
-  //db creation
-
-//
-
-
+  
   await storeAverageEngagementByCountry(
     engagementReport,
     "2023-01-01",
@@ -44,7 +36,7 @@ analyticsController.get("/", bodyParser.json(), async (req, res) => {
   );
 
   console.log("/dashboard");
-});
+
 
 analyticsController.get("/country_engagement", async (req, res) => {
   const data = await getCountryEngagementData();
@@ -57,6 +49,6 @@ analyticsController.get("/country_engagement", async (req, res) => {
   // console.log("usersByCountryData",usersByCountryData[0],usersByCountryData[1])
   // console.log("userConversion",userConversionData);
   // console.log("activeOneDayUsersData",activeOneDayUsersData);
-})
+});
 
 export default analyticsController;

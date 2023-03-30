@@ -20,7 +20,7 @@ const analytics_schema = mongoose.Schema({
     type: Number,
   },
   user_conversion:{
-    type:Double
+    type:Number
   },
   top_subcategories: {
     type: Array,
