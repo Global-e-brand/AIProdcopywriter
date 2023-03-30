@@ -66,12 +66,4 @@ export const updateUserPassword = async (
   );
 };
 
-export const updateAnalyticsModel = async (newModel) => {
-  await analyticsModel.updateOne(newModel);
-};
 
-export const getCountryEngagementData = async () => {
-  const data = await analyticsModel.findOne();
-
-  return data?.country_engagement;
-};

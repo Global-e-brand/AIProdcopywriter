@@ -16,7 +16,7 @@ const analytics_schema = mongoose.Schema({
   total_requests: {
     type: Number,
   },
-  request_thismonth: {
+  request_this_month: {
     type: Number,
   },
   user_conversion:{
