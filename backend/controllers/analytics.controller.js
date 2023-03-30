@@ -8,6 +8,7 @@ import { topCategoriesHelper } from "../google/topCategories.js";
 import { storeAverageEngagementByCountry } from "../google/storeAverageEngagementByCountry.js";
 import { getCountryEngagementReport } from "../google/usersAnalytics.js";
 import { getCountryEngagementData } from "../helpers/misc/mongo-db-helpers.js";
+import { sortJSONArrayByValue } from "../helpers/misc/sorting.js";
 
 dotenv.config();
 
@@ -15,6 +16,9 @@ var app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 
 let analyticsController = express.Router();
+
+analyticsController.use(bodyParser.urlencoded({ extended: false }));
+analyticsController.use(bodyParser.json());
 
 analyticsController.get("/", bodyParser.json(), async (req, res) => {
   let engagementReport = await getCountryEngagementReport(
@@ -47,9 +51,19 @@ analyticsController.get("/", bodyParser.json(), async (req, res) => {
 });
 
 analyticsController.get("/country_engagement", async (req, res) => {
-  const data = await getCountryEngagementData();
+  const lengthLimit = parseInt(req.query?.lengthLimit);
 
-  res.send(data);
+  let data = await getCountryEngagementData();
+  let sortedData = await sortJSONArrayByValue(data, 1);
+
+  if (lengthLimit >= 0) {
+    sortedData = sortedData.slice(
+      0,
+      sortedData.length > lengthLimit ? lengthLimit : sortedData.length
+    );
+  }
+
+  res.send(sortedData);
 });
 
 
