@@ -5,6 +5,20 @@ export function getUserId(req) {
   return req?.session?.passport?.user?._id || req?.session?.passport?.user?.id;
 }
 
+export function getDate_format(){
+  var date = new Date();
+  var year = date.getFullYear().toString();
+  var month = (date.getMonth() + 1).toString();
+  var day = date.getDate().toString();
+
+  day.length == 1 && (day = "0" + day);
+  month.length == 1 && (month = "0" + month);
+
+  var yyyymmdd = year + month + day;
+
+  return yyyymmdd;
+};
+
 export async function socialMediaUsers(user) {
 
   let socialMediaUserData=new socialMediaUserModel();

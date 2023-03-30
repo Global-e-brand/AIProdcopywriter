@@ -1,4 +1,3 @@
-// @flow
 import * as React from "react";
 import "./adminsettings.css";
 export default function AdminSettings() {
