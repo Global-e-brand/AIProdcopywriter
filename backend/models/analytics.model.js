@@ -19,7 +19,7 @@ const analytics_schema = mongoose.Schema({
   request_this_month: {
     type: Number,
   },
-  user_conversion:{
+  user_conversion: {
     type:Number
   },
   top_subcategories: {

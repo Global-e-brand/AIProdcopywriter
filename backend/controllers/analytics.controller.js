@@ -40,7 +40,9 @@ analyticsController.get("/", bodyParser.json(), async (req, res) => {
 
     let usersByCountryData = await usersByCountry();
 
-    // console.log("topSubcategories",topSubcategories);
+  let totalResultRequests = await getResultRequests("2023-01-01", "today");
+
+  let requestsThisMonth = await getResultRequests("30daysAgo", "today");
 
     let dashboardData = [
       { activeOneDayUsersData: activeOneDayUsersData },

@@ -238,3 +238,28 @@ export async function getTopSubcategories() {
   //              NOTE
   //  Processing latency is 24-48 hours. Standard accounts that send more than 200,000 sessions per day to Analytics will result in the reports being refreshed only once a day. This can delay updates to reports and metrics for up to two days. To restore intra-day processing, reduce the number of sessions your account sends to < 200,000 per day.
 }
+
+export async function getResultRequests(startDate, endDate) {
+  const [response] = await analyticsDataClient.runReport({
+    property: `properties/${propertyId}`,
+    dateRanges: [
+      {
+        startDate: startDate,
+        endDate: endDate,
+      },
+    ],
+    dimensions: [
+      {
+        name: "customEvent:category_form_submit",
+      },
+    ],
+    metrics: [
+      {
+        name: "eventCount",
+      },
+    ],
+  });
+  // console.log(response);
+  response.rows.map((row) => console.log(row));
+  return response;
+}
