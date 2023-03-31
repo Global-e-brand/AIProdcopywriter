@@ -28,12 +28,15 @@ const analytics_schema = mongoose.Schema({
   users: {
     type: Array,
   },
-  country_engagement: {
+  top_five_sessions_country: {
     type: Array,
   },
-  most_active_by_country: {
+  top_five_activeUser_country: {
     type: Array,
   },
+  top_five_users_ByCountry:{
+    type: Array,
+  }
   
 });
 

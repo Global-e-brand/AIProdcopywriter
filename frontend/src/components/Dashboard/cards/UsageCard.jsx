@@ -46,7 +46,7 @@ export function UsageCard(props) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {users.map((row) => (
+            {/* {users.map((row) => (
               <TableRow key={row.name}>
                 <TableCell className="table-cell">
                   <div className="horizontal-container">
@@ -58,7 +58,7 @@ export function UsageCard(props) {
                   <p className="large-text-blue">{row.value}</p>
                 </TableCell>
               </TableRow>
-            ))}
+            ))} */}
           </TableBody>
         </Table>
       </TableContainer>

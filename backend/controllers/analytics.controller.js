@@ -46,16 +46,15 @@ analyticsController.get("/", bodyParser.json(), async (req, res) => {
       { activeOneDayUsersData: activeOneDayUsersData },
       { topSubcategories: topSubcategories },
       { usersPieChartData: usersPieChartData },
-      { usersPieChartData: usersPieChartData },
       { engagementReport: engagementReport },
       { userConversionData: userConversionData },
       { usersByCountryData: usersByCountryData },
     ];
 
     //DB Start
-    
     const DBTransaction = await analyticsCreate(dashboardData);
     //DB End
+    
     res.send(dashboardData) ;  
   } catch (e) {
     res.status(500).send(e.message);
@@ -63,21 +62,4 @@ analyticsController.get("/", bodyParser.json(), async (req, res) => {
 
   
 });
-
-// analyticsController.get("/country_engagement", async (req, res) => {
-//   const lengthLimit = parseInt(req.query?.lengthLimit);
-
-//   let data = await getCountryEngagementData();
-//   let sortedData = await sortJSONArrayByValue(data, 1);
-
-//   if (lengthLimit >= 0) {
-//     sortedData = sortedData.slice(
-//       0,
-//       sortedData.length > lengthLimit ? lengthLimit : sortedData.length
-//     );
-//   }
-
-//   res.send(sortedData);
-// });
-
 export default analyticsController;

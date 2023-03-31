@@ -4,14 +4,19 @@ import { categoryList } from "../general/categoryList.js";
 const propertyId = "358145246";
 const analyticsDataClient = new BetaAnalyticsDataClient();
 
+const start_Date = "2023-01-01";
+const end_Date = "today";
+const yesterday_Day = "yesterday";
+
 export async function usersPieChart() {
   const [response] = await analyticsDataClient.runReport({
     property: `properties/${propertyId}`,
     dateRanges: [
       {
-        startDate: "2023-01-01",
-        endDate: "today",
+        startDate: start_Date,
+        endDate: end_Date,
       },
+      
     ],
     metrics: [
       {
@@ -41,8 +46,8 @@ export async function usersByCountry() {
     property: `properties/${propertyId}`,
     dateRanges: [
       {
-        startDate: "2023-01-01",
-        endDate: "today",
+        startDate: start_Date,
+        endDate: end_Date,
       },
     ],
     dimensions: [
@@ -81,8 +86,8 @@ export async function userConversionRate() {
     property: `properties/${propertyId}`,
     dateRanges: [
       {
-        startDate: "2023-01-01",
-        endDate: "today",
+        startDate: start_Date,
+        endDate: end_Date,
       },
     ],
     dimensions: [
@@ -106,8 +111,8 @@ export async function activeOneDayUsers() {
     property: `properties/${propertyId}`,
     dateRanges: [
       {
-        startDate: "yesterday",
-        endDate: "today",
+        startDate: yesterday_Day,
+        endDate: end_Date,
       },
     ],
     metrics: [
@@ -127,8 +132,8 @@ export async function getCountryBySession_ActiveUser() {
     property: `properties/${propertyId}`,
     dateRanges: [
       {
-        startDate: "2023-01-01",
-        endDate: "today",
+        startDate: start_Date,
+        endDate: end_Date,
       },
     ],
     dimensions: [
@@ -181,8 +186,8 @@ export async function getTopSubcategories() {
     property: `properties/${propertyId}`,
     dateRanges: [
       {
-        startDate: "2023-01-01",
-        endDate: "today",
+        startDate: start_Date,
+        endDate: end_Date,
       },
     ],
     dimensions: [

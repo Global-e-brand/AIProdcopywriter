@@ -102,7 +102,7 @@ export function AnalyticsDashboard(props) {
               title="Engaged Sessions Per Country"
               firstColumn="Country"
               secondColumn="Sessions"
-              data={sessionEngagementData}
+             // data={sessionEngagementData}
             />
           </Grid>
         ) : (
@@ -117,7 +117,7 @@ export function AnalyticsDashboard(props) {
                 description="1,234,567 users this month"
                 firstColumn="Country"
                 secondColumn="Active Users"
-                data={activeUsersByCountry}
+                //data={activeUsersByCountry}
               />
             </Grid>
             <Grid item xs={6} sx={{ paddingRight: "16px" }}>
