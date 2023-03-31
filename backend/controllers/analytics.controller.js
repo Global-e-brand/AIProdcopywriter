@@ -10,9 +10,9 @@ import {
   usersPieChart,
   getCountryBySession_ActiveUser,
   getTopSubcategories,
+  getResultRequests,
 } from "../google/usersAnalytics.js";
 import { analyticsCreate } from "../helpers/misc/analyticsDBTransaction.js";
-
 
 dotenv.config();
 
@@ -40,9 +40,9 @@ analyticsController.get("/", bodyParser.json(), async (req, res) => {
 
     let usersByCountryData = await usersByCountry();
 
-  let totalResultRequests = await getResultRequests("2023-01-01", "today");
+    let totalResultRequests = await getResultRequests("2023-01-01", "today");
 
-  let requestsThisMonth = await getResultRequests("30daysAgo", "today");
+    let requestsThisMonth = await getResultRequests("30daysAgo", "today");
 
     let dashboardData = [
       { activeOneDayUsersData: activeOneDayUsersData },
@@ -51,17 +51,17 @@ analyticsController.get("/", bodyParser.json(), async (req, res) => {
       { engagementReport: engagementReport },
       { userConversionData: userConversionData },
       { usersByCountryData: usersByCountryData },
+      { totalResultRequests: totalResultRequests },
+      { requestsThisMonth: requestsThisMonth },
     ];
 
     //DB Start
     const DBTransaction = await analyticsCreate(dashboardData);
     //DB End
-    
-    res.send(dashboardData) ;  
+
+    res.send(dashboardData);
   } catch (e) {
     res.status(500).send(e.message);
   }
-
-  
 });
 export default analyticsController;
