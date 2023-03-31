@@ -65,3 +65,4 @@ export default analyticsModel;
 // categoryname
 // count
 //}]
+

@@ -263,3 +263,6 @@ export async function getResultRequests(startDate, endDate) {
   response.rows.map((row) => console.log(row));
   return response;
 }
+
+
+//
