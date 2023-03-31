@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Grid, Button } from "@mui/material";
 import Loader from "../loader/loader";
 import { leftarrow } from "../../assets";
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 import {
   copyToAllClipboard,
   copyToClipboard,
@@ -23,7 +23,9 @@ function MobileForm(props) {
 
   let path = window.location.href.substring(window.location.origin.length);
 
-  async function handleSubmit(path) {
+  async function handleSubmit(e, path) {
+    e.preventDefault();
+
     setIndex(0);
 
     props.states.setLoading(true);
@@ -64,7 +66,12 @@ function MobileForm(props) {
     // console.log("response", response);
     if (response?.authenticated === false) {
       navigate("/login");
+    } else {
+      ReactGA.event("category_form_submission", {
+        category_form_submit: path,
+      });
     }
+
     props.states.setData(response);
 
     props.states.setLoading(false);
@@ -146,7 +153,11 @@ function MobileForm(props) {
       <div className="main-form-mobile">
         <p className="mobile-category-title smooth-edge">{props.category}</p>
         <Grid item xs={12}>
-          <form className="form">
+          <form
+            id="category-form"
+            className="form"
+            onSubmit={(e) => handleSubmit(e, path)}
+          >
             <div className="input_one">
               <h5>
                 <strong>{props.inputOneTitle}</strong>
@@ -245,7 +256,7 @@ function MobileForm(props) {
 
             <div className="submitButton">
               <button
-                onClick={() => handleSubmit(path)}
+                type="submit"
                 disabled={
                   (props.inputOneActive && !props.states.inputOne) ||
                   (props.inputTwoActive && !props.states.inputTwo) ||

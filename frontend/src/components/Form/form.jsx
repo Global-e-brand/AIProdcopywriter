@@ -2,13 +2,13 @@ import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Grid, Button } from "@mui/material";
 import Loader from "../loader/loader";
-import ReactGA from "react-ga";
 import {
   copyToAllClipboard,
   copyToClipboard,
 } from "../../helpers/copyFunctions";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
+import ReactGA from "react-ga4";
 
 function Form(props) {
   const [Copied, setCopied] = useState();
@@ -20,13 +20,10 @@ function Form(props) {
 
   let path = window.location.href.substring(window.location.origin.length);
 
-  async function handleSubmit(path) {
+  async function handleSubmit(e, path) {
+    e.preventDefault();
+
     props.states.setLoading(true);
-    ReactGA.event({
-      category: path,
-      action: "test",
-      label: "desktop-test",
-    });
 
     props.states.setLoading(true);
 
@@ -56,10 +53,16 @@ function Form(props) {
       }),
     });
     let response = await res.json();
+
     // console.log("response", response);
     if (response?.authenticated === false) {
       navigate("/login");
+    } else {
+      ReactGA.event("category_form_submission", {
+        category_form_submit: path,
+      });
     }
+
     props.states.setData(response);
 
     props.states.setLoading(false);
@@ -101,7 +104,13 @@ function Form(props) {
       {/* Main Form */}
       {/* <div className="main-form-desktop-view"> */}
       <Grid item xs={6} sm={8} md={5} lg={5} xl={5}>
-        <form className="form">
+        <form
+          id="category-form"
+          className="form"
+          onSubmit={(e) => {
+            handleSubmit(e, path);
+          }}
+        >
           <div className="input_one">
             <h5>{props.inputOneTitle}</h5>
             <textarea
@@ -193,7 +202,7 @@ function Form(props) {
 
           <div className="submitButton">
             <button
-              onClick={() => handleSubmit(path)}
+              type="submit"
               variant="contained"
               disabled={
                 (props.inputOneActive && !props.states.inputOne) ||

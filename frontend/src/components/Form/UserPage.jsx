@@ -10,7 +10,6 @@ import { authenticate } from "../../helpers/authenticationStatus";
 import { useLocation } from "react-router-dom";
 import SidebarMobile from "../mobile-view/SidebarMobile";
 import { leftarrow } from "../../assets";
-import ReactGA from "react-ga";
 import MobileForm from "./mobileForm";
 import Form from "./form";
 import HistoryComponent from "../History/HistoryComponent";

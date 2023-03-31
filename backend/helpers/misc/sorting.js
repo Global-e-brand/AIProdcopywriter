@@ -1,9 +1,9 @@
-export const sortJSONArrayByValue = async (json, direction) => {
+export const sortJSONArrayByProperty = async (json, property, direction) => {
   return json.sort(function (a, b) {
     if (direction < 0) {
-      return a.value - b.value;
+      return a[property] - b[property];
     } else {
-      return b.value - a.value;
+      return b[property] - a[property];
     }
   });
 };

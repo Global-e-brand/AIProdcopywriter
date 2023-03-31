@@ -14,19 +14,25 @@ import CreateAccount from "./components/Login/CreateAccount";
 import Signin from "./components/Login/Signin";
 import ForgotPassword from "./components/Login/ForgotPassword";
 import PaymentNew from "./components/payment/PaymentNew";
-import ReactGA from "react-ga";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import { useEffect } from "react";
 import { AnalyticsDashboard } from "./components/Dashboard/Analytics";
 import AdminSettings from "./components/Admin/AdminSettings";
+import ReactGA from "react-ga4";
 
 const TRACKING_ID = "G-TZ130WGSG9";
-ReactGA.initialize(TRACKING_ID);
+ReactGA.initialize(TRACKING_ID, {
+  custom_map: { dimension4: "category_form_submit" },
+});
 
 function App() {
   const location = useLocation();
-  ReactGA.set({ page: location.pathname });
-  ReactGA.pageview(location.pathname);
+
+  ReactGA.send({
+    hitType: "pageview",
+    page: location.pathname,
+    title: location.pathname,
+  });
 
   return (
     <>
@@ -36,10 +42,10 @@ function App() {
             <div className="logo-panel-wrapper"></div>
             <Routes>
               <Route path="/" element={<Navigate replace to="/login" />} />
-              <Route path="/home" element={<HomePage />} />              
+              <Route path="/home" element={<HomePage />} />
               <Route path="/dashboard" element={<AnalyticsDashboard />} />
               <Route path="/settings" element={<AdminSettings />} />
-              
+
               <Route
                 path="/history"
                 element={

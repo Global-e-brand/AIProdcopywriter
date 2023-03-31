@@ -1,6 +1,6 @@
 import { BetaAnalyticsDataClient } from "@google-analytics/data";
 
-const propertyId = '358145246';  
+const propertyId = "358145246";
 const analyticsDataClient = new BetaAnalyticsDataClient();
 
 export async function usersPieChart() {
@@ -8,27 +8,28 @@ export async function usersPieChart() {
     property: `properties/${propertyId}`,
     dateRanges: [
       {
-        startDate: '2023-01-01',
-        endDate: 'today',
+        startDate: "2023-01-01",
+        endDate: "today",
       },
-     ],
+    ],
     metrics: [
       {
-        name: 'totalUsers',
+        name: "totalUsers",
       },
       {
-        name:'newUsers'
-      }
+        name: "newUsers",
+      },
     ],
   });
 
-  let usersDetail=[];
-  response.rows.forEach(row => {
+  let usersDetail = [];
+  response.rows.forEach((row) => {
     usersDetail.push({
-      users:Number(row.metricValues[0].value),
-      new_users:Number(row.metricValues[1].value),
-      total_users:Number(row.metricValues[0].value) + Number(row.metricValues[1].value)
-    })
+      users: Number(row.metricValues[0].value),
+      new_users: Number(row.metricValues[1].value),
+      total_users:
+        Number(row.metricValues[0].value) + Number(row.metricValues[1].value),
+    });
   });
 
   return usersDetail;
@@ -39,84 +40,137 @@ export async function usersByCountry() {
     property: `properties/${propertyId}`,
     dateRanges: [
       {
-        startDate: '2023-01-01',
-        endDate: 'today',
+        startDate: "2023-01-01",
+        endDate: "today",
       },
-     ],
+    ],
     dimensions: [
       {
-        name: 'country',
+        name: "country",
       },
     ],
     metrics: [
       {
-        name: 'totalUsers',
+        name: "totalUsers",
       },
     ],
   });
 
-  let totalUsersByCountry=[];
-  response.rows.forEach(row => {    
+  let totalUsersByCountry = [];
+  response.rows.forEach((row) => {
     totalUsersByCountry.push({
-      country:row.dimensionValues[0].value,
-      users:Number(row.metricValues[0].value),
-    })
+      country: row.dimensionValues[0].value,
+      users: Number(row.metricValues[0].value),
+    });
   });
-  
-  let top_five_country=totalUsersByCountry.slice(0,5); 
-  top_five_country.push({total_country:Number(response.rows.length)})
 
-  let usersByCountry=[
-    {totalUsersByCountry:totalUsersByCountry},
-    {top_five_country:top_five_country}
-  ]
- 
-  return usersByCountry;  
+  let top_five_country = totalUsersByCountry.slice(0, 5);
+  top_five_country.push({ total_country: Number(response.rows.length) });
+
+  let usersByCountry = [
+    { totalUsersByCountry: totalUsersByCountry },
+    { top_five_country: top_five_country },
+  ];
+
+  return usersByCountry;
 }
 
-export async function userConversionRate(){
+export async function userConversionRate() {
   const [response] = await analyticsDataClient.runReport({
     property: `properties/${propertyId}`,
     dateRanges: [
       {
-        startDate: '2023-01-01',
-        endDate: 'today',
+        startDate: "2023-01-01",
+        endDate: "today",
       },
-     ],
-     dimensions: [
+    ],
+    dimensions: [
       {
-        name: 'country',
+        name: "country",
       },
     ],
     metrics: [
       {
-        name: 'userConversionRate',
+        name: "userConversionRate",
       },
     ],
   });
 
-   let conversionrate =response.rowCount;
-   return conversionrate;
-
+  let conversionrate = response.rowCount;
+  return conversionrate;
 }
 
-export async function activeOneDayUsers(){
+export async function activeOneDayUsers() {
   const [response] = await analyticsDataClient.runReport({
     property: `properties/${propertyId}`,
     dateRanges: [
       {
-        startDate: 'yesterday',
-        endDate: 'today',
+        startDate: "yesterday",
+        endDate: "today",
       },
-     ],     
+    ],
     metrics: [
       {
-        name: 'active1DayUsers',
+        name: "active1DayUsers",
       },
     ],
   });
 
-  let user=response.rows[0].metricValues[0].value;
+  let user = response.rows[0].metricValues[0].value;
 
   return user;
+}
+
+export async function getCountryEngagementReport(startDate, endDate) {
+  const [response] = await analyticsDataClient.runReport({
+    property: `properties/${propertyId}`,
+    dateRanges: [
+      {
+        startDate: startDate,
+        endDate: endDate,
+      },
+    ],
+    dimensions: [
+      {
+        name: "country",
+      },
+    ],
+    metrics: [
+      {
+        name: "activeUsers",
+      },
+      {
+        name: "engagedSessions",
+      },
+    ],
+  });
+  return response;
+}
+
+export async function getResultRequests(startDate, endDate) {
+  const [response] = await analyticsDataClient.runReport({
+    property: `properties/${propertyId}`,
+    dateRanges: [
+      {
+        startDate: startDate,
+        endDate: endDate,
+      },
+    ],
+    dimensions: [
+      {
+        name: "customEvent:category_form_submit",
+      },
+    ],
+    metrics: [
+      {
+        name: "eventCount",
+      },
+    ],
+  });
+
+  // console.log(response);
+
+  // response.rows.map((row) => console.log(row));
+
+  return response;
 }

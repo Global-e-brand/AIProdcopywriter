@@ -19,8 +19,8 @@ const analytics_schema = mongoose.Schema({
   request_thismonth: {
     type: Number,
   },
-  user_conversion:{
-    type:Double
+  user_conversion: {
+    type: Number,
   },
   top_subcategories: {
     type: Array,
@@ -34,7 +34,6 @@ const analytics_schema = mongoose.Schema({
   most_active_by_country: {
     type: Array,
   },
-  
 });
 
 const analyticsModel = mongoose.model("analytics", analytics_schema);

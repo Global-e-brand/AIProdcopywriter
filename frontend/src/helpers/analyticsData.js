@@ -21,6 +21,7 @@ export const getSessionEngagementByCountry = async (lengthLimit) => {
     `/dashboard/country_engagement?` +
       new URLSearchParams({
         lengthLimit: lengthLimit || null,
+        property: "average_engagement_rate" || null,
       })
   )
     .then(async (raw) => {
@@ -50,6 +51,7 @@ export const getActiveUsersByCountry = async (lengthLimit) => {
     `/dashboard/country_engagement?` +
       new URLSearchParams({
         lengthLimit: lengthLimit || null,
+        property: "active_users" || null,
       })
   )
     .then(async (raw) => {
@@ -57,7 +59,6 @@ export const getActiveUsersByCountry = async (lengthLimit) => {
 
       let activeUsers = [];
       data.map((item) => {
-        console.log(item);
         activeUsers.push({
           name: item.country,
           img: canada,
@@ -68,8 +69,6 @@ export const getActiveUsersByCountry = async (lengthLimit) => {
       return activeUsers;
     })
     .catch((e) =>
-      console.error(
-        "There was an issue fetching the average engaged sessions data: " + e
-      )
+      console.error("There was an issue fetching the active users data: " + e)
     );
 };
