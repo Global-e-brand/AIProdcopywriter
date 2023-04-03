@@ -22,15 +22,15 @@ const FACEBOOK_CLIENT_ID = process.env.FACEBOOK_CLIENT_ID;
 const FACEBOOK_CLIENT_SECRET = process.env.FACEBOOK_CLIENT_SECRET;
 
 //userImage,firstname,lastname,location
-function appRedirection(param, req, res) {
+async function appRedirection(param, req, res) {
   switch (param) {
     case "local":
       if (req.query.host == "localhost") {
-        res.redirect(
-          `https://${req.query.host}:3000/auth/success?host=${req.query.host}&&categorypath=${req.query.categorypath}`
+        await res.redirect(
+          `http://${req.query.host}:3000/auth/success?host=${req.query.host}&&categorypath=${req.query.categorypath}`
         );
       } else {
-        res.redirect(
+        await res.redirect(
           `https://${req.query.host}/auth/success?host=${req.query.host}&&categorypath=${req.query.categorypath}`
         );
       }
@@ -38,23 +38,25 @@ function appRedirection(param, req, res) {
 
     case "login":
       if (req.query.host === "localhost" && req.query.categorypath !== "") {
-        res.redirect(`http://localhost:3001${req.query.categorypath}`);
+        await res.redirect(`http://localhost:3001${req.query.categorypath}`);
       } else if (
         req.query.host === "localhost" &&
         req.query.categorypath === null
       ) {
-        res.redirect(`http://localhost:3001/home`);
+        await res.redirect(`http://localhost:3001/home`);
       } else if (
         req.query.host !== "localhost" &&
         req.query.categorypath !== ""
       ) {
-        res.redirect(`https://${req.query.host}/home`);
+        await res.redirect(`https://${req.query.host}/home`);
       } else if (
         (req.query.categorypath == undefined ||
           req.query.categorypath == null) &&
         req.query.host !== "localhost"
       ) {
-        res.redirect(`https://${req.query.host}${req.query.categorypath}`);
+        await res.redirect(
+          `https://${req.query.host}${req.query.categorypath}`
+        );
       }
       break;
     default:
@@ -79,7 +81,7 @@ passport.use(
     {
       clientID: FACEBOOK_CLIENT_ID,
       clientSecret: FACEBOOK_CLIENT_SECRET,
-      callbackURL: "/auth/facebook/callback",
+      callbackURL: `http://localhost:3000/auth/facebook/callback`,
       passReqToCallback: true,
     },
     authUser
@@ -128,8 +130,8 @@ authrouter.post(
     // successRedirect: `http://localhost:3000/auth/success`,
     failureRedirect: "/auth/fail-local",
   }),
-  (req, res) => {
-    appRedirection("local", req, res);
+  async (req, res) => {
+    await appRedirection("local", req, res);
   }
 );
 
@@ -185,10 +187,10 @@ authrouter.get(
 );
 
 authrouter.get(
-  "/facebook",
+  "auth/facebook",
   checkNotAuthenticated,
   passport.authenticate("facebook", {
-    scope: ["email", "user_location"],
+    scope: ["email"],
   })
 );
 
@@ -203,8 +205,8 @@ authrouter.get(
 authrouter.get(
   "/facebook/callback",
   passport.authenticate("facebook", {
-    successRedirect: "/auth/success",
-    failureRedirect: "/auth/fail",
+    successRedirect: "http://localhost:3000/auth/success",
+    failureRedirect: "http://localhost:3000/auth/fail",
   })
 );
 
