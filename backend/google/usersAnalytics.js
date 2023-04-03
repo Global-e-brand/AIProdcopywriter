@@ -260,18 +260,23 @@ export async function getResultRequests(startDate, endDate) {
   });
   // console.log(response);
 
-  let parsedData = [];
+  // let parsedData = [];
+  let total = 0;
 
   response.rows.map((row) => {
     if (categoryList.includes(row.dimensionValues[0].value)) {
-      parsedData.push({
-        path_name: row.dimensionValues[0].value,
-        submit_count: row.metricValues[0].value,
-      });
+      total += Number(row.metricValues[0].value);
+      // parsedData.push({
+      //   path_name: row.dimensionValues[0].value,
+      //   submit_count: row.metricValues[0].value,
+      // });
     }
   });
 
-  return parsedData;
+  // console.log(parsedData);
+  // console.log(total);
+
+  return { request_count: total };
 }
 
 //
