@@ -9,6 +9,8 @@ export async function analyticsCreate(data) {
   let top_five_activeUser_country = data[3].engagementReport.top_five_activeUser_country;
   let userConversionData = data[4].userConversionData;
   let top_five_users_ByCountry = data[5].usersByCountryData[1].top_five_country;
+  let totalResultRequests= data[6].totalResultRequests.request_count;
+  let requestsThisMonth= data[7].requestsThisMonth.request_count;
 
   let analyticsData = new analyticsModel();
 
@@ -20,13 +22,11 @@ export async function analyticsCreate(data) {
   analyticsData.top_five_sessions_country = top_five_sessions_country;
   analyticsData.top_five_activeUser_country = top_five_activeUser_country;
   analyticsData.top_five_users_ByCountry = top_five_users_ByCountry;
-  analyticsData.request_this_month = null;
-  analyticsData.total_requests = null;
+  analyticsData.total_requests = totalResultRequests;
+  analyticsData.request_this_month = requestsThisMonth;
   analyticsData.subscription = null;
   analyticsData.revenue = null;
 
   let analytics = await analyticsData;
-
-  // console.log("analytics_11", analytics);
-  // analyticsData.save();
+  analyticsData.save();
 }
