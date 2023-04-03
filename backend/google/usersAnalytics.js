@@ -16,7 +16,6 @@ export async function usersPieChart() {
         startDate: start_Date,
         endDate: end_Date,
       },
-      
     ],
     metrics: [
       {
@@ -201,7 +200,7 @@ export async function getTopSubcategories() {
       },
     ],
   });
-  
+
   let total_count = 0;
   const paths = response.rows.map((path) => {
     let endPoint = path.dimensionValues[0].value;
@@ -234,7 +233,7 @@ export async function getTopSubcategories() {
     return true;
   });
   return { topCategories, total_count };
-  
+
   //              NOTE
   //  Processing latency is 24-48 hours. Standard accounts that send more than 200,000 sessions per day to Analytics will result in the reports being refreshed only once a day. This can delay updates to reports and metrics for up to two days. To restore intra-day processing, reduce the number of sessions your account sends to < 200,000 per day.
 }
@@ -260,9 +259,19 @@ export async function getResultRequests(startDate, endDate) {
     ],
   });
   // console.log(response);
-  response.rows.map((row) => console.log(row));
-  return response;
-}
 
+  let parsedData = [];
+
+  response.rows.map((row) => {
+    if (categoryList.includes(row.dimensionValues[0].value)) {
+      parsedData.push({
+        path_name: row.dimensionValues[0].value,
+        submit_count: row.metricValues[0].value,
+      });
+    }
+  });
+
+  return parsedData;
+}
 
 //
