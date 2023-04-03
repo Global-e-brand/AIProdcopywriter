@@ -1,11 +1,12 @@
 {
   "name": "frontend",
   "version": "0.1.0",
-  "proxy": "http://localhost:3000",
+  "proxy": "http://localhost:3000/",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@fingerprintjs/fingerprintjs": "^3.4.0",
     "@mui/icons-material": "^5.11.0",
     "@mui/material": "^5.11.7",
     "@paypal/react-paypal-js": "^7.8.2",

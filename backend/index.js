@@ -22,6 +22,7 @@ import { getUserId } from "./general/common.function.js";
 import checkTrial from "./controllers/checkTrial.js";
 import contentRouter from "./routes/Content.js";
 import analyticsController from "./controllers/analytics.controller.js";
+import { validateGuest } from "./helpers/guest/validateGuest.js";
 
 dotenv.config();
 
@@ -118,6 +119,11 @@ app.post("/deletion", (req, res) => {
 // });
 
 //testing
+app.post("/checkguest", async (req, res) => {
+  console.log("browser id", req.body.id);
+  let result = await validateGuest(req.body.id);
+  res.send(result);
+});
 app.listen(PORT, function (err) {
   if (err) console.log("Error in server setup");
   console.log("Server listening on Port", PORT);

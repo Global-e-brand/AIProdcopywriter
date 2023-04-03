@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import "./authentication.css";
 import { fulllogo, googleIcon, facebookIcon, appleIcon } from "../../assets";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate, useLocation, Navigate } from "react-router-dom";
 import { Grid } from "@mui/material";
 import { SecureInput } from "./SecureInput";
 import {
@@ -13,6 +13,8 @@ import {
   Snackbar,
 } from "@mui/material";
 import Loader from "../loader/loader";
+import { getBrowserID } from "../../helpers/browserID/get-brower-id";
+import { verifyGuestUser } from "../../helpers/browserID/verifyGuestUser";
 
 function Signin() {
   const [password, setPassword] = useState("");
@@ -21,7 +23,7 @@ function Signin() {
   const [isLoading, setLoading] = useState(false);
   const [isOpen, setOpen] = useState(false);
   const [categorypath, setCategorypath] = useState();
-  
+  const [guest, setGuest] = useState(true);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -39,9 +41,9 @@ function Signin() {
     }
   }, [location?.state?.success]);
 
-  useEffect(()=>{
+  useEffect(() => {
     setCategorypath(localStorage.getItem("categorypath"));
-  })
+  });
 
   const handleEmail = (e) => {
     setEmail(e.target.value);
@@ -73,7 +75,9 @@ function Signin() {
   to complete the authentication process. The fetch API doesn't allow such behaviour as the server
   cannot redirect from fetch requests.
   */
-  {console.log("categorypath",categorypath)}
+  {
+    console.log("categorypath", categorypath);
+  }
 
   const handleFormSubmission = async (e) => {
     e.preventDefault();
@@ -116,6 +120,44 @@ function Signin() {
     navigate("/create-account");
   };
 
+  const handleGuestLogin = async () => {
+    try {
+      let browserID = await getBrowserID();
+      console.log(browserID);
+      let validUser = await verifyGuestUser(browserID);
+      console.log(validUser);
+      if (validUser) {
+        let form = document.createElement("form");
+        let emailInput = document.createElement("input");
+        let passwordInput = document.createElement("input");
+
+        let host = window.location.hostname;
+        form.method = "POST";
+        form.action = `/auth/local?host=${host}&&categorypath=${categorypath}`;
+        form.target = "stay";
+
+        emailInput.value = `${process.env.GUEST_EMAIL}`;
+        emailInput.name = "email";
+        form.appendChild(emailInput);
+
+        passwordInput.value = `${process.env.GUEST_PASSWORD}`;
+        passwordInput.name = "password";
+        form.appendChild(passwordInput);
+
+        document.body.appendChild(form);
+
+        form.submit();
+
+        emailInput.remove();
+        passwordInput.remove();
+        form.remove();
+      } else {
+        navigate("/create-account");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className="authentication-page">
       <img
@@ -148,9 +190,12 @@ function Signin() {
                 <a className="google-btn" href="/auth/google">
                   <img src={googleIcon} alt={"Signin with Google."}></img>
                 </a>
-              </Grid>
-              <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
-                <a className="facebook-btn" href="/auth/facebook">
+              </Grid> */}
+              {/* <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
+                <a
+                  className="facebook-btn"
+                  href="http://localhost:3000/auth/facebook"
+                >
                   <img src={facebookIcon} alt={"Signin with Facebook."}></img>
                 </a>
               </Grid> */}
@@ -261,6 +306,13 @@ function Signin() {
                   Create an account
                 </button>
               </Grid>
+              {guest && (
+                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                  <button className="secondary-btn" onClick={handleGuestLogin}>
+                    Guest Sign In
+                  </button>
+                </Grid>
+              )}
             </Grid>
           </Grid>
         </form>
