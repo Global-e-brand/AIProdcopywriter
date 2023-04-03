@@ -15,6 +15,7 @@ import {
   getSessionEngagementByCountry,
   getActiveUsersByCountry,
 } from "../../helpers/analyticsData";
+import { useLocation } from "react-router-dom";
 
 export function AnalyticsDashboard(props) {
   const [activeOneDayUsersData, setActiveOneDayUsersData] = useState();
@@ -26,6 +27,8 @@ export function AnalyticsDashboard(props) {
   const [totalResultRequests, setTotalResultRequests] = useState();
   const [requestsThisMonth, setRequestsThisMonth] = useState();
   const [users, setUsers] = useState();
+
+  const location = useLocation();
 
   useEffect(() => {
     try {
@@ -54,7 +57,7 @@ export function AnalyticsDashboard(props) {
     } catch (e) {
       console.log("nodata");
     }
-  }, []);
+  }, [location.pathname]);
 
   return (
     <div className="analytics-dashboard">
