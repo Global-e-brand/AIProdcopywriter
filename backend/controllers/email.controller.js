@@ -36,7 +36,7 @@ emailController.post("/send-otp", jsonParser, async (req, res) => {
 
     res.status(emailResponse.status).send({
       success: emailResponse?.status === 200,
-      error: emailResponse?.err,
+      error: {},
     });
   } else {
     res.status(200).send({
