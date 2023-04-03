@@ -26,7 +26,7 @@
 }
 .adminSettingsContainer-desktopView {
   margin: 1rem;
-  padding-left: 3rem;
+  /* padding-left: 3rem; */
 }
 .modifyPricesHeader-desktopView {
   font-family: "Manrope" !important;
@@ -35,6 +35,7 @@
   font-size: 24px;
   line-height: 117.9%;
 }
+
 .modifyPrices-desktopView {
   background: #b5d3ff;
   border-radius: 10px;
@@ -112,6 +113,10 @@ input:focus {
   background: #b5d3ff;
   border-radius: 10px;
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
 }
 #mostRecurringUsersHeader-desktopView {
   font-family: "Inter" !important;
@@ -126,46 +131,136 @@ input:focus {
 .mostRecurringUser-desktopView {
   background: #ffffff;
   border-radius: 10px;
-  padding: 1rem;
+  /* padding: 1rem; */
   text-align: center;
 }
-.mostRecurringUser-desktopView p {
+.mostRecurringUser-desktopView span {
   font-family: "Inter" !important;
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
   line-height: 110.02%;
-  /* or 20px */
 
+  height: 50px;
   color: #000000;
   margin-bottom: 0 !important;
 }
+
 .customiseUserPrices-input-container {
   margin-top: 1rem;
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  grid-gap: 45%;
+  display: flex;
+  justify-content: space-between;
 }
 .inputUser-desktopView input {
-  width: 80%;
+  width: 90%;
   /* padding: 0.5%; */
-  padding: auto;
+  /* padding: auto; */
 }
-.customiseUserPricesInputContainer-desktopView {
+.inputUser-desktopView {
+  width: 50%;
+}
+.customiseUserPricesInput-desktopView {
   background-color: #154b89;
   padding: 2px;
   border-radius: 0.4rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  /* width: 100%; */
+  /* justify-content: space-between; */
 }
-.customiseUserPricesInputContainer-desktopView button {
+.customiseUserPricesInput-desktopView button {
   background: transparent;
   border: none;
   color: white;
-  width: 25%;
+  /* width: 25%; */
+  text-align: center;
   /* width: 50%; */
 }
-.input-span input {
+.mostRecurringUser-desktopView {
+  margin: 4px;
+  background-color: #efefef;
+  border-radius: 4px;
+  overflow: auto;
+  float: left;
+}
+
+.mostRecurringUser-desktopView:hover {
+  background: #528aca;
+  transition-delay: 30ms;
+  color: white !important;
+}
+
+.mostRecurringUser-desktopView {
+  display: block;
+  width: 100% !important;
+  height: 100%;
+  text-align: center;
+}
+
+.mostRecurringUser-desktopView span {
+  text-align: center;
+  padding: 0.625rem;
+  display: block;
+
+  width: 100% !important;
+  height: 100%;
+}
+
+.mostRecurringUser-desktopView input {
+  position: absolute;
+  top: -20px;
   width: 100%;
+  /* height: 100%; */
+}
+
+.mostRecurringUser-desktopView input:checked + span {
+  background-color: #154b89;
+  color: #fff;
+}
+.checked {
+  background-color: #154b89;
+  color: #fff;
+}
+@media (max-width: 880px) {
+  .modifyPrices-desktopView {
+    background: #b5d3ff;
+    border-radius: 10px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    /* grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem; */
+
+    /* align-items: flex-start; */
+    margin-top: 1rem;
+    gap: 1rem;
+  }
+  .Plan-desktopView {
+    flex-wrap: wrap;
+  }
+  .customiseUserPrices-input-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .customiseUserPrices-desktopView {
+    width: 100%;
+  }
+}
+@media (max-width: 1670px) {
+  .modifyPrices-desktopView {
+    background: #b5d3ff;
+    border-radius: 10px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+
+    /* grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem; */
+
+    align-items: space-between;
+    margin-top: 1rem;
+    gap: 1rem;
+  }
 }
