@@ -43,8 +43,8 @@ function App() {
             <Routes>
               <Route path="/" element={<Navigate replace to="/login" />} />
               <Route path="/home" element={<HomePage />} />
-              <Route path="/dashboard" element={<AnalyticsDashboard />} />
-              <Route path="/settings" element={<AdminSettings />} />
+              {/* <Route path="/dashboard" element={<AnalyticsDashboard />} />
+              <Route path="/settings" element={<AdminSettings />} /> */}
 
               <Route
                 path="/history"
