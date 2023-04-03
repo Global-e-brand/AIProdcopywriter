@@ -59,8 +59,8 @@ export function AnalyticsDashboard(props) {
           setEngagementReport(data[3].engagementReport);
           setUserConversionData(data[4].userConversionData);
           setUsersByCountryData(data[5].usersByCountryData[1].top_five_country);
-          setTotalResultRequests();
-          setRequestsThisMonth();
+          setTotalResultRequests(data[6].totalResultRequests.request_count);
+          setRequestsThisMonth(data[7].requestsThisMonth.request_count);
         });
       }
       getDashbaord();
@@ -90,17 +90,17 @@ export function AnalyticsDashboard(props) {
               <Grid item xs={12} sx={{ paddingBottom: "16px" }}>
                 <ComparisonCard
                   title="Total Result Requests"
-                  value="1,234K"
+                  value={`${totalResultRequests}`}
                   percent={48.3}
-                  increase={true}
+                  // increase={true}
                 />
               </Grid>
               <Grid item xs={12} sx={{ paddingTop: "16px" }}>
                 <ComparisonCard
                   title="Requests this month"
-                  value="17.37%"
+                  value={`${requestsThisMonth}`}
                   percent={11.7}
-                  increase={false}
+                  // increase={false}
                 />
               </Grid>
             </Grid>
@@ -113,6 +113,7 @@ export function AnalyticsDashboard(props) {
             title="Users"
             colors={["#154B89", "#038500"]}
             labels={["Total Users", "New Users"]}
+            // usersPieChartData={usersPieChartData}
             values={[900, 80]}
           />
         </Grid>
@@ -145,7 +146,7 @@ export function AnalyticsDashboard(props) {
             <Grid item xs={6} sx={{ paddingRight: "16px" }}>
               <ComparisonCard
                 title="Users"
-                value="1,234K"
+                value={users}
                 percent={48.3}
                 increase={true}
               />
@@ -154,7 +155,7 @@ export function AnalyticsDashboard(props) {
             <Grid item xs={6} sx={{ paddingLeft: "16px" }}>
               <ComparisonCard
                 title="User Conversion Rate"
-                value="17.37%"
+                value={userConversionData}
                 percent={11.7}
                 increase={false}
               />

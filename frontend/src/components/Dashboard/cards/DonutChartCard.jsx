@@ -3,6 +3,9 @@ import "../card-stylings/donut-chart-card.css";
 import { DonutChart } from "../charts/DonutChart";
 
 export function DonutChartCard(props) {
+  // console.log("props_donut",props.usersPieChartData)
+  // let data=[props.usersPieChartData[0].users,props.usersPieChartData[0].total_users]
+  // console.log("data",data);
   return (
     <Grid
       container
