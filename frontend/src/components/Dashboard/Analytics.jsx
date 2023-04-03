@@ -17,52 +17,73 @@ import {
 } from "../../helpers/analyticsData";
 
 export function AnalyticsDashboard(props) {
-  const [sessionEngagementData, setSessionEngagementData] = useState([]);
-  const [activeUsersByCountry, setActiveUsersByCountry] = useState([]);
+  const [activeOneDayUsersData, setActiveOneDayUsersData] = useState();
+  const [topSubcategories, setTopSubcategories] = useState();
+  const [usersPieChartData, setUsersPieChartData] = useState();
+  const [engagementReport, setEngagementReport] = useState();
+  const [userConversionData, setUserConversionData] = useState();
+  const [usersByCountryData, setUsersByCountryData] = useState();
+  const [totalResultRequests, setTotalResultRequests] = useState();
+  const [requestsThisMonth, setRequestsThisMonth] = useState();
+  const [users, setUsers] = useState();
+
+  const stateUpdation = () => {
+    return [
+      activeOneDayUsersData,
+      topSubcategories,
+      usersPieChartData,
+      engagementReport,
+      userConversionData,
+      usersByCountryData,
+      totalResultRequests,
+      requestsThisMonth,
+    ];
+  };
 
   useEffect(() => {
-    const activeUser = async () => {
-      let res = await fetch("/dashboard", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      let response = res.json();
-    };
-
-    const getData = async () => {
-      const sessionEngagementData = await getSessionEngagementByCountry(5);
-      const activeUsersByCountry = await getActiveUsersByCountry(3);
-
-      setSessionEngagementData(sessionEngagementData);
-      setActiveUsersByCountry(activeUsersByCountry);
-    };
-
-    activeUser();
-    getData();
-  }, []);
-
-  const activeUser = async () => {
-    let res = await fetch("/dashboard", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    let response = res.json();
-  };
+    try {
+      async function getDashbaord() {
+        let res = await fetch("/dashboard", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        let response = res.json();
+        // console.log("response", response)
+        response.then((data) => {
+          setActiveOneDayUsersData(data[0].activeOneDayUsersData);
+          setUsers(data[2].usersPieChartData[0].total_users);
+          setTopSubcategories(data[1].topSubcategories.topCategories);
+          setUsersPieChartData(data[2].usersPieChartData);
+          setEngagementReport(data[3].engagementReport);
+          setUserConversionData(data[4].userConversionData);
+          setUsersByCountryData(data[5].usersByCountryData[1].top_five_country);
+          setTotalResultRequests();
+          setRequestsThisMonth();
+        });
+      }
+      getDashbaord();
+    } catch (e) {
+      console.log("nodata");
+    }
+  }, stateUpdation());
 
   return (
     <div className="analytics-dashboard">
-      {/* <ActiveUsers /> */}
-      <Grid container spacing={4}>
+      <Grid container spacing={2}>
+        {/*OverallStatistics  */}
         <Grid item xs={12}>
-          <OverallStatistics />
+          <OverallStatistics
+            activeOneDayUsersData={activeOneDayUsersData}
+            users={users}
+          />
         </Grid>
-        <Grid item xs={6}>
-          <BasicBarGraphCard />
+        {/* Top Subcategories */}
+        <Grid item xs={6} sm={6} md={6} lg={6} xl={6} >
+          <BasicBarGraphCard topSubcategories={topSubcategories}/>
         </Grid>
+        {/* ComparisonCard for Requests*/}
         <Grid item xs={3}>
           <div className="stacked-cards">
             <Grid container direction="row" sx={{ height: "100%" }}>
@@ -85,33 +106,32 @@ export function AnalyticsDashboard(props) {
             </Grid>
           </div>
         </Grid>
+
+        {/* Users */}
         <Grid item xs={3}>
           <DonutChartCard
             title="Users"
             colors={["#154B89", "#038500"]}
-            labels={[
-              "Total Users",
-              "New Users",
-            ]}
+            labels={["Total Users", "New Users"]}
             values={[900, 80]}
           />
         </Grid>
-        {sessionEngagementData ? (
-          <Grid item xs={6}>
-            <UsageCard
-              title="Engaged Sessions Per Country"
-              firstColumn="Country"
-              secondColumn="Sessions"
-             // data={sessionEngagementData}
-            />
-          </Grid>
-        ) : (
-          <></>
-        )}
+
+        {/* Engaged Sessions Per Country */}
+        <Grid item xs={6}>
+          <UsageCard
+            title="Engaged Sessions Per Country"
+            firstColumn="Country"
+            secondColumn="Sessions"
+            // data={sessionEngagementData}
+          />
+        </Grid>
+
+        {/* Active Users Per Country */}
+
         <Grid item xs={6}>
           <Grid container sx={{ height: "100%" }}>
             <Grid item xs={12} sx={{ paddingBottom: "32px" }}>
-              {/* <ActivityCard /> */}
               <UsageCard
                 title="Active Users Per Country"
                 description="1,234,567 users this month"
@@ -120,6 +140,8 @@ export function AnalyticsDashboard(props) {
                 //data={activeUsersByCountry}
               />
             </Grid>
+
+            {/* ComparisonCard for Users */}
             <Grid item xs={6} sx={{ paddingRight: "16px" }}>
               <ComparisonCard
                 title="Users"
@@ -128,6 +150,7 @@ export function AnalyticsDashboard(props) {
                 increase={true}
               />
             </Grid>
+
             <Grid item xs={6} sx={{ paddingLeft: "16px" }}>
               <ComparisonCard
                 title="User Conversion Rate"
@@ -138,6 +161,8 @@ export function AnalyticsDashboard(props) {
             </Grid>
           </Grid>
         </Grid>
+
+        {/* Subscriptions */}
         {/* <Grid item xs={5}>
           <DonutChartCard
             title="Subscriptions"
@@ -146,13 +171,18 @@ export function AnalyticsDashboard(props) {
             values={[700, 200]}
           />
         </Grid> */}
+
+        {/* Subscriptions by Country */}
         {/* <Grid item xs={7}>
           <AdvancedBarGraphCard colors={["#154B89", "#CB7A00"]} />
         </Grid> */}
+
+        {/* Users by Country */}
         <Grid item xs={6}>
           <ComparisonList />
         </Grid>
 
+        {/* Most Revenue by Country */}
         {/* <Grid item xs={6}>
           <DonutChartCard
             title="Most Revenue by Country"

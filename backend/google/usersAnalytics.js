@@ -260,7 +260,7 @@ export async function getResultRequests(startDate, endDate) {
     ],
   });
   // console.log(response);
-  response.rows.map((row) => console.log(row));
+  // response.rows.map((row) => console.log(row));
   return response;
 }
 

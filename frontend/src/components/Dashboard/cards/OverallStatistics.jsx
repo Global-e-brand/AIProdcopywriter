@@ -2,7 +2,10 @@ import { Grid } from "@mui/material";
 import "../card-stylings/overall-statistics.css";
 import { dollar, subscribers, visits, users } from "../../../assets";
 
-export function OverallStatistics() {
+export function OverallStatistics(props) {
+
+
+
   return (
     <Grid container className="statistics-card" direction="row">
       <Grid item xs={12}>
@@ -17,29 +20,29 @@ export function OverallStatistics() {
           <Grid item className="statistic-container">
             <img className="statistic-img" src={dollar} />
             <div className="statistic-data">
-              <h4 className="statistic-value">0</h4>
+              <h4 className="statistic-value">-</h4>
               <p className="small-text-blue">Revenue</p>
             </div>
           </Grid>
           <Grid item className="statistic-container">
             <img className="statistic-img" src={subscribers} />
             <div className="statistic-data">
-              <h4 className="statistic-value">0</h4>
+              <h4 className="statistic-value">-</h4>
               <p className="small-text-blue">Subscriptions</p>
             </div>
           </Grid>
           <Grid item className="statistic-container">
             <img className="statistic-img" src={visits} />
             <div className="statistic-data">
-              <h4 className="statistic-value">1</h4>
+              <h4 className="statistic-value">{props.activeOneDayUsersData?props.activeOneDayUsersData:"-"}</h4>
               <p className="small-text-blue">Active One Day Users</p>
             </div>
           </Grid>
           <Grid item className="statistic-container">
             <img className="statistic-img" src={users} />
             <div className="statistic-data">
-              <h4 className="statistic-value">$1,243,434</h4>
-              <p className="small-text-blue">Users</p>
+              <h4 className="statistic-value">{props.users?props.users:"-"}</h4>
+              <p className="small-text-blue">users</p>
             </div>
           </Grid>
         </Grid>
