@@ -5,28 +5,35 @@ export async function analyticsCreate(data) {
   let top_subcategories = data[1].topSubcategories.topCategories;
   let total_users = data[2].usersPieChartData[0].total_users;
   let usersPieChartData = data[2].usersPieChartData;
-  let top_five_sessions_country = data[3].engagementReport.top_five_sessions_country;
-  let top_five_activeUser_country = data[3].engagementReport.top_five_activeUser_country;
+  let top_five_sessions_country =
+    data[3].engagementReport.top_five_sessions_country;
+  let top_five_activeUser_country =
+    data[3].engagementReport.top_five_activeUser_country;
   let userConversionData = data[4].userConversionData;
   let top_five_users_ByCountry = data[5].usersByCountryData[1].top_five_country;
-  let totalResultRequests= data[6].totalResultRequests.request_count;
-  let requestsThisMonth= data[7].requestsThisMonth.request_count;
+  let totalResultRequests = data[6].totalResultRequests.request_count;
+  let requestsThisMonth = data[7].requestsThisMonth.request_count;
 
-  let analyticsData = new analyticsModel();
+  const response = await analyticsModel.findOne();
 
-  analyticsData.total_users = total_users;
-  analyticsData.active_one_day_users = activeOneDayUsersData;
-  analyticsData.user_conversion = userConversionData;
-  analyticsData.top_subcategories = top_subcategories;
-  analyticsData.users = usersPieChartData;
-  analyticsData.top_five_sessions_country = top_five_sessions_country;
-  analyticsData.top_five_activeUser_country = top_five_activeUser_country;
-  analyticsData.top_five_users_ByCountry = top_five_users_ByCountry;
-  analyticsData.total_requests = totalResultRequests;
-  analyticsData.request_this_month = requestsThisMonth;
-  analyticsData.subscription = null;
-  analyticsData.revenue = null;
+  const analyticsData = {
+    total_users: total_users,
+    active_one_day_users: activeOneDayUsersData,
+    user_conversion: userConversionData,
+    top_subcategories: top_subcategories,
+    users: usersPieChartData,
+    top_five_sessions_country: top_five_sessions_country,
+    top_five_activeUser_country: top_five_activeUser_country,
+    top_five_users_ByCountry: top_five_users_ByCountry,
+    total_requests: totalResultRequests,
+    request_this_month: requestsThisMonth,
+    subscription: null,
+    revenue: null,
+  };
 
-  let analytics = await analyticsData;
-  analyticsData.save();
+  if (!response) {
+    await analyticsModel.create(analyticsData);
+  } else {
+    await analyticsModel.updateOne(analyticsData);
+  }
 }
