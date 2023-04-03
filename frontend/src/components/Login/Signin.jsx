@@ -136,11 +136,12 @@ function Signin() {
         form.action = `/auth/local?host=${host}&&categorypath=${categorypath}`;
         // form.target = "follow";
 
-        emailInput.value = `${process.env.GUEST_EMAIL}`;
+        emailInput.value = "mohit@an-associates.com";
+        passwordInput.value = "ANA#100";
+        
         emailInput.name = "email";
         form.appendChild(emailInput);
 
-        passwordInput.value = `${process.env.GUEST_PASSWORD}`;
         passwordInput.name = "password";
         form.appendChild(passwordInput);
 
