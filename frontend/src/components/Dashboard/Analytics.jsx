@@ -27,22 +27,9 @@ export function AnalyticsDashboard(props) {
   const [requestsThisMonth, setRequestsThisMonth] = useState();
   const [users, setUsers] = useState();
 
-  const stateUpdation = () => {
-    return [
-      activeOneDayUsersData,
-      topSubcategories,
-      usersPieChartData,
-      engagementReport,
-      userConversionData,
-      usersByCountryData,
-      totalResultRequests,
-      requestsThisMonth,
-    ];
-  };
-
   useEffect(() => {
     try {
-      async function getDashbaord() {
+      async function getDashboard() {
         let res = await fetch("/dashboard", {
           method: "GET",
           headers: {
@@ -63,11 +50,11 @@ export function AnalyticsDashboard(props) {
           setRequestsThisMonth();
         });
       }
-      getDashbaord();
+      getDashboard();
     } catch (e) {
       console.log("nodata");
     }
-  }, stateUpdation());
+  }, []);
 
   return (
     <div className="analytics-dashboard">
@@ -80,8 +67,8 @@ export function AnalyticsDashboard(props) {
           />
         </Grid>
         {/* Top Subcategories */}
-        <Grid item xs={6} sm={6} md={6} lg={6} xl={6} >
-          <BasicBarGraphCard topSubcategories={topSubcategories}/>
+        <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
+          <BasicBarGraphCard topSubcategories={topSubcategories} />
         </Grid>
         {/* ComparisonCard for Requests*/}
         <Grid item xs={3}>

@@ -27,24 +27,16 @@ analyticsController.use(bodyParser.urlencoded({ extended: false }));
 analyticsController.use(bodyParser.json());
 
 analyticsController.get("/", bodyParser.json(), async (req, res) => {
+  console.log("Calling /dashboard");
   try {
     let activeOneDayUsersData = await activeOneDayUsers();
-
     let topSubcategories = await getTopSubcategories();
-
     let usersPieChartData = await usersPieChart();
-
     let engagementReport = await getCountryBySession_ActiveUser();
-
     let userConversionData = await userConversionRate();
-
     let usersByCountryData = await usersByCountry();
-
     let totalResultRequests = await getResultRequests("2023-01-01", "today");
-
     let requestsThisMonth = await getResultRequests("30daysAgo", "today");
-    
-
     let dashboardData = [
       { activeOneDayUsersData: activeOneDayUsersData },
       { topSubcategories: topSubcategories },
@@ -55,11 +47,9 @@ analyticsController.get("/", bodyParser.json(), async (req, res) => {
       { totalResultRequests: totalResultRequests },
       { requestsThisMonth: requestsThisMonth },
     ];
-
     //DB Start
-    const DBTransaction = await analyticsCreate(dashboardData);
+    await analyticsCreate(dashboardData);
     //DB End
-
     res.send(dashboardData);
   } catch (e) {
     res.status(500).send(e.message);
