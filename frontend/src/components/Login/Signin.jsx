@@ -23,7 +23,6 @@ function Signin() {
   const [isLoading, setLoading] = useState(false);
   const [isOpen, setOpen] = useState(false);
   const [categorypath, setCategorypath] = useState();
-  const [guest, setGuest] = useState(true);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -125,8 +124,9 @@ function Signin() {
       let browserID = await getBrowserID();
       console.log(browserID);
       let validUser = await verifyGuestUser(browserID);
-      console.log(validUser);
+      console.log("guest login", validUser);
       if (validUser) {
+        console.log("inside if");
         let form = document.createElement("form");
         let emailInput = document.createElement("input");
         let passwordInput = document.createElement("input");
@@ -134,7 +134,7 @@ function Signin() {
         let host = window.location.hostname;
         form.method = "POST";
         form.action = `/auth/local?host=${host}&&categorypath=${categorypath}`;
-        form.target = "stay";
+        // form.target = "follow";
 
         emailInput.value = `${process.env.GUEST_EMAIL}`;
         emailInput.name = "email";
@@ -306,13 +306,11 @@ function Signin() {
                   Create an account
                 </button>
               </Grid>
-              {guest && (
-                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                  <button className="secondary-btn" onClick={handleGuestLogin}>
-                    Guest Sign In
-                  </button>
-                </Grid>
-              )}
+              <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                <button className="secondary-btn" onClick={handleGuestLogin}>
+                  Guest Sign In
+                </button>
+              </Grid>
             </Grid>
           </Grid>
         </form>

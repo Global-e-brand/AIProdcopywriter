@@ -25,7 +25,7 @@ const FACEBOOK_CLIENT_SECRET = process.env.FACEBOOK_CLIENT_SECRET;
 async function appRedirection(param, req, res) {
   switch (param) {
     case "local":
-      if (req.query.host == "localhost") {
+      if (req.query.host === "localhost") {
         await res.redirect(
           `http://${req.query.host}:3000/auth/success?host=${req.query.host}&&categorypath=${req.query.categorypath}`
         );
@@ -100,7 +100,7 @@ passport.use(
       try {
         const user = await findUser(email);
 
-        if (user === null) {
+        if (user == null) {
           console.log("No user matches the provided email");
           return done(null, null);
         }
