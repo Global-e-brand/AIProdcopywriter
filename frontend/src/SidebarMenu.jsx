@@ -17,7 +17,7 @@ import ExpandMore from "@mui/icons-material/ExpandMore";
 
 function SidebarMenu() {
   const [logout, setLogout] = useState(false);
-  const [isAdmin, setAdmin] = useState(true);
+  const [isAdmin, setAdmin] = useState(false);
   function handleLogout() {
     fetch("/auth/logout", {
       method: "GET",
