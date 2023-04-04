@@ -45,6 +45,7 @@ function App() {
               <Route path="/home" element={<HomePage />} />
               <Route path="/dashboard" element={<AnalyticsDashboard />} />
               <Route path="/settings" element={<AdminSettings />} />
+              <Route path="/usersettings" element={<UserSettings />} />
 
               <Route
                 path="/history"

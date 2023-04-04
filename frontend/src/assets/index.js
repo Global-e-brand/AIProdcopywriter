@@ -2,6 +2,8 @@ export { default as footerlogo } from "../assets/Logoft.png";
 export { default as logo } from "../assets/Logo.png";
 export { default as loader } from "../assets/loader.png";
 export { default as sidebckgnd } from "../assets/Sidebar.png";
+export { default as tickCircle } from "../assets/tickCircle.png";
+export { default as closeCircle } from "../assets/closeCircle.png";
 export { default as robot } from "../assets/Product AI.svg";
 export { default as fulllogo } from "../assets/FullLogo.svg";
 export { default as arrow } from "../assets/arrow.png";
