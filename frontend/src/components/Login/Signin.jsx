@@ -57,9 +57,13 @@ function Signin() {
     we take the URL that is stored in the body of the IFrame and use that URL to 
     redirect the user to the correct destination.
     */
+    let location = e.target?.contentDocument?.location?.href;
+    location = location.substring(location.lastIndexOf("/"));
+
     if (
       e.target?.contentDocument?.location?.href &&
-      e.target?.contentDocument?.location?.href !== "about:blank"
+      e.target?.contentDocument?.location?.href !== "about:blank" &&
+      location !== "/fail-local"
     ) {
       navigate(e.target.contentDocument.location || "/login");
     } else if (e.target?.contentDocument?.location?.href !== "about:blank") {
@@ -74,9 +78,9 @@ function Signin() {
   to complete the authentication process. The fetch API doesn't allow such behaviour as the server
   cannot redirect from fetch requests.
   */
-  {
-    console.log("categorypath", categorypath);
-  }
+  // {
+  //   console.log("categorypath", categorypath);
+  // }
 
   const handleFormSubmission = async (e) => {
     e.preventDefault();
@@ -138,7 +142,7 @@ function Signin() {
 
         emailInput.value = "mohit@an-associates.com";
         passwordInput.value = "ANA#100";
-        
+
         emailInput.name = "email";
         form.appendChild(emailInput);
 

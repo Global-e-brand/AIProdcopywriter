@@ -131,6 +131,7 @@ authrouter.post(
     failureRedirect: "/auth/fail-local",
   }),
   async (req, res) => {
+    // console.log("failure");
     await appRedirection("local", req, res);
   }
 );
