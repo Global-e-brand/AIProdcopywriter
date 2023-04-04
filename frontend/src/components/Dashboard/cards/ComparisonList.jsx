@@ -15,51 +15,11 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
-export function ComparisonList() {
-  const displayUsers = () => {
-    const items = [
-      {
-        imageSource: canada,
-        title: "Canada",
-        description: "2535246 visits",
-        change: "63%",
-        value: "825367",
-        isIncreased: true,
-      },
-      {
-        imageSource: india,
-        title: "India",
-        description: "1678325 visits",
-        change: "49%",
-        value: "408254",
-        isIncreased: true,
-      },
-      {
-        imageSource: unitedStates,
-        title: "United States",
-        description: "1204249 visits",
-        change: "3.1%",
-        value: "394492",
-        isIncreased: false,
-      },
-      {
-        imageSource: unitedKingdom,
-        title: "United Kindom",
-        description: "935242 visits",
-        change: "17%",
-        value: "245241",
-        isIncreased: true,
-      },
-      {
-        imageSource: france,
-        title: "France",
-        description: "632475 visits",
-        change: "1.7%",
-        value: "157266",
-        isIncreased: false,
-      },
-    ];
+export function ComparisonList(props) {
+  let users = props.data.slice(0,4);
+  let total_country= props.data.length !== 0?props.data[5].total_country:"-";
 
+  const displayUsers = () => {
     return (
       <>
         <TableContainer component={Paper} className="table">
@@ -72,25 +32,25 @@ export function ComparisonList() {
                 <TableCell align="left" className="table-cell">
                   <p className="normal-text">Visitors</p>
                 </TableCell>
-                <TableCell align="left" className="table-cell"></TableCell>
+                {/* <TableCell align="left" className="table-cell"></TableCell> */}
               </TableRow>
             </TableHead>
             <TableBody>
-              {items.map((item) => (
+              {users.map((item) => (
                 <TableRow key={item.title}>
                   <TableCell className="table-cell">
                     <div className="horizontal-container">
-                      <img className="flag-img" src={item.imageSource} />
+                      {/* <img className="flag-img" src={item.imageSource} /> */}
                       <div className="item-headers">
-                        <h4 className="medium-text">{item.title}</h4>
-                        <p className="small-text-blue">{item.description}</p>
+                        <h4 className="medium-text">{item.country}</h4>
+                        {/* <p className="small-text-blue">{12}</p> */}
                       </div>
                     </div>
                   </TableCell>
                   <TableCell className="table-cell">
-                    <p className="large-text-blue">{item.value}</p>
+                    <p className="large-text-blue">{item.users}</p>
                   </TableCell>
-                  <TableCell align="left" className="table-cell">
+                  {/* <TableCell align="left" className="table-cell">
                     <div
                       className="percent-box"
                       style={{
@@ -105,7 +65,7 @@ export function ComparisonList() {
                         {item.change}
                       </p>
                     </div>
-                  </TableCell>
+                  </TableCell> */}
                 </TableRow>
               ))}
             </TableBody>
@@ -120,11 +80,11 @@ export function ComparisonList() {
       <Grid container justifyContent="space-between" alignItems="center">
         <Grid item>
           <h2 className="statistics-title">Users by Country</h2>
-          <p className="small-text-blue">195 countries active</p>
+          <p className="small-text-blue">{total_country} countries active</p>
         </Grid>
-        <Grid item>
+        {/* <Grid item>
           <button className="view-all-btn">View All</button>
-        </Grid>
+        </Grid> */}
       </Grid>
       <Grid container className="list-section">
         <Grid item xs={12}>

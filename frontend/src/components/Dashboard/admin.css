@@ -46,9 +46,9 @@
 
 .small-text-blue {
   font-weight: 600;
-  font-size: 14px;
+  font-size: 18px;
   line-height: 17px;
-  letter-spacing: -0.05em;
+  letter-spacing: 0.2px;
   color: #154b89;
   margin: 0;
 }

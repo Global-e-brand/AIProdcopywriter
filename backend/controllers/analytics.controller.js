@@ -27,9 +27,7 @@ analyticsController.use(bodyParser.urlencoded({ extended: false }));
 analyticsController.use(bodyParser.json());
 
 analyticsController.get("/", bodyParser.json(), async (req, res) => {
-  console.log("Calling /dashboard");
   try {
-    console.log("dshboard");
     let activeOneDayUsersData = await activeOneDayUsers();
     let topSubcategories = await getTopSubcategories();
     let usersPieChartData = await usersPieChart();
