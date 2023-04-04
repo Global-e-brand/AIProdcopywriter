@@ -19,6 +19,7 @@ import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import { useEffect } from "react";
 import { AnalyticsDashboard } from "./components/Dashboard/Analytics";
 import AdminSettings from "./components/Admin/AdminSettings";
+import UserSettings from "./components/Admin/UserSettings";
 
 const TRACKING_ID = "G-TZ130WGSG9";
 ReactGA.initialize(TRACKING_ID);
@@ -36,10 +37,11 @@ function App() {
             <div className="logo-panel-wrapper"></div>
             <Routes>
               <Route path="/" element={<Navigate replace to="/login" />} />
-              <Route path="/home" element={<HomePage />} />              
+              <Route path="/home" element={<HomePage />} />
               <Route path="/dashboard" element={<AnalyticsDashboard />} />
               <Route path="/settings" element={<AdminSettings />} />
-              
+              <Route path="/usersettings" element={<UserSettings />} />
+
               <Route
                 path="/history"
                 element={

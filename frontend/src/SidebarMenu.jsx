@@ -17,6 +17,7 @@ import ExpandMore from "@mui/icons-material/ExpandMore";
 
 function SidebarMenu() {
   const [logout, setLogout] = useState(false);
+  const [isAdmin, setAdmin] = useState(true);
   function handleLogout() {
     fetch("/auth/logout", {
       method: "GET",
@@ -43,7 +44,10 @@ function SidebarMenu() {
         <Link to="/dashboard" className="icon-component home-btn">
           <p>Dashboard</p>
         </Link>
-        <Link to="/settings" className="icon-component home-btn">
+        <Link
+          to={isAdmin ? "/settings" : "/usersettings"}
+          className="icon-component home-btn"
+        >
           <p>Settings</p>
         </Link>
         <button

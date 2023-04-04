@@ -1,0 +1,81 @@
+.dialogBox-desktopView {
+  padding: 1rem;
+  /* width: 40vw; */
+}
+.cancelButton-conatainer-desktopView {
+  display: flex;
+  justify-content: flex-end;
+}
+.close-button {
+  /* background: none;
+  border: 2px solid #292d32;
+  border-radius: 50%;
+  width: 7%; */
+}
+.close-button img {
+  width: 1.2rem;
+  height: auto;
+}
+.message-container-desktopView {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2%;
+}
+.message {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 27px;
+  text-align: center;
+
+  color: #000000;
+  word-break: normal;
+}
+.message-sm {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  /* line-height: 27px; */
+  text-align: center;
+
+  color: #000000;
+  /* word-break: normal; */
+}
+.dialogBox-actionButtons-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sendButton {
+  background: #154b89 !important;
+  border-radius: 5px;
+  color: white !important;
+  /* flex: 1; */
+  margin: 2%;
+}
+.sendButton:hover {
+  background: #528aca !important;
+}
+.cancelButton {
+  border: 3px solid #154b89 !important;
+  border-radius: 5px !important;
+  flex: 0;
+  margin: 2%;
+  color: #154b89 !important;
+  font-weight: 600 !important;
+}
+.cancelButton:hover {
+  background: #b5d3ff !important;
+}
+.tickCircle {
+  width: 20%;
+  height: auto;
+}
+.reqSent-container-desktopView {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
