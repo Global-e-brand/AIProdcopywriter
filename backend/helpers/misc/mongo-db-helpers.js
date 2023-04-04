@@ -30,7 +30,7 @@ export const insertUser = async (email, hashedPassword) => {
 
 export const findUser = async (email) => {
   const user = await userModel.findOne({ email: email });
-  console.log("user-----33", user);
+  // console.log("user-----33", user);
   return user;
 };
 

@@ -19,7 +19,7 @@ const HistoryComponent = () => {
 
   useEffect(() => {
     const lamda = async () => {
-      console.log("HistoryPage");
+      // console.log("HistoryPage");
       let res = await fetch(
         `/content/history?todaypage=${today_page}&&yesterdaypage=${yesterday_page}&&thisweekpage=${thisweek_page}&&lastweekpage=${lastweek_page}`,
         {
@@ -32,7 +32,7 @@ const HistoryComponent = () => {
       let response = res.json();
 
       response.then((data) => {
-        console.log("data", data);
+        // console.log("data", data);
         setToDayData(data[0].toDayData);
         setYesterdayData(data[1].yesterdayData);
         setThisweekData(data[2].thisweekData);

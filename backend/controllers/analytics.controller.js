@@ -28,7 +28,6 @@ analyticsController.use(bodyParser.json());
 
 analyticsController.get("/", bodyParser.json(), async (req, res) => {
   try {
-    console.log("dshboard");
     let activeOneDayUsersData = await activeOneDayUsers();
     let topSubcategories = await getTopSubcategories();
     let usersPieChartData = await usersPieChart();
