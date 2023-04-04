@@ -102,9 +102,9 @@ export function AnalyticsDashboard(props) {
           <DonutChartCard
             title="Users"
             colors={["#154B89", "#038500"]}
-            labels={["Total Users", "New Users"]}
-            // usersPieChartData={usersPieChartData}
-            values={[900, 80]}
+            labels={["Users","Total Users"]}
+            usersPieChartData={usersPieChartData!=undefined?usersPieChartData:"nodata"}
+            values={usersPieChartData!=undefined?[usersPieChartData[0].users,usersPieChartData[0].total_users]:""}
           />
         </Grid>
 
