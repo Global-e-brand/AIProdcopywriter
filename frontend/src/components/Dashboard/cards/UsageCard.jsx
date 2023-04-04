@@ -8,29 +8,11 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
-/* The data passed from props uses the following format:
 
-title="title"
-firstColumn="name"
-secondColumn="name"
-data={[
-        {
-          name: 'name',
-          img: imageComponent || null,
-          value: value
-        },
-        {
-          name: 'name',
-          img: imageComponent || null,
-          value: value
-        },
-        ...
-      ]}
-*/
 
 export function UsageCard(props) {
   const displayUsers = () => {
-    const users = props.data;
+    let users = props.data;
 
     return (
       <TableContainer component={Paper} className="table">
@@ -46,19 +28,19 @@ export function UsageCard(props) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {/* {users.map((row) => (
+            {users.length!==0?users.map((row) => (
               <TableRow key={row.name}>
-                <TableCell className="table-cell">
+                <TableCell align="left" className="table-cell">
                   <div className="horizontal-container">
                     <img src={row.img} className="flag-img"></img>
-                    <p className="medium-text text-margin">{row.name}</p>
+                    <p className="medium-text text-margin">{row.country.value}</p>
                   </div>
                 </TableCell>
                 <TableCell align="left" className="table-cell">
-                  <p className="large-text-blue">{row.value}</p>
+                  <p className="large-text-blue">{row.sessions.value}</p>
                 </TableCell>
               </TableRow>
-            ))} */}
+            )):""}
           </TableBody>
         </Table>
       </TableContainer>
@@ -74,9 +56,9 @@ export function UsageCard(props) {
             <p className="small-text-blue">{props.description}</p>
           )}
         </Grid>
-        <Grid item>
+        {/* <Grid item>
           <button className="view-all-btn">View All</button>
-        </Grid>
+        </Grid> */}
       </Grid>
       <Grid container className="list-section">
         <Grid item xs={12}>

@@ -16,8 +16,10 @@ import {
   getActiveUsersByCountry,
 } from "../../helpers/analyticsData";
 import { useLocation } from "react-router-dom";
+import Loader from "../loader/loader";
 
 export function AnalyticsDashboard(props) {
+  const [isloading, setLoading] = useState(true);
   const [activeOneDayUsersData, setActiveOneDayUsersData] = useState();
   const [topSubcategories, setTopSubcategories] = useState();
   const [usersPieChartData, setUsersPieChartData] = useState();
@@ -32,6 +34,7 @@ export function AnalyticsDashboard(props) {
 
   useEffect(() => {
     try {
+      setLoading(true);
       async function getDashboard() {
         let res = await fetch("/dashboard", {
           method: "GET",
@@ -44,7 +47,7 @@ export function AnalyticsDashboard(props) {
         response.then((data) => {
           setActiveOneDayUsersData(data[0].activeOneDayUsersData);
           setUsers(data[2].usersPieChartData[0].total_users);
-          setTopSubcategories(data[1].topSubcategories.topCategories);
+          setTopSubcategories(data[1].topSubcategories);
           setUsersPieChartData(data[2].usersPieChartData);
           setEngagementReport(data[3].engagementReport);
           setUserConversionData(data[4].userConversionData);
@@ -54,12 +57,17 @@ export function AnalyticsDashboard(props) {
         });
       }
       getDashboard();
+    setLoading(false);
+
     } catch (e) {
       console.log("nodata");
     }
+
   }, [location.pathname]);
 
-  return (
+  return  isloading?(
+      <Loader scale="0.5" color="#b5d3ff" />
+      ):(
     <div className="analytics-dashboard">
       <Grid container spacing={2}>
         {/*OverallStatistics  */}
@@ -69,10 +77,12 @@ export function AnalyticsDashboard(props) {
             users={users}
           />
         </Grid>
+
         {/* Top Subcategories */}
         <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
-          <BasicBarGraphCard topSubcategories={topSubcategories} />
+          <BasicBarGraphCard data={topSubcategories!==undefined?topSubcategories:[]} />
         </Grid>
+
         {/* ComparisonCard for Requests*/}
         <Grid item xs={3}>
           <div className="stacked-cards">
@@ -97,43 +107,11 @@ export function AnalyticsDashboard(props) {
           </div>
         </Grid>
 
-        {/* Users */}
+        {/* ComparisonCard for Users */}
         <Grid item xs={3}>
-          <DonutChartCard
-            title="Users"
-            colors={["#154B89", "#038500"]}
-            labels={["Users","Total Users"]}
-            usersPieChartData={usersPieChartData!=undefined?usersPieChartData:"nodata"}
-            values={usersPieChartData!=undefined?[usersPieChartData[0].users,usersPieChartData[0].total_users]:""}
-          />
-        </Grid>
-
-        {/* Engaged Sessions Per Country */}
-        <Grid item xs={6}>
-          <UsageCard
-            title="Engaged Sessions Per Country"
-            firstColumn="Country"
-            secondColumn="Sessions"
-            // data={sessionEngagementData}
-          />
-        </Grid>
-
-        {/* Active Users Per Country */}
-
-        <Grid item xs={6}>
-          <Grid container sx={{ height: "100%" }}>
-            <Grid item xs={12} sx={{ paddingBottom: "32px" }}>
-              <UsageCard
-                title="Active Users Per Country"
-                description="1,234,567 users this month"
-                firstColumn="Country"
-                secondColumn="Active Users"
-                //data={activeUsersByCountry}
-              />
-            </Grid>
-
-            {/* ComparisonCard for Users */}
-            <Grid item xs={6} sx={{ paddingRight: "16px" }}>
+          <div className="stacked-cards">
+          <Grid container direction="row" sx={{ height: "100%" }}>
+            <Grid item xs={12} sx={{ paddingBottom: "16px" }}>
               <ComparisonCard
                 title="Users"
                 value={users}
@@ -142,7 +120,7 @@ export function AnalyticsDashboard(props) {
               />
             </Grid>
 
-            <Grid item xs={6} sx={{ paddingLeft: "16px" }}>
+            <Grid item xs={12} sx={{ paddingTop: "16px" }}>
               <ComparisonCard
                 title="User Conversion Rate"
                 value={userConversionData}
@@ -150,8 +128,65 @@ export function AnalyticsDashboard(props) {
                 increase={false}
               />
             </Grid>
+            </Grid>
+          </div>
+        </Grid>
+
+        {/* Engaged Sessions Per Country */}
+        <Grid item xs={6}>
+          <UsageCard
+            title="Engaged Sessions Per Country"
+            firstColumn="Country"
+            secondColumn="Sessions"
+            data={
+              engagementReport !== undefined
+                ? engagementReport.top_five_sessions_country
+                : []
+            }
+          />
+        </Grid>
+
+        {/* Active Users Per Country */}
+        <Grid item xs={6}>
+          <Grid container sx={{ height: "100%" }}>
+            <Grid item xs={12} sx={{ paddingBottom: "32px" }}>
+              <UsageCard
+                title="Active Users Per Country"
+                // description="1,234,567 users this month"
+                firstColumn="Country"
+                secondColumn="Active Users"
+                data={
+                  engagementReport !== undefined
+                    ? engagementReport.top_five_activeUser_country
+                    : []
+                }
+              />
+            </Grid>
           </Grid>
         </Grid>
+
+        {/* Users by Country */}
+        <Grid item xs={6}>
+          <ComparisonList
+            data={usersByCountryData !== undefined ? usersByCountryData : []}
+          />
+        </Grid>
+
+        {/* Users */}
+        <Grid item xs={6}>
+          <DonutChartCard
+            title="Users"
+            colors={["#154B89", "#038500"]}
+            labels={["Users", "Total Users"]}
+            values={
+              usersPieChartData != undefined
+                ? [usersPieChartData[0].users, usersPieChartData[0].total_users]
+                : ""
+            }
+          />
+        </Grid>
+
+        {/* Starts Revenue Charts */}
 
         {/* Subscriptions */}
         {/* <Grid item xs={5}>
@@ -167,11 +202,6 @@ export function AnalyticsDashboard(props) {
         {/* <Grid item xs={7}>
           <AdvancedBarGraphCard colors={["#154B89", "#CB7A00"]} />
         </Grid> */}
-
-        {/* Users by Country */}
-        <Grid item xs={6}>
-          <ComparisonList />
-        </Grid>
 
         {/* Most Revenue by Country */}
         {/* <Grid item xs={6}>
@@ -198,6 +228,6 @@ export function AnalyticsDashboard(props) {
           />
         </Grid> */}
       </Grid>
-    </div>
-  );
+    </div>)
+  
 }
