@@ -5,7 +5,7 @@ export function getUserId(req) {
   return req?.session?.passport?.user?._id || req?.session?.passport?.user?.id;
 }
 
-export function getDate_format(){
+export function getDate_format() {
   var date = new Date();
   var year = date.getFullYear().toString();
   var month = (date.getMonth() + 1).toString();
@@ -17,24 +17,34 @@ export function getDate_format(){
   var yyyymmdd = year + month + day;
 
   return yyyymmdd;
-};
+}
 
 export async function socialMediaUsers(user) {
+  // console.log("id", user.id);
+  // console.log("email", user.emails);
+  const response = await socialMediaUserModel.findOne();
+  let socialMedia;
+  if (user.provider == "google") {
+    socialMedia = {
+      email: user.emails,
+      google_id: user.id,
+      created_date: new Date(),
+      updated_date: new Date(),
+      deleted_date: null,
+    };
+  } else if (user.provider == "facebook") {
+    socialMedia = {
+      email: "meta_email",
+      meta_id: "fb_id",
+      created_date: new Date(),
+      updated_date: null,
+      deleted_date: null,
+    };
+  }
 
-  let socialMediaUserData=new socialMediaUserModel();
-  if(user.provider =="google"){
-      socialMediaUserData.email = user.emails;
-      socialMediaUserData.google_id = user.id;
-      socialMediaUserData.created_date = new Date();
-      socialMediaUserData.updated_date = null;
-      socialMediaUserData.deleted_date = null;
-    }else if(user.provider =="facebook"){
-      socialMediaUserData.email = "meta_email";
-      socialMediaUserData.meta_id = "fb_id";
-      socialMediaUserData.created_date = new Date();
-      socialMediaUserData.updated_date = null;
-      socialMediaUserData.deleted_date = null;
-    }
-    await socialMediaUserData.save();
-    
+  if (!response) {
+    await socialMediaUserModel.create(socialMedia);
+  } else {
+    await socialMediaUserModel.updateOne(socialMedia);
+  }
 }

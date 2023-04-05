@@ -65,18 +65,6 @@ async function appRedirection(param, req, res) {
 }
 
 passport.use(
-  new GoogleStrategy(
-    {
-      clientID: GOOGLE_CLIENT_ID,
-      clientSecret: GOOGLE_CLIENT_SECRET,
-      callbackURL: "/auth/google/callback",
-      passReqToCallback: true,
-    },
-    authUser
-  )
-);
-
-passport.use(
   new FacebookStrategy(
     {
       clientID: FACEBOOK_CLIENT_ID,
@@ -86,6 +74,20 @@ passport.use(
     },
     authUser
   )
+);
+
+// local auth api calls
+authrouter.post(
+  "/local",
+  checkNotAuthenticated,
+  passport.authenticate("local", {
+    // successRedirect: `http://localhost:3000/auth/success`,
+    failureRedirect: "/auth/fail-local",
+  }),
+  async (req, res) => {
+    // console.log("failure");
+    await appRedirection("local", req, res);
+  }
 );
 
 passport.use(
@@ -122,31 +124,23 @@ passport.use(
   )
 );
 
-// authentication api calls
-authrouter.post(
-  "/local",
-  checkNotAuthenticated,
-  passport.authenticate("local", {
-    // successRedirect: `http://localhost:3000/auth/success`,
-    failureRedirect: "/auth/fail-local",
-  }),
-  async (req, res) => {
-    // console.log("failure");
-    await appRedirection("local", req, res);
-  }
-);
-
 authrouter.get("/success", checkAuthenticated, async (req, res) => {
-  console.log("168", req.query);
-  await socialMediaUsers(req.user);
+  
+  if (req.query.media == "google") {
+    await socialMediaUsers(req.user);
+    return res.redirect("http://localhost:3001/home");
+  }
+  
+  console.log("Login Success");
 
-  console.log("Success");
-
-  //payment subscription model
   let userId = await getUserId();
+
   console.log(userId);
+
   let result = await checkTrial(userId);
   console.log("result", result);
+
+  //payment subscription model
   if (true) {
     // check for result
     appRedirection("login", req, res);
@@ -156,30 +150,17 @@ authrouter.get("/success", checkAuthenticated, async (req, res) => {
   }
 });
 
-passport.serializeUser((user, done) => {
-  done(null, user);
-});
-
-passport.deserializeUser((user, done) => {
-  done(null, user);
-});
-
-// authrouter.post("/register-account", jsonParser, async (req, res) => {
-//   const email = req.body.email ? req.body.email.trim().toLowerCase() : "";
-//   const user = await findUser(email);
-
-//   if (user === null) {
-//     const hashedPassword = hashPassword(req.body.password);
-
-//     await insertUser(email, hashedPassword);
-
-//     console.log("Registered user!");
-//     res.redirect("http://localhost:3001/login");
-//   } else {
-//     console.log("Cannot register user. Email already in use.");
-//     res.redirect("http://localhost:3001/login");
-//   }
-// });
+passport.use(
+  new GoogleStrategy(
+    {
+      clientID: GOOGLE_CLIENT_ID,
+      clientSecret: GOOGLE_CLIENT_SECRET,
+      callbackURL: "/auth/google/callback",
+      passReqToCallback: true,
+    },
+    authUser
+  )
+);
 
 authrouter.get(
   "/google",
@@ -188,7 +169,22 @@ authrouter.get(
 );
 
 authrouter.get(
-  "auth/facebook",
+  "/google/callback",
+  passport.authenticate("google", {
+    successRedirect: "/auth/success?media=google",
+    failureRedirect: "/auth/fail",
+  })
+);
+passport.serializeUser((user, done) => {
+  done(null, user);
+});
+
+passport.deserializeUser((user, done) => {
+  done(null, user);
+});
+
+authrouter.get(
+  "/facebook",
   checkNotAuthenticated,
   passport.authenticate("facebook", {
     scope: ["email"],
@@ -196,15 +192,7 @@ authrouter.get(
 );
 
 authrouter.get(
-  "/google/callback",
-  passport.authenticate("google", {
-    successRedirect: "/auth/success",
-    failureRedirect: "/auth/fail",
-  })
-);
-
-authrouter.get(
-  "/facebook/callback",
+  "http://localhost:3000/facebook/callback",
   passport.authenticate("facebook", {
     successRedirect: "http://localhost:3000/auth/success",
     failureRedirect: "http://localhost:3000/auth/fail",
