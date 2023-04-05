@@ -1,16 +1,12 @@
 import * as React from "react";
-import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import "./usersettings.css";
 import { tickCircle } from "../../assets";
 import { closeCircle } from "../../assets";
-// import SidebarMenu from "../../SidebarMenu";
+import {Navigate} from "react-router-dom";
+
 
 export default function UserSettings() {
   const [open, setOpen] = React.useState(true);
@@ -23,6 +19,7 @@ export default function UserSettings() {
   };
 
   const handleClose = () => {
+     //<Navigate replace to="http://localhost:3001/productdescription" />
     setOpen(false);
   };
 

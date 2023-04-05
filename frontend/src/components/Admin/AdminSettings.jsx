@@ -1,8 +1,11 @@
-import * as React from "react";
+import React,{useState} from "react";
 import "./adminsettings.css";
 import SidebarMenu from "../../SidebarMenu";
 import { Grid } from "@mui/material";
+
+
 export default function AdminSettings() {
+  
   return (
     <div>
       <div className="adminBar-desktopView">

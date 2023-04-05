@@ -7,35 +7,19 @@ const adminSettings_schema = mongoose.Schema({
   custom_users_plan: {
     type: Array,
   },
-  analytic_user_req: {
-    type: Array,
-    user_requests: {
-      user_id: {
-        type: String,
-        required: true,
-      },
-      analytic_permission: {
-        type: Boolean,
-        required: true,
-      },
-      request_status: {
-        type: Boolean,
-        required: true,
-      },
-      created_date: {
-        type: Date,
-        required: true,
-      },
-      updated_date: {
-        type: Date,
-        required: false,
-      },
-      deleted_date: {
-        type: Date,
-        required: false,
-      },
-    },
+  analytic_permission: {
+    type: Boolean,
+    required: true,
   },
+  user_id: {
+    type: String,
+    required: true,
+  },
+  status: {
+    type: String, //Acceprted or Declined
+    required: true,
+  },
+
   created_date: {
     type: Date,
   },
