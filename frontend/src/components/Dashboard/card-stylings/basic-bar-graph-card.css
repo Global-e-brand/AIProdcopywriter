@@ -30,3 +30,12 @@
   background-color: #154b89;
   border-radius: 5px;
 }
+.statistics-title_ {
+  font-weight: 900;
+  width: max-content;
+}
+@media (max-width: 800px) {
+  .text-center {
+    font-weight: 700;
+  }
+}

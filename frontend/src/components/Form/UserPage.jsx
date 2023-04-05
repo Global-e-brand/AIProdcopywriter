@@ -16,6 +16,7 @@ import HistoryComponent from "../History/HistoryComponent";
 import MobileHistoryComponent from "../History/MobileHistoryComponent";
 import CloseIcon from "@mui/icons-material/Close";
 import useWindowDimensions from "../../helpers/window-dimensions";
+import { MobileAnalyticsComponent } from "../Dashboard/MobileAnalyticsComponent";
 
 function Dummy(props) {
   const [isAuthenticated, setAuthenticated] = useState(true);
@@ -91,6 +92,7 @@ function Dummy(props) {
         );
       case "history":
         return <HistoryComponent />;
+
       default:
         return <></>;
     }
@@ -115,6 +117,8 @@ function Dummy(props) {
         );
       case "history":
         return <MobileHistoryComponent />;
+      // case "dashboard":
+      //   return <MobileAnalyticsComponent />;
       default:
         return <></>;
     }
