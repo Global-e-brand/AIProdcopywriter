@@ -20,3 +20,12 @@
 .content-row {
   margin-top: 40px !important;
 }
+@media (max-width: 800px) {
+  .statistic-container {
+    margin-bottom: 30px;
+  }
+}
+#activeOneDayUserImg {
+  height: 50px;
+  width: 50px;
+}

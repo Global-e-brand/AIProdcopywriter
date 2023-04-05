@@ -55,19 +55,20 @@ export function AnalyticsDashboard(props) {
           setTotalResultRequests(data[6].totalResultRequests.request_count);
           setRequestsThisMonth(data[7].requestsThisMonth.request_count);
         });
+        setLoading(false);
       }
       getDashboard();
-    setLoading(false);
-
+      // setLoading(false);
     } catch (e) {
       console.log("nodata");
     }
-
   }, [location.pathname]);
 
-  return  isloading?(
-      <Loader scale="0.5" color="#b5d3ff" />
-      ):(
+  return isloading ? (
+    <div className="loader">
+      <Loader scale="1" color="" />
+    </div>
+  ) : (
     <div className="analytics-dashboard">
       <Grid container spacing={2}>
         {/*OverallStatistics  */}
@@ -79,12 +80,14 @@ export function AnalyticsDashboard(props) {
         </Grid>
 
         {/* Top Subcategories */}
-        <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
-          <BasicBarGraphCard data={topSubcategories!==undefined?topSubcategories:[]} />
+        <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+          <BasicBarGraphCard
+            data={topSubcategories !== undefined ? topSubcategories : []}
+          />
         </Grid>
 
         {/* ComparisonCard for Requests*/}
-        <Grid item xs={3}>
+        <Grid item xs={6} sm={3}>
           <div className="stacked-cards">
             <Grid container direction="row" sx={{ height: "100%" }}>
               <Grid item xs={12} sx={{ paddingBottom: "16px" }}>
@@ -108,32 +111,32 @@ export function AnalyticsDashboard(props) {
         </Grid>
 
         {/* ComparisonCard for Users */}
-        <Grid item xs={3}>
+        <Grid item xs={6} sm={3}>
           <div className="stacked-cards">
-          <Grid container direction="row" sx={{ height: "100%" }}>
-            <Grid item xs={12} sx={{ paddingBottom: "16px" }}>
-              <ComparisonCard
-                title="Users"
-                value={users}
-                percent={48.3}
-                increase={true}
-              />
-            </Grid>
+            <Grid container direction="row" sx={{ height: "100%" }}>
+              <Grid item xs={12} sx={{ paddingBottom: "16px" }}>
+                <ComparisonCard
+                  title="Users"
+                  value={users}
+                  percent={48.3}
+                  increase={true}
+                />
+              </Grid>
 
-            <Grid item xs={12} sx={{ paddingTop: "16px" }}>
-              <ComparisonCard
-                title="User Conversion Rate"
-                value={userConversionData}
-                percent={11.7}
-                increase={false}
-              />
-            </Grid>
+              <Grid item xs={12} sx={{ paddingTop: "16px" }}>
+                <ComparisonCard
+                  title="User Conversion Rate"
+                  value={userConversionData}
+                  percent={11.7}
+                  increase={false}
+                />
+              </Grid>
             </Grid>
           </div>
         </Grid>
 
         {/* Engaged Sessions Per Country */}
-        <Grid item xs={6}>
+        <Grid item xs={12} sm={6}>
           <UsageCard
             title="Engaged Sessions Per Country"
             firstColumn="Country"
@@ -147,7 +150,7 @@ export function AnalyticsDashboard(props) {
         </Grid>
 
         {/* Active Users Per Country */}
-        <Grid item xs={6}>
+        <Grid item xs={12} sm={6}>
           <Grid container sx={{ height: "100%" }}>
             <Grid item xs={12} sx={{ paddingBottom: "32px" }}>
               <UsageCard
@@ -166,14 +169,14 @@ export function AnalyticsDashboard(props) {
         </Grid>
 
         {/* Users by Country */}
-        <Grid item xs={6}>
+        <Grid item xs={12} sm={6}>
           <ComparisonList
             data={usersByCountryData !== undefined ? usersByCountryData : []}
           />
         </Grid>
 
         {/* Users */}
-        <Grid item xs={6}>
+        <Grid item xs={12} sm={12} md={6}>
           <DonutChartCard
             title="Users"
             colors={["#154B89", "#038500"]}
@@ -228,6 +231,6 @@ export function AnalyticsDashboard(props) {
           />
         </Grid> */}
       </Grid>
-    </div>)
-  
+    </div>
+  );
 }
