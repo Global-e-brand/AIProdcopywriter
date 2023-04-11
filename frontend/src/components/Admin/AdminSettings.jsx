@@ -1,11 +1,29 @@
-import React,{useState} from "react";
+import * as React from "react";
 import "./adminsettings.css";
+import { useState } from "react";
 import SidebarMenu from "../../SidebarMenu";
 import { Grid } from "@mui/material";
-
-
+import { tickCircle } from "../../assets";
 export default function AdminSettings() {
-  
+  const [submit, setSubmit] = useState(false);
+  async function handleSubmit() {
+    let value = document.getElementsByClassName(
+      "modifyPriceInput-desktopView"
+    )[0].value;
+    console.log(value);
+    let res = await fetch("/admin/plan", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        value: value,
+      }),
+    });
+    let response = res.json();
+    response.then((data) => console.log(data));
+    setSubmit(true);
+  }
   return (
     <div>
       <div className="adminBar-desktopView">
@@ -22,12 +40,12 @@ export default function AdminSettings() {
                 <div className="modifyPricesHeader-desktopView">
                   Modify All Prices
                 </div>
-                <div className="modifyPrices-desktopView ">
+                <div className="modifyPrices-desktopView">
                   <div className="Plan-desktopView">
                     <div className="planHeader-desktopView">
                       <p className="planLabel-desktopView">Basic Plan</p>
                       <p className="currentPriceLabel-desktopView">
-                        Currently $99 per month
+                        Currently $19.95 per month
                       </p>
                     </div>
                     <div className="modifyPriceInputContainer-desktopView">
@@ -39,7 +57,7 @@ export default function AdminSettings() {
                       <button>Change</button>
                     </div>
                   </div>
-                  <div className="Plan-desktopView">
+                  {/* <div className="Plan-desktopView">
                     <div className="planHeader-desktopView">
                       <p className="planLabel-desktopView">Standard Plan</p>
                       <p className="currentPriceLabel-desktopView">
@@ -54,12 +72,12 @@ export default function AdminSettings() {
                       ></input>
                       <button>Change</button>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
-              <div className="customiseUserPricesContainer-desktopView">
+              {/* <div className="customiseUserPricesContainer-desktopView">
                 <div className="customiseUserPricesHeader-desktopView">
-                  Customise user Prices
+                  Customise User Prices
                 </div>
                 <div className="customiseUserPrices-desktopView">
                   <p id="mostRecurringUsersHeader-desktopView">
@@ -109,11 +127,40 @@ export default function AdminSettings() {
                     </div>
                   </div>
                 </div>
+              </div> */}
+              <div className="user-DesktopView">
+                <p>Provide Admin Role</p>
+                <div className="user-requestDesktopView">
+                  <p>Admin Role</p>
+                  <Grid
+                    container
+                    spacing={2}
+                    xs={12}
+                    className="div-userrequest"
+                  >
+                    <Grid className="userRequests" item xs={12}>
+                      <input
+                        type="email"
+                        className="userRequests-input"
+                        placeholder="xyz@creativewriter.ai"
+                      />
+                      <button onClick={handleSubmit}>Submit</button>
+                    </Grid>
+                  </Grid>
+                </div>
               </div>
             </div>
           </div>
         </Grid>
       </Grid>
+      <div className="requestpopup">
+        {submit && (
+          <div className="requestpopup-style">
+            <img src={tickCircle} alt="" className="tickCircle" />
+            <p>Request Sent</p>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

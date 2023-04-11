@@ -40,12 +40,14 @@
   background: #b5d3ff;
   border-radius: 10px;
   padding: 1rem;
-  display: flex;
-  /* grid-template-columns: repeat(2, 1fr);
-  grid-gap: 1rem; */
+  display: flex !important;
+  flex-direction: row !important;
   justify-content: space-between;
   align-items: center;
   margin-top: 1rem;
+}
+.modifyPrices-desktopView p {
+  font-size: 20px;
 }
 .modifyPriceInput-desktopView {
   margin: 0.2rem;
@@ -78,7 +80,7 @@ input:focus {
 }
 .planHeader-desktopView {
   margin-right: 5%;
-  width: 300px;
+  width: 260px;
 }
 .planHeader-desktopView p {
   margin: 0;
@@ -86,13 +88,13 @@ input:focus {
 .planLabel-desktopView {
   font-family: "Inter" !important;
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 .currentPriceLabel-desktopView {
   font-family: "Inter";
   font-style: normal;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 14px !important;
   line-height: 17px;
   letter-spacing: -0.05em;
 
@@ -201,7 +203,6 @@ input:focus {
   text-align: center;
   padding: 0.625rem;
   display: block;
-
   width: 100% !important;
   height: 100%;
 }
@@ -229,11 +230,6 @@ input:focus {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-
-    /* grid-template-columns: repeat(2, 1fr);
-    grid-gap: 1rem; */
-
-    /* align-items: flex-start; */
     margin-top: 1rem;
     gap: 1rem;
   }
@@ -255,12 +251,101 @@ input:focus {
     padding: 1rem;
     display: flex;
     flex-direction: column;
-
-    /* grid-template-columns: repeat(2, 1fr);
-    grid-gap: 1rem; */
-
     align-items: space-between;
     margin-top: 1rem;
     gap: 1rem;
   }
+}
+.parent-container-desktopView {
+  overflow: scroll;
+  height: 90vh;
+}
+.user-requestDesktopView {
+  background-color: #b5d3ff;
+  border-radius: 10px;
+  padding: 15px;
+}
+.user-requestDesktopView p {
+  font-size: 20px !important;
+  font-family: "Inter" !important;
+  font-style: normal;
+  font-weight: 700 !important;
+}
+.user-DesktopView p {
+  margin-top: 10px;
+  font-size: 24px;
+  font-family: "Inter" !important;
+  font-style: normal;
+  font-weight: 500;
+}
+.userRequests {
+  display: flex !important;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 10px;
+  justify-content: space-evenly;
+  height: 70px;
+  margin-bottom: 10px !important;
+  padding-top: 0px !important;
+}
+.userRequests p {
+  font-size: 14px;
+  font-weight: 800;
+}
+.userRequests button {
+  border-radius: 10px;
+  color: white;
+  background-color: #154b89;
+  border: none;
+  padding: 7px;
+  width: 20%;
+}
+.div-userrequest {
+  margin-left: 2px !important;
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+.parent-container-desktopView::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.parent-container-desktopView {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.userRequests-input {
+  width: 70%;
+  margin: 2px;
+  border: none;
+}
+.requestpopup {
+  position: absolute;
+  bottom: 10%;
+  left: 55%;
+}
+.requestpopup-style {
+  width: 240px;
+  height: 70px;
+  /* display: flex;
+  align-items: center;
+  justify-content: space-evenly; */
+  color: rgb(0, 0, 0);
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 27px;
+  text-align: center;
+  border-radius: 20px;
+  background-color: #528aca49;
+}
+.requestpopup-style p {
+  display: flex;
+  /* margin-top: 5%; */
+  align-items: center;
+  justify-content: center;
+}
+.requestpopup-style img {
+  margin-top: 2%;
+  width: 15%;
 }

@@ -17,9 +17,9 @@ import PaymentNew from "./components/payment/PaymentNew";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import { useEffect } from "react";
 import { AnalyticsDashboard } from "./components/Dashboard/Analytics";
-import UserSettings from "./components/Admin/UserSettings";
 import ReactGA from "react-ga4";
 import SettingPage from "./components/Admin/SettingPage";
+import AdminSettings from "./components/Admin/AdminSettings";
 
 const TRACKING_ID = "G-TZ130WGSG9";
 ReactGA.initialize(TRACKING_ID, {
@@ -46,6 +46,7 @@ function App() {
               <Route path="/home" element={<HomePage />} />
               <Route path="/dashboard" element={<AnalyticsDashboard />} />
               <Route path="/settings" element={<SettingPage />} />
+              <Route path="/admin" element={<AdminSettings />} />
 
               <Route
                 path="/history"
