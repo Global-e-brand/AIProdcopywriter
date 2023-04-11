@@ -64,17 +64,6 @@ async function appRedirection(param, req, res) {
   }
 }
 
-passport.use(
-  new FacebookStrategy(
-    {
-      clientID: FACEBOOK_CLIENT_ID,
-      clientSecret: FACEBOOK_CLIENT_SECRET,
-      callbackURL: `http://localhost:3000/auth/facebook/callback`,
-      passReqToCallback: true,
-    },
-    authUser
-  )
-);
 
 // local auth api calls
 authrouter.post(
@@ -183,6 +172,19 @@ passport.deserializeUser((user, done) => {
   done(null, user);
 });
 
+
+passport.use(
+  new FacebookStrategy(
+    {
+      clientID: FACEBOOK_CLIENT_ID,
+      clientSecret: FACEBOOK_CLIENT_SECRET,
+      callbackURL: "http://localhost:3000/auth/facebook/callback",
+      profileFields:['id','displayName','name','gender','email']
+    },
+    authUser
+  )
+);
+
 authrouter.get(
   "/facebook",
   checkNotAuthenticated,
@@ -192,9 +194,9 @@ authrouter.get(
 );
 
 authrouter.get(
-  "http://localhost:3000/facebook/callback",
+  "/facebook/callback",
   passport.authenticate("facebook", {
-    successRedirect: "http://localhost:3000/auth/success",
+    successRedirect: "http://localhost:3001/home",
     failureRedirect: "http://localhost:3000/auth/fail",
   })
 );

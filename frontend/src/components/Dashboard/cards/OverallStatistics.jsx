@@ -49,7 +49,7 @@ export function OverallStatistics(props) {
               <h4 className="statistic-value">
                 {props.users ? props.users : "-"}
               </h4>
-              <p className="small-text-blue">users</p>
+              <p className="small-text-blue">Users</p>
             </div>
           </Grid>
         </Grid>
