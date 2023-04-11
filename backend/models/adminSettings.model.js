@@ -19,7 +19,6 @@ const adminSettings_schema = mongoose.Schema({
     type: String, //Acceprted or Declined
     required: true,
   },
-
   created_date: {
     type: Date,
   },

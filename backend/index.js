@@ -23,6 +23,7 @@ import checkTrial from "./controllers/checkTrial.js";
 import contentRouter from "./routes/Content.js";
 import analyticsController from "./controllers/analytics.controller.js";
 import { validateGuest } from "./helpers/guest/validateGuest.js";
+import adminRouter from "./routes/admin.js";
 
 dotenv.config();
 
@@ -88,6 +89,8 @@ app.use("/content", contentRouter);
 app.use("/email", emailController);
 
 app.use("/dashboard", analyticsController);
+
+app.use("/admin", adminRouter);
 
 if (process.env.NODE_ENV == "production") {
   app.use(express.static(path.join(__dirname + "/public")));
