@@ -19,12 +19,25 @@ apirouter.use(bodyParser.json());
 // for each of the following endpoints, the req object should include
 // inputOne, inputTwo, tone, and category props via "body"
 
+apirouter.post("/productdescription", async (req, res) => {
+  const prompt = await createPrompt(req, {
+    inputOne: req.body.inputOneBool,
+    inputTwo: req.body.inputTwoBool,
+    inputThree: req.body.inputThreeBool,
+  });
+
+  const response = await getGPTResponse(prompt); 
+
+  res.send(response);
+});
+
 apirouter.post("/calltoaction", async (req, res) => {
   const prompt = await createPrompt(req, {
     inputOne: req.body.inputOneBool,
     inputTwo: req.body.inputTwoBool,
     inputThree: req.body.inputThreeBool,
   });
+  
   const response = await getGPTResponse(prompt);
   res.send(response);
 });
@@ -402,20 +415,6 @@ apirouter.post("/valueproposition", async (req, res) => {
     inputThree: req.body.inputThreeBool,
   });
   const response = await getGPTResponse(prompt);
-  res.send(response);
-});
-
-apirouter.post("/productdescription", async (req, res) => {
-  const prompt = await createPrompt(req, {
-    inputOne: req.body.inputOneBool,
-    inputTwo: req.body.inputTwoBool,
-    inputThree: req.body.inputThreeBool,
-  });
-  console.log("prompt_453", prompt);
-
-  const response = await getGPTResponse(prompt);
-  console.log("response_456", response);
-
   res.send(response);
 });
 
