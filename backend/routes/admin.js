@@ -1,8 +1,8 @@
 import express from "express";
 import bodyParser from "body-parser";
 import { getUserId } from "../general/common.function.js";
-import { validateAdmin } from "../helpers/admin/validateadmin.helper.js";
-import { changeBasicPlan } from "../helpers/admin/validateadmin.helper.js";
+import { updateBasicPlan, updateUserRole, validateAdmin } from "../helpers/admin/validateadmin.helper.js";
+
 
 const adminRouter = express.Router();
 adminRouter.use(bodyParser.json());
@@ -15,17 +15,45 @@ adminRouter.get("/", (req, res) => {
   console.log("adminroutercalled");
   res.send(true);
 });
+
 adminRouter.post("/plan", async (req, res) => {
-  //   console.log("adminroutercalled", req.body.value);
+  const basicPlanPrice=req.body.basicPlanPrice;
+  console.log("basicPlanPrice",basicPlanPrice)
+  
   try {
-    let Id = await getUserId();
+    let Id = await getUserId(req);
     let Valid = await validateAdmin(Id);
-    if (!Valid) res.send(false);
-    await changeBasicPlan();
+    
+    if (Valid){
+      await updateBasicPlan(Id,basicPlanPrice);
+    } 
+    res.send(false);
+    
   } catch (error) {
     console.log(error);
   }
 
-  res.send(true);
+  //res.send(true);
 });
+
+adminRouter.post("/role", async (req, res) => {
+  const email=req.body.email;
+  console.log("email",email)
+  
+  try {
+    let Id = await getUserId(req);
+    let Valid = await validateAdmin(Id);
+    
+    if (Valid){
+      await updateUserRole(Id,email);
+    } 
+    res.send(false);
+    
+  } catch (error) {
+    console.log(error);
+  }
+
+  //res.send(true);
+});
+
 export default adminRouter;

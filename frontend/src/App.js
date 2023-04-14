@@ -41,6 +41,7 @@ function App() {
         <Grid container>
           <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
             <div className="logo-panel-wrapper"></div>
+            
             <Routes>
               <Route path="/" element={<Navigate replace to="/login" />} />
               <Route path="/home" element={<HomePage />} />

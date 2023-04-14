@@ -2,28 +2,46 @@ import * as React from "react";
 import "./adminsettings.css";
 import { useState } from "react";
 import SidebarMenu from "../../SidebarMenu";
-import { Grid } from "@mui/material";
+import { Button, Grid, TextField } from "@mui/material";
 import { tickCircle } from "../../assets";
+
+
 export default function AdminSettings() {
+
   const [submit, setSubmit] = useState(false);
-  async function handleSubmit() {
-    let value = document.getElementsByClassName(
-      "modifyPriceInput-desktopView"
-    )[0].value;
-    console.log(value);
+  
+  async function handleBasicPlan() {     
+    let value = document.getElementById('basicplan_id').value; 
+
     let res = await fetch("/admin/plan", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        value: value,
+        basicPlanPrice: value,
       }),
     });
     let response = res.json();
-    response.then((data) => console.log(data));
-    setSubmit(true);
+    //setSubmit(true);
   }
+
+  async function handleAdminRole(){
+    let email = document.getElementById('email-id').value; 
+
+    let res = await fetch("/admin/role", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: email,
+      }),
+    });
+    let response = res.json();
+  }
+
+
   return (
     <div>
       <div className="adminBar-desktopView">
@@ -49,12 +67,15 @@ export default function AdminSettings() {
                       </p>
                     </div>
                     <div className="modifyPriceInputContainer-desktopView">
+                    
                       <input
-                        placeholder="$29.99"
+                        placeholder="$ 29.99"
+                        id="basicplan_id"
                         name="modifyPriceInput-desktopView"
-                        className="modifyPriceInput-desktopView"
-                      ></input>
-                      <button>Change</button>
+                       // onChange={(e)=>setBasicPlanPrice(e.target.value)} 
+                        className="custom-tf"
+                      />
+                      <Button className="ad-btn" onClick={()=>handleBasicPlan()}>Update</Button>
                     </div>
                   </div>
                   {/* <div className="Plan-desktopView">
@@ -141,10 +162,12 @@ export default function AdminSettings() {
                     <Grid className="userRequests" item xs={12}>
                       <input
                         type="email"
+                        id="email-id"
                         className="userRequests-input"
                         placeholder="xyz@creativewriter.ai"
+                       /// onLoad={()=>setBasicPlanPrice(e.target.value)} 
                       />
-                      <button onClick={handleSubmit}>Submit</button>
+                      <Button  className="ad-btn" onClick={()=>handleAdminRole()} >Submit</Button>
                     </Grid>
                   </Grid>
                 </div>

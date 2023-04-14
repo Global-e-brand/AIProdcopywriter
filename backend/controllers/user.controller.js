@@ -59,7 +59,9 @@ userController.post("/register", bodyParser.json(), async (req, res) => {
       }
 
       const userModelData = new userModel();
+      userModelData.user_id=null;
       userModelData.email = email;
+      userModelData.role = "user";
       userModelData.password = password;
       userModelData.confirm_password = confirm_password;
       userModelData.created_date = new Date();

@@ -222,6 +222,12 @@ input:focus {
   background-color: #154b89;
   color: #fff;
 }
+.ad-btn:hover{
+  background-color:#238d56 !important;
+  color: #fff;
+}
+
+
 @media (max-width: 880px) {
   .modifyPrices-desktopView {
     background: #b5d3ff;
@@ -348,4 +354,10 @@ input:focus {
 .requestpopup-style img {
   margin-top: 2%;
   width: 15%;
+}
+
+.custom-tf {
+  border-radius: 8px;
+  background: #ffffff;
+  /* border: none; */
 }

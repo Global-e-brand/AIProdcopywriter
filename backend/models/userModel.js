@@ -2,6 +2,9 @@ import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 
 const user_creation = mongoose.Schema({
+  user_id: {
+    type: String,
+  },
   email: {
     type: String,
     required: true,
@@ -11,6 +14,10 @@ const user_creation = mongoose.Schema({
     required: false,
   },
   meta_id: {
+    type: String,
+    required: false,
+  },
+  role:{
     type: String,
     required: false,
   },

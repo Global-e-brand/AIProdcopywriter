@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import HomeIcon from "@mui/icons-material/Home";
@@ -17,7 +17,25 @@ import ExpandMore from "@mui/icons-material/ExpandMore";
 
 function SidebarMenu() {
   const [logout, setLogout] = useState(false);
-  
+  const [isAdmin, setAdmin] = useState();
+
+  useEffect(() => {
+    async function userAccess() {
+      let res = await fetch("/useraccess", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      let response = res.json();
+      response.then((isAdmin) => {
+        setAdmin(isAdmin);
+      });
+    }
+
+    userAccess();
+  }, []);
+
   function handleLogout() {
     fetch("/auth/logout", {
       method: "GET",
@@ -41,12 +59,20 @@ function SidebarMenu() {
           <HistoryIcon />
           <p>History</p>
         </Link>
-        <Link to="/dashboard" className="icon-component home-btn">
-          <p>Dashboard</p>
-        </Link>
-        <Link to="/settings" className="icon-component home-btn">
-          <p>Settings</p>
-        </Link>
+
+        {isAdmin ? (
+          <>
+            <Link to="/dashboard" className="icon-component home-btn">
+              <p>Dashboard</p>
+            </Link>
+            <Link to="/settings" className="icon-component home-btn">
+              <p>Settings</p>
+            </Link>
+          </>
+        ) : (
+          ""
+        )}
+
         <button
           className="icon-component home-btn"
           onClick={() => handleLogout()}

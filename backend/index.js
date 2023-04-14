@@ -24,6 +24,7 @@ import contentRouter from "./routes/Content.js";
 import analyticsController from "./controllers/analytics.controller.js";
 import { validateGuest } from "./helpers/guest/validateGuest.js";
 import adminRouter from "./routes/admin.js";
+import { validateAdmin } from "./helpers/admin/validateadmin.helper.js";
 
 dotenv.config();
 
@@ -127,6 +128,13 @@ app.post("/checkguest", async (req, res) => {
   let result = await validateGuest(req.body.id);
   res.send(result);
 });
+
+app.get("/useraccess", async (req, res) => {
+  let Id = await getUserId(req);
+  let isAdmin = await validateAdmin(Id);
+  res.status(200).send(isAdmin);
+});
+
 app.listen(PORT, function (err) {
   if (err) console.log("Error in server setup");
   console.log("Server listening on Port", PORT);
