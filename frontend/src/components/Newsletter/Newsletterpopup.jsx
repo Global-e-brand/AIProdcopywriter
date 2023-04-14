@@ -12,36 +12,36 @@ export default function Newsletterpopup(props) {
   const theme = useTheme();
   const [reqSent, setReqSent] = React.useState(false);
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
-  const [warning, setwarning] = useState(false);
+  const [warning, setWarning] = useState(false);
   const [email, setEmail] = useState("");
 
   const handleClickOpen = () => {
     setOpen(true);
   };
 
-  // const handleClose = () => {
-  //   //<Navigate replace to="http://localhost:3001/productdescription" />
-  //   setOpen(false);
-  // };
+
+  let regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   const handleSubmit = async () => {
-    props.handleClose();
-    let systemID = await getBrowserID();
-    await fetch("/subscribe", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        systemID: systemID,
-        subscriber_email: email,
-      }),
-    });
+    if (email.match(regex)) {
+      props.handleClose();
+      let systemID = await getBrowserID();
+      await fetch("/subscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          systemID: systemID,
+          subscriber_email: email,
+        }),
+      });
+    } else {
+      setWarning(true);
+    }
   };
 
   return (
-    <div>
-      {/* <SidebarMenu /> */}
-      {/* <button onClick={handleClickOpen}>Open PopUP</button> */}
+    <div>     
       <Dialog
         fullScreen={fullScreen}
         open={open}

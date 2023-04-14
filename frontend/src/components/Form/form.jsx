@@ -37,19 +37,19 @@ function Form(props) {
 
     let browserID = await getBrowserID();
 
-    await fetch("/subscribeguest", {
+    let res_sub = await fetch("/subscribeguest", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ browserID: browserID }),
-    })
-      .then((res) => res.text())
-      .then((data) =>
-        setTimeout(() => {
-          setShowPopUp(Boolean(data));
-        }, 5000)
-      );
+    });
+    let response_sub = res_sub.json();
+    response_sub.then((data) => {
+      setTimeout(() => {
+        setShowPopUp(data);
+      }, 5000);
+    });
 
     // newsletter subscription
 

@@ -127,9 +127,10 @@ app.post("/deletion", (req, res) => {
 // });
 
 app.post("/subscribeguest", async (req, res) => {
-  console.log("SUBSCRIBE-->", req.body);
   let showPopUp = await verifysubscriber(req.body.browserID);
-  // console.log(showPopUp);
+
+  console.log("showPopUp",showPopUp);
+
   res.send(Boolean(showPopUp));
 });
 
