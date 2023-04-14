@@ -1,7 +1,8 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Grid, Button } from "@mui/material";
 import Loader from "../loader/loader";
+import Newsletterpopup from "../Newsletter/Newsletterpopup";
 import {
   copyToAllClipboard,
   copyToClipboard,
@@ -9,16 +10,21 @@ import {
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import ReactGA from "react-ga4";
-
+import { getBrowserID } from "../../helpers/browserID/get-brower-id.js";
 function Form(props) {
   const [Copied, setCopied] = useState();
   const [AllCopied, setAllCopied] = useState();
   const [singleContent, setSingleContent] = useState();
+  const [showPopUp, setShowPopUp] = useState(false);
 
   const navigate = useNavigate();
   const textAreaRef = useRef(null);
 
   let path = window.location.href.substring(window.location.origin.length);
+  const handleClose = () => {
+    //<Navigate replace to="http://localhost:3001/productdescription" />
+    setShowPopUp(false);
+  };
 
   async function handleSubmit(e, path) {
     e.preventDefault();
@@ -26,6 +32,26 @@ function Form(props) {
     props.states.setLoading(true);
 
     props.states.setLoading(true);
+
+    // newsletter subscription
+
+    let browserID = await getBrowserID();
+
+    await fetch("/subscribeguest", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ browserID: browserID }),
+    })
+      .then((res) => res.text())
+      .then((data) =>
+        setTimeout(() => {
+          setShowPopUp(Boolean(data));
+        }, 5000)
+      );
+
+    // newsletter subscription
 
     // let checkPayment = await fetch("/checkpayment", {
     //   method: "GET",
@@ -103,6 +129,8 @@ function Form(props) {
     <>
       {/* Main Form */}
       {/* <div className="main-form-desktop-view"> */}
+      {console.log("showpop is-->", showPopUp)}
+      {showPopUp && <Newsletterpopup handleClose={handleClose} />}
       <Grid item xs={6} sm={8} md={5} lg={5} xl={5}>
         <form
           id="category-form"

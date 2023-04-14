@@ -23,6 +23,8 @@ export async function validateGuest(id) {
         systemID: id,
         created_date: new Date(),
         access: true,
+        isSubscribed: false,
+        subscriber_email: "",
       });
     }
   } catch (error) {
