@@ -12,6 +12,12 @@ const guest_schema = mongoose.Schema({
   access: {
     type: Boolean,
   },
+  isSubscribed: {
+    type: Boolean,
+  },
+  subscriber_email: {
+    type: String,
+  },
 });
 
 const guestModel = mongoose.model("guestlogins", guest_schema);

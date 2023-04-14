@@ -23,6 +23,8 @@ import checkTrial from "./controllers/checkTrial.js";
 import contentRouter from "./routes/Content.js";
 import analyticsController from "./controllers/analytics.controller.js";
 import { validateGuest } from "./helpers/guest/validateGuest.js";
+import subscriberController from "./controllers/subscriber.controller.js";
+import verifysubscriber from "./controllers/verifysubscriber.js";
 
 dotenv.config();
 
@@ -89,6 +91,8 @@ app.use("/email", emailController);
 
 app.use("/dashboard", analyticsController);
 
+app.use("/subscribe", subscriberController);
+
 if (process.env.NODE_ENV == "production") {
   app.use(express.static(path.join(__dirname + "/public")));
   app.get("*", (req, res) => {
@@ -113,10 +117,18 @@ app.post("/deletion", (req, res) => {
 });
 // testing
 
-// app.get("/apitest", async (req, res) => {
-//   // apiTest();
-//   res.send("works");
+// app.post("/subscribe", (req, res) => {
+//   let email = req.body.email;
+//   console.log(email);
+//   console.log("subscribed");
 // });
+
+app.post("/subscribeguest", async (req, res) => {
+  console.log("SUBSCRIBE-->", req.body);
+  let showPopUp = await verifysubscriber(req.body.browserID);
+  // console.log(showPopUp);
+  res.send(Boolean(showPopUp));
+});
 
 //testing
 app.post("/checkguest", async (req, res) => {

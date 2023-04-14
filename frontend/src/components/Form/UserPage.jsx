@@ -153,7 +153,7 @@ function Dummy(props) {
                   <div className="logo-wrapper">
                     <HeaderLogo />
                   </div>
-                  <SidebarMenu />
+                  <SidebarMenu browserID={props.browserID} />
                 </div>
               </Grid>
 

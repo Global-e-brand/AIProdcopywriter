@@ -2,8 +2,11 @@ import React from "react";
 import "../instructions/instructionModal.css";
 import CloseIcon from "@mui/icons-material/Close";
 import { Link } from "react-router-dom";
+import { getBrowserID } from "../../helpers/browserID/get-brower-id";
 
 function InstructionModal(props) {
+  // fetching browser ID to check if user is guest or not passing it to sidebar component
+
   return (
     <div className="modal">
       <div className="modal-background" onClick={props.closeModal}></div>

@@ -15,11 +15,13 @@ import Signin from "./components/Login/Signin";
 import ForgotPassword from "./components/Login/ForgotPassword";
 import PaymentNew from "./components/payment/PaymentNew";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
-import { useEffect } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { AnalyticsDashboard } from "./components/Dashboard/Analytics";
 import UserSettings from "./components/Admin/UserSettings";
 import ReactGA from "react-ga4";
 import SettingPage from "./components/Admin/SettingPage";
+import Newsletterpopup from "./components/Newsletter/Newsletterpopup";
+import { getBrowserID } from "./helpers/browserID/get-brower-id";
 
 const TRACKING_ID = "G-TZ130WGSG9";
 ReactGA.initialize(TRACKING_ID, {
@@ -28,7 +30,6 @@ ReactGA.initialize(TRACKING_ID, {
 
 function App() {
   const location = useLocation();
-
   ReactGA.send({
     hitType: "pageview",
     page: location.pathname,
@@ -46,7 +47,7 @@ function App() {
               <Route path="/home" element={<HomePage />} />
               <Route path="/dashboard" element={<AnalyticsDashboard />} />
               <Route path="/settings" element={<SettingPage />} />
-
+              <Route path="/newsletter" element={<Newsletterpopup />} />
               <Route
                 path="/history"
                 element={
