@@ -178,7 +178,7 @@ passport.use(
     {
       clientID: FACEBOOK_CLIENT_ID,
       clientSecret: FACEBOOK_CLIENT_SECRET,
-      callbackURL: "http://localhost:3000/auth/facebook/callback",
+      callbackURL: "/facebook/callback",
       profileFields:['id','displayName','name','gender','email']
     },
     authUser

@@ -4,8 +4,7 @@ import userModel from "../../models/userModel.js";
 export async function validateAdmin(id) {
   let user = await userModel.findById(id);
   let isRoleKey = (await user?.role) != undefined ? true : false;
-
-  console.log("user_8",user);
+  
   if (user != null && user.role === "admin" && isRoleKey === true ) {
     return true;
   }else{
