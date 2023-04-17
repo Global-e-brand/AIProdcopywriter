@@ -27,6 +27,8 @@ function Signin() {
   const navigate = useNavigate();
   const location = useLocation();
 
+  let host_url = window.location.hostname;
+
   useEffect(() => {
     if (location?.state?.success) {
       setOpen(true);
@@ -191,15 +193,16 @@ function Signin() {
                   Create the perfect description for your needs
                 </p>
               </Grid>
+
               <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
-                <a className="google-btn" href="http://localhost:3000/auth/google">
+                <a className="google-btn" href={`http://${host_url}/auth/google`}>
                   <img src={googleIcon} alt={"Signin with Google."}></img>
                 </a>
               </Grid>
               <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
                 <a
                   className="facebook-btn"
-                  href="http://localhost:3000/auth/facebook"
+                  href={`http://${host_url}/auth/facebook`}
                 >
                   <img src={facebookIcon} alt={"Signin with Facebook."}></img>
                 </a>
