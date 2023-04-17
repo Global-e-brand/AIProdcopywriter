@@ -96,12 +96,9 @@ app.use("/dashboard", analyticsController);
 app.use("/admin", adminRouter);
 app.use("/subscribe", subscriberController);
 
-if (process.env.NODE_ENV == "production") {
-  app.use(express.static(path.join(__dirname + "/public")));
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "public", "index.html"));
-  });
-}
+
+
+
 app.get("/checkpayment", async (req, res) => {
   // let userId = await getUserId();
   // console.log(userId);
@@ -146,6 +143,13 @@ app.get("/useraccess", async (req, res) => {
   let isAdmin = await validateAdmin(Id);
   res.status(200).send(isAdmin);
 });
+
+if (process.env.NODE_ENV == "production") {
+  app.use(express.static(path.join(__dirname + "/public")));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "public", "index.html"));
+  });
+}
 
 app.listen(PORT, function (err) {
   if (err) console.log("Error in server setup");
