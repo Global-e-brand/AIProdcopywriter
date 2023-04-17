@@ -96,7 +96,18 @@ app.use("/dashboard", analyticsController);
 app.use("/admin", adminRouter);
 app.use("/subscribe", subscriberController);
 
+app.get("/useraccess", async (req, res) => {
+  let Id = await getUserId(req);
+  let isAdmin = await validateAdmin(Id);
+  res.status(200).send(isAdmin);
+});
 
+if (process.env.NODE_ENV == "production") {
+  app.use(express.static(path.join(__dirname + "/public")));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "public", "index.html"));
+  });
+}
 
 
 app.get("/checkpayment", async (req, res) => {
@@ -138,18 +149,7 @@ app.post("/checkguest", async (req, res) => {
   res.send(result);
 });
 
-app.get("/useraccess", async (req, res) => {
-  let Id = await getUserId(req);
-  let isAdmin = await validateAdmin(Id);
-  res.status(200).send(isAdmin);
-});
 
-if (process.env.NODE_ENV == "production") {
-  app.use(express.static(path.join(__dirname + "/public")));
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "public", "index.html"));
-  });
-}
 
 app.listen(PORT, function (err) {
   if (err) console.log("Error in server setup");
