@@ -117,7 +117,7 @@ authrouter.get("/success", checkAuthenticated, async (req, res) => {
   
   if (req.query.media == "google") {
     await socialMediaUsers(req.user);
-    return res.redirect("http://localhost:3001/home");
+    return res.redirect("https://creativewriter.ai/home");
   }
   
   console.log("Login Success");
