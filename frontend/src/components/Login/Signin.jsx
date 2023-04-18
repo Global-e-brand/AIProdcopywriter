@@ -159,7 +159,7 @@ function Signin() {
         passwordInput.remove();
         form.remove();
       } else {
-        console.log("you already used guest login, you can create an account")
+        console.log("you already used guest login, you can create an account");
         navigate("/create-account");
       }
     } catch (error) {
@@ -196,14 +196,17 @@ function Signin() {
               </Grid>
 
               <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
-                <a className="google-btn" href={`http://${host_url}/auth/google`}>
+                <a
+                  className="google-btn"
+                  href={`https://${host_url}/auth/google`}
+                >
                   <img src={googleIcon} alt={"Signin with Google."}></img>
                 </a>
               </Grid>
               <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
                 <a
                   className="facebook-btn"
-                  href={`http://${host_url}/auth/facebook`}
+                  href={`https://${host_url}/auth/facebook`}
                 >
                   <img src={facebookIcon} alt={"Signin with Facebook."}></img>
                 </a>
