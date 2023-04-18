@@ -118,6 +118,10 @@ authrouter.get("/success", checkAuthenticated, async (req, res) => {
   if (req.query.media == "google") {
     await socialMediaUsers(req.user);
     return res.redirect("https://creativewriter.ai/home");
+  }else if(req.query.media=="facebook"){
+    console.log("req | 122",req);
+   // await socialMediaUsers(req.user);
+    return res.redirect("https://creativewriter.ai/home");
   }
   
   console.log("Login Success");
@@ -196,8 +200,8 @@ authrouter.get(
 authrouter.get(
   "/facebook/callback",
   passport.authenticate("facebook", {
-    successRedirect: "http://localhost:3001/home",
-    failureRedirect: "http://localhost:3000/auth/fail",
+    successRedirect: "/auth/success?media=facebook",
+    failureRedirect: "/auth/fail",
   })
 );
 
