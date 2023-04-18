@@ -148,7 +148,7 @@ passport.use(
     {
       clientID: GOOGLE_CLIENT_ID,
       clientSecret: GOOGLE_CLIENT_SECRET,
-      callbackURL: "/auth/google/callback",
+      callbackURL: "https://creativewriter.ai/auth/google/callback",
       passReqToCallback: true,
     },
     authUser
@@ -182,7 +182,7 @@ passport.use(
     {
       clientID: FACEBOOK_CLIENT_ID,
       clientSecret: FACEBOOK_CLIENT_SECRET,
-      callbackURL: "/facebook/callback",
+      callbackURL: "https://creativewriter.ai/facebook/callback",
       profileFields:['id','displayName','name','gender','email']
     },
     authUser
