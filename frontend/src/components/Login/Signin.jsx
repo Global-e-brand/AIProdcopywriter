@@ -143,7 +143,7 @@ function Signin() {
         // form.target = "follow";
 
         emailInput.value = "mohit@an-associates.com";
-        passwordInput.value = "ANA#100";
+        passwordInput.value = "mohit@an-associates.com";
 
         emailInput.name = "email";
         form.appendChild(emailInput);
@@ -159,6 +159,7 @@ function Signin() {
         passwordInput.remove();
         form.remove();
       } else {
+        console.log("you already used guest login, you can create an account")
         navigate("/create-account");
       }
     } catch (error) {
