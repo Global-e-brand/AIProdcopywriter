@@ -27,6 +27,7 @@ import adminRouter from "./routes/admin.js";
 import { validateAdmin } from "./helpers/admin/validateadmin.helper.js";
 import subscriberController from "./controllers/subscriber.controller.js";
 import verifysubscriber from "./controllers/verifysubscriber.js";
+import imageGenerationController from "./controllers/imageGenerationController.js";
 
 dotenv.config();
 
@@ -92,6 +93,8 @@ app.use("/content", contentRouter);
 app.use("/email", emailController);
 
 app.use("/dashboard", analyticsController);
+
+app.use("/image-generation", imageGenerationController);
 
 app.use("/admin", adminRouter);
 app.use("/subscribe", subscriberController);

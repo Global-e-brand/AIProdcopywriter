@@ -63,6 +63,10 @@ function SidebarMenu(props) {
             <p>History</p>
           </Link>
 
+          <Link to="/image-generator" className="icon-component home-btn">
+            <p>Image Generation</p>
+          </Link>
+
         {isAdmin ? (
           <>
             <Link to="/dashboard" className="icon-component home-btn">
