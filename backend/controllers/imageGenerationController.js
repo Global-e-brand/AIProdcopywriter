@@ -15,7 +15,7 @@ imageGenerationController.use(bodyParser.urlencoded({ extended: false }));
 
 imageGenerationController.use(bodyParser.json());
 
-imageGenerationController.get("/", bodyParser.json(), async (req, res) => {
+imageGenerationController.post("/", bodyParser.json(), async (req, res) => {
     const configuration = new Configuration({
         apiKey: process.env.OPEN_AI_KEY,
       });
@@ -26,11 +26,12 @@ imageGenerationController.get("/", bodyParser.json(), async (req, res) => {
 
   try {
     const response = await openai.createImage({
-      prompt: "a white siamese cat",
-      n: 1,
-      size: "1024x1024",
+      prompt: req.body.img_name,
+      size: req.body.img_size,
+      n: req.body.img_count,
     });
-    let image_url = response.data.data[0].url;
+    
+    let image_url = response.data.data;
 
     res.status(200).send({
       success: true,

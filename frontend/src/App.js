@@ -22,6 +22,7 @@ import SettingPage from "./components/Admin/SettingPage";
 import AdminSettings from "./components/Admin/AdminSettings";
 import Newsletterpopup from "./components/Newsletter/Newsletterpopup";
 import { getBrowserID } from "./helpers/browserID/get-brower-id";
+import { ImageGeneration } from "./components/ImgGenerator/ImageGeneration";
 
 const TRACKING_ID = "G-TZ130WGSG9";
 ReactGA.initialize(TRACKING_ID, {
@@ -50,6 +51,7 @@ function App() {
               <Route path="/dashboard" element={<AnalyticsDashboard />} />
               <Route path="/settings" element={<SettingPage />} />
               <Route path="/admin" element={<AdminSettings />} />
+              <Route path="/image-generator" element={<ImageGeneration />} />
 
               <Route
                 path="/history"

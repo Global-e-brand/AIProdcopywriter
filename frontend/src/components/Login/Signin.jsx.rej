@@ -1,0 +1,9 @@
+diff a/frontend/src/components/Login/Signin.jsx b/frontend/src/components/Login/Signin.jsx	(rejected hunks)
+@@ -143,7 +143,6 @@
+         // form.target = "follow";
+ 
+         emailInput.value = "mohit@an-associates.com";
+-        passwordInput.value = "ANA#100";
+         passwordInput.value = "mohit@an-associates.com";
+ 
+         emailInput.name = "email";

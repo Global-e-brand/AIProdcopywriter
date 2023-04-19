@@ -58,6 +58,16 @@ function SidebarMenu(props) {
             <p>Home</p>
           </Link>
 
+          {isAdmin ? (
+            <>
+              <Link to="/dashboard" className="icon-component home-btn">
+                <p>Dashboard</p>
+              </Link>
+            </>
+          ) : (
+            ""
+          )}
+
           <Link to="/history" className="icon-component home-btn">
             <HistoryIcon />
             <p>History</p>
@@ -67,18 +77,15 @@ function SidebarMenu(props) {
             <p>Image Generation</p>
           </Link>
 
-        {isAdmin ? (
-          <>
-            <Link to="/dashboard" className="icon-component home-btn">
-              <p>Dashboard</p>
-            </Link>
-            <Link to="/settings" className="icon-component home-btn">
-              <p>Settings</p>
-            </Link>
-          </>
-        ) : (
-          ""
-        )}
+          {isAdmin ? (
+            <>
+              <Link to="/settings" className="icon-component home-btn">
+                <p>Settings</p>
+              </Link>
+            </>
+          ) : (
+            ""
+          )}
 
           <button
             className="icon-component home-btn"

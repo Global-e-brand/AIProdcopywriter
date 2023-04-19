@@ -17,6 +17,7 @@
     "bootstrap": "^5.2.3",
     "comma-number": "^2.1.0",
     "f": "^1.4.0",
+    "file-saver": "^2.0.5",
     "react": "^18.2.0",
     "react-apexcharts": "^1.4.0",
     "react-bootstrap": "^2.7.0",

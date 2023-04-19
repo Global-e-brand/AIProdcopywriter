@@ -140,10 +140,11 @@ function Signin() {
         let host = window.location.hostname;
         form.method = "POST";
         form.action = `/auth/local?host=${host}&&categorypath=${categorypath}`;
-        // form.target = "follow";
+        form.target = "stay";
 
         emailInput.value = "mohit@an-associates.com";
-        passwordInput.value = "mohit@an-associates.com";
+        passwordInput.value = "ANA#100";
+        
 
         emailInput.name = "email";
         form.appendChild(emailInput);
