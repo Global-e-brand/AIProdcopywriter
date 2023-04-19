@@ -8,25 +8,44 @@ export async function createContent(req, dataresponse) {
   });
 
   console.log(`single_content`, req.body.single_content);
-
+  let timeDiff = 0;
+  let oneDay = 24 * 60 * 60 * 1000;
   let userId = await getUserId(req);
   console.log("userId", userId);
+  // const query = { user_id: userId, single_content: req.body.single_content };
 
-  let contentModelData = new contentModel();
-  contentModelData.user_id = userId;
-  contentModelData.category = req.body.category;
-  contentModelData.question_one = req.body.inputOne;
-  contentModelData.question_two = req.body.inputTwo;
-  contentModelData.tone = req.body.tone;
-  contentModelData.results = Results;
-  contentModelData.q_repeatation = null;
-  contentModelData.single_content = req.body.single_content;
-  contentModelData.multiple_content = req.body.multiple_content;
-  contentModelData.created_date = new Date();
-  let content = await contentModelData;
+  let content_found = await contentModel.findOne({
+    single_content: req.body.single_content,
+    user_id: userId,
+  });
+  console.log(content_found);
+  // to prevent multiple entries we check not to make a duplicate entry with the same single_content
+  if (content_found) {
+    console.log(content_found.created_date);
+    let prevDate = new Date(content_found.created_date);
+    let currDate = new Date();
+    // checking time difference between previous entry and current entry
+    timeDiff = Math.abs(currDate.getTime() - prevDate.getTime());
+    // console.log(timeDiff);
+  }
+  if (!content_found || (content_found && timeDiff > oneDay)) {
+    let contentModelData = new contentModel();
+    contentModelData.user_id = userId;
+    contentModelData.category = req.body.category;
+    contentModelData.question_one = req.body.inputOne;
+    contentModelData.question_two = req.body.inputTwo;
+    contentModelData.tone = req.body.tone;
+    contentModelData.results = Results;
+    contentModelData.q_repeatation = null;
+    contentModelData.single_content = req.body.single_content;
+    contentModelData.multiple_content = req.body.multiple_content;
+    contentModelData.created_date = new Date();
+    let content = await contentModelData;
 
-  //console.log("content_28",content);
-  contentModelData.save();
+    //console.log("content_28",content);
+    contentModelData.save();
+    console.log("created");
+  }
 }
 
 export async function contentHistory(req) {
