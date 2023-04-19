@@ -30,6 +30,19 @@ function Signin() {
   let host_url = window.location.hostname;
 
   useEffect(() => {
+    async function checkLoggedIn() {
+      let res = await fetch("/auth/checkloggedin");
+      // console.log(res);
+      res.json().then((data) => {
+        if (data) {
+          navigate("/productdescription");
+        }
+      });
+    }
+    checkLoggedIn();
+  }, []);
+
+  useEffect(() => {
     if (location?.state?.success) {
       setOpen(true);
 
@@ -60,9 +73,10 @@ function Signin() {
     redirect the user to the correct destination.
     */
     let location = e.target?.contentDocument?.location?.href;
-    location = location.substring(location.lastIndexOf("/"));
-
+    if (!(typeof location === "undefined"))
+      location = location.substring(location.lastIndexOf("/"));
     if (
+      location &&
       e.target?.contentDocument?.location?.href &&
       e.target?.contentDocument?.location?.href !== "about:blank" &&
       location !== "/fail-local"
@@ -143,7 +157,7 @@ function Signin() {
         // form.target = "follow";
 
         emailInput.value = "mohit@an-associates.com";
-        passwordInput.value = "mohit@an-associates.com";
+        passwordInput.value = "ANA#100";
 
         emailInput.name = "email";
         form.appendChild(emailInput);

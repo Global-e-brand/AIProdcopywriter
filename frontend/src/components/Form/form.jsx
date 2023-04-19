@@ -36,6 +36,7 @@ function Form(props) {
     // newsletter subscription
 
     let browserID = await getBrowserID();
+    console.log(browserID);
 
     let res_sub = await fetch("/subscribeguest", {
       method: "POST",

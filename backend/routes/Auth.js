@@ -64,7 +64,6 @@ async function appRedirection(param, req, res) {
   }
 }
 
-
 // local auth api calls
 authrouter.post(
   "/local",
@@ -114,16 +113,15 @@ passport.use(
 );
 
 authrouter.get("/success", checkAuthenticated, async (req, res) => {
-  
   if (req.query.media == "google") {
     await socialMediaUsers(req.user);
     return res.redirect("https://creativewriter.ai/home");
-  }else if(req.query.media=="facebook"){
-    console.log("req | 122",req);
-   // await socialMediaUsers(req.user);
+  } else if (req.query.media == "facebook") {
+    console.log("req | 122", req);
+    // await socialMediaUsers(req.user);
     return res.redirect("https://creativewriter.ai/home");
   }
-  
+
   console.log("Login Success");
 
   let userId = await getUserId();
@@ -176,14 +174,13 @@ passport.deserializeUser((user, done) => {
   done(null, user);
 });
 
-
 passport.use(
   new FacebookStrategy(
     {
       clientID: FACEBOOK_CLIENT_ID,
       clientSecret: FACEBOOK_CLIENT_SECRET,
       callbackURL: "https://creativewriter.ai/facebook/callback",
-      profileFields:['id','displayName','name','gender','email']
+      profileFields: ["id", "displayName", "name", "gender", "email"],
     },
     authUser
   )
@@ -236,6 +233,11 @@ authrouter.get("/authentication-status", (req, res) => {
   }
 
   res.status(401).send({ status: "not authenticated" });
+});
+authrouter.get("/checkloggedin", (req, res) => {
+  console.log("user_id-->", req.session.passport);
+  if (req.session.passport) return res.send(true);
+  else return res.send(false);
 });
 
 export default authrouter;
