@@ -117,7 +117,7 @@ export function ImageGeneration() {
                     <Grid item xs={6} sm={6} md={2} lg={2} xl={2}>
                       <div className="img-block">
                         <img src={item.url} alt="img" className="img-h" />
-                        <button onClick={() => downloadImage(item.url, i + 1)}>
+                        <button className="gn-btn" style={{border:"none"}} onClick={() => downloadImage(item.url, i + 1)}>
                           Download
                         </button>
                       </div>
