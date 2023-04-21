@@ -210,27 +210,22 @@ function Signin() {
                 </p>
               </Grid>
 
-              <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
+              <Grid item xs={6} sm={6} md={12} lg={12} xl={12}>
                 <a
                   className="google-btn"
-                  href={`https://${host_url}/auth/google`}
+                  href={`http://${host_url}:3000/auth/google`}
                 >
                   <img src={googleIcon} alt={"Signin with Google."}></img>
                 </a>
               </Grid>
-              <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
+              {/* <Grid item xs={6} sm={6} md={12} lg={12} xl={12}>
                 <a
                   className="facebook-btn"
                   href={`https://${host_url}/auth/facebook`}
                 >
                   <img src={facebookIcon} alt={"Signin with Facebook."}></img>
                 </a>
-              </Grid>
-              {/* <Grid item xs={4} sm={4} md={4} lg={4} xl={4}>
-              <a className="apple-btn" href="https://aiprodcopywriter.herokuapp.com/auth/apple">
-                <img src={appleIcon} alt={"Signin with Apple."}></img>
-              </a>
-            </Grid> */}
+              </Grid>              */}
             </Grid>
             <Grid container direction="row" columns={20} alignItems="center">
               <Grid item xs={9} sm={9} md={9} lg={9} xl={9}>

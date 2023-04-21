@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Grid, Button } from "@mui/material";
 import Loader from "../loader/loader";
 import Newsletterpopup from "../Newsletter/Newsletterpopup";
@@ -11,14 +11,18 @@ import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import ReactGA from "react-ga4";
 import { getBrowserID } from "../../helpers/browserID/get-brower-id.js";
+
+
 function Form(props) {
   const [Copied, setCopied] = useState();
   const [AllCopied, setAllCopied] = useState();
   const [singleContent, setSingleContent] = useState();
   const [showPopUp, setShowPopUp] = useState(false);
 
+  const location = useLocation();
   const navigate = useNavigate();
   const textAreaRef = useRef(null);
+
 
   let path = window.location.href.substring(window.location.origin.length);
   const handleClose = () => {
@@ -125,6 +129,15 @@ function Form(props) {
   const handleTone = (e) => {
     props.states.setTone(e);
   };
+
+  useEffect(()=>{
+    ImageGenerationInput();
+  })
+
+  const ImageGenerationInput=()=>{
+    const inputOne =new URLSearchParams(location.search).get("inputOne");
+    props.states.setInputOne(inputOne);
+  }
 
   return (
     <>

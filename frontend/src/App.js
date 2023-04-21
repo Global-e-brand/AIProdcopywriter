@@ -23,6 +23,7 @@ import AdminSettings from "./components/Admin/AdminSettings";
 import Newsletterpopup from "./components/Newsletter/Newsletterpopup";
 import { getBrowserID } from "./helpers/browserID/get-brower-id";
 import { ImageGeneration } from "./components/ImgGenerator/ImageGeneration";
+import ImageObjectDetection from "./components/ImgGenerator/ImageObjectDetection";
 
 const TRACKING_ID = "G-TZ130WGSG9";
 ReactGA.initialize(TRACKING_ID, {
@@ -52,6 +53,7 @@ function App() {
               <Route path="/settings" element={<SettingPage />} />
               <Route path="/admin" element={<AdminSettings />} />
               <Route path="/image-generator" element={<ImageGeneration />} />
+              {/* <Route path="/image-detector" element={<ImageObjectDetection/>} /> */}
 
               <Route
                 path="/history"

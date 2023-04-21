@@ -28,6 +28,7 @@ import { validateAdmin } from "./helpers/admin/validateadmin.helper.js";
 import subscriberController from "./controllers/subscriber.controller.js";
 import verifysubscriber from "./controllers/verifysubscriber.js";
 import imageGenerationController from "./controllers/imageGenerationController.js";
+// import imagePredictController from "./controllers/imageRecognaization.js";
 
 dotenv.config();
 
@@ -97,7 +98,10 @@ app.use("/dashboard", analyticsController);
 app.use("/image-generation", imageGenerationController);
 
 app.use("/admin", adminRouter);
+
 app.use("/subscribe", subscriberController);
+
+// app.use("/image",imagePredictController);
 
 app.get("/useraccess", async (req, res) => {
   let Id = await getUserId(req);
@@ -151,7 +155,6 @@ app.post("/checkguest", async (req, res) => {
   let result = await validateGuest(req.body.id);
   res.send(result);
 });
-
 
 
 app.listen(PORT, function (err) {

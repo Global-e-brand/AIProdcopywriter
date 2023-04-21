@@ -23,7 +23,7 @@ export function ImageGeneration() {
   const [img_count, setImgcount] = useState();
 
   async function imageGenerator() {
-    setLoader(false);
+    setLoader(true);
     let res = await fetch("/image-generation", {
       method: "POST",
       headers: {
@@ -36,14 +36,14 @@ export function ImageGeneration() {
       }),
     });
     let response = res.json();
-    response.then((data) => {      
+    response.then((data) => {
       setImageURL(data.image_url);
     });
-    setLoader(true);
+    setLoader(false);
   }
 
   function downloadImage(url, i) {
-    saveAs(url, `${"image" - { i }.jpg}`); // Put your image url here.
+    saveAs(url, `${"image" - { i }.jpg}`); 
   }
 
   return (
@@ -100,24 +100,27 @@ export function ImageGeneration() {
                 </Select>
               </FormControl>
 
-              <Button
-                className="gn-btn"
-                onClick={() => imageGenerator()}
-              >
+              <Button className="gn-btn" onClick={() => imageGenerator()} disabled={isloader?true:false} >
                 Generate
               </Button>
             </div>
           </div>
 
-            {imageURL.length != 0 ? (
-          <div className="img-rspnce-block">
+          {isloader ? (
+            <Loader color="#ffff" />
+          ) : imageURL.length != 0 ? (
+            <div className="img-rspnce-block">
               <>
                 <Grid container spacing={2}>
                   {imageURL.map((item, i) => (
                     <Grid item xs={6} sm={6} md={2} lg={2} xl={2}>
                       <div className="img-block">
                         <img src={item.url} alt="img" className="img-h" />
-                        <button className="gn-btn" style={{border:"none"}} onClick={() => downloadImage(item.url, i + 1)}>
+                        <button
+                          className="gn-btn"
+                          style={{ border: "none" }}
+                          onClick={() => downloadImage(item.url, i + 1)}
+                        >
                           Download
                         </button>
                       </div>
@@ -125,9 +128,10 @@ export function ImageGeneration() {
                   ))}
                 </Grid>
               </>
-              </div>
-            ) : ""}
-          
+            </div>
+          ) : (
+            ""
+          )}
         </Grid>
       </Grid>
     </div>
