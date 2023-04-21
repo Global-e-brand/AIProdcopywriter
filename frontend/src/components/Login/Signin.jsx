@@ -213,7 +213,7 @@ function Signin() {
               <Grid item xs={6} sm={6} md={12} lg={12} xl={12}>
                 <a
                   className="google-btn"
-                  href={`http://${host_url}:3000/auth/google`}
+                  href={`https://${host_url}/auth/google`}
                 >
                   <img src={googleIcon} alt={"Signin with Google."}></img>
                 </a>
