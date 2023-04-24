@@ -7,10 +7,21 @@ import "@tensorflow/tfjs-backend-webgl";
 import * as cocoSsd from "@tensorflow-models/coco-ssd";
 import { Navigate, redirect } from "react-router-dom";
 import Form from "../Form/form";
+import AlertMessage from "./AlertMessage";
 
 function ImageObjectDetection() {
   const [selectImg, setSelectImg] = useState();
   const [predictions, setPrediction] = useState([]);
+  const [alertBox, setAlertBox] = useState(false);
+
+  const handleClose = () => {
+    setAlertBox(false);
+  };
+
+  const redirectTo = (inputone) => {
+    
+    <Navigate replace to={`/productdescription?inputOne=${inputone}`} />;
+  };
 
   const detectObjectsOnImage = async (image) => {
     const model = await cocoSsd.load({});
@@ -41,10 +52,6 @@ function ImageObjectDetection() {
     };
   };
 
-  const redirectTo =(inputone)=>{
-return <Navigate replace to={`/productdescription?inputOne=${inputone}`} />
-  }
-
   return (
     <Grid container spacing={4}>
       <Grid item xs={12} sm={12} md={3} lg={3} xl={3}>
@@ -74,13 +81,26 @@ return <Navigate replace to={`/productdescription?inputOne=${inputone}`} />
           </div>
 
           <div className="">
-            {predictions.length!=0?predictions.map((item) => (
-              <>
-                {item.class} {" - "}
-                {(item.score * 100).toFixed(0) + " %"} <br />
-                {item.class !== null ?redirectTo(item.class):""}
-              </>
-            )):"Object Not Detected"}
+            {predictions.length != 0
+              ? predictions.map((item) => (
+                  <>
+                    {/* {item.class} {" - "} */}
+                    {/* {(item.score * 100).toFixed(0) + " %"} <br /> */}
+                    {item.class !== null ? (
+                      <AlertMessage
+                        open={true}
+                        handleClose={()=>handleClose}
+                        imagename={item.class}
+                        redirectTo={redirectTo}
+                      />
+                    ) : (
+                      ""
+                    )}
+
+                    {/* {redirectTo(item.class)} */}
+                  </>
+                ))
+              : "Preparing..."}
           </div>
         </div>
       </Grid>

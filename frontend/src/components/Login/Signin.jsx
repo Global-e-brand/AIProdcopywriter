@@ -210,14 +210,14 @@ function Signin() {
                 </p>
               </Grid>
 
-              <Grid item xs={6} sm={6} md={12} lg={12} xl={12}>
+              {/* <Grid item xs={6} sm={6} md={12} lg={12} xl={12}>
                 <a
                   className="google-btn"
                   href={`https://${host_url}/auth/google`}
                 >
                   <img src={googleIcon} alt={"Signin with Google."}></img>
                 </a>
-              </Grid>
+              </Grid> */}
               {/* <Grid item xs={6} sm={6} md={12} lg={12} xl={12}>
                 <a
                   className="facebook-btn"

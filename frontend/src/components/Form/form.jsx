@@ -136,7 +136,7 @@ function Form(props) {
 
   const ImageGenerationInput=()=>{
     const inputOne =new URLSearchParams(location.search).get("inputOne");
-    props.states.setInputOne(inputOne);
+    //props.states.setInputOne(inputOne);
   }
 
   return (
