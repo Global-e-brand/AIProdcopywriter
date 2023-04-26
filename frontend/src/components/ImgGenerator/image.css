@@ -43,8 +43,7 @@
 
 .img-wrapper {
     display: flex;
-    flex-direction: column;
-    height: 100%;
+    flex-direction: column;    
     justify-content: center;
 }
 
@@ -63,4 +62,16 @@ span.img-op{
     padding: 5PX;
     border-radius: 4PX;
     text-transform: capitalize;
+}
+
+.img-op-container {
+    height: 370px;
+    overflow-y: auto;
+    color: #fff !important;
+    border-radius: 8px;
+}
+
+.tbl{
+    background: #c1d8ec;
+    margin: 10px;
 }

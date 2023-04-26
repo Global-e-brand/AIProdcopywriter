@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import {
   Grid,
   TableContainer,
@@ -22,6 +22,7 @@ function ImageObjectDetection() {
   const [images, setImages] = useState([]);
   const [redirectImgName, setRedirectImgName] = useState("");
   const [alertBox, setAlertBox] = useState(false);
+  const fileInput = useRef();
 
   const handleClose = () => {
     setAlertBox(false);
@@ -94,60 +95,70 @@ function ImageObjectDetection() {
           <Grid item xs={4} sm={4} md={4} lg={4} xl={4}>
             <div className="img-block">
               <img src={selectImg} alt="img" />
+
+              <Button
+                variant="outlined"
+                color="primary"
+                fullWidth={true}
+                onClick={() => fileInput.current.click()}
+              >
+                upload Image
+              </Button>
             </div>
-          </Grid>
-          <Grid item xs={8} sm={8} md={8} lg={8} xl={8}>
+
             <input
-              className="img-wrapper"
+              ref={fileInput}
               type="file"
               accept="image/*"
+              style={{ display: "none" }}
               onChange={(e) => selectImagePicker(e)}
             />
           </Grid>
+          <Grid item xs={8} sm={8} md={8} lg={8} xl={8}>
+            <div className="img-op-container">
+              {images.length != 0 ? (
+                <TableContainer>
+                  <Table size="small" aria-label="simple table" className="tbl">
+                    <TableHead>
+                      <TableRow>
+                        <TableCell align="center">
+                          <strong>No</strong>
+                        </TableCell>
+                        <TableCell align="center">
+                          <strong>Suggestion Title</strong>
+                        </TableCell>
+                        <TableCell align="center">
+                          <strong>Content</strong>
+                        </TableCell>
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {images.map((row, key) => (
+                        <TableRow key={row.name}>
+                          <TableCell align="center">{key + 1}</TableCell>
+                          <TableCell align="left">{row.img_title}</TableCell>
+                          <TableCell align="center">
+                            <Button
+                              className="gn-btn"
+                              onClick={() => {
+                                setAlertBox(true);
+                                setRedirectImgName(row.img_title);
+                              }}
+                            >
+                              Generate
+                            </Button>
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </TableContainer>
+              ) : (
+                ""
+              )}
+            </div>
+          </Grid>
         </Grid>
-
-        {images.length != 0 ? (
-          <div className="img-container">
-            <TableContainer>
-              <Table size="small" aria-label="simple table">
-                <TableHead>
-                  <TableRow>
-                    <TableCell align="center">
-                      <strong>No</strong>
-                    </TableCell>
-                    <TableCell align="center">
-                      <strong>Suggestion Title</strong>
-                    </TableCell>
-                    <TableCell align="center">
-                      <strong>Content</strong>
-                    </TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {images.map((row, key) => (
-                    <TableRow key={row.name}>
-                      <TableCell align="center">{key + 1}</TableCell>
-                      <TableCell align="left">{row.img_title}</TableCell>
-                      <TableCell align="center">
-                        <Button
-                          className="gn-btn"
-                          onClick={() => {
-                            setAlertBox(true);
-                            setRedirectImgName(row.img_title);
-                          }}
-                        >
-                          Generate
-                        </Button>
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </TableContainer>
-          </div>
-        ) : (
-          ""
-        )}
       </Grid>
 
       {alertBox ? (
