@@ -11,7 +11,7 @@ export async function createContent(req, dataresponse) {
   let timeDiff = 0;
   let oneDay = 24 * 60 * 60 * 1000;
   let userId = await getUserId(req);
-  console.log("userId", userId);
+  // console.log("userId", userId);
   // const query = { user_id: userId, single_content: req.body.single_content };
 
   let content_found = await contentModel.findOne({
