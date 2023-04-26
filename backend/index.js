@@ -116,7 +116,6 @@ if (process.env.NODE_ENV == "production") {
   });
 }
 
-
 app.get("/checkpayment", async (req, res) => {
   // let userId = await getUserId();
   // console.log(userId);
@@ -142,9 +141,9 @@ app.post("/deletion", (req, res) => {
 // });
 
 app.post("/subscribeguest", async (req, res) => {
-  let showPopUp = await verifysubscriber(req.body.browserID);
+  let showPopUp = await verifysubscriber(req, req.body.browserID);
 
-  console.log("showPopUp",showPopUp);
+  console.log("showPopUp", showPopUp);
 
   res.send(Boolean(showPopUp));
 });
@@ -155,7 +154,6 @@ app.post("/checkguest", async (req, res) => {
   let result = await validateGuest(req.body.id);
   res.send(result);
 });
-
 
 app.listen(PORT, function (err) {
   if (err) console.log("Error in server setup");

@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Grid, Button } from "@mui/material";
 import Loader from "../loader/loader";
 import Newsletterpopup from "../Newsletter/Newsletterpopup";
+import { Snackbar, Alert } from "@mui/material";
 import {
   copyToAllClipboard,
   copyToClipboard,
@@ -23,6 +24,8 @@ function Form(props) {
   const location = useLocation();
   const navigate = useNavigate();
   const textAreaRef = useRef(null);
+  let vertical = "top";
+  let horizontal = "right";
 
 
   let path = window.location.href.substring(window.location.origin.length);
@@ -122,8 +125,9 @@ function Form(props) {
     if (response?.authenticated === false) {
       navigate("/login");
     }
-
-    setSingleContent(false);
+    setTimeout(() => {
+      setSingleContent(false);
+    }, 1500);
   };
 
   const handleTone = (e) => {
@@ -318,9 +322,26 @@ function Form(props) {
                                   <p>Save</p>
                                 </button>
                                 {singleContent == i + 1 ? (
-                                  <h1 className="text-status-save">
-                                    Result {i + 1} Saving in History!{" "}
-                                  </h1>
+                                  // <h1 className="text-status-save">
+                                  //   Result {i + 1} Saving in History!{" "}
+                                  // </h1>
+                                  <Snackbar
+                                    anchorOrigin={{ vertical, horizontal }}
+                                    open={true}
+                                    onClose={handleClose}
+                                    message={`Result ${
+                                      i + 1
+                                    } Saving in History`}
+                                    key={vertical + horizontal}
+                                  >
+                                    <Alert
+                                      onClose={handleClose}
+                                      severity="success"
+                                      sx={{ width: "100%" }}
+                                    >
+                                      {`Result ${i + 1} Saved in History!`}
+                                    </Alert>
+                                  </Snackbar>
                                 ) : (
                                   ""
                                 )}
@@ -344,9 +365,24 @@ function Form(props) {
                                 </button>
                                 {/* <h1 className="text-status">Description {i+1} Copied ! </h1> */}
                                 {Copied == i + 1 ? (
-                                  <h1 className="text-status">
-                                    Result {i + 1} Copied !{" "}
-                                  </h1>
+                                  // <h1 className="text-status">
+                                  //   Result {i + 1} Copied !{" "}
+                                  // </h1>
+                                  <Snackbar
+                                    anchorOrigin={{ vertical, horizontal }}
+                                    open={true}
+                                    onClose={handleClose}
+                                    message={`Result ${i + 1} Copied`}
+                                    key={vertical + horizontal}
+                                  >
+                                    <Alert
+                                      onClose={handleClose}
+                                      severity="success"
+                                      sx={{ width: "100%" }}
+                                    >
+                                      {`Result ${i + 1} Copied !`}
+                                    </Alert>
+                                  </Snackbar>
                                 ) : (
                                   ""
                                 )}
