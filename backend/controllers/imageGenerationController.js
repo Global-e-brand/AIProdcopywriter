@@ -1,6 +1,7 @@
 import bodyParser from "body-parser";
 import express from "express";
 import {Configuration,OpenAIApi} from "openai";
+import  SerpApi from "google-search-results-nodejs";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -15,14 +16,11 @@ imageGenerationController.use(bodyParser.urlencoded({ extended: false }));
 
 imageGenerationController.use(bodyParser.json());
 
-imageGenerationController.post("/", bodyParser.json(), async (req, res) => {
+imageGenerationController.post("/generation", bodyParser.json(), async (req, res) => {
     const configuration = new Configuration({
         apiKey: process.env.OPEN_AI_KEY,
       });
       const openai = new OpenAIApi(configuration);
-    // 256 x 256,
-    // 512 x 512, 
-    // 1024 x 1024
 
   try {
     const response = await openai.createImage({
@@ -41,6 +39,28 @@ imageGenerationController.post("/", bodyParser.json(), async (req, res) => {
   } catch (e) {
     res.status(500).send(e.message);
   }
+});
+
+imageGenerationController.post("/detection", async (req, res) => {
+  
+  const search = new SerpApi.GoogleSearch(process.env.SERPAPI_KEY);
+  const params = {
+    engine: "google_images",
+    q: req.body.usr_img
+  };
+  const imageResults =async function(data) {
+  const images=[];
+  let resultOfImages=await data["images_results"].slice(0, 20);
+  resultOfImages.forEach(item => {
+    images.push({
+      img_title:item.title,
+      img_link:item.original
+    })
+  });
+  res.status(200).send({images:images})
+};
+
+search.json(params, imageResults);
 });
 
 export default imageGenerationController;

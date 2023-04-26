@@ -227,7 +227,7 @@ function Signin() {
                 </a>
               </Grid>              */}
             </Grid>
-            <Grid container direction="row" columns={20} alignItems="center">
+            {/* <Grid container direction="row" columns={20} alignItems="center">
               <Grid item xs={9} sm={9} md={9} lg={9} xl={9}>
                 <div className="line"></div>
               </Grid>
@@ -237,7 +237,7 @@ function Signin() {
               <Grid item xs={9} sm={9} md={9} lg={9} xl={9}>
                 <div className="line"></div>
               </Grid>
-            </Grid>
+            </Grid> */}
             <Grid container direction="row" justifyContent="space-between">
               <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                 {alertVisibility && (

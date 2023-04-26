@@ -76,9 +76,9 @@ function SidebarMenu(props) {
           <Link to="/image-generator" className="icon-component home-btn">
             <p>Image Generation</p>
           </Link>
-          {/* <Link to="/image-detector" className="icon-component home-btn">
+          <Link to="/image-detector" className="icon-component home-btn">
             <p>Image Detection</p>
-          </Link> */}
+          </Link>
 
           {isAdmin ? (
             <>

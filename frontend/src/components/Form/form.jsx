@@ -18,6 +18,7 @@ function Form(props) {
   const [AllCopied, setAllCopied] = useState();
   const [singleContent, setSingleContent] = useState();
   const [showPopUp, setShowPopUp] = useState(false);
+  const [imgInputOne, setImgInputOne] = useState("");
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -26,7 +27,6 @@ function Form(props) {
 
   let path = window.location.href.substring(window.location.origin.length);
   const handleClose = () => {
-    //<Navigate replace to="http://localhost:3001/productdescription" />
     setShowPopUp(false);
   };
 
@@ -132,18 +132,18 @@ function Form(props) {
 
   useEffect(()=>{
     ImageGenerationInput();
-  })
+  },[])
 
   const ImageGenerationInput=()=>{
     const inputOne =new URLSearchParams(location.search).get("inputOne");
-    //props.states.setInputOne(inputOne);
+    props.states.setInputOne(inputOne)
+    setImgInputOne(inputOne);
   }
 
   return (
     <>
       {/* Main Form */}
-      {/* <div className="main-form-desktop-view"> */}
-      {console.log("showpop is-->", showPopUp)}
+      {/* <div className="main-form-desktop-view"> */}      
       {showPopUp && <Newsletterpopup handleClose={handleClose} />}
       <Grid item xs={6} sm={8} md={5} lg={5} xl={5}>
         <form
@@ -156,8 +156,8 @@ function Form(props) {
           <div className="input_one">
             <h5>{props.inputOneTitle}</h5>
             <textarea
-              value={props.states.inputOne}
-              onChange={(e) => props.states.setInputOne(e.target.value)}
+              value={imgInputOne || props.states.inputOne}
+              onChange={(e) => props.states.setInputOne(e.target.value) || setImgInputOne(e.target.value)}
               placeholder={props.placeholderOne}
             />
           </div>
@@ -247,7 +247,8 @@ function Form(props) {
               type="submit"
               variant="contained"
               disabled={
-                (props.inputOneActive && !props.states.inputOne) ||
+              
+                (props.inputOneActive && (!props.states.inputOne && !imgInputOne))||
                 (props.inputTwoActive && !props.states.inputTwo) ||
                 (props.inputThreeActive && !props.states.inputThree) ||
                 props.states.loading

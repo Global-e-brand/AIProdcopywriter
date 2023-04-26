@@ -5,7 +5,7 @@ async function verifysubscriber(systemID) {
     let isGuest = await guestModel.exists({
       systemID: systemID,
     });
-    console.log("isGuest", isGuest);
+
     if (isGuest) {
       let guestUser = await guestModel.find({ systemID });
       console.log(guestUser);

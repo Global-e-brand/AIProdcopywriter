@@ -21,7 +21,7 @@ const Footer = () => {
           xl={3}
           className="left-side-content"
         >
-          {`© 2023 AI ProdCopywriter`}
+          {`© 2023 creativewriter.ai`}
         </Grid>
 
         <Grid

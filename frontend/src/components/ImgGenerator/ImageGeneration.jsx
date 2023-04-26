@@ -24,7 +24,7 @@ export function ImageGeneration() {
 
   async function imageGenerator() {
     setLoader(true);
-    let res = await fetch("/image-generation", {
+    let res = await fetch("/image/generation", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
